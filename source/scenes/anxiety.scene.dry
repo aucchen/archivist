@@ -1,0 +1,19 @@
+title: Breakdown
+subtitle: It is not good.
+view-if: anxiety > 15
+tags: major
+
+You are tired, more so than usual.
+
+- @not_just: Not just tired.
+
+@not_just
+
+You are laying on your side, in the bed. Your body aches, but you cannot move. Your eyes close and open, close and open. You are hungry and your head throbs with every beat of your slowly-failing heart.
+
+- @pathetic: You are fucking pathetic
+- @shouldnt: You should not even be alive.
+
+@pathetic
+
+@shouldnt

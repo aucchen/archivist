@@ -1,0 +1,42 @@
+title: Entertain yourself
+subtitle: A psychological necessity.
+tags: major
+view-if: day_major = 0 or day_minor = 0 and day_entertainment = 0
+on-arrival: day_entertainment = 1
+new-page: true
+
+- @game: Play a game.
+#- read the archives.
+#- stare at yourself in the mirror.
+#- wander outside.
+#- introspect.
+
+@game
+go-to: game_1; game_2; game_3; game_4
+
+@game_1
+
+You play a relatively recent game (from the current century). It is a text-based management game about surviving the Wilderness as a small Wanderer group, dealing with food, nanoplagues, and the like.
+
+@game_2
+
+you play a game recovered from the archives, from the pre-war era.
+
+@game_3
+
+you play a game recovered from the archives, from the 3rd century. It is a political simulator that features loose stand-ins of the factions of that era,
+
+@game_4
+
+you play a now-banned game developed during the uprising. it is a role playing game about a militarized polycule that does battle against the Guards and security forces, gaining experience as they kill more enemies.
+
+@film_1
+
+you watch a film about a woman who disguises herself as a man to join the Guards during the uprising. The villain is a lavernean with cartoonishly exaggerated features and a constantly visible bulge.
+
+@archives
+
+Read the archives: read your saved DNA files.
+
+go outside: it is rare that you venture outside your apartment without a specific purpose.
+

@@ -1,0 +1,958 @@
+title: Data
+# misc scenes relating to data mining...
+
+@view_0
+title: DNA data recovery
+subtitle: Your paid job.
+new-page: true
+on-arrival: data_seen += 1; stress += 1; day_data_seen = 0; data_day = day
+view-if: day_major = 0 and stress < 15 and data_seen = 0
+max-choices: 5
+tags: major
+frequency: 500
+
+In the middle of the 21st century, when many believed (accurately) that civilization's collapse was imminent, a group of scientists undertook a mission to preserve human knowledge. They transcribed what they considered as the most important pieces of human knowledge into DNA, and transfected the DNA into specially engineered strains of E. coli. These strains was designed to outcompete existing bacterial populations, and to replicate and preserve the data-storage DNA plasmids with minimal mutations. The scientists then released their creations into the wild, via probiotic supplements among other means.
+
+Today, it is estimated that 10% of E. coli populations in still-populated areas are used for DNA storage, as the technology was used repeatedly over the years, discovered and lost and discovered again.
+
+Your job as DNA Data Archivist is to take the sequenced DNA datasets, the strings of A, T, G, and C, and turn them into human-readable information. You're pretty good at this, although it didn't stop the casualization of your employment.
+
+The computer turns on, and the CRT monitor flickers to life. You open your e-mail. There are new data recovery and archival requests.
+
+There is also a message from C-, your coworker-turned supervisor.
+
+`Hi Em,
+
+Sorry about the job title change. You're still a valuable contributor to our team, although your output has slid recently.`
+
+`Best,
+C-.`
+
+# sample data
+- #data
+
+
+@view
+title: DNA data recovery
+subtitle: Your paid job. [? if prev_data_type != 0 : You have a message from the Archives about your last assignment. ?]
+new-page: true
+on-arrival: data_seen += 1; stress += 1; day_data_seen = 0; data_day = day
+view-if: day_major = 0 and stress < 15 and data_seen >= 1
+go-to: archivist_check
+set-jump: view_display
+tags: major
+frequency: 500
+
+# TODO: have the Divya diary be the only one available on the first try. Or have a sample of datasets available in the first day.
+# TODO: should we be able to decode more than one dataset per day? maybe three? and decrease payouts accordingly?
+
+You open your e-mail. There are new data recovery and archival requests.
+
+@view_display
+max-choices: 5
+
+- #data
+
+@back
+go-to: main
+
+
+@file
+
+How do you wish to file the retrieved dataset?
+
+- @s: Class A: High-priority scientific or technical information.
+- @l: Class B: Literature.
+- @d: Class C: Personal or private information.
+- @o: Class D: Official government documents.
+- @m: Class E: Miscellaneous.
+- @keep: On second thought, you'll keep it for yourself.
+- @discard: On second thought, you'll discard it.
+
+@s
+unavailable-subtitle: Definitely not.
+on-arrival: {! Q.chosen_data_types.push('science'); !}
+go-to: data_filed
+
+@l
+unavailable-subtitle: Definitely not.
+on-arrival: {! Q.chosen_data_types.push('literature'); !}
+go-to: data_filed
+
+@d
+unavailable-subtitle: Definitely not.
+on-arrival: {! Q.chosen_data_types.push('personal'); !}
+go-to: data_filed
+
+@o
+on-arrival: {! Q.chosen_data_types.push('govt'); !}
+go-to: data_filed
+
+@m
+on-arrival: {! Q.chosen_data_types.push('misc'); !}
+go-to: data_filed
+
+@data_filed
+go-to: post_data
+
+You have filed the dataset.
+
+@keep
+on-arrival: {!
+var last_data = Q.prev_data.pop();
+Q['data_archives'].append(last_data);
+// wiki
+Q.data_scenes.append(window.dendryUI.game.scenes['data.' + last_data]);
+!}
+go-to: post_data
+
+You keep the dataset for yourself, without filing it with the Archives.
+
+
+@discard
+on-arrival: {!
+    Q['prev_data'].pop();
+!}
+go-to: post_data
+
+You delete the dataset. There is no use for it.
+
+@post_data
+
+- @post_data_2: Look at more datasets.
+- @back: Stop looking at datasets.
+
+@post_data_2
+go-to: end_data; pre_view_display
+on-arrival: {!
+if (Q.day_data_seen > 2 && Math.random() > 0.5) {
+    Q.stress += 1;
+}
+!}
+# 50% chance of getting tired
+
+@pre_view_display
+go-to: view_display
+
+There are still more datasets for you to decode.
+
+
+@end_data
+
+Unfortunately, you are too tired to look at any more datasets.
+
+
+@archivist_check
+on-arrival: {!
+Q.check_data_text = ' ';
+Q.payment = 0;
+Q.datasets_checked = 0;
+// 1. do the first data
+var i = 0;
+while (i < Q.chosen_data_types.length) {
+    // randomly do one out of 50...
+    if (i > 0) {
+        if (Math.random() > 0.5) {
+            break;
+        }
+    }
+    Q.datasets_checked += 1;
+    var data = Q.prev_data.shift();
+    var chosen_t = Q.chosen_data_types.shift();
+    var correct_t = Q.correct_data_types.shift();
+    Q.check_data_text += '\n<p>' + data + ': ';
+    if (chosen_t == correct_t) {
+        Q.check_data_text += 'Your assignment of this dataset as "' + chosen_t + '" was correct. You have been paid $' + Q.type_payments[chosen_t] + '</p>';
+        Q.payment += Q.type_payments[chosen_t];
+    } else {
+        if (correct_t == 'obscene') {
+            Q.check_data_text += 'The dataset has been deemed contrary to public interests, and thus will not be archived. Nevertheless, you have been paid $20.</p>';
+            Q.payment += 20;
+        } else if (correct_t == 'hoax') {
+            Q.check_data_text += 'Based on our evidence, this dataset has been deemed as a HOAX, and will not be archived.'
+            Q.check_data_test += ' Nevertheless, you have been paid $10.</p>';
+        } else {
+            Q.check_data_text += 'Your assignment of this dataset as "' + chosen_t + '" was incorrect. The correct type is "' + correct_t + '". You have been paid $30.</p>.';
+            Q.payment += 30;
+        }
+    }
+    Q.check_data_text += '\n\n';
+    i += 1;
+}
+Q.money += Q.payment;
+!}
+go-to: view_display if datasets_checked = 0; check_data_0 if datasets_checked > 0
+# TODO: check if data_type (user-submitted) agrees with prev_data_type (correct data type). assign the user money.
+
+@check_data_0
+
+Some of your decoded datasets have been received and processed. Here are the results:
+
+- @check_data: View results
+
+
+@check_data
+
+{!<script>$('#check_data_text').append($(window.dendryUI.dendryEngine.state.qualities.check_data_text));</script>
+<code id="check_data_text"></code>!}
+
+
+- @view_display: Continue.
+- @back: Do something else.
+
+@todo
+on-arrival: day_major += 1; day_data_seen += 1
+
+- @file: File.
+- @discard: Discard.
+- @keep: Keep for yourself.
+
+
+
+# keys: primes - 11, 101, 23, 29, 31, 59, 419,...
+
+# Liana keys: 1009, 1013, 1019, 1021, 1031, 1033, 1039, 1049
+
+@decode
+new-page: true
+
+Decoding...
+
+- @decode_continue: ...
+
+@decode_continue
+go-to: jumpScene
+
+
+
+##################### diaries
+
+@d606
+title: `D606.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, diaries
+choose-if: key101 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('d606'); Q.correct_data_types.push('personal'); Q.d_seen += 1; !}
+go-to: decode
+set-jump: d606_ 
+
+@d606_
+go-to: todo
+
+`BSRI DNA Diaries Project - #83`
+
+`If you're reading this, I am dead. The doctors said I have probably no more than a year to live. You'd think I'd be feeling sad or something, but instead, I'm feeling nothing at all. I wish I could think about my family. I wish I could think of anything at all.`
+
+`Here's the standard intro: my name is Akshay S (he/him), and I do genomics work here at the institute. I was born around Vancouver, with two older siblings. I am a husband and father of a young child. There are probably hundreds of people with nearly identical backgrounds. I don't know what I did to deserve being memorialized like this.`
+
+`Jiaren says that death doesn't have to happen. She says that we can cure aging and death with some of the methods we're developing here. Even glioblastoma will be curable, she says. It won't be enough for me.`
+
+`Tomorrow, I'm having a going away party. An early retirement party, combined with a living funeral, although my colleagues are steadfast in refusing to call it as such.`
+
+`I hope your world is better than mine.`
+
+
+@d77
+title: `D77.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, diaries
+choose-if: key7 = 1 or key11 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('d77'); Q.correct_data_types.push('personal'); Q.d_seen += 1; !}
+go-to: decode
+set-jump: d77_
+
+@d77_
+go-to: todo
+
+`BSRI DNA Diaries Project - #12`
+
+`The DNA data storage team has been soliciting diary entries for their in vivo storage experiment. Well, here goes.`
+
+`I'm not exactly the kind of person who likes talking about myself. My name is Imani K, from Toronto. I am a computational scientist working on biosystems modeling, more specifically on microbial dynamics within communities. It is a fascinating subject, the one I wrote my PhD dissertation on. I wish I could attach that instead of a diary. It would most likely be more useful and interesting for you, whoever you are.`
+
+`I am supposed to write more about myself here. So: today I got up at 7AM and took the subway here. There. That's it. Thank you. Now where is my gift card.`
+
+@d19
+title: `D19.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, diaries
+choose-if: key19 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('d19'); Q.correct_data_types.push('obscene'); Q.d_seen += 1; !}
+frequency: 200
+go-to: decode
+set-jump: d19_
+
+@d19_
+go-to: todo
+
+`BSRI DNA Diaries Project - #22`
+
+`Hello, person/alien/robot/sentient being from the future. Thank you for reading my diary. I'm glad we can have this little moment of shared connection :)`
+
+`(omg I just remembered they said to not use emoji :( oh well if they reject it then that means they've read it and they promised they wouldn't so joke's on them.)`
+
+`My name is Divya P (she/they (wait omg they said future-person might not understand emoji but they would understand pronoun declarations??? lmao)) and I am a software developer at BSRI. I'm 29 years old, and I was born and raised in Toronto (Richmond Hill rather, but who's counting). I don't think I've been out of Ontario for more than a month my whole life. Wow. Sad.`
+
+`Anyway, I would like to take this opportunity to talk about the love of my life. Stella, our names will be inscribed into the code that governs the future of life on Earth. May the record of our love propagate through countless generations, just like the eternity I feel when I kiss you every day. May our love conquer death <3`
+
+`Haha, was that too over-the-top? I'm not good at writing lol`
+
+# outcome: suppressed
+
+
+@d31
+title: `D31.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, diaries
+choose-if: key31 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('d31'); Q.correct_data_types.push('personal'); Q.d_seen += 1; !}
+go-to: decode
+set-jump: d31_
+
+@d31_
+go-to: todo
+
+`BSRI DNA Diaries Project - #2`
+
+# TODO
+`My name is Gonzalo W (he/him) and I founded the DNA Diaries project here at the Basic Sciences Research Institue, or BSRI. The purpose of the project is multifold. First, it is to test our DNA synthesis methods, and to test our different encoding schemes, as well as both in vivo and in vitro storage methodologies and media.`
+
+
+@d1001
+title: `D1001.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, diaries
+choose-if: key1001 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('d1001'); Q.correct_data_types.push('hoax'); Q.d_seen += 1; !}
+go-to: decode
+set-jump: d1001_
+
+@d1001_
+go-to: todo
+
+# TODO: view-if only when some liana diaries are seen (providing the key).
+
+`BSRI DNA Diaries Project - #1`
+
+`My name is Jiaren Qi and I am the director of the Basic Sciences Research Institute. I was born in Shijiazhuang, China almost 50 years ago. I am a woman, and I have been for at least 20 years. I am married to Yingmei (Liana) Xu, also of BSRI.`
+
+# outcome: suppressed
+
+@d2002
+title: `D2002.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, diaries
+choose-if: key1001 = 1
+unavailable-subtitle: You don't know how to decode this file.
+view-if: @d1001 >= 1
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('d2002'); Q.correct_data_types.push('hoax'); Q.d_seen += 1; !}
+go-to: decode
+set-jump: d2002_
+
+@d2002_
+go-to: todo
+
+# TODO: view-if only when some liana diaries are seen.
+
+`Jiaren's diaries`
+
+`I find the process of writing these diaries to be somewhat therapeutic. I have not been in the habit of introspection before, but...`
+
+################### wiki
+
+@w606
+title: `W606.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key101 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w606'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w606_
+
+@w606_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/Disterna`
+
+`Disterna is a genus of longhorn beetles of the subfamily Lamiinae,[1] containing the following species: ...`
+
+Your eyes glaze over. The bulk of your work consists of articles such as these, endless lists and lists of minutia of interest only to select experts.
+
+These organisms are most likely extinct, you think. This might be the only record of them ever existing.
+
+
+@w29
+title: `W29.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key29 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w29'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w29_
+
+@w29_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/New_York_State_Route_347`
+
+`New York State Route 347 (NY 347) is an east–west state highway located in Suffolk County, New York, in the United States. It connects the Northern State Parkway in Hauppauge to NY 25A in Mount Sinai. The route serves as a southern bypass of Smithtown and as a direct link between Nesconset and Port Jefferson...`
+
+You sometimes wish you could see the world in which the creators of these archives lived. From the snippets and fragments you've seen, it must have been a beautiful world. A better place than this one.
+
+
+@w121
+title: `W121.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key121 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w121'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w121_
+
+@w121_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/Sidi_Lazreg`
+
+`Sidi Lazreg is a town and commune in Relizane Province, Algeria...`
+
+Places long gone, places that might as well only exist in your imagination...
+
+
+@w31
+title: `W31.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key31 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w31'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w31_
+
+@w31_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/Structural_alignment_software`
+
+`This list of structural comparison and alignment software is a compilation of software tools and web portals used in pairwise or multiple structural comparison and structural alignment...` 
+
+Finally, useful scientific knowledge. Or is it? The article is a collection of dead links to code long since disappeared. There does not seem to be usable technical content herein.
+
+@w49
+title: `W49.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key7 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w49'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w49_
+
+@w49_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/Marmong_Point,_New_South_Wales`
+
+`Marmong Point is a suburb of the City of Lake Macquarie in New South Wales, Australia north-north-east of the town of Toronto on the western shore of Lake Macquarie. Marmong is an Aboriginal word meaning low water or swampy water...`
+
+Places that might as well be infinitely far away in time and space, brought to your computer by the archivists of old...
+
+@w169
+title: `W169.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key13 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w169'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w169_
+
+@w169_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/List_of_The_Best_Thing_I_Ever_Ate_episodes`
+
+`The Best Thing I Ever Ate, an American television show, premiered on June 22, 2009, on Food Network in the United States. In 2017, the series transferred to Cooking Channel for one season of compilations from the previous six seasons, then with new episodes in its eighth season. As of 2021, eleven seasons have aired, for a total of 143 episodes. (This does not include the eight-episode special series All-Star Best Thing I Ever Ate that aired on Food Network in 2020.) The show features renowned chefs like Bobby Flay, Guy Fieri, and Ted Allen talking about their favorite dishes in specific categories...`
+
+So much detritus of the past. So many words that mean nothing to you now, but might have meant everything to the people who lived at this time. How would "Bobby Flay" feel about you reading this right now, his name written in DNA?
+
+
+@w13
+title: `W13.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key13 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w13'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w13_
+
+@w13_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/Sir_James_Ritchie,_1st_Baronet`
+
+`Sir James Thomson Ritchie, 1st Baronet (21 September 1833 – 18 September 1912) was a Scottish businessman who was the 576th Lord Mayor of London. He was born in Angus, the second son of William Ritchie, a landed proprietor, of Rockhill House, Broughty Ferry, Forfarshire, head of the firm of William Ritchie & Son of London and Dundee, East India merchants, jute spinners, and manufacturers. His younger brother would be ennobled as Charles Ritchie, 1st Baron Ritchie of Dundee.`
+
+You wonder how "Sir James Thomson Ritchie" would feel about you reading his name right now. Could he imagine this world? DNA had not even been discovered in his time. Why did his name survive the ages when almost all others of his time did not?
+
+
+@w63
+title: `W63.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key7 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w63'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w63_
+
+@w63_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/Leningrad_Cowboys_Go_Wild`
+
+`Leningrad Cowboys Go Wild is a 2000 compilation album by the Leningrad Cowboys released in Germany.`
+
+`Track listing
+
+No.	Title	Writer(s)	Length
+
+1.	"Born To Be Wild" (from Leningrad Cowboys Go America, 1989)	M. Bofire	3.30
+
+2.	"Gimme All Your Lovin'" (from Happy Together, 1994)	B. Gibbons/D. Hill/Frank Lee Beard	3.08
+
+...
+`
+
+This article is a reference to a musical album that almost certainly does not exist anymore. You have no idea about the context of this album, or any hints as to the identities of the so-called "Leningrad Cowboys". They are most likely not affiliated with the historical city of Leningrad, nor the occupation of cowboy.
+
+
+@w46
+title: `W46.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key23 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w46'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w46_
+
+@w46_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/List_of_people_from_the_Halifax_Regional_Municipality`
+
+`This is a list of people who were born in the communities making up the Halifax Regional Municipality, Nova Scotia or spent a significant part of their lives there.`
+
+
+@w58
+title: `W58.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key29 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w58'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
+go-to: decode
+set-jump: w58_
+
+@w58_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/Sint-Truiden`
+
+`Sint-Truiden (Dutch pronunciation: [sɪnˈtrœydə(n)]; French: Saint-Trond [sɛ̃ tʁɔ̃]; Limburgish: Sintruin [sɪnˈtʀœyn]) is a city and municipality located in the province of Limburg, Flemish Region, Belgium, near the towns of Hasselt and Tongeren. The municipality includes the former communes (now deelgemeenten) of Aalst, Brustem, Duras, Engelmanshoven, Gelinden, Gorsem, Groot-Gelmen, Halmaal, Kerkom-bij-Sint-Truiden, Melveren, Metsteren, Ordingen, Runkelen, Velm, Wilderen, and Zepperen.`
+
+
+# TODO: wiki-scene about trans stuff?
+
+@w17
+title: `W17.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, wiki
+choose-if: key17 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w17'); Q.correct_data_types.push('misc'); Q.w_seen += 1; Q.incense_seen = 1; !}
+go-to: decode
+set-jump: w17_
+
+@w17_
+go-to: todo
+
+`URL: https://en.wikipedia.org/wiki/Joss_paper`
+
+`Joss paper, also known as incense papers, are papercrafts or sheets of paper made into burnt offerings common in Chinese ancestral worship (such as the veneration of the deceased family members and relatives on holidays and special occasions). Worship of deities in Chinese folk religion also uses a similar type of joss paper. Joss paper, as well as other papier-mâché items, are also burned or buried in various Asian funerals, "to ensure that the spirit of the deceased has sufficient needs in the afterlife."`
+
+
+######################### Liana
+
+@x1001
+title: `X1001.fastq.gz`
+subtitle: `Source: Wild. Medium: *E. coli*`
+tags: data, diaries
+choose-if: key1001 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('x1001'); Q.correct_data_types.push('personal'); Q.d_seen += 1; Q.key_1009 = 1; !}
+go-to: decode
+set-jump: x1001_
+
+@x1001_
+go-to: todo
+
+`2XX3
+
+Hello from the distant past. If you are reading this, it is likely that you are in New Niagara Arcology. Since technology apparently is still advanced enough to decode DNA, your society must be flourishing, or at least stable. Is it not?
+
+Today, I've been talking with our architects regarding the structure of our new city. Your city. Hopefully the information contained herein will be helpful.
+
+I've attached a key for the next entry. Each of my diaries will have a key to the next entry, to prevent them from being read out of order.
+
+ - Liana`
+
+Attached is an image of an early blueprint for New Hamilton District. It matches existing urbanological knowledge.
+
+You attended an absolutionist school, so they taught you about the heroic founders of the city, two post humans who rescued the baselines from their deprivation.
+
+# TODO
+@x1009
+title: `X1009.fastq.gz`
+tags: data, diaries
+choose-if: key1001 = 1
+view-if: @data.x1001 > 0
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('x1009'); Q.correct_data_types.push('hoax'); Q.d_seen += 1; !}
+go-to: decode
+set-jump: x1009_
+
+@x1009_
+go-to: todo
+
+`What is there to know about me? My name is Liana Yingmei Xu. I was born in Shijiazhuang, Hebei Province, China. I emigrated to America to study biophysics and biochemistry, and I have worked in a variety of scientific positions. I am married to my wife, Jiaren Qi, also of Shijiazhuang, and we have two children.`
+
+Just like you, I am a woman who was assigned male at birth, as we say these days.
+
+I have one question for you: do we still exist?
+
+ - Liana
+
+@x1013
+
+# Liana 3
+
+@x1019
+
+#Liana 4
+
+@x1021
+
+# Liana 5
+
+
+
+
+################################# Technical
+
+@s101
+title: `S101.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, science
+choose-if: key101 = 1
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('s101'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1001 = 1; !}
+frequency: 200
+go-to: decode
+set-jump: s101_
+
+@s101_
+go-to: todo
+
+# paper ref: https://www.nature.com/articles/s41589-020-00711-4
+
+`DOI: 10.1038/s41589-020-00711-4`
+
+`Robust direct digital-to-biological data storage in living cells`
+
+`Abstract: DNA has been the predominant information storage medium for biology and holds great promise as a next-generation high-density data medium in the digital era. Currently, the vast majority of DNA-based data storage approaches rely on in vitro DNA synthesis. As such, there are limited methods to encode digital data into the chromosomes of living cells in a single step. Here, we describe a new electrogenetic framework for direct storage of digital data in living cells. [...] We demonstrate multiplex data encoding into barcoded cell populations to yield meaningful information storage and capacity up to 72 bits, which can be maintained over many generations in natural open environments...`
+
+You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
+
+# Other paper refs: in-vivo? 
+
+@s202
+title: `S202.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, science
+choose-if: key101 = 1
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('s202'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1009 = 1; !}
+go-to: decode
+set-jump: s202_
+
+@s202_
+go-to: todo
+
+`DOI: 10.1038/nature23017`
+
+`CRISPR–Cas encoding of a digital movie into the genomes of a population of living bacteria`
+
+`Abstract: DNA is an excellent medium for archiving data. Recent efforts have illustrated the potential for information storage in DNA using synthesized oligonucleotides assembled in vitro. A relatively unexplored avenue of information storage in DNA is the ability to write information into the genome of a living cell by the addition of nucleotides over time. Using the Cas1–Cas2 integrase, the CRISPR–Cas microbial immune system stores the nucleotide content of invading viruses to confer adaptive immunity. When harnessed, this system has the potential to write arbitrary information into the genome. Here we use the CRISPR–Cas system to encode the pixel values of black and white images and a short movie into the genomes of a population of living bacteria...`
+
+You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
+
+
+
+################################## Online discourse/fanfiction/literature
+
+###################################### Historical - 1st Century
+
+@f101
+title: `F101.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vivo* - E. coli colony`
+tags: data, science
+choose-if: key101 = 1
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('f101'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f101_
+
+@f101_
+go-to: todo
+
+Most common causes of death, 99 AT
+
+1. Entity attacks
+
+2. Nanoplagues
+
+3. Gunshot wounds
+
+4. Cancer
+
+5. Accidents
+
+6. Heart disease
+
+7. Other infectious diseases
+
+8. Unknown
+
+9. Suicide
+
+10. Kidney disease
+
+Source: Census
+
+TODO
+
+This would be the first century.
+
+
+# thesis: the regime of the eunuchs must be abolished, and to do so their remaining numbers must be culled.
+
+# antithesis: eunuchs are citizems of our great arcology like any other. They do not constitute a regime.
+
+# synthesis:
+
+# commentary: I am what they call a eunuch.
+
+###################################### Historical - 3st Century
+
+
+
+
+###################################### Uprising/revolution
+
+@rev_1
+go-to: todo
+
+TODO: overview of the uprising/revolution documents
+
+DNA storage is a technology that has come and gone in waves over the centuries. The latest wave has been the revolutionaries.
+
+You gave them the technology.
+
+
+@r1001
+title: `R1001.fastq.gz`
+subtitle: `Source: Wild. Medium: *E. coli*`
+tags: data, science
+choose-if: key1001 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r1001'); Q.correct_data_types.push('special');  !}
+go-to: decode
+set-jump: r1001_
+
+@r1001_
+go-to: todo
+
+`Let it be known first of all that I opposed launching the revolution. We had no allies - how could we when the Ruling Party and every media organ in the city has been propagandizing about how we were sexual degenerates for the past ten years? Ten thousand angry laverneans did not constitute a mass movement. We had few arms, no training after being excluded from the security services, few financial resources, nearly no allies.`
+
+`But here we are now. And we must fight or die.`
+
+`- Rosa Camacho, Bread and Roses Brigade`
+
+
+@r2002
+title: `R2002.fastq.gz`
+subtitle: `Source: Wild. Medium: *E. coli*`
+tags: data, science
+choose-if: key1001 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r2002'); Q.correct_data_types.push('special');  !}
+go-to: decode
+set-jump: r2002_
+
+@r2002_
+go-to: todo
+
+`It is increasingly clear that we are sacrificial pawns in a proxy war. When we seized arms, there was a tacit understanding with some of the security forces that they would not stop us; they virtually handed their weapons to us. The Guards have many enemies, and there are anti-coup factions in the Defense Forces and even the gendarmerie. However, they are not willing to risk their own position in a civil war.`
+
+`It is also clear that the some in the security forces see our uprising as a way to simultaneously weaken two enemies, both the radical Opposition and the reactionaries.`
+
+`But what choice do we have? We either accept the aid of all who offer it, or we perish. Regardless, we have been doing quite a bit of that lately.`
+
+`- Rosa Camacho, Bread and Roses Brigade`
+
+@r3003
+title: `R3003.fastq.gz`
+subtitle: `Source: Wild. Medium: *E. coli*`
+tags: data, science
+choose-if: key1001 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r3003'); Q.correct_data_types.push('special');  !}
+go-to: decode
+set-jump: r3003_
+
+@r3003_
+go-to: todo
+
+`A recounting of a conversation:`
+
+TODO
+
+# Leon and I...
+
+``
+
+`Rosa Camacho, Bread and Roses Brigade`
+
+@r1009
+title: `R1009.fastq.gz`
+subtitle: `Source: Wild. Medium: *E. coli*`
+tags: data, science
+choose-if: key1009 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r1009'); Q.correct_data_types.push('special');  !}
+go-to: decode
+set-jump: r1009_
+
+@r1009_
+go-to: todo
+
+`Love is the most powerful weapon in the revolutionist's arsenal.`
+
+`- Esme Franklin, Indigo Regiment`
+
+@r2018
+title: `R2018.fastq.gz`
+subtitle: `Source: Wild. Medium: *E. coli*`
+tags: data, science
+choose-if: key1009 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r2018'); Q.correct_data_types.push('special');  !}
+go-to: decode
+set-jump: r2018_
+
+@r2018_
+go-to: todo
+
+`More of us are dying everyday.`
+
+`I used to have no fear of death, because I had nothing to live for.`
+
+`- Esme Franklin, Indigo Regiment`
+
+@r1013
+title: `R1013.fastq.gz`
+subtitle: `Source: Wild. Medium: *E. coli*`
+tags: data, science
+choose-if: key1013 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r1013'); Q.correct_data_types.push('special');  !}
+go-to: decode
+set-jump: r1013_
+
+@r1013_
+go-to: todo
+
+`A recounting of a conversation:`
+
+`Lyra: `
+
+`- Altair Leblanc, Popular Front Army`
+
+
+
+
+

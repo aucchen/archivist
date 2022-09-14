@@ -1,0 +1,164 @@
+title: Meeting K-
+subtitle: 5PM, LX Square
+view-if: k_path = 1 and (day_major = 0 or day_minor = 0)
+on-arrival: day_major += 1; k_path += 1
+tags: major
+new-page: true
+
+How long has it been since you last saw her?
+
+- @year: At least a year.
+- @months: A few months.
+- @weeks: Just a few weeks.
+
+@year
+subtitle: You saw her on a trolley.
+go-to: anyway
+
+It was over a year ago when you last physically saw her. The Archives are physically located in the university district, not so far from K-'s labs, and you were heading there for a meeting. You almost did not recognize her, and she either didn't recognize you or pretended not to.
+
+@months
+subtitle: She called you about a professional problem.
+go-to: anyway
+
+The last conversation between the two of you was purely professional. She asked about using the Archives' DNA sequencer; the one in her lab was broken. You connected her to C-, your coworker (now supervisor), and that was the end. She didn't say anything about herself, and you didn't ask.
+
+
+@weeks
+subtitle: She was on CityNet.
+go-to: anyway
+
+It was a CityNet article about the latest nanoplague variant. She was the "University scientist" quoted (most likely out-of-context) in an article that was an odd mixture of irrational fearmongering and minimization. The comments all excoriated her, of course. That was the last reminder you had of her existence. 
+
+
+@anyway
+
+- @anticipation: Anyway, you are at the park. Waiting.
+
+
+@anticipation
+
+LX Square is named after Liana Xu, a posthuman and one of the founders of this city. It acts as the central square. It was a 30-minute trip by trolley, and presently you are sitting on a bench.
+
+You have not been able to do much of anything today, your mind so preoccupied on your meeting with K- and S-.
+
+- @check_respirator: Check your respirator.
+- @check_outfit: Check your outfit.
+- @check_surroundings: Check your surroundings.
+
+
+@check_respirator
+max-visits: 1
+on-arrival: k2_checks += 1
+
+Idly, you touch your respirator with your gloved fingers. Your glasses are not fogging up, so the fit must still be adequate. You are the only person wearing a respirator here, as usual, but most others do not need to hide their face as you do.
+
+# You haven't seen him in five years.
+
+# As a non-natal parent,
+
+# This would be used as ammunition for the ruling party that you are *inherently male* and *socialized male* and that *you will never be a mother* and that you're a *deadbeat dad* and...
+
+- @check_outfit: Check your outfit.
+- @check_surroundings: Check your surroundings.
+- @wait_for_k: You finally see her.
+
+
+@check_outfit
+max-visits: 1
+on-arrival: k2_checks += 1
+
+You are wearing your standard leaving-your-apartment outfit: a long gray tweed skirt, a thick blue jacket that is too warm for the perpetual 16-degree climate but adequately conceals your body shape, and a respirator, with glasses and your unruly long hair hiding the rest of your face. Very little of your skin is visible, as is intended.
+
+- @check_respirator: Check your respirator.
+- @check_surroundings: Check your surroundings.
+- @wait_for_k: You finally see her.
+
+
+@check_surroundings
+max-visits: 1
+on-arrival: k2_checks += 1
+
+There are no immediate threats in the vicinity. The plaza is sparser than usual at this time of day, just elderly men and women milling about the statue of Liana Xu, and refugees sitting on their mattresses in the fenced encampment. No police, no Guards, and no one looking in your direction.
+
+- @check_respirator: Check your respirator.
+- @check_outfit: Check your outfit.
+- @wait_for_k: You finally see her.
+
+# - she wears a...
+
+@wait_for_k
+view-if: k2_checks >= 2
+
+K- appears with S- in tow, hand-in-hand. She has a downcast look about her as she strides up to you and sits on the bench.
+
+"You look cautious as always," she says to you. "Have you been okay?"
+
+- @you_too: "I've been fine."
+- @stare_k: Stare at K-.
+- @stare_s: Stare at S-.
+
+@stare_k
+max-visits: 1
+
+K- is wearing black trousers and a gray blazer over a white blouse. Her hair is longer and messier than it used to be, falling over her mask. Her face is locked in an intense expression, but she is not making eye contact with you, instead glaring in your general vicinity.
+
+- @you_too: "I've been fine."
+- @stare_s: Stare at S-.
+
+
+@stare_s
+max-visits: 1
+
+S- is looking at you, smiling (he is not wearing a mask). You almost can't bear to look at him, but you force yourself to try to hold his gaze. He is older, obviously, and taller, obviously, but still so utterly recognizable.
+
+- @you_too: "I've been fine."
+- @hi_s: "Hi, S-."
+
+@you_too
+
+"I've been fine," you say as a reflex.
+
+"Yeah. Whatever." She sighs. "Look, I have to stay at the night overnight for an experiment, and I need someone to watch S-. I'll pay you 100 dollars for your time, plus extra for his food and water. Is that okay?"
+
+K- has always been this direct.
+
+- @no_choice: You don't have a choice, do you?
+
+
+@hi_s
+
+"Hi, S-," you say, waving at him and trying your best to convey a smile through your PPE.
+
+"Hi, mama."
+
+"No, Aunt Em, remember?" K- corrects him.
+
+S- frowns. "Oh. Sorry."
+
+Now K- turns to you. "Can you take care of him tonight? I have to stay at the lab overnight." Then, whispering: "I'll pay you 100 dollars for every night he stays with you."
+
+K- has always been this direct.
+
+- @no_choice: You don't have a choice, do you?
+
+@no_choice
+on-arrival: has_s = 1
+
+"Um, sure," you say, and try to smile with your eyes. "Yeah, I can take care of him. For tonight."
+
+"She's gonna take care of you," K- says. "Be nice to Mama, I mean Aunt Em, okay, S-?"
+
+"Okay!"
+
+- @cry: If you were physiologically capable of crying, you would be doing so now.
+
+@cry
+
+If your hormone-deprived body were physiologically capable of crying, you would be doing so at this time. Instead, you nod, and let S- take your hand.
+
+"I'll come by your apartment tomorrow afternoon. You still live there, right?"
+
+You nod. S- leads you up to your feet. K- waves the two of you goodbye, and heads back to the trolley stop. You head to a different trolley stop.
+
+- @s_1: Home again.

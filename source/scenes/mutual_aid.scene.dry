@@ -1,0 +1,42 @@
+title: Mutual Aid
+subtitle: Follow the address on the flier.
+view-if: day >= 3 and stress <= 15
+on-arrival: ma_checklist = 0
+tags: major
+new-page: true
+go-to: checklist
+
+Before you enter a public space where you must interact with people in more than a cursory manner, you first follow a checklist.
+
+@checklist
+
+- @mask: Mask.
+- @clothes: Attire.
+- @voice: Voice.
+- @just_go: Just go.
+
+@mask
+go-to: checklist
+on-arrival: ma_checklist += 1
+max-visits: 1
+
+You are wearing a respirator partly for the nanoplagues, partly to hide your facial features. 
+
+@clothes
+go-to: checklist
+on-arrival: ma_checklist += 1
+max-visits: 1
+
+A long grey skirt. A blue puffy jacket. Sensible shoes.
+
+@voice
+go-to: checklist
+on-arrival: ma_checklist += 1
+max-visits: 1
+
+Unfortunately,
+
+@just_go
+view-if: ma_checklist >= 3
+
+TODO

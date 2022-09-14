@@ -1,0 +1,160 @@
+title: Food
+go-to: food_options
+new-page: true
+
+You have no more edible food left in your apartment. What are you going to do?
+
+@food_options
+
+- @takeout: Purchase some cooked food.
+- @cook: Buy ingredients for cooking and make your own meals.
+- @scrounge: Scrounge for snacks, leftovers, and so on.
+- @cook_new: Cook with the ingredients you have.
+- @starve: Starve.
+
+@takeout
+subtitle: $15-50, lasts 1-4 days.
+choose-if: stress < 10
+view-if: money > 50
+unavailable-subtitle: You don't have the energy for this.
+
+Buying takeout was your preferred option, back when you had a job. The downside is the cost, and that you could be seen. The upside is lower energy expenditures.
+
+- @takeout_2: Do it.
+- @food_options: Do something else.
+
+@takeout_2
+
+- #takeout
+
+@takeout_do_1
+title: Takeout
+tags: takeout
+on-arrival: money -= 35; food += 2; anxiety += 1
+
+The trams have broken down today, so you visit the nearest walkable restaurant. It is more expensive than you would like.
+
+It costs $35 for food to last 2 days.
+
+
+@takeout_do_2
+title: Takeout
+tags: takeout
+on-arrival: money -= 20; food += 2; anxiety += 1
+
+You take the tram to visit your favorite restaurant near the university.
+
+It costs $20 for enough food to last 2 days.
+
+#################
+
+@cook
+subtitle: $25-60, lasts 2-7 days.
+choose-if: stress < 6
+view-if: money > 60
+unavailable-subtitle: You don't have the energy for this.
+
+Perhaps a visit to the grocery store is in order. You could buy a supply of shelf-stable products to cook for yourself. The downside is the effort of walking and carrying the groceries, and that you could be seen.
+
+- @cook_2: Do it.
+- @food_options: Do something else.
+
+@cook_2
+max-choices: 1
+
+- #cooking
+
+# trolley incidents for all trolley riding stuff?
+@trolley_1
+title: The trolley is mostly empty when you board.
+tags: trolley
+go-to: jumpScene
+
+@cook_2_1
+title: The trip is uneventful.
+tags: cooking
+max-visits: 1
+on-arrival: money -= 55; food += 5; day_major += 1
+
+The nearest grocery store is a 10-minute trolley ride away. The trolley is mostly empty when you board.
+
+When you get to the store, the shelves are devoid of rice, flour, and bread, as well as long-lasting shelf-stable products in general. There must have been panic buying over the latest news of nanoplagues or strikes or equipment failures or sabotage or terrorism or...
+
+However, there is a decent supply of perishables. Fresh fruits and vegetables straight from the farms, with supposedly minimal contamination.
+
+It costs $55 for enough food to last five days.
+
+- @main: You are tired.
+
+
+@cook_2_2
+title: The trip is uneventful.
+tags: cooking
+max-visits: 1
+on-arrival: money -= 50; supply += 2; food += 5; day_major += 1
+
+The nearest grocery store is a 10-minute trolley ride away. The trolley is mostly empty when you board.
+
+When you get to the store, the shelves are devoid of fresh fruits and produce. There must have been technical incidents at the farms or the transportation system or the refrigeration or maybe there has been sabotage (your comrades or the reactionaries?) or perhaps delivery strikes or anti-plant nanoplagues or...
+
+However, there is enough rice to last for a while yet, as well as a decent supply of quasi-organic protein products.
+
+It costs $50 for enough food to last five days, as well as some nonperishables that you can use later on.
+
+- @main: You are tired.
+
+
+@cook_2_3
+title: The trip is troublesome.
+
+
+
+# TODO
+
+##############################################################
+
+@cook_new
+choose-if: supply > 0
+subtitle: You have some supplies.
+
+
+@scrounge
+subtitle: Free, lasts 1-2 days.
+unavailable-subtitle: You don't have any more food left.
+choose-if: scrounged = 0
+
+@scrounge_2
+on-arrival: scrounged = 1; stress += 1; food += 1
+
+@starve
+subtitle: Free.
+
+You could simply not eat today. There are no potential long-term consequences.
+
+- @starve_2: Do it.
+- @food_options: Do something else.
+
+
+@starve_2
+title: Do it.
+view-if: days_starved = 0
+on-arrival: stress += 4; food = 1; days_starved += 1
+
+You can survive without food for a day. You will be fine. Just a bit hungry. Just a bit more tired than usual.
+
+@starve_3
+title: Do it.
+view-if: days_starved = 1
+on-arrival: stress += 4; food = 1; days_starved += 1; day_major += 1
+
+You can survive without food for one more day. Nothing bad is going to happen, except for the fact that you feel too tired to exit your apartment or do work. A minor and temporary setback.
+
+@starve_4
+title: Do it.
+view-if: days_starved >= 2
+on-arrival: stress += 4; food = 1; days_starved += 1; day_major += 1
+
+Day 3 of no food.
+
+TODO: someone helps you?
+

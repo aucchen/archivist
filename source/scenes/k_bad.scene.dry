@@ -1,0 +1,19 @@
+title: K- calls.
+new-page: true
+
+# TODO: 
+
+You receive a call from K-.
+
+"I thought we were going to meet today. Where were you?"
+
+- @didnt_want: "Sorry, but..."
+- @sorry_my_bad: "Sorry, my bad. Can we meet tomorrow?"
+
+@didnt_want
+
+@sorry_my_bad
+
+"Sorry, my bad. Can we meet tomorrow?"
+
+She sighs. ""

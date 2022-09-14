@@ -1,0 +1,209 @@
+title: Meeting A-
+subtitle: 6PM, LX Square
+view-if: a_path = 1 and day_major = 0
+on-arrival: day_major += 1; a_path = 2; a_romance = 1
+tags: major
+new-page: true
+
+Why are you meeting with A-?
+
+- @boredom: Because you're bored and don't have anything better to do.
+- @repayment: Because he helped you, and you have to repay him somehow.
+- @love: Because you're still a little in love with him.
+
+@boredom
+go-to: lx_square
+
+You are meeting with A- to relieve your boredom.
+
+@repayment
+go-to: lx_square
+
+You are meeting with A- out of a sense of obligation.
+
+@love
+on-arrival: a_romance += 1
+go-to: lx_square
+
+You are meeting with A- because you still have feelings for him, or something like that.
+
+
+@lx_square
+
+Seeing A- gives you a shock. He is... well, he's dressed like a lavernean stereotype, like one of the pre-war photos found in the Archives, in addition to a wig and a thorough application of makeup. At least he's wearing a respirator.
+
+"Hey, Em."
+
+Oh. She's using the girlmode voice, too.
+
+- @too_old: "Aren't you too old to wear striped thigh highs?"
+- @scared: "Aren't you scared to be like this in public?"
+- @stare: Just stare.
+
+@too_old
+
+"Aren't you too old to wear striped thigh highs in public?"
+
+A- laughs. "What? I'm barely 40. That's not that old, is it? Anyway, what's the point of being a deviant if you're going to be boring all the time?"
+
+You are all too conscious of your plain gray skirt and baggy blue jacket.
+
+- @not_deviant: "I'm not a deviant."
+- @i_am_boring: "I'm sorry for being so boring."
+
+
+@not_deviant
+
+You shrug, and look away from her. "I don't like to think of myself as a deviant. That's just reactionary propaganda."
+
+She laughs again. "Hey, I'm reclaiming it! If they're going to call us monsters no matter what we do, what's the point of pretending to be respectable?" You cringe at the reference to now-outdated discourse, even though you started it.
+
+- @hypocrite: "Hypocrite."
+- @are_you_still: "So, are you still a...?"
+
+
+@hypocrite
+
+"Hypocrite."
+
+She finally sits down next to you, and gives you a wistful expression. "We're all just trying to live. We do what we have to, even if it isn't what we want to. But sometimes there are moments when we can, you know."
+
+A lull in the conversation. The two of you stare at each other, A- smiling, you making who knows what facial expression.
+
+- @are_you_still: "So, are you still a...?"
+- @what_do: "What do you want to do?"
+
+
+@i_am_boring
+
+You shrug, and look away from her. "I'm sorry for being such a boring person."
+
+She laughs again. "I don't think you're boring! You seem the same as always. I think the grandmacore look suits you."
+
+A lull in the conversation. The two of you stare at each other, A- smiling, you making who knows what facial expression. You glance away.
+
+- @what_do: "What do you want to do?"
+
+
+@are_you_still
+
+"So, um, are you still a, um..."
+
+"I don't know," she replies. "I don't think it matters right now."
+
+- @pronouns: "What pronouns should I use?"
+
+
+@pronouns
+on-arrival: a_romance += 1
+
+"What pronouns should I use for you? Like, in my interior monologue."
+
+"Wow. Seriously? That's what you're concerned about?"
+
+"Hey, it's important for future historians and archivists if I were to write this down."
+
+"Wow." She rolls her eyes with a smirk. "I literally do not care."
+
+"So is 'she' fine?"
+
+She shrugs. "Whatever."
+
+- @what_do: "What do you want to do?"
+
+
+@scared
+
+"Um, aren't you scared to be like this in public?"
+
+A- laughs. "What, you think I don't pass?"
+
+You have to admit, she passes better than you ever did, even towering over you at her 185 centimetres. Her body is at least visibly endowed, unlike yours. Her antiquated fashion evokes curiosity rather than disgust.
+
+"Besides," she continues, "what's the point of being a deviant if you're going to be so boring all the time?"
+
+You are all too conscious of your plain gray skirt and baggy blue jacket.
+
+- @not_deviant: "I'm not a deviant."
+- @i_am_boring: "I'm sorry for being so boring."
+
+
+@stare
+
+You just stare, too shocked to say anything. Her entire aesthetic appears ripped out of a pre-war photograph of the precursors to laverneans (they called themselves something different then). Respectable historians say that the pre-war gender minorities saw themselves as neither men nor women and thus have no commonality with today's laverneans, but laverneans themselves know better.
+
+"Are you going to stop staring or what?"
+
+"Oh. It's just that..."
+
+"What, you think I look weird?" A- laughs. "What's the point of being a deviant if you're going to be so boring all the time?"
+
+She stares at your plain gray skirt and baggy blue jacket.
+
+- @not_deviant: "I'm not a deviant."
+- @i_am_boring: "I'm sorry for being so boring."
+
+
+@what_do
+
+"So, what do you want to do?" you ask, after staring at each others' eyes for far too long. Somehow it feels like the two of you are students meeting for the first time again.
+
+"Let's go shopping," she replies. "Is there anything you'd like? Don't worry, I'll pay."
+
+- @okay_shopping: "Let's go grocery shopping."
+- @no_shopping: "I'd rather go home."
+
+@no_shopping
+on-arrival: a_romance -= 1
+
+"Sorry, I'd rather go home."
+
+"Oh. Okay."
+
+
+@okay_shopping
+
+"Let's go grocery shopping," you say.
+
+"Okay. I was thinking more along the lines of clothes, but I suppose sustenance is more important."
+
+She smiles, stands up, and offers her hand to you.
+
+- @take_hand: Take her hand.
+- @just_get_up: Just get up.
+
+@take_hand
+go-to: shopping
+on-arrival: a_romance += 1
+
+You take her hand.
+
+@just_get_up
+go-to: shopping
+
+You just get up, ignoring her offer.
+
+@shopping
+
+There is a warehouse store in a reclaimed pre-war building, a flat and wide gray structure surrounded by fields of lichen growing on concrete, on which a shantytown has been erected, densely packed with tents and shacks. You keep your gaze on the ground in front of you. A- is walking quickly, pushing you forward with her hand on your back until you reach the entrance.
+
+"So. We're here. What do you want?"
+
+- @stay_with_a: Stay near A-.
+- @wander_off: Wander off by yourself..
+
+@stay_with_a
+
+"What do you want?", you ask.
+
+"I don't need anything. But if they have it..."
+
+She leads you towards the spice aisle.
+
+TODO
+
+@wander_off
+
+You need rice, meats, and vegetables. You wander off, and see that you've lost A- along the way.
+
+TODO

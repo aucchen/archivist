@@ -1,0 +1,386 @@
+title: CityNet
+subtitle: An update on the present situation. [? if cw_enabled = 1 : CW: slurs ?]
+max-choices: 3
+view-if: montage_progress = 0 and day_minor = 0
+on-arrival: montage_progress += 1; numb = 1; day_minor += 1
+new-page: true
+tags: minor
+
+CityNet is the beating heart of the city, the online agora where its citizens gather to discuss, debate, and disseminate their opinions or the news of the day. At least, that is theoretically the case.
+
+After the Cataclysm, all communications links outside the city were severed. With its monopoly on data transmission via wired infrastructure, CityNet is all that remains. All user identities are fixed to their "real" names or registered organizations.
+
+What are the headlines of the day?
+
+- @cn1
+- @cn3
+- @cn5
+
+
+@cn
+title: CityNet
+subtitle: An update on the present situation. [? if cw_enabled = 1 : CW: slurs ?]
+max-choices: 3
+view-if: day_minor = 0 and montage_progress > 0
+on-arrival: montage_progress += 1; numb = 1; day_minor += 1
+tags: minor
+new-page: true
+
+What are the headlines of the day?
+
+- #montage
+
+
+@cn1
+title: `New Hamilton district evacuated indefinitely due to increased radiation leakage."
+tags: montage
+max-visits: 1
+count-visits-max: 1
+
+`@NNN (official): New Hamilton sector evacuated indefinitely due to increased radiation leakage. At least 20,000 displaced; residents seeking shelter throughout the city.`
+
+> `@[+ name_0 +]: fuck this.`
+
+> `@[+ name_1 +]: god last fucking thing we need is more "refugees".`
+
+> `@[+ name_2 +]: why didn't they move out earlier? everyone new it was gonna fail. idiots.`
+
+> `@[+ name_3 +]: lol`
+
+> `@[+ name_4 +]: great, more tents clogging up the parks. my kids can't even go two steps without stepping over trash`
+
+> `@[+ name_5 +]: fake news`
+
+> `@[+ name_6 +]: `
+
+You read, but you aren't reading. You're not feeling anything at all.
+
+
+
+
+@cn2
+title: `Stealth transvestite teacher found indoctrinating students in gender ideology.`
+subtitle: [? if cw_enabled = 1 : CW: transphobia, slurs ?]
+max-visits: 1
+on-arrival: stress += 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Stealth transvestite teacher found indoctrinating students in gender ideology. Video: (link)`  
+
+> `@[+ name_1 +]: pedophile`
+
+> `@[+ name_4 +]: none of these people should be allowed near children.`
+
+> `@[+ name_5 +]: this is why our educational system is failing`
+
+> `@[+ name_6 +]: this is what feminists want`
+
+>> `@[+ name_7 +]: dont blame this garbage on feminists. we all know that men can't be women.`
+
+> `@[+ name_2 +]: update: it killed itself`
+
+>> `@[+ name_3 +]: good`
+
+>> `@[+ name_0 +]: thank god`
+
+>> `@[+ name_7 +]: while i abhor the loss of life, the teaching of biological falsehoods to the most vulnerable must have real consequences.`
+
+> `@Tinu-Lee: are you people serious? do you have zero compassion for a woman who just died?`
+
+>> `@[+ name_1 +]: "woman"`
+
+>> `@[+ name_0 +]: i have sympathey for the fact that he was lead astray from the sacred path of humanity into the demonic embrase of transhumanism`
+
+You watch the video. It is an elementary school classroom, shot from what seems to be a hidden security camera. The teacher is a well-dressed woman most likely in her late thirties or forties, similar to you. "I am a girl now, but when I was born, they thought I was a boy," she says. The students are staring at her. The video cuts off right there.
+
+You knew many laverneans, but you did not know her; she must have been stealth in the days before the Uprising.
+
+- @cn2_2: It makes you strangely pleased to see her.
+- @cn2_1: This is your future.
+
+@cn2_2
+
+They have not exterminated all of you yet. There are still more laverneans in the woodwork, more women like you hiding out there, surviving. You feel less alone.
+
+@cn2_1
+
+They're talking about *you*, or *people like you*. This is your fate if your gender history is discovered.
+
+
+@cn3
+title: `Male prostitute attacks Guards after found to have been impersonating a woman.`
+subtitle: [? if cw_enabled = 1 : CW: transphobia, slurs ?]
+on-arrival: stress += 1
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Male prostitute attacks Guards after found to have been impersonating a woman. Video: (link)`
+
+> `@[+ name_0 +]: glad that fag got what was coming to him.`
+
+> `@[+ name_1 +]: lmao idiots can't tell apart real women`
+
+> `@[+ name_2 +]: all real women detest men who pretend to be women.`
+
+> `@[+ name_3 +]: long live the guards!!!`
+
+From one second of the video, you realize that you knew her. She was a lavernean, like you.
+
+- @cn3_v: Bella, her name was.
+
+@cn3_v
+
+She was your friend, once, until she started hating you (there were many such cases). She was a graduate student in history, once. She went to the same doctor as you, once. Like you, she tried to ride out the Uprising in safety rather than take part. And now she's dead and you're somehow still alive.
+
+- @cn3_v2: Keep watching.
+
+@cn3_v2
+
+You keep on watching the video.
+
+Bella is wearing a tiny red dress and high heels and more makeup than you had ever seen on her (she used to call it a tool of the patriarchy). Her screams are screams of anguish, emotional more than physical pain, and her expression is one of betrayal, you imagine. The Guards have their signature boyish smiles as they easily deflect her flails and kicks and they twist her arms behind her back and push her to the floor. One of them moves to stomp on her head. The video cuts off.
+
+You imagine various scenarios.
+
+- @cn3_1: The Guard was her boyfriend, and she thought he would protect her.
+- @cn3_2: Her Guard client was found out by his comrades, and they killed her
+- @cn3_3: Her Guard client decided to kill her for the fun of it.
+
+@cn3_1
+
+Maybe the Guard was her boyfriend. Maybe she thought he would have protected her. Obviously, he didn't. Maybe she even thought he loved her. She was never so naive, but who knows.
+
+Anyway, it doesn't fucking matter. She's dead.
+
+@cn3_2
+
+Men who secretly fuck women like you know what they're looking for, or not looking for. And they're usually not looking for someone of your anatomical configuration. The danger arises when the man's friends discover your history.
+
+Anyway, it doesn't fucking matter. She's dead.
+
+@cn3_3
+
+Bella once said that the sociological role of the laverneans was to serve as an acceptable outlet for society to enact its libidinal urges for sexualized violence. You wonder about her last thoughts.
+
+Anyway, it doesn't fucking matter. She's dead.
+
+
+@cn4
+title: `Opposition party leader: 'gender and sexual minorities deserve human rights'`
+subtitle: [? if cw_enabled = 1 : CW: homophobia, transphobia, slurs ?]
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Opposition party leader: "gender and sexual minorities deserve human rights"`
+
+> `@[+ name_0 +]: pedos`
+
+> `@[+ name_1 +]: party of freaks and pedos`
+
+> `@[+ name_2 +]: hang the fuckers`
+
+> `@[+ name_3 +]: they literally have more rights than ever. fags need to stop shoving it in our faces.`
+
+> `@[+ name_4 +]: enjoy getting zero votes.`
+
+> `@[+ name_5 +]: every single woman knows that males do not have a right to impersonate women.`
+
+
+@cn5
+title: `University scientists: nanoplague infection level 'at highest extent in years'`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: University scientist: nanoplague infection level "at highest extent in years".`
+
+> `@[+ name_0 +]: fake news`
+
+> `@[+ name_1 +]: they've been saying this every year.`
+
+> `@[+ name_2 +]: university professors want to control your life and poison your children.`
+
+
+@cn6
+title: `Shortage of rare earth minerals continues.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Shortage of rare earth minerals continues. Electronics industry association asks consumers to recycle their obsolete devices.`
+
+> `@[+ name_0 +]: fake news`
+
+> `@[+ name_1 +]: why can't they just dig up more. can't be that hard.`
+
+> `@[+ name_2 +]: this is happening and TRANSVESTITES are still pretending to be oppressed.`
+
+> `@[+ name_3 +]: you can pry my X101 from my cold, dead hands.`
+
+
+
+@cn7
+title: Seven homeless encampments removed from public square by police and Guards.
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Seven homeless encampments removed from public square by police and Guards.`
+
+> `@[+ name_0 +]: fake news`
+
+> `@[+ name_4 +]: good`
+
+> `@[+ name_1 +]: long live the guards!!!`
+
+> `@[+ name_2 +]: they should be sent to live outside!!!`
+
+> `@[+ name_3 +]: Why can't they get jobs like the rest of us? WHy do they want special treatment?`
+
+@cn8
+title: `Overall life expectancy at 65, 2% decline from previous year.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Overall life expectancy at 65, 2% decline from previous year. Experts blame nanoplagues, moral degeneracy.`
+
+> `@[+ name_0 +]: fake news`
+
+> `@[+ name_1 +]: half of it js trannies keep killing themselves`
+
+
+@cn9
+title: `Grocery strike leads to riots in Erie District, five suspected rioters killed.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Grocery strike leads to riots in Erie District. Five suspected rioters killed.`
+
+> `@[+ name_0 +]: fake news`
+
+> `@[+ name_1 +]: kill all rioters.`
+
+> `@[+ name_2 +]: kill all terrorists`
+
+@cn10
+title: `Lithium shortage leads to higher battery prices for consumers and industry.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Lithium shortage leads to higher battery prices for consumers and industry.`
+
+> `@[+ name_0 +]: fake news`
+
+@cn11
+title: `MP sponsors bill aimed at terrorist sympathizers`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: MP sponsors bill aimed at terrorist sympathizers: "Some of those behind the Uprising have yet to face justice."`
+
+> `@[+ name_0 +]: fake news`
+
+@cn12
+title: `High fruit prices: are rioters and terrorists to blame?`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: High fruit prices: are rioters and terrorists to blame?`
+
+> `@[+ name_0 +]: fake news`
+
+@cn13
+title: `Suspected rioter shows no vital signs after initiating altercation against Guards.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Suspected rioter shows no vital signs after initiating altercation against Guards.`
+
+> `@[+ name_0 +]: fake news`
+
+@cn14
+title: `Superintendent of schools: teachers and students alike are inadequate to face modern challenges.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Superintendent of schools: teachers and students alike are inadequate to face modern challenges.`
+
+> `@[+ name_0 +]: fake news`
+
+@cn15
+title: `University scientist: plant nanoplagues pose threat to food security.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: University scientist: plant nanoplagues pose threat to food security.`
+
+> `@[+ name_0 +]: fake news`
+
+@cn16
+title: `Trailer for Long Live the Guards III released.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Trailer for Long Live the Guards III released.`
+
+@cn17
+title: `Heartwarming: students stand up to female-impersonator teacher promoting gender ideology.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Heartwarming: students stand up to female-impersonator teacher promoting gender ideology.`
+
+> `@[+ name_0 +]: fake news`
+
+@cn18
+title: `Quarterly profits in ag-tech sector up despite greenhouse failures.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Quarterly profits in ag-tech sector up despite greenhouse failures.`
+
+> `@[+ name_0 +]: fake news`
+
+@cn19
+title: `New startup helps authorities identify suspected rioters using computer vision.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: New startup helps authorities identify suspected rioters using computer vision.`
+
+> `@[+ name_0 +]: fake news`
+
+@cn20
+title: `New memoir criticized as "glorifying moral turpitude".`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: New memoir criticized as "glorifying moral turpitude."`
+
+> `@[+ name_0 +]: fake news`
+
+@cn21
+title: `Ntech CEO Leblanc accused of sexual harassment by assistant.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Ntech CEO Leblanc accused of sexual harassment by assistant.`
+
+> `@[+ name_0 +]: fake news`

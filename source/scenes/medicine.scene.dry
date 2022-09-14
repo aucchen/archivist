@@ -1,0 +1,80 @@
+title: Medicine
+go-to: med_options
+new-page: true
+
+You are out of medicine. What are you going to do?
+
+@med_options
+
+- @buy: Refill at the pharmacy.
+- @ask_k: Ask K-.
+- @ask_a: Ask A-.
+- @none: Go without.
+
+@buy
+subtitle: $40, lasts 7 days
+choose-if: stress < 8
+view-if: money > 40
+unavailable-subtitle: You don't have the energy for this.
+max-choices: 1
+
+All it takes is a visit to the pharmacy.
+
+- #pharmacy
+
+
+@ask_k
+subtitle: Would she share?
+view-if: k_path >= 2
+
+Like you, she has a prescription for "early menopause", although the justification of her prescription is more conventional.
+
+Would she be willing to share, though?
+
+- @ask_k_2: Ask her.
+- @med_options: Do something else.
+
+@ask_k_2
+
+You make the call.
+
+TODO
+
+
+@ask_a
+subtitle: Would she be willing?
+view-if: a_path >= 2
+
+A- is a doctor. She likely has access to medicine.
+
+- @ask_a_2: Ask her.
+- @med_options: Do something else.
+
+@ask_a_2
+
+TODO
+
+
+@none
+subtitle: You'll be fine, probably.
+on-arrival: medicine = 1
+
+Fortunately, you've already had bottom surgery, so you are unlikely to experience physical masculinization. Unfortunately, hormone deprivation increases the risk of osteoporosis, and it seems to have the effect of making you feel worse in various difficult-to-describe ways that physicians do not acknowledge.
+
+###################
+
+@pharmacy_1
+title: Just a brief visit...
+tags: pharmacy
+max-visits: 1
+
+TODO
+
+The nearest pharmacy is combined with the grocery store, a 10 minute trolley ride away.
+
+
+@pharmacy_2
+title: Just a brief visit...
+tags: pharmacy
+max-visits: 1
+

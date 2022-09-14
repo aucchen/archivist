@@ -1,0 +1,142 @@
+title: Main
+new-page: true
+max-choices: 5
+on-arrival: {!
+if (Q.next_day_scene_queue.length > 0) {
+    Q.has_next_day = 1;
+    Q.next_day_scene = Q.next_day_scene_queue.shift();
+} else {
+    Q.has_next_day = 0;
+}
+!}
+go-to-ref: next_day_scene if has_next_day > 0
+
+
+= Day [+ day +]
+
+Cash on hand: $[+ money +]
+
+Rent: $[+ rent +] (+ $50-100 in utilities, fees, etc.) due in [+ rent_due +] day[? if rent_due != 1 :s ?]
+
+Food: [+ food +] day[? if food != 1 :s ?] remaining
+
+Medicine: [+ medicine +] day[? if medicine != 1 :s ?] remaining
+
+[? if day = 0 and day_major = 0 : Your apartment is on the third floor of a six-story building, and has a floor area of approximately 15 square metres. There is a bed, a desk, and a small kitchen area with an electric stove and a refrigerator. You are lucky. There is everything you need to live in here. ?]
+
+# random dialogue choices
+[? if day_major = 0 : [+ day_dialogue +] ?]
+[? if day_major > 0 : [+ afternoon_dialogue +] ?]
+
+{!<script>$('#main_notes').append($(window.dendryUI.dendryEngine.state.qualities.main_notes));</script>
+<div id="main_notes"></div>!}
+
+- #major
+- #minor
+- @end_of_day
+
+
+@end_of_day
+title: You're too tired to do anything else.
+view-if: day_major >= 1 or day_minor >= 1 or stress > 10 or loneliness > 10
+on-arrival: day += 1; rent_due -= 1; food -= 1; medicine -= 1; got_food_today = 0; got_medicine_today = 0; went_out_today = 0; day_entertainment = 0
+go-to: eod_check
+
+@eod_check
+on-arrival: {!
+Q.day_major = 0;
+Q.day_minor = 0;
+Q.numb = 0;
+for (var i = 0; i < 21; i++) {
+    Q['name_' + i] = window.randomName();
+}
+console.log('eod_check_2');
+Q['main_notes'] = ' ';
+if (Q.rent == 0) {
+    Q['main_notes'] += '<p>Rent is due today. It will be automatically be deducted from your account at the end of the day.</p>';
+}
+if (Q.k_path == 1 && Q.day == Q.k_meet_day + 1) {
+    Q.main_notes += '<p>You promised K- that you would meet her today.</p>';
+}
+if (Q.day == 3) {
+    Q.main_notes += '<p>You see a flyer that has been slid under your door. "Mutual Aid Alliance hosting free community meals daily at Moses Park." Below is a black-and-white picture of figures serving soup, and a time and an address. It is not too late. You can still go.</p>';
+}
+// if you haven't viewed DNA in a few days, C- sends you a message.
+if (Q.day == Q.data_day + 3) {
+    Q.main_notes += "<p>You receive a message from C-, your supervisor at the Archives: <code>Hey Em, I hope you realize that you still need to do your job. I understand you're suffering from chronic fatigue, but so are many of us, and we're still working. Just one DNA dataset every few days. That's all you need. Worst case, we'll have no choice but to decertify you. But it probably won't come to that, would it?</code></p>";
+}
+if (Q.day == Q.data_day + 5) {
+    Q.main_notes += "<p>You receive a message from C-, your supervisor: <code>Hey Em, there are some things you should know. We pulled a lot of stops to let you just keep this job as a contractor. Did you think no one would clock the discrepancies on your record? Did you think it wouldn't be obvious what those discrepancies meant?</code></p>";
+}
+// Also, C- sends you a message if you have yet to see Liana's files.
+// set daily dialogue here.
+if (Q.anxiety < 10) {
+    // nonrandom lol
+    Q.day_random += 1;
+    if (Q.day >= Q.low_anxiety_day_dialogues.length) {
+        Q.day_random = Math.floor(Math.random()*Q.low_anxiety_day_dialogues.length);
+    }
+    Q.day_dialogue = Q.low_anxiety_day_dialogues[Q.day_random];
+} else {
+    Q.day_random = Math.floor(Math.random()*Q.day_dialogues.length);
+    Q.day_dialogue = Q.day_dialogues[Q.day_random];
+}
+Q.afternoon_random = Math.floor(Math.random()*Q.afternoon_dialogues.length);
+Q.afternoon_dialogue = Q.afternoon_dialogues[Q.afternoon_random];
+
+// set goto scene
+if (Q.food <= 0) {
+    console.log('food missing');
+    Q.next_day_scene_queue.push("food");
+}
+if (Q.rent_due < 0) {
+    console.log('rent missing');
+    Q.next_day_scene_queue.push("main.rent_collection");
+}
+if (Q.medicine <= 0) {
+    console.log('medicine missing');
+    Q.next_day_scene_queue.push("medicine");
+}
+if (Q.k_path == 1 && Q.day > Q.k_meet_day + 1) {
+    Q.next_day_scene_queue.push("k_bad");
+}
+if (Q.next_day_scene_queue.length > 0) {
+    Q.next_day_scene = Q.next_day_scene_queue.shift();
+    console.log('next day scene: ' + Q.next_day_scene);
+} else {
+    Q.next_day_scene = "main";
+}
+!}
+go-to-ref: next_day_scene
+
+
+
+@rent_collection
+new-page: true
+on-arrival: {!
+Q.additional_rent = 400;
+Q.fees = 50 + Math.ceil(Math.random()*50);
+Q.total_rent = Q.rent + Q.fees;
+Q.paid_full = 0;
+if (Q.rent >= 400) {
+    Q.additional_rent = 500;
+}
+if (Q.money < Q.total_rent) {
+    Q.money = 0;
+    Q.rent = Q.total_rent - Q.money + 50;
+} else {
+    Q.money -= Q.total_rent;
+    Q.rent = 0;
+    Q.paid_full = 1;
+}
+Q.rent += Q.additional_rent;
+Q.rent_due = 5;
+!}
+
+[? if paid_full = 1 : Your rent and additional costs were automatically deducted from your account. The rent was $[+ rent +] and fees plus utilities were $[+ fees +]. You have $[+ money +] remaining. ?]
+[? if paid_full = 0 : The rent due was $[+ rent +] and the fees were $[+ fees +]. Unfortunately, you did not have enough to cover the total amount due. All money in your account was automatically deducted, and the remaining balance was rolled over into the next rent payment, with an additional fee of $50. If you miss two more payments, then you will be evicted. ?]
+
+Next bill: [+ rent +] due in [+ rent_due +] days.
+
+
+@eviction

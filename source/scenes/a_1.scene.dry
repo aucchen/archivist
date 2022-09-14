@@ -1,0 +1,216 @@
+title: Call A-
+subtitle: Beg for money.
+tags: minor
+view-if: a_path = 0 and (day_major = 0 or day_minor = 0)
+on-arrival: day_minor = 1
+choose-if: numb = 1
+new-page: true
+unavailable-subtitle: You are too self-aware to make the phone call. You must numb yourself first.
+
+You need money for rent. There are two people who have a nonzero probability of helping you out at this moment. A- is one of them.
+
+- @a_11: A- is a doctor now.
+- @call: Call A-.
+
+@a_11
+
+A- is a doctor these days. He works for one of the corporate hospitals in the central spires. He'll probably have money, at least, although whether he would be willing to spend it on you is an open question.
+
+- @a_12: A- was different before.
+- @call: Call A-.
+
+@a_12
+
+A- was... someone different before. At one time, she was a lavernean like you, until the waves of anti-nonbinary purges hit the medical field. He could not part with his job and his relative life of normalcy. Maybe it was a surrender, or maybe it was a survival strategy. Either way, his path was not an option available to you.
+
+- @a_13: The two of you were...
+- @call: Call A-.
+
+@a_13
+
+The two of you were... dating. Yes. That would be an accurate description. Back when she was like you. You were lovers. A-, K-, and you were in a mutual relationship together, before A- left. K- has never forgiven him. Have you?
+
+- @call: Call A-.
+
+@call
+
+You are holding the phone handset. A-'s number is written on a note on your fridge. Call in case you have a medical emergency, he had said. Or just if you want to talk. He wanted to remain in contact, and in your good graces, for whatever reason, despite the fact that you have no way to reciprocate his generosity, and many ways to drag him down.
+
+- @dial: Dial the number.
+- @forget_it: Forget it.
+
+@forget_it
+
+Maybe you have never forgiven him. Have you? Or is there some other reason
+
+- @dial: Dial the number.
+- @main: Forget about calling him, for real this time.
+
+
+@dial
+
+Right. Dial the numbers. Make the call. It is fine. You parted amicably. He never banished you from his new life, even after the Uprising. You met his wife. She didn't hate you, probably.
+
+- @call_2: This is fine.
+- @back: No. Do something else. Anything but this.
+
+@back
+
+You can't do this. You can't make the call.
+
+
+@call_2
+
+This is fine. You dial the numbers. You hold the handset to your ear and mouth.
+
+"Hello?"
+
+- @hi: "Hi..."
+- @em: "It's me, Em..."
+- @a_: "A-...?"
+
+@hi
+go-to: call_3
+
+"Hi..."
+
+@em
+go-to: call_3
+
+"It's me, Em..."
+
+@a_
+go-to: call_3
+
+"A-...?"
+
+@call_3
+on-arrival: a_path = 1
+
+"Oh my God, Em, is that you? Wow, thanks for calling! It's been so long! I missed you!" A pause. "What's happening?"
+
+Of course, you are not to speak freely on the phone. You don't know who is listening.
+
+- @job: "I lost my job..."
+- @homeless: "I'm about to be homeless..."
+- @talk: "I missed you too..."
+
+@job
+go-to: money
+
+"Um, I just lost my job..."
+
+@homeless
+go-to: money
+
+"So, I'm about to be homeless because I just lost my job and I can't cover rent..."
+
+@money
+
+"I am *so* sorry! I thought it might be something like that. Of course I can help. How much do you need?"
+
+- @100: $100 to cover rent.
+- @200: $200 more to cover rent.
+- @300: $300 for rent.
+
+@100
+on-arrival: money += 100; a_money = 1
+go-to: money_finish
+
+"I just need Just 100 dollars."
+
+@200
+on-arrival: money += 200; a_money = 1
+go-to: money_finish
+
+"I need 200 dollars to cover rent."
+
+@300
+on-arrival: money += 300; a_money = 1
+go-to: money_finish
+
+"I need 300 dollars for rent."
+
+@money_finish
+
+"Sure, anything for you," A- says. "Anyway, could we possibly meet again soon? I really want to see you again."
+
+- @okay_see: "Okay..."
+- @maybe_see: "Maybe..."
+- @precondition: "Is that a condition for the money?"
+
+@precondition
+
+"Is that a condition for the money?"
+
+"No, of course not!" An audible sigh. "I just want to see you. Is it okay?"
+
+It doesn't feel right to refuse.
+
+- @okay_see: "Okay..."
+- @maybe_see: "Maybe..."
+- @idk_see: "I don't know..."
+
+@okay_see
+
+"Okay..."
+
+"That's great! Maybe we could meet up at LX Square again, and wander around the city just like the old days."
+
+"Yeah, maybe."
+
+"Well, call me if you want to meet up, or if you need anything else!"
+
+- @done: A- hangs up.
+
+
+@maybe_see
+
+"Um, maybe," you say. "I'm..."
+
+"No, it's fine," he says. "I understand if you don't want to see me."
+
+"It's not that, it's... just..." You don't know what to say.
+
+"Well, then, just call me if you want to meet up, or if you need anything else."
+
+- @done: A- hangs up.
+
+@idk_see
+
+"Um, I don't know," you say.
+
+"That's fine," he says. "I understand if you don't want to see me."
+
+"It's not that, it's... just..." You don't know what to say.
+
+"Well, then, just call me if you want to meet up, or if you need anything else."
+
+- @done: A- hangs up.
+
+
+@done
+
+A- hangs up, leaving you alone with your thoughts. At least you are slightly further from total destitution.
+
+- @maybe_fine: Maybe seeing A- again would be fine.
+- @dont_want: You do not want to see his face
+- @doesnt_matter: It doesn't matter either way.
+
+@maybe_fine
+
+@dont_want
+
+@doesnt_matter
+
+
+@talk
+
+"I missed you too..."
+
+"Yeah... But there has to be something else going on, right? Otherwise you wouldn't call?"
+
+Unfortunately, he still knows you well.
+
+- @job: "I lost my job..."
+- @homeless: "I'm about to be homeless..."

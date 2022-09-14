@@ -1,0 +1,127 @@
+title: Root Scene
+new-page: true
+go-to: main if started = 1; start if started = 0
+
+@start
+
+= The Archivist and the Revolution
+
+- @one: Start game
+- @credits: Credits and inspirations
+- @enable_cw: Enable content warnings.
+- @disable_cw: Disable content warnings.
+
+@enable_cw
+view-if: cw_enabled = 0
+on-arrival: cw_enabled = 1
+
+Content warnings enabled.
+
+- @one: Start game
+- @credits: Credits and inspirations
+- @enable_cw: Enable content warnings.
+- @disable_cw: Disable content warnings.
+
+@disable_cw
+view-if: cw_enabled = 1
+on-arrival: cw_enabled = 0
+
+Content warnings disabled.
+
+- @one: Start game
+- @credits: Credits and inspirations
+- @enable_cw: Enable content warnings.
+- @disable_cw: Disable content warnings.
+
+@credits
+
+*The Archivist and the Revolution* is the final refinement of various story ideas that have been simmering in my head for over 10 years by now. Like all of my stories, this is nothing more than a hodgepodge of my interests, obsessions, and neuroses.
+
+Text and images by Autumn Chen.
+
+= Acknowledgments
+
+Thanks to [...]
+
+#Thanks to Arlo @magiciansvoyage, Jinx @lapinlunairegames, Travis Moy,...
+
+= References
+
+There are a number of real-world papers referenced in the story, mostly in the field of DNA data storage.
+
+> Church, G.M., Gao, Y., Kosuri, S.: Next-generation digital information storage in DNA. Science 337(6102), 1628 (2012). https://doi.org/10.1126/science.1226355
+
+> Goldman, N., Bertone, P., Chen, S., Dessimoz, C., LeProust, E.M., Sipos, B., Birney, E.: Towards practical, high-capacity, low-maintenance information storage in synthesized DNA. Nature 494(7435), 77–80 (2013). https://doi.org/10.1038/nature11875
+
+> Grass, R.N., Heckel, R., Puddu, M., Paunescu, D., Stark, W.J.: Robust chemical preservation of digital information on DNA in silica with error-correcting codes. Angew. Chem. Int. Ed. Engl. 54(8), 2552–2555 (2015). https://doi.org/10.1002/anie.201411378
+
+> Shipman, S., Nivala, J., Macklis, J. et al. CRISPR–Cas encoding of a digital movie into the genomes of a population of living bacteria. Nature 547, 345–349 (2017). https://doi.org/10.1038/nature23017
+
+> Erlich, Y., Zielinski, D.: DNA Fountain enables a robust and efficient storage architecture. Science 355(6328), 950–954 (2017). https://doi.org/10.1126/science.aaj2038
+
+> Organick, L., Ang, S., Chen, YJ. et al. Random access in large-scale DNA data storage. Nat Biotechnol 36, 242–248 (2018). https://doi.org/10.1038/nbt.4079
+
+> Yim, S.S., McBee, R.M., Song, A.M. et al. Robust direct digital-to-biological data storage in living cells. Nat Chem Biol 17, 246–253 (2021). https://doi.org/10.1038/s41589-020-00711-4
+
+
+= Inspirations and Related Works
+
+Games:
+
+> *howling dogs* by Porpentine
+# for obvious reasons.
+
+> *SPY INTRIGUE* by furkle
+# because it's my favorite game.
+
+> *Bee* by Emily Short
+# because all of my storylet-based IF are inspired by Bee.
+
+> *Solarium* by Anya Johanna DeNiro
+# for the history.
+
+> *Get Your Gun, Dragonfly* by Palimrya
+# for the description of one possible trans future.
+
+> *Neo Cab* by Chance Agency
+# for the gig economy representation
+
+> *Computerfriend* by Kit Riemer
+# 
+
+
+Books:
+
+> *The Handmaid's Tale* by Margaret Atwood
+# for obvious reasons.
+
+> *Summer Fun* by Jeanne Thornton
+# for the virtual intergenerational conversations between trans women.
+
+> *Little Fish* by Casey Plett
+#
+
+> *Small Beauty* by Jia Qing Wilson Yang
+#
+
+> *Manhunt* by Gretchen Felker-Martin
+# i've only read a preview chapter unfortunately. but.
+
+> {!<a href="https://bostonreview.net/articles/charlie-jane-anders-dont-press-charges-and-i-wont-sue/">"Don't Press Charges and I Won't Sue" by Charlie Jane Anders</a>!}
+
+
+Web Media:
+
+> *Homestuck* by Andrew Hussie
+
+> {!<a href="https://archiveofourown.org/works/33158965/chapters/82319554"><i>Glow, Worm</i> by alysongreaves</a>!}
+
+
+Music: The unofficial soundtrack is here.
+
+> *Mydata* and others by Katie Dey
+
+> *Transangelic Exodus* and others by Ezra Furman
+
+
+Miscellaneous Articles:

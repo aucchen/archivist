@@ -1,0 +1,54 @@
+title: Status
+new-page: true
+is-special: true
+go-to: old if introduced = 0; new if introduced = 1
+
+@old
+
+The Archivist is watching and listening.
+
+- @backSpecialScene: Back
+
+
+@new
+
+Your name is Em, and you are alive, for now.
+
+
+= Cost of living
+
+Cash on hand: $[+ money +]
+
+Rent: $[+ rent +] due in [+ rent_due +] day[? if rent_due != 1 :s ?] 
+
+Food: [+ food +] days remaining
+
+
+= Contacts
+
+**A—**: [? if a=0: A lover, once. A friend, perhaps. ?]
+
+**K—**: [? if k=0: A lover, once. A friend, perhaps. ?]
+
+**S—**: [? if s=0: A child. Your child. ?]
+
+# Lyra
+# might write out
+**L—**: [? if l=0: A colleague. ?]
+
+# Mitch (political discussion group)
+# might write out
+**M—**: 
+
+# Tinu (political discussion group)
+# might write out
+**T—**
+
+# Rosa (of the mutual aid alliance)
+# might write out (or treat the MAA as one collective entity)
+**R—**
+
+[? if liana > 0 : **Liana Yingmei Xu**: ?] [? if liana>=1 and liana <= 2: From her diaries, she seems so familiar... ?]
+
+- @backSpecialScene: Back
+

@@ -1,0 +1,241 @@
+title: Call K-
+subtitle: Beg for money.
+tags: minor
+new-page: true
+view-if: k_path = 0 and (day_minor = 0 or day_major = 0)
+choose-if: numb = 1
+on-arrival: day_major += 1
+unavailable-subtitle: You are too self-aware to make the phone call. You must numb yourself first. 
+
+You need money for rent. There are two people who have a nonzero probability of helping you out at this moment. K- is one of them.
+
+- @past: You and K- were married once.
+- @call: Make the call.
+
+# TODO: think about K.
+
+@past
+max-visits: 1
+count-visits-max: 1
+
+Back when it was still legal, you and K- were married. That was six years ago. She was your first love, or something like that. She made your cold and cruel heart believe in love, or something like that. It was an interesting era.
+
+- @child: You and K- had a child, once.
+- @call: Make the call.
+
+@college
+max-visits: 1
+view-if: @past = 1
+count-visits-max: 1
+
+K- first met you in college.
+
+# TODO
+
+- @child: You and K- had a child, once.
+- @call: Make the call.
+
+
+@child
+view-if: @past = 1
+max-visits: 1
+count-visits-max: 1
+
+Back when it was still legal, you and K- had a child, back before the ruling party labeled women like you (*they did not call you women or even laverneans*) as a danger to women and children, before your existence was deemed a crime. S- is seven years old now. It was for his safety that you and K- had separated. That was what you told yourself.
+
+- @call: Make the call.
+
+@call
+
+You are holding the handset. Her phone number is written on a note stuck to your refrigerator door.
+
+- @past: You and K- were married once.
+- @child: You and K- had a child, once.
+- @dial: Dial.
+
+@dial
+
+Right. You are going to call her.
+
+- @past: You and K- were married once.
+- @child: You and K- had a child, once.
+- @dial_2: Just dial the digits.
+
+@dial_2
+
+You simulate the likely outcomes of your call. Worst case: she says fuck you and doesn't talk to you again. No, that is wrong. Worst case: she realizes that you have regressed to the mental state of a broken woman-child and calls you out for all of your flaws. You abandoned her. You abandoned your child. She was the victim, and you are the villain, yet another example of how *women* like you deserve to be ostracized.
+
+If that happened, death would be your best option.
+
+- @dial_3: Make the call.
+- @quit: Fuck it. You will not do this today.
+
+
+@quit
+
+No. This will not turn out well. You had better save your energy for another time.
+
+Except there is no more energy to be saved. Your head spins. Your mouth aches from clenching your jaw. A half-eaten meal churns in your stomach, ready to be expelled. You are tired.
+
+
+@dial_3
+
+You dial the digits on your touch-tone phone. It connects.
+
+"Hello?"
+
+Her voice is familiar, still coarse and flat.
+
+- @its_em: "It's Em..."
+- @k: "K-?..."
+- @hi: "Hello..."
+
+@its_em
+go-to: em_2
+
+"Um, it's me, Em..."
+
+@k
+go-to: em_2
+
+"Um, K-?"
+
+@hi
+go-to: em_2
+
+"Hello..."
+
+
+@em_2
+
+"Em? Is that you? Fuck, why did you decide to call now of all times?"
+
+Of course, you can't talk freely on the phone. Who knows who is listening.
+
+- @job: "I lost my job..."
+- @homeless: "I might be homeless soon..."
+- @just_talk: "I just wanted to see how you and S- were doing..."
+
+@job
+go-to: need_money
+
+"Um, I just lost my job, and..."
+
+
+@homeless
+go-to: need_money
+
+"I might be homeless soon, and..."
+
+
+@just_talk
+
+"I just wanted to see how you and S- were doing..."
+
+"Really? Is that it? I don't recall you having a history of curiosity about our personal status." Her sigh is audible. "Fuck, what is the real reason?"
+
+- @job: "I lost my job..."
+
+
+@need_money
+
+"...And you need money? Fuck." Her sigh is audible. "God, okay, look, I'm a non-tenured scientist on a contingent contract, and I have a kid. How much disposable income do you think I have?"
+
+"I'm sorry... forget-"
+
+"No. Look..." A pause. "There's one thing you could do to help me out, and I'll pay you. Can we meet tomorrow?"
+
+- @yes_meet: "Sure..."
+- @idk_meet: "I'm not sure..."
+- @need_money_now: "I need the money right now..."
+
+
+@yes_meet
+on-arrival: k_path = 1; k_meet_day = day
+
+"Sure..."
+
+"Good. How about 5PM tomorrow at LX Square?"
+
+"Yeah..."
+
+"See you then."
+
+She hangs up.
+
+- @hangup: A thread of hope.
+
+@idk_meet
+on-arrival: k_path = 1; k_meet_day = day
+
+"Um, I'm not sure..."
+
+"I mean, based on my current knowledge, I doubt you'd have anything better to do. Would you be able to meet 5PM tomorrow at LX Square?"
+
+- @yes_meet_2: "I can be there..."
+- @idk_meet_2: "I still don't know..."
+
+
+@need_money_now
+view-if: rent_due <= 2
+on-arrival: money += 100; k_money = 1; k_path = 1; k_meet_day = day
+
+"I actually need the money right now. It's kind of an emergency..."
+
+"God. Okay, fine. Here's $100."
+
+You see the transaction on your account.
+
+"Anyway," K- continues, "What I was going to say was that I need someone to take care of S- on the days when I'm working late in the lab. Which lately is every day. I know your schedule is flexible. Is that something you can do?"
+
+You aren't exactly in a position to refuse.
+
+- @yes_meet: "Sure..."
+
+# TODO
+
+@yes_meet_2
+
+"I can be there..."
+
+"See you then."
+
+She hangs up.
+
+- @hangup: A thread of hope.
+
+@idk_meet_2
+on-arrival: k_idk_meet = 1
+
+"Um, I still don't know..."
+
+"Fine. I usually take S- out for a walk around that time anyway. Come by if you want to interact."
+
+She hangs up.
+
+@hangup
+
+What are you hoping for, by meeting her?
+
+- @only_support: Only some financial support. Nothing more.
+- @see_her_again: You want to see her again.
+- @idk_meeting_her: You don't know.
+
+
+@only_support
+
+Only some financial support. Nothing more.
+
+Okay.
+
+@see_her_again
+
+You want to see her again.
+
+Okay.
+
+@idk_meeting_her
+
+You don't know.
+
+Okay.

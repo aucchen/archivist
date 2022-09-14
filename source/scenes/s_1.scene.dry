@@ -1,0 +1,252 @@
+title: S-
+new-page: true
+on-arrival: has_s = 1
+
+# herein you take care of S-.
+
+You are home again, and it is the first time someone besides yourself has visited in over a year. That time was inspection.
+
+S- paces your tiny apartment. it takes about 8 of his small steps to walk from one end to the other.
+
+He looks up at you, as if expecting something.
+
+- @no_idea: You have no idea what to do.
+
+@no_idea
+
+Half-forgotten memories of his first few years float through your mind. But those years were nothing like now. He is older. He is conscious and can think and can judge and will remember all the ways in which you have failed and will fail him.
+
+- @not_parent: You are not cut out to be a parent.
+- @one_night: It's just for one night.
+- @maybe_fine: Maybe... maybe it will turn out fine.
+
+@not_parent
+go-to: s_hungry
+
+Women are supposed to have maternal instincts. Women (GNT women, not that anyone would use the term) are supposed to instinctively know what to do when faced with their long-separated child of 7 years who has been suddenly dropped on them with barely a warning. How can you be allowed to be a woman like this?
+
+@one_night
+go-to: s_hungry
+
+It is just for a single night. 
+
+@maybe_fine
+go-to: s_hungry
+
+Maybe it will turn out fine.
+
+
+@s_hungry
+
+# instead of burgers... maybe the food is something else? pockets? 
+
+"I'm hungry," he says. "Can we get burgers?"
+
+Burgers are not a part of your typical diet; your typical meals consist of rice and beans porridge. But perhaps you could visit a restaurant.
+
+- @food_home: "We have food at home."
+- @no_food_no_money: "We do not have food at home, and we do not have enough money to go out to eat."
+- @go_burgers: "Alright. Let's go."
+- @why_burgers: "Why do you want burgers?"
+- @burgers_propaganda: "The humble so-called 'burger' is a piece of the ruling party's propaganda campaign to legitimize their rule via continuity with the American Empire."
+
+@burgers_propaganda
+max-visits: 1
+
+"The humble so-called 'burger' is a piece of the ruling party's propaganda campaign to legitimize their rule via continuity with the American Empire."
+
+"What?"
+
+"Oh, um... sorry. I was talking to myself."
+
+"Aren't you a grown-up?"
+
+"Supposedly."
+
+"Wow."
+
+Great. He thinks you're a loser. An accurate assessment, but a painful one nevertheless.
+
+TODO
+
+
+@food_home
+view-if: food > 0
+go-to: food_home_1 if s1_knows_cook_rice = 1; food_home_2 if s1_knows_cook_rice = 0
+
+"We have food at home," you say, and S- is instantly disappointed.
+
+@food_home_1
+
+"Alright. Fine." He goes back to sitting on the bed, but not before taking a random book from your bookshelf.
+
+- @begin_cooking: Begin cooking.
+
+@food_home_2
+on-arrival: s1_knows_cook_rice = 1
+
+"Can we still go get burgers?", he asks. "I never get to go out. Mom just makes rice every day."
+
+- @every_day: "I cook rice every day too."
+- @go_burgers: "Alright. Let's go get burgers."
+- @burgers_propaganda: "The humble so-called 'burger' is a piece of the ruling party's propaganda campaign to legitimize their rule via continuity with the American Empire."
+
+
+@every_day
+
+"I cook rice every day too," you say. "Sometimes with beans though."
+
+"Wow. You and mom are like the same person."
+
+"We are, aren't we?" You sigh. S- takes a random book from your shelf and sits back on the bed.
+
+- @gray_mush: "I didn't always eat rice..."
+- @mom_taught: "Your mom taught me how to cook rice."
+- @begin_cooking: Begin cooking.
+
+
+@no_food_no_money
+view-if: food = 0 and money <= 10
+
+"Well, um, we don't have food at home, and we don't have enough money to go out to eat. So..."
+
+"We can go to our house. We have food there."
+
+TODO
+
+@go_burgers
+view-if: money >= 10
+
+"Alright. Let's go."
+
+You swallow your small act of legitimizing regime propaganda. It's for S-. It's all for the smile on his face.
+
+TODO
+
+@why_burgers
+
+"Why do you want burgers?" you ask.
+
+"Mom just cooks rice every day. I want something new."
+
+- @cook_rice: "I cook rice every day too."
+
+@cook_rice
+on-arrival: s1_knows_cook_rice = 1
+
+"I cook rice every day too," you say. "Sometimes with beans though."
+
+"Wow. You and mom are like the same person."
+
+"We are, aren't we?" You sigh.
+
+- @gray_mush: "I didn't always eat rice..."
+- @mom_taught: "Your mom taught me how to cook rice."
+- @food_home: "We have food at home."
+- @no_food_no_money: "We do not have food at home, and we do not have enough money to go out to eat."
+- @go_burgers: "Alright. Let's go."
+
+@gray_mush
+
+"I didn't always eat rice, actually. I used to eat gray mush all the time when I was your age."
+
+"Gross. That's all they give us at school. It makes me want to throw up."
+
+"Yeah. It is gross. That's all they had at the children's center."
+
+"Sorry. That sucks."
+
+"Yes. It did suck."
+
+- @mom_taught: "Your mom taught me how to cook rice."
+- @begin_cooking: Just start cooking.
+
+@mom_taught
+
+"Your mom taught me how to cook rice. I didn't know very much cooking before I met her."
+
+"Wait, aren't you my mom too, technically?"
+
+- @technically: "Technically..."
+- @idk_mom: "It's complicated..."
+- @trying_mom: "I can try to be..."
+
+@technically
+go-to: mom_test
+
+"Technically, I suppose. Do you want me to be?"
+
+@idk_mom
+go-to: mom_test
+
+"It's complicated..."
+
+@trying_mom
+go-to: mom_test
+
+"I can try to be... If you want me to be?"
+
+@mom_test
+
+He crosses his arms. "Hmm... Maybe this is a test. If you pass it you can be my second mom."
+
+"And how would I know if I've passed?"
+
+He shrugs. "I dunno. If I'm not hungry tonight."
+
+"Then I've already failed being my own mom."
+
+"Wow."
+
+- @begin_cooking: Begin cooking.
+
+@begin_cooking
+
+You fill the pressure cooker pot with rice. There are meats too - mung beans, red beans, and lentils added for extra nutrition and flavoring. K- taught you this. You rinse the mixture until it is no longer cloudy, and fill the pot to the top mark with water. 
+
+"Thirty minutes," you say, turning on the cooker.
+
+Meanwhile S- is sitting on your bed, flipping through the pages of a computer programming textbook.
+
+- @fun_book: "Is this a fun book?"
+- @wait_cooking: Wait for the rice to finish.
+- @cook_2: Prepare another dish.
+
+@fun_book
+
+"Is this a fun book?"
+
+"Not really."
+
+"Do you want to learn more about computers?"
+
+"I guess. Maybe."
+
+- @teach_s: Teach him?
+
+@teach_s
+
+"Did mom ever teach you any programming?"
+
+TODO
+
+@wait_cooking
+
+Your hands are idle. You feel as if you should do something else.
+
+- @cook_2: Prepare another dish.
+#- @teach_s: Teach S- programming?
+ 
+
+@cook_2
+go-to: cook_2_enough if food >= 2; cook_2_not_enough if food < 2
+
+Do you have enough food?
+
+@cook_2_enough
+
+It seems that you have enough to make a small vegetable and meat stir fry dish.
+
+@cook_2_not_enough
+
+Unfortunately, you are out of ingredients.
