@@ -12,20 +12,24 @@ You are out of medicine. What are you going to do?
 - @none: Go without.
 
 @buy
-subtitle: $40, lasts 7 days
+subtitle: $50, lasts 7 days
 choose-if: stress < 8
-view-if: money > 40
+view-if: money >= 50
 unavailable-subtitle: You don't have the energy for this.
+on-arrival: {!
+Q.post_trolley = window.randomSelect(['medicine.pharmacy_1', 'medicine, pharmacy_2']);
+!}
 max-choices: 1
 
-All it takes is a visit to the pharmacy.
+All it takes is a visit to the pharmacy, a 20-minute trolley ride away.
 
-- #pharmacy
+- #trolley
 
 
 @ask_k
 subtitle: Would she share?
-view-if: k_path >= 2
+view-if: k_path >= 3
+max-visits: 1
 
 Like you, she has a prescription for "early menopause", although the justification of her prescription is more conventional.
 
@@ -38,7 +42,10 @@ Would she be willing to share, though?
 
 You make the call.
 
-TODO
+"Look, I barely have enough for myself. Sorry, but I don't have anything to spare right now."
+
+- @buy: Refill at the pharmacy.
+- @none: Go without.
 
 
 @ask_a
@@ -51,30 +58,41 @@ A- is a doctor. She likely has access to medicine.
 - @med_options: Do something else.
 
 @ask_a_2
+on-arrival: money += 50
 
-TODO
+You make the call.
+
+"Sorry, it's a controlled substance so I can't just grab some, but I can give you money to buy your prescription. Is that okay?"
+
+"Sure..."
+
+A- has given you $50.
+
+- @buy: Refill at the pharmacy.
+- @none: Don't bother. Just go without.
 
 
 @none
-subtitle: You'll be fine, probably.
-on-arrival: medicine = 1
+subtitle: You will be fine, probably.
+on-arrival: medicine = 2; stress += 3
 
-Fortunately, you've already had bottom surgery, so you are unlikely to experience physical masculinization. Unfortunately, hormone deprivation increases the risk of osteoporosis, and it seems to have the effect of making you feel worse in various difficult-to-describe ways that physicians do not acknowledge.
+Fortunately, you have already undergone bottom surgery, so you are unlikely to experience physical masculinization. Unfortunately, hormone deprivation increases the risk of osteoporosis, and it seems to have the effect of making you feel worse in various difficult-to-describe ways that physicians do not acknowledge. And there are the medications for dealing with your persistent nanoplague symptoms that you still need to pick up.
+
+No matter. You will live.
 
 ###################
 
 @pharmacy_1
 title: Just a brief visit...
 tags: pharmacy
-max-visits: 1
+on-arrival: money -= 50; medicine += 7
 
-TODO
-
-The nearest pharmacy is combined with the grocery store, a 10 minute trolley ride away.
-
+The pharmacy is combined with the grocery store. It is a relatively easy trip. You go there, pick up your prescription and some OTCs, and leave.
 
 @pharmacy_2
 title: Just a brief visit...
 tags: pharmacy
 max-visits: 1
+on-arrival: money -= 50; medicine += 3; stress += 1
 
+There are shortages at the pharmacy. Your prescription hormones are out; all they can give you are some substances that are supposed to be a substitute, but are much less effective and more likely to cause harmful side effects. They are the same price, of course.

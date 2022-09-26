@@ -1,7 +1,7 @@
 title: The Ritual
-subtitle: A regular excursion...
-view-if: ritual_done = 0 and day >= 3 and (day_major = 0 or day_minor = 0)
-on-arrival: ritual_done = 1; day_major += 1
+subtitle: An excursion...
+view-if: ritual_done = 0 and day >= 3 and (day_major = 0 or day_minor = 0) and day < 20 and stress < 15
+on-arrival: ritual_done = 1; day_major += 1; stress -= 1
 frequency: 300
 tags: major
 new-page: true
@@ -23,6 +23,8 @@ You are in front of Lily's gravestone, a small brown brick in a field of gray li
 @graveyard
 
 After the Cataclysm, after the former inhabitants of the surface platform evacuated to the undercity, they attempted to reconstruct their old lifeways. Their customary funerary rites required burying remains in the earth, so they appropriated a patch of dirt to serve as a cemetary. You would have thought that they realized the inefficiency of burials after hundreds of years of arcology life.
+
+Then again, the fact that you are performing this ritual is a sign of your own poor use of time and space and exposure budget.
 
 - @scratch: Scratch at the gravestone some more.
 - @bowl: Put the paper into the metal bowl.
@@ -58,15 +60,15 @@ You have cobbled together your rituals out of the fragments of long-dead culture
 
 @think_about_lily
 
-Lily was an acquaintance, not a friend. She worked in a shop and did sex work on the side. You did not know her well; she was an omnipresence on CityNet, but you had only spoken face-to-face a handful of times at political events.
+Lily was an acquaintance, not a friend. She worked in a shop and did sex work on the side. You did not know her well; she was an omnipresence on CityNet before the anti-radicalization policies, but you had only spoken face-to-face a handful of times at political events.
 
-Her death was part of the catalyst for the Uprising.
+She died before the Uprising. She would have almost certainly thought you a traitor for submitting yourself to the authoritarian capitalist patriarchal system.
 
 - @others: Visit the other graves.
 
 @others
 
-Out of the Laverneans you knew before the uprising, most have passed, and the others are missing.
+Out of the Laverneans you knew before the Uprising, most have passed, and the others are missing.
 
 Lily. Luna. Eve. Chloe. Emily. You write their names on scraps of paper and toss them into the bowl of flames. You scratch at the false names on their tombstones. No one is here. No one to see you stalk the graveyard like a ghost. 
 

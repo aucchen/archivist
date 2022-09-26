@@ -1,18 +1,26 @@
 title: Entertain yourself
 subtitle: A psychological necessity.
-tags: major
-view-if: day_major = 0 or day_minor = 0 and day_entertainment = 0
-on-arrival: day_entertainment = 1
+tags: minor
+view-if: (day_major = 0 or day_minor = 0) and day_entertainment = 0 and stress < 15 and day < 20
+on-arrival: day_entertainment = 1; entertainment_count += 1; numb = 1; day_minor = 1
 new-page: true
+set-bg: images/monitor_dithered.png
+
+# [? if entertainment_count = 0 : Your computer is the most prized posession you have, or perhaps the only prized posession. It is approximately 15 years old, which, given that new computers have not been produced since the Cataclysm, makes it relatively recent. It is your primary instrument for both work and entertainment. ?]
 
 - @game: Play a game.
+- @tv: Watch TV.
 #- read the archives.
 #- stare at yourself in the mirror.
 #- wander outside.
 #- introspect.
 
+@tv
+go-to: tv_1; tv_2
+
 @game
-go-to: game_1; game_2; game_3; game_4
+on-departure: games_played += 1
+go-to: game_1 if games_played >= 1; game_2 if games_played >= 1; game_3 if games_played >= 1; game_4; game_4 if games_played = 0
 
 @game_1
 
@@ -20,21 +28,53 @@ You play a relatively recent game (from the current century). It is a text-based
 
 @game_2
 
-you play a game recovered from the archives, from the pre-war era.
+You play a game recovered from the archives, from the pre-war era. It is a text-based game about high school dating and the drama involved therein.
 
 @game_3
 
-you play a game recovered from the archives, from the 3rd century. It is a political simulator that features loose stand-ins of the factions of that era,
+You play a game recovered from the archives, from the 3rd century. It is a political simulator that features loose stand-ins of the factions of that era, with virtually incomprehensible politics.
 
 @game_4
 
-you play a now-banned game developed during the uprising. it is a role playing game about a militarized polycule that does battle against the Guards and security forces, gaining experience as they kill more enemies.
+You play a now-banned, formerly controversial game developed during the Uprising. It is a role playing game about a militarized polycule that does battle against the Guards and security forces, gaining experience as they kill more enemies. It was praised for having excellent lavernean representation, not a surprise given its development team, who are now mostly known to have died in the Uprising.
 
-@film_1
+[? if games_played = 1 : You wonder if you could encode this game in DNA. ?]
 
-you watch a film about a woman who disguises herself as a man to join the Guards during the uprising. The villain is a lavernean with cartoonishly exaggerated features and a constantly visible bulge.
+@tv_1
+
+Now playing is a film about a woman who disguises herself as a man to join the Guards during the Uprising. The villain is a lavernean with cartoonishly exaggerated features and a constantly visible bulge.
+
+@tv_2
+
+There is a speech by a Ruling Party politician. "We are the true heirs of the American Empire... We will not repeat the decadence and so-called toleration that led to the transhumanist order..." You tune out.
+
+@tv_3
+
+There is a debate between the Ruling Party and the Opposition Party.
+
+
+@book_1
+
+@reminisce
+
+@reminisce_1
+
+There was a better time 500
+
+You imagine the world of 500 years ago, the immediate pre-war era.
+
+You imagine the world of the posthumans. What kind of civilization have they created in outer space? What are their stations and their houses? Do they still look human? Are their minds still recognizably human in any way?
+
+Immediately after the war, the 
+
+You can live in your mind forever. 
 
 @archives
+on-arrival: {!
+// Script here
+!}
+
+{!<div id="archives"></div>!}
 
 Read the archives: read your saved DNA files.
 

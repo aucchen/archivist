@@ -1,19 +1,171 @@
 title: Breakdown
 subtitle: It is not good.
-view-if: anxiety > 15
-tags: major
+view-if: stress >= 15 or day >= 20
+frequency: 1000
+tags: major, minor
+new-page: true
 
 You are tired, more so than usual.
+
+[? if cw_enabled = 1 : (CW: suicidal ideation, death) ?]
 
 - @not_just: Not just tired.
 
 @not_just
 
-You are laying on your side, in the bed. Your body aches, but you cannot move. Your eyes close and open, close and open. You are hungry and your head throbs with every beat of your slowly-failing heart.
+You are laying on your side, in the bed. Your body aches, but you cannot move. Your eyes close and open, close and open. You are hungry and your head throbs with every beat of your slowly-failing heart. The world feels dark.
 
-- @pathetic: You are fucking pathetic
+- @pathetic: You are fucking pathetic.
 - @shouldnt: You should not even be alive.
+- @so_tired: You cannot think.
+- @call_for_help: Call for help.
 
 @pathetic
 
+"Pathetic" is the singular term that defines your existence. You cannot do anything properly. You are incapable of survival in this world. You are lazy and incompetent and self-centered and so fucking self-pitying.
+
+Your head hurts, more so than usual. It is hard to breathe.
+
+- @call_for_help: Call for help.
+
 @shouldnt
+
+You should not even be alive. You should have died 10 years ago, at the Cataclysm. You should have died five years ago at the Uprising with all of your comrades. You're a fucking coward.
+
+Your head hurts, more so than usual. It is hard to breathe.
+
+- @call_for_help: Call for help.
+
+
+@so_tired
+
+You are too tired to think. Your brain is a block of ice resting uselessly in your cranium. And it hurts, more so than usual. It is hard to even breathe.
+
+- @call_for_help: Call for help.
+- @no_help: No one will save you.
+
+
+@call_for_help
+
+Who can you even call?
+
+- @a_helps
+- @k_helps
+- @c_helps
+- @l_helps
+- @no_help: No one.
+
+@a_helps
+title: Call A-.
+max-visits: 1
+view-if: kissed_a = 1 or a_path >= 3
+go-to: a_no_answer if a_loved = 0; a_answer if a_loved > 0
+
+Yes. You can call A-.
+
+
+@a_no_answer
+
+A- doesn't answer. Of fucking course.
+
+- @k_helps
+- @c_helps
+- @l_helps
+- @no_help: No one is going to help.
+
+@a_answer
+
+A- answers.
+
+"Hey, Em, I'm coming there right now."
+
+A- arrives alone. She sets up an IV drip, and forces water down your throat. You are feeling slightly better, enough to see that she is wearing her blue doctor's scrubs.
+
+"The nanoplague sucks, doesn't it?"
+
+"Yeah," you cough out.
+
+- @ending_a: She saves your life.
+
+
+@k_helps
+title: Call K-.
+view-if: k_path >= 3 or k_encounter = 1
+on-arrival: stress -= 5
+
+Yes. You can call K-. She answers.
+
+"Oh my fucking God, are you okay? I'm heading there right now!"
+
+K- comes alone. "Here. Drink some water." She almost forces a container of warm water to your mouth. "I'll make some tea. And rice porridge."
+
+- @k_better: She saves your life.
+
+@k_better
+go-to: ending_k
+new-page: true
+
+You eat. You drink. You're feeling, if not *good* exactly, less terrible.
+
+@c_helps
+view-if: data_seen >= 5 and has_contract = 1
+title: Call C-.
+
+In an act of desperation, you manage to crawl out of bed and to the computer in order to send an e-mail to C-. You do not wait for a reply before collapsing.
+
+- @ambulance: You are awoken by the wailing of an ambulance.
+
+@ambulance
+
+You are awoken by the wailing of an ambulance. The paramedics open the door. They drag you out, check your heartbeat.
+
+- @dont_want_ambulance: No. You do not want this.
+- @cannot_refuse: But you cannot refuse.
+
+@dont_want_ambulance
+go-to: cannot_refuse
+
+No. You do not want this. Doctors are cruel and vile beings. Any medical interaction risks a chance for the discovery of your biomedical and bureaucratic discrepancies. The best outcome is that they will mistreat you; the worst outcome is that you will be referred to the Guards, to be made an example of.
+
+@cannot_refuse
+
+But you cannot refuse. You cannot speak. You can hardly move. You are in and out of consciousness as they insert an IV drip. You hear fragments of words. Medical terms, most likely wrong. Have they *recognized* you for the degenerate that you are?
+
+- @ending_hospital: You awake in a hospital.
+
+
+@no_help
+
+No one will save you. You will die here, on this bed, in this apartment, in this decrepit city. You will die, and your memory will be erased and overwritten and you didn't even leave behind any microbial DNA archives...
+
+- @k_helps
+- @c_helps
+- @l_arrives: There is a knock on the door.
+- @ending_alone: You are alone, in the end.
+
+@l_helps
+view-if: l_seen >= 5
+title: Liana Xu will help.
+
+Liana Xu will help you. You know this. You are sure of this, for some reason, despite the irrationality of it all. She will save you from all of this.
+
+- @l_arrives: There is a knock on the door.
+
+@l_arrives
+view-if: l_seen >= 3
+go-to: ending_liana
+new-page: true
+
+There is a knock on the door, before the sound of a key turning. It opens.
+
+@ending_alone
+view-if: l_seen < 3
+go-to: endings
+achievement: ending_7
+new-page: true
+
+You are alone, in the end. It is growing dark.
+
+= End
+
+**Ending 7/9**

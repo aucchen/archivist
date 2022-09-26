@@ -1,0 +1,12 @@
+title: Mutual Aid
+subtitle: A regular visit
+view-if: mutual_aid_seen >= 1 and (day = 10 or day = 17) and (stress < 15) and day_minor = 0
+on-arrival: day_minor += 1; food += 1; stress -= 1; mutual_aid_seen += 1
+tags: minor
+frequency: 400
+new-page: true
+set-bg: images/city_dithered.png
+
+You visit the Mutual Aid Alliance's food distribution area at the park. You get free food. R- and L- are here, and you make a brief conversation. It is a productive use of your time, more so than usual.
+
+[? if support_mutual_aid > 0 : You talk to R- and L- about how you might help the Alliance. They tell you that they still do not have anything for you to do, but they give you more information on the Alliance's activities, and how to contact them. ?]

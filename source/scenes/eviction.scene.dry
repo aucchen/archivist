@@ -1,0 +1,142 @@
+title: Evicted!
+set-bg: images/city_dithered.png
+on-arrival: evicted = 1
+
+The message is automated: `Due to your non-payment of rent, we are sorry to inform you that we have initiated eviction proceedings against you. Security services are on their way to assist you in moving out of these premises as soon as possible.`
+
+You are out of the apartment long before security arrives. You carry out your computer in a suitcase, packed with whatever clothes you can save in time.
+
+- @homeless: You are homeless now, or something like that.
+
+
+@homeless
+
+You are homeless now, or something like that. You have no phone, and no money to pay for phone call. The one saving grace is that your transit pass remains active.
+
+- @find_a: Visit A-.
+- @find_k: Visit K-.
+- @find_maa: Visit the Mutual Aid Alliance.
+- @fuck: There is nothing you can do.
+
+@find_a
+view-if: a_path >= 3
+
+A- is most likely at work right now. So you wait until night in the park before traveling to her Central District apartment. You do not fit in here. It is only due to your luck that no one called security.
+
+It is her wife who opens the door. 
+
+- @you_want_to_die: You want to die.
+
+@you_want_to_die
+
+"Oh. Hello, Em."
+
+"Hi."
+
+"A- is inside, if you're looking for him."
+
+"Okay. Sorry."
+
+"No worries. Is something wrong?"
+
+"No. I'm... I'm fine."
+
+Then, A- emerges, still wearing a suit. She (he?) looks over you from head to toe.
+
+- @go_outside: "Can we go outside to talk?", she says to you and his wife simultaneously.
+
+@go_outside
+
+"Can we go outside to talk?", she says to you and his wife simultaneously.
+
+"Yeah. Sure."
+
+You leave the apartment complex, still carrying your suitcase. A- leads you to a small, secluded garden.
+
+"Tell me how bad it is," A- says. Her voice shifts in pitch and resonance when she is alone with you.
+
+"I was evicted."
+
+"Oh. That's terrible."
+
+"It is."
+
+A- is not looking at you. "You shouldn't have come here."
+
+- @where_else: "Where else can I go?"
+- @where_fuck: "Where the fuck else can I go?"
+- @redistribute: *You need to redistribute their wealth* is a thought you have.
+
+@redistribute
+
+*You need to redistribute their wealth* is a thought you have, but it is not useful in the short term.
+
+- @where_else: "Where else can I go?"
+- @where_fuck: "Where the fuck else can I go?"
+
+
+@where_else
+go-to: a_where
+
+"Where else can I go?"
+
+@where_fuck
+go-to: a_where
+
+"Where the fuck else can I go?"
+
+@a_where
+go-to: ending_a
+
+"Sorry. I guess here is as good as anywhere right now..."
+
+# TODO: a better transition?
+
+@find_k
+view-if: k_path >= 3
+
+You have no idea when K- is out of work these days, so you visit her apartment when S- is probably out of school. But K- opens the door.
+
+"Oh my God, Em, come in! Let me guess: you've been evicted?"
+
+"Yeah."
+
+"Christ. Sorry."
+
+She prepares some tea. You drink.
+
+- @ending_k: "You deserve better than this," she says.
+
+
+@fuck
+view-if: k_path < 3 and a_path < 3
+set-bg: black
+go-to: endings
+achievement: ending_8
+
+There is nothing you can do, but join the destitute masses in the shantytowns packed in the dark corners of the city. Maybe you can create a life there; many people do. There are many laverneans among the houseless. They still live somehow, so perhaps you could too. They also have a very high death rate, so perhaps you will die soon.
+
+You do the probability calculations in your head. They are not favourable.
+
+= End
+
+**Ending 8/9**
+
+@find_maa
+view-if: support_mutual_aid > 0 and mutual_aid_seen > 1
+
+The Mutual Aid Alliance might help you. R- and L- might help you. You find your way to R- and L-'s hideout, a part of the city considered too infested by nanoplagues to live. R- opens the door for you.
+
+"Emmeline! You look absolutely terrible!"
+
+You tell her the story of your eviction. She tells you she has a place to stay here, in the safehouse or hideout or whatever they call it. She tells you that she will try to find technical work for you to do, something that uses your computer or archiving skills for the benefit of the permanent revolution.
+
+- @maa_end: The Uprising lives on.
+
+@maa_end
+go-to: endings
+achievement: ending_9
+
+= End
+
+**Ending 9/9**

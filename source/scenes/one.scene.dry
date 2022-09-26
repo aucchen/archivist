@@ -1,14 +1,29 @@
 title: Scene One
 new-page: true
 view-if: started = 0
+set-bg: images/windows_filtered_dithered.png
 on-arrival: {!
     Q.started = 1;
     Q.money = 100;
-    Q.rent = 300;
+    Q.rent = 350;
     Q.food = 2;
     Q.rent_due = 5;
+    Q.missed_rent = 0;
     Q.medicine = 7;
     Q.medicine_cost = 40;
+    Q.has_contract = 1;
+    // relationships
+    Q.liana_introduced = 0;
+    Q.a_path = 0;
+    Q.a_romance = 0;
+    Q.a_loved = 0;
+    Q.k_path = 0;
+    Q.k_romance = 0;
+    Q.with_s = 0;
+    Q.r_path = 0;
+    Q.rosa_seen = 0;
+    Q.mutual_aid_seen = 0;
+    // data
     Q.key7 = 1;
     Q.key13 = 1;
     Q.key17 = 1;
@@ -22,28 +37,38 @@ on-arrival: {!
     Q.prev_data = [];
     Q.correct_data_types = [];
     Q.chosen_data_types = [];
+    // how many of each data type has been seen
     Q.w_seen = 0;
     Q.d_seen = 0;
     Q.s_seen = 0;
+    Q.f_seen = 0;
+    Q.l_seen = 0;
+    Q.r_seen = 0;
+    Q.r_processed = 0;
+    Q.r_warned = 0;
+    Q.hoax_processed = 0;
+    Q.hoax_warned = 0;
     Q.type_payments = {
         'misc': 30,
         'science': 60,
         'literature': 50,
         'personal': 40,
         'social': 40,
-        'govt': 40,
+        'document': 40,
         'obscene': 10,
         'hoax': 10,
         'secret': 80, // secret = secrets from the war
+        'liana': 100,
     };
     Q.main_notes = ' ';
     Q.day_random = 0;
-    // TODO: low-anxiety, high-anxiety
+    // low-anxiety, high-anxiety
     Q.low_anxiety_day_dialogues = [
         "It is a constant 15 degrees in the undercity. Your apartment is 15 square metres. It is 15:00 right now. It has been 10 years since the Cataclysm, and five since the Uprising. 15. You rotate the number in your mind.",
-        "Trolleys and people trudge along the street beneath your window. The city's circulatory system. Looking closer, you see cracks in the previous-century concrete, exposing pre-war cobblestone. Patches of missing surface. After the Calamity, sourcing raw materials for routine maintenance has become difficult if not impossible. The city is a body and it is breaking down.",
-        "The light outside is burning bright. The thin walls are far from soundproof, so you hear the clanging of the trolley and the voices of people inside and outside your building.",
+        "Trolleys and people trudge along the street beneath your window. The city's circulatory system. Looking closer, you see cracks in the third-century concrete, exposing pre-war cobblestone. Patches of missing surface. After the Cataclysm, sourcing raw materials for routine maintenance has become difficult if not impossible. The city is a body and it is breaking down.",
+        "The light outside is burning bright. The thin walls are far from soundproof, so you hear the clanging of the trolley and the voices of people inside and outside your building. You cannot fall back asleep.",
         "It is a luxury that you are allowed this private space. It is a luxury that you have the space to carry out your degenerate activities such as \"using the washroom\".",
+        "Dishes are beginning to pile up in your sink. Washing dishes makes your arms tired, which has led to broken dishes and spilled food. Thus, you only wash dishes when you are at your most energetic, which is not right now.",
         "You are tired when you wake up, but not more so than usual. You are still alive.",
         "There is nothing you particularly desire to do today.",
         "You are tired, slighty more so than usual.",
@@ -60,32 +85,25 @@ on-arrival: {!
     ];
     Q.day_dialogue = Q.low_anxiety_day_dialogues[0];
     Q.afternoon_dialogues = [
-        "The lights outside are dimming, their colors shifting from white to yellow and orange. The shadows darken.",
+        "The lights outside are dimming, their colors shifting from white to yellow and orange. The shadows darken. You are so, so tired.",
         "You are so, so tired.",
         "You are too tired to do anything else today.",
-        "Your only desire is to lie down, but you still can't fall asleep.",
-        "It's too loud in here. Voices shouting. Trolley clanging.",
+        "Your only desire is to lie down, but you still cannot fall asleep.",
+        "It is too loud in here. Voices shouting. Trolley clanging.",
         "The lights outside are dimming. You should sleep, perhaps.",
         "Loud music and voices filters through the walls. There must be a \"party\" going on. You have never enjoyed parties.",
         "Someone is watching television in the apartment, with the volume far too high.",
         "Someone is playing music far too loudly. The bass beats shake the walls.",
-        "Voices crowd the hallway.",
     ];
-    Q.afternoon_dialogue = Q.afternoon_dialogues[1];
+    Q.afternoon_dialogue = Q.afternoon_dialogues[0];
     Q.next_day_scene = "main";
     Q.next_day_scene_queue = [];
     Q.has_next_day = 0;
     Q.data_day = 0; // the last day you used data
-    // food events
-    Q.grocery_events = [
-        "The shelves are devoid of rice, flour, and bread. All you can get",
-        "Dry rice is sold by the gram here.",
-        "A man follows you into the store. \"Wearing a skirt doesn't make you a real lady,\" he whispers into your ear while placing his hand on your bottom. You freeze. \"But I don't care. I always liked you lavs. Shame what happened with the uprising.\" As soon as you can move, and he has merged with the crowd, you quickly fill your bag with the nearest foodstuffs and check out.",
-        "There is a poster on the trolley, dating from pre-uprising times.",
-    ];
     for (var i = 0; i < 21; i++) {
-    Q['name_' + i] = window.randomName();
+        Q['name_' + i] = window.randomName();
     }
+    console.log('Initialized.');
 !}
 tags: top
 
@@ -99,62 +117,62 @@ tags: top
 
 
 @watch
+max-visits: 1
 
-*The light outside the window was bright and artificial, emanating from a poor simulacrum of the sun hanging on the metal ceiling above. Rows of green and violet photosynthetic macroorganisms emulated an ancient streetscape, the scene completed by the humans walking by. It was the equivalent of midday in the city without a sun.*
+*The light outside the window was bright and artificial, emanating from a poor simulacrum of the sun hanging on the metal ceiling above. Rows of green and violet macroalgal trees emulated an ancient streetscape, the scene completed by the humans walking by. It was the equivalent of midday in the city without a sun.*
 
+- @listen: Listen.
 - @remember: Remember.
 
 @listen
+max-visits: 1
 
-*The apartment was poorly soundproofed. The highway rumbled in the distance like a never-ending roll of thunder, while the trolley clanged nearby. Nearer still, there was shouting. Angry human voices. Pounding on the walls.*
+*The apartment was poorly soundproofed. The highway rumbled in the distance like a never-ending roll of thunder, while the trolley clanged nearby. Nearer still, there was the sound of ventilation infrastructure. Angry human voices. Pounding on the walls. Not heard were nonhuman animals; there was no need for those anymore.*
 
-*There are no sounds of non-human animals.*
-
+- @watch: Watch.
 - @remember: Remember.
 
 @remember
 
 *The Archivist remembered. Memories, real and imagined, flowed forth like a wellspring.*
 
+# TODO: write this part...
+
 - @5_years_ago: 5 years ago.
 - @10_years_ago: 10 years ago.
 - @500_years_ago: 500 years ago.
+- @out: Stop dissociating.
 
 
 @5_years_ago
-
-*The coup was announced on every TV and CityNet channel.*
-
-- @10_years_ago: 10 years ago.
-- @500_years_ago: 500 years ago.
-- @out: Stop dissociating.
+go-to: 500_years_ago
 
 @10_years_ago
-
-*The cataclysm began with all the birds falling out of the sky.*
-
-- @5_years_ago: 5 years ago.
-- @500_years_ago: 500 years ago.
-- @out: Stop dissociating.
+go-to: 500_years_ago
 
 @500_years_ago
+max-visits: 1
 
-*The Archivist lived in the year 457 AT. Five hundred years ago was the Posthuman War. The victors fled into space, while the losers became the Archivist's ancestors.*
+*The memories blur together in the Archivist's mind, five hundred years of this city's history twisted into one knot of fictitious time. Wars. Cataclysms. Uprisings. The construction and puncture of the dome. Birds falling out of the sky. Coup announcements on the radio. Fires in the streets. Evacuations downwards. Isolated facts resolve themselves without context. There are no more non-human mammals. The surface is irradiated. Population down twenty percent. No entrance or exit.*
 
-- @5_years_ago: 5 years ago.
-- @10_years_ago: 10 years ago.
+And none of this matters.
+
 - @out: Stop dissociating.
 
 @out
 new-page: true
 on-arrival: {!
 Q['introduced'] = 1;
-for (var i = 0; i < 21; i++) {
-    Q['name_' + i] = window.randomName();
-}
+
 // change style to show boxes around choices.
 !}
 # animate?
+
+The past does not exist. Only the present is real.
+
+- @no_longer: You are not even an Archivist any more.
+
+@no_longer
 
 You are no longer an Archivist, as of approximately one day ago.
 
@@ -162,7 +180,7 @@ You are no longer an Archivist, as of approximately one day ago.
 
 @out_2
 
-Due to budget cuts, you have been laid off, but in their graciousness, the Archives have decided that you could remain as a freelance contractor, paid piecemeal for the documents that you successfully recover. More pressing than the loss of your dignified title is the loss of income. Your rent is due - $300 in five days, and your last paycheck did not arrive. You have exactly $[+ money +] to your name, which also must cover food, medicine, and all other living expenses.
+Due to budget cuts, you have been laid off, but in their graciousness, the Archives have decided that you could remain as a freelance contractor, paid piecemeal for the documents that you successfully recover. More pressing than the loss of your dignified title is the loss of income. Your rent is due - $[+ rent +] in five days, and your last paycheck did not arrive. You have exactly $[+ money +] to your name, which also must cover food, medicine, and all other living expenses.
 
 - @recover_data: You make money by recovering data from DNA.
 

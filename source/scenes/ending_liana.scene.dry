@@ -1,0 +1,250 @@
+title: Liana - Ending
+
+A figure appears in the doorway, and walks over to you. "Here. Drink this." They prop you up so you are seated, and hand you a bottle of some unknown beverage.
+
+- @drink: Drink.
+
+@drink
+
+You drink.
+
+Instantly, you feel different. Better. You are not so tired any more.
+
+"Wow. This place has certainly gotten worse since I was last here."
+
+You do not recognize her at first. She does not look like the statues or the portraits, or even the tiny distorted image you found in the Archives. Instead she looks like...
+
+- @liana_1: You?
+
+@liana_1
+
+*She looks like you.*
+
+"Yeah. I'm Xu Yingmei, or Liana if you'd like." She pronounces her last name strangely, like no one else you had ever heard except in the data recording. "I'm almost surprised you recognized me. The statues don't look anything like this, right?" She laughs. Her voice sounds like a more practiced version of yours.
+
+She looks about your age, a thin and taller than average woman wearing pre-war clothing (blue trousers, a pastel-toned striped sweater), with messy long black hair and glasses. She is not wearing a respirator. Her face looks... like the one you see in the mirror. Less gaunt, more fleshy, better toned, but still, almost the same face.
+
+"You're my clone, with all the same genetic material. I was curious how I would have turned out under different circumstances. Would I have transitioned in a different world? And well, you helped to provide some evidence on a few of my hypotheses. It makes sense, doesn't it?"
+
+- @life_story: Your life story flashes before your eyes.
+
+@life_story
+
+Your life flashes before your eyes. You were born an orphan, and was raised a ward of the state. You knew nothing about your birth parents, save their last name, and you had no living relatives. The most likely conclusion was that you were born to nomads. But you never checked the records; you never cared about your origin story. *Her story makes sense.*
+
+"This is my favourite body," she continues. "It's what I would have looked like without any of the surgeries. We really do look alike, don't we, Emmeline Hsu?"
+
+She pronounces your last name differently than you had ever heard. It sounds exactly like the way she pronouced her own.
+
+"I suppose you have questions," she says, smiling, with an inviting arm gesture. "Feel free to ask."
+
+- @i_: "I..."
+- @tired_too: "Are you tired all the time, too?"
+- @first_time: "Is this the first time you've done this?"
+- @what_learn: "What did you learn?"
+- @plant_diaries: "Did you plant the diaries in the Archives?"
+- @i_dont_believe: "I don't believe you."
+
+@i_
+go-to: want_to_go
+
+"I..." You cannot say anything. You do not know what to say. A part of you wants to cry. Another part wants to laugh.
+
+@tired_too
+go-to: want_to_go
+
+"Do you also get tired for no reason?"
+
+"Are you asking if your chronic fatigue syndrome is genetic?" She laughs. "Well, I can't say I've never had symptoms back when I was your age, but it never got quite as bad. But really, it's hardly genetic. Take a look around you and think if any normal person wouldn't get tired of it all."
+
+[? if medicine > 1 : She takes a look at your drug stockpile. "Wow, this concentration is pathetic. Back in my day we made bathtub estradiol valerate that was better than this. No wonder you're tired all the time." ?]
+
+@first_time
+go-to: want_to_go
+
+"Is this the first time you've done this? Make a clone of yourself, I mean?"
+
+"No. It's not. There are many versions of me, versions of you, running around throughout the arcologies, all living their own separate lives. Compared to them, you're... not the worst off."
+
+She does not elaborate any further.
+
+
+@what_learn
+go-to: want_to_go
+
+"What did you learn from me?"
+
+"Oh, many things! First of all, you turned out to be trans, or a lavernean as you would say, which was great. Not every clone turned out that way. Second of all, you went into science, to which I say, good for you. And third, you turned out to be fucked up in some ways I could only imagine." She laughs.
+
+@plant_diaries
+go-to: want_to_go
+
+"Did you plant the diaries in the Archives?"
+
+"Yes, I did. They detected that it was inauthentic, which was surprising, although I think they went by the fact that the content did not conform to their preconceptions of me, and never detected my security breach in their networks. The computer breach is still open, by the way."
+
+@i_dont_believe
+go-to: want_to_go
+
+"I don't believe you."
+
+"Why don't you believe me? More importantly, why do you think I would lie to you?"
+
+"You already said this isn't your original body so... I don't know what even is the real you."
+
+"Then I suppose you can believe whatever you want. But don't tell me that you read my story and didn't find bits of it that felt awfully relevant. That was all real, by the way. None of it was fake."
+
+For some reason, you feel inclined to trust her on the last point, if nothing else.
+
+
+@want_to_go
+go-to: go_questions
+
+"How about this," Liana continues. "How about you come with me? We can leave this sorry place and go to space, to join the rest of our civilization. You can become a new person. You can become posthuman if you'd like, or stay baseline, but that might be hard. Leave it all behind. Save your life. Screw this city."
+
+@go_questions
+
+- @why_go: "Why?"
+- @dont_deserve: "I don't deserve this."
+- @what_about: "What about my loved ones?"
+- @make_better: "Why don't you help us here?"
+- @ready_to_go: You're ready to go.
+- @stay: You don't want to go.
+
+@why_go
+title: "Why?"
+max-visits: 1
+on-arrival: liana_qs += 1
+go-to: go_questions
+
+"Why?"
+
+"Why what?"
+
+"Why do... all of this? Come down to Earth and make a clone of yourself and then watch me and then..."
+
+Liana shrugs. "As an experiment, I suppose. When you've been alive for as long as we have, we get bored. This is just one of my subprocesses."
+
+
+@dont_deserve
+title: "I don't deserve this."
+max-visits: 1
+on-arrival: liana_qs += 1
+go-to: go_questions
+
+"I don't deserve this."
+
+"You do deserve this, though. You deserve to be loved. You deserve to be free. You deserve everything in the world. You don't deserve to be slowly dying in this hovel. And anyway, who's to say what anyone deserves?"
+
+@what_about
+title: "What about my loved ones?"
+max-visits: 1
+on-arrival: liana_qs += 1
+go-to: go_questions
+view-if: k_path >= 2 or a_path >= 2
+
+"What about my loved ones?"
+
+"You mean K- and A-? They'll... well, unfortunately we cannot take them along. Sorry. It's enough of a risk taking you."
+
+"Can I still see them?"
+
+"I don't know. Maybe you'll be able to come back. The future is a mystery."
+
+@make_better
+title: "Why don't you help us here?"
+max-visits: 1
+on-arrival: liana_qs += 1
+go-to: go_questions
+
+"Why don't you help us here? You could save the city."
+
+"I'm not going to be breaking the terms of the Treaty. Did you forget about that already?"
+
+Yes; the Treaty that ended the Posthuman War prevented either side from directly interfering with the other. But...
+
+"Doesn't my existence already break the Treaty?"
+
+Liana grins. "There's a loophole, if you read it carefully. Actually, I was hoping that your existence might have catalyzed a chain of events that would save the city. If anyone could do it, it would be a clone of the city's founder, right?"
+
+"Sorry I failed you, then."
+
+"No worries. I didn't expect much."
+
+@ready_to_go
+title: You're ready to go.
+go-to: go_2
+view-if: liana_qs >= 2
+
+"I'm ready. Let's go."
+
+@go_2
+go-to: liana_end
+
+"Great! You don't need any of your things. Everything you have here, we can easily replicate. I have an easy route out of the city. Just follow me."
+
+You follow her. For the first time in your life, you are free.
+
+@liana_end
+go-to: endings
+achievement: ending_1
+
+= End
+
+**Ending 1/9**
+
+@stay
+title: You don't want to go.
+view-if: liana_qs >= 2
+
+"I don't want to go. I want to stay here."
+
+"Are you sure?"
+
+- @sure_stay: "I'm sure."
+- @not_ready: "I'm not ready to make a decision."
+- @actually_go: "Actually, I'd rather go."
+
+@not_ready
+title: "I'm not ready to make a decision."
+go-to: em_stays
+view-if: liana_qs >= 2
+
+"I'm not ready to make a decision. I just... don't know if I want to stay or go, yet."
+
+"Hmm." Liana purses her lips. "Alright. I will return. But let me help you first, in the meantime."
+
+@sure_stay
+go-to: em_stays
+
+"I'm sure. I want to stay here, in this city."
+
+"Hmm." Liana purses her lips. "Alright. I will respect your decision. But let me help you first."
+
+@em_stays
+go-to: stay_end
+
+From her backpack she produces several pouches. "Here is the drink to help with your fatigue. Here are some hormones and medicines for various purposes, including nanoplague cures. Oh yeah, and I'm adding a few zeros to your accounts. [? if money <= 0 : Oh wait, your money is already at zero, so... I'll just drop a few tens of thousands of dollars. ?]"
+
+"Thank you..."
+
+"Well, if you ever want to leave, just think of me enough and I'll probably get the signal."
+
+With that, she leaves your apartment. You are alone once more.
+
+@actually_go
+go-to: go_2
+
+"Actually, I'd rather go."
+
+
+@stay_end
+go-to: endings
+achievement: ending_5
+
+= End
+
+**Ending 5/9**
+
+
+###########################################################

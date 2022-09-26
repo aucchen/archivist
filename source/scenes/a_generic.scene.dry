@@ -1,0 +1,25 @@
+title: Call A-.
+subtitle: You need money, maybe...
+view-if: a_path >= 3 and daily_a = 0 and day >= a_day + 2 and (day_major = 0 or day_minor = 0)
+on-arrival: daily_a = 1; a_day = day
+go-to: a_good if a_loved = 1 and a_path < 5; a_bad if a_loved = 0; a_goto_end if a_path = 5
+tags: major
+
+@a_good
+on-arrival: money += 100; day_major += 1; a_path += 1
+
+You make the call. A- answers, and says in somewhat coded language (she must not be alone) that she can give you the money if you meet in person. And you do.
+
+# TODO: elaborate
+
+@a_goto_end
+go-to: ending_a
+
+# TODO: transition to ending_a 
+
+@a_bad
+on-arrival: stress += 1; day_minor += 1
+
+You make the call, but she does not respond. Nothing.
+
+Oh well. It was worth a try.

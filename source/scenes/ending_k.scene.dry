@@ -1,0 +1,123 @@
+title: Ending
+
+"[? if evicted = 0 : You deserve better than this hovel. ?][? if evicted = 1 : You deserve better than this. ?] Stay with me. It'll be like before." Her smile is broader than you've seen in a while.
+
+"But... Don't you worry about S- being taken away? We're going to be living illegally."
+
+"As long as we love each other, anything is possible. Don't you believe in the power of love, Em?" She is smirking.
+
+- @no_love: "No, I don't, in fact."
+- @love_bad: "Love doesn't stand a chance against the police state."
+- @maybe_love: "Maybe. I don't know."
+
+@no_love
+go-to: power_of
+
+"No, I don't, in fact."
+
+@love_bad
+go-to: power_of
+
+"Love doesn't stand a chance against the police state."
+
+@maybe_love
+go-to: power_of
+
+"Maybe. I don't know."
+
+@power_of
+
+"Okay, fine. Maybe you don't believe in the power of love, but what about the power of probability? Based on a sample of households in similar situations to us, there is a less than 10% chance of being affected by state persecution. We'll be fine. S- will be fine."
+
+- @more_like_it: "That's more like it."
+- @not_good_enough: "That's not good enough..."
+- @easy_for_you: "Easy for you to say."
+- @what_about_job: "What about quitting your job?"
+
+@what_about_job
+view-if: k_path >= 4
+
+"What about quitting your job? Will you still have enough money?"
+
+"As it turns out, I could just make a horizontal transfer to a normal division with only a 10% pay cut. It's bad, but not *that* bad. And if this one turns out to be horrible too, well, we'll see once we get there. So it'll be fine. Take a chance."
+
+- @move_in: "Fine. I'll move in with you."
+- @move_in_evicted: "I'll move in with you."
+- @no_move_in: "Sorry, but I can't do it."
+
+@more_like_it
+
+"That's more like it."
+
+K- smiles. "I knew you would believe in reason. You and I both believe in the power of the cost-benefit analysis."
+
+- @move_in: "Fine. I'll move in with you."
+- @move_in_evicted: "I'll move in with you."
+- @no_move_in: "Sorry, but I can't do it."
+
+@not_good_enough
+
+"That's not good enough."
+
+"Come on. Do a cost-benefit analysis. Less than ten percent chance of being fucked over. And what's the chance that your life will get worse if you keep on living like this? What are you going to do?"
+
+- @why_like_this: "Why are you like this?"
+
+@easy_for_you
+
+"Easy for you to say. You're a woman and I'm a degenerate."
+
+She sighs. "Look, if you start seeing yourself the way they told you to see yourself, they've already won. Think about it like a cost-benefit analysis. There's a less than ten percent chance of being fucked over. And what's the chance that your life will get worse if you keep on living like this? What are you going to do?"
+
+- @why_like_this: "Why are you like this?"
+
+@why_like_this
+
+"Why are you so optimistic? You weren't like this before..."
+
+"I've been thinking about some things since that last incident. And I increasingly think I was wrong and irrational to abandon hope. If you're ungenerous you could call it an elaborate act of self-deception, but now I believe that maybe, you have to lie to yourself a little. Maybe you should try it."
+
+- @move_in: "Fine. I'll move in with you."
+- @move_in_evicted: "I'll move in with you."
+- @no_move_in: "Sorry, but I can't do it."
+
+
+@no_move_in
+choose-if: evicted = 0
+go-to: ending_alone
+unavailable-subtitle: You do not want to be homeless.
+
+"Sorry, but... I can't do it."
+
+"Oh. That's fine." She says these words, but is obviously not fine.
+
+
+@move_in
+view-if: evicted = 0
+
+"Fine. I'll move in with you."
+
+K- wraps her arms around you, almost tackling you to the bed[? if a_romance >= 3 :, and plants kisses on your face ?]. "I knew it," she says. "I knew you'd see reason. Come on. We can start packing right now."
+
+- @k_epilogue: End.
+
+@move_in_evicted
+view-if: evicted = 1
+
+"Of course I'll move in with you."
+
+K- wraps her arms around you, almost tackling you to her bed[? if a_romance >= 3 :, and plants kisses on your face ?]. "Thank you." She looks at your suitcase. "Let's start unpacking."
+
+- @k_epilogue: End.
+
+@k_epilogue
+new-page: true
+go-to: endings
+
+= End
+
+You move in with K-. [? if is_homeless = 1 : You did not have much in the way of possessions, so the move was rather easy. ?][? if has_contract = 1 : You continue with your work as a contractor for the Archives. Since your work is more flexible than K-'s, you have become S-'s primary caretaker. ?][? if has_contract = 0 : You are unemployed, perhaps permanently, so you have become S-'s primary caretaker. ?] Being a primary caretaker is not such a negative experience. You have gotten to a comfortable rapport with him; he trusts you and listens to you, perhaps more than you deserve. Because of him, you have been learning to cook meals besides rice porridge and simple stir-fries. You even know how to make burgers from scratch now. S- was so happy.
+
+Life goes on, for better or for worse. You still fear for your life, and for S-'s life, every time you leave the apartment, but finally it feels survivable. Love, as they say, is the most powerful weapon in the revolutionist's arsenal, and you have it in ample quantities.
+
+**Ending 2/9**

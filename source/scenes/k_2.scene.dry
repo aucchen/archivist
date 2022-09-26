@@ -1,9 +1,11 @@
 title: Meeting K-
-subtitle: 5PM, LX Square
-view-if: k_path = 1 and (day_major = 0 or day_minor = 0)
-on-arrival: day_major += 1; k_path += 1
+subtitle: 5PM, Founders Square
+view-if: k_path = 1 and (day_major = 0 or day_minor = 0) and daily_k <= 0 and day = k_day + 2 and stress < 15 and day < 20
+on-arrival: day_major += 1; k_path += 1; daily_k = 1
 tags: major
 new-page: true
+frequency: 1000
+set-bg: images/windows_filtered_dithered.png
 
 How long has it been since you last saw her?
 
@@ -38,7 +40,7 @@ It was a CityNet article about the latest nanoplague variant. She was the "Unive
 
 @anticipation
 
-LX Square is named after Liana Xu, a posthuman and one of the founders of this city. It acts as the central square. It was a 30-minute trip by trolley, and presently you are sitting on a bench.
+Founders Square was dedicated to Liana Xu, a posthuman and one of the founders of this city. It acts as the central square. It was a 30-minute trip by trolley, and presently you are sitting on a bench.
 
 You have not been able to do much of anything today, your mind so preoccupied on your meeting with K- and S-.
 
@@ -154,11 +156,16 @@ on-arrival: has_s = 1
 - @cry: If you were physiologically capable of crying, you would be doing so now.
 
 @cry
+on-arrival: money += 50
 
 If your hormone-deprived body were physiologically capable of crying, you would be doing so at this time. Instead, you nod, and let S- take your hand.
 
 "I'll come by your apartment tomorrow afternoon. You still live there, right?"
 
-You nod. S- leads you up to your feet. K- waves the two of you goodbye, and heads back to the trolley stop. You head to a different trolley stop.
+You nod.
+
+"Here's 50 dollars, by the way. Buy some food."
+
+S- leads you up to your feet. K- waves the two of you goodbye, and heads back to the trolley stop. You head to a different trolley stop.
 
 - @s_1: Home again.

@@ -1,6 +1,6 @@
 title: Main
 new-page: true
-max-choices: 5
+max-choices: 6
 on-arrival: {!
 if (Q.next_day_scene_queue.length > 0) {
     Q.has_next_day = 1;
@@ -10,7 +10,6 @@ if (Q.next_day_scene_queue.length > 0) {
 }
 !}
 go-to-ref: next_day_scene if has_next_day > 0
-
 
 = Day [+ day +]
 
@@ -28,7 +27,11 @@ Medicine: [+ medicine +] day[? if medicine != 1 :s ?] remaining
 [? if day_major = 0 : [+ day_dialogue +] ?]
 [? if day_major > 0 : [+ afternoon_dialogue +] ?]
 
-{!<script>$('#main_notes').append($(window.dendryUI.dendryEngine.state.qualities.main_notes));</script>
+{!<script>$('#main_notes').append($(window.dendryUI.dendryEngine.state.qualities.main_notes));
+if (window.dendryUI.dendryEngine.state.qualities.has_next_day == 0) {
+    window.dendryUI.setBg('images/room1_filtered_dithered.png');
+}
+</script>
 <div id="main_notes"></div>!}
 
 - #major
@@ -38,12 +41,18 @@ Medicine: [+ medicine +] day[? if medicine != 1 :s ?] remaining
 
 @end_of_day
 title: You're too tired to do anything else.
-view-if: day_major >= 1 or day_minor >= 1 or stress > 10 or loneliness > 10
-on-arrival: day += 1; rent_due -= 1; food -= 1; medicine -= 1; got_food_today = 0; got_medicine_today = 0; went_out_today = 0; day_entertainment = 0
+view-if: (day_major >= 1 or day_minor >= 1 or stress > 10 or loneliness > 10) and (stress <= 15)
+on-arrival: day += 1; rent_due -= 1; food -= 1; medicine -= 1; got_food_today = 0; got_medicine_today = 0; went_out_today = 0; day_entertainment = 0; daily_k = 0; daily_a = 0
 go-to: eod_check
 
 @eod_check
 on-arrival: {!
+if (Q.day_major == 1) {
+    Q.stress += 1;
+}
+if (Q.day_major > 1) {
+    Q.stress += 2;
+}
 Q.day_major = 0;
 Q.day_minor = 0;
 Q.numb = 0;
@@ -51,26 +60,30 @@ for (var i = 0; i < 21; i++) {
     Q['name_' + i] = window.randomName();
 }
 console.log('eod_check_2');
-Q['main_notes'] = ' ';
+Q.main_notes = ' ';
 if (Q.rent == 0) {
-    Q['main_notes'] += '<p>Rent is due today. It will be automatically be deducted from your account at the end of the day.</p>';
+    Q.main_notes += '<p>Rent is due today. It will be automatically be deducted from your account at the end of the day.</p>';
 }
-if (Q.k_path == 1 && Q.day == Q.k_meet_day + 1) {
+if (Q.k_path == 1 && Q.day == Q.k_day + 2) {
     Q.main_notes += '<p>You promised K- that you would meet her today.</p>';
 }
-if (Q.day == 3) {
-    Q.main_notes += '<p>You see a flyer that has been slid under your door. "Mutual Aid Alliance hosting free community meals daily at Moses Park." Below is a black-and-white picture of figures serving soup, and a time and an address. It is not too late. You can still go.</p>';
+if ((Q.day == 3 || Q.day == 10 || Q.day == 17) && !Q.mutual_aid_seen) {
+    Q.main_notes += '<p>You see a flyer that has been slid under your door. "Mutual Aid Alliance hosting free community meals weekly at Moses Park." Below is a black-and-white picture of figures serving soup, and a time and an address. It is not too late. You can still go.</p>';
 }
 // if you haven't viewed DNA in a few days, C- sends you a message.
 if (Q.day == Q.data_day + 3) {
     Q.main_notes += "<p>You receive a message from C-, your supervisor at the Archives: <code>Hey Em, I hope you realize that you still need to do your job. I understand you're suffering from chronic fatigue, but so are many of us, and we're still working. Just one DNA dataset every few days. That's all you need. Worst case, we'll have no choice but to decertify you. But it probably won't come to that, would it?</code></p>";
 }
 if (Q.day == Q.data_day + 5) {
-    Q.main_notes += "<p>You receive a message from C-, your supervisor: <code>Hey Em, there are some things you should know. We pulled a lot of stops to let you just keep this job as a contractor. Did you think no one would clock the discrepancies on your record? Did you think it wouldn't be obvious what those discrepancies meant?</code></p>";
+    Q.main_notes += "<p>You receive a message from C-, your supervisor: <code>Hey Em, there are some things you should know. We pulled a lot of stops to let you just keep this job as a contractor. When your output is low, your profile gets more scrutiny. When your profile gets scrutiny, they discover the discrepancies in your record. And when those discrepancies are discovered... well, you know the rest. I sincerely hope it doesn't come to that.</code></p>";
 }
-// Also, C- sends you a message if you have yet to see Liana's files.
+if (Q.day == Q.data_day + 8) {
+    Q.main_notes += "<p>You receive a message from C-, your supervisor: <code>Hey Em, they've started checking your personal files. I'm really sorry to say this, but your contract has been terminated. I've tried to stop them from looking too deeply, and I don't know if it worked. Be careful, Em. There's not much I can do, but I wish you all the best.</code></p> <p>Well then. You no longer have any sort of employment, not even as a contractor. And you are likely unemployable for obvious reasons. Life is great.</p>";
+    Q.has_contract = 0;
+}
+// TODO: Also, C- sends you a message if you have yet to see Liana's files.
 // set daily dialogue here.
-if (Q.anxiety < 10) {
+if (Q.stress < 8) {
     // nonrandom lol
     Q.day_random += 1;
     if (Q.day >= Q.low_anxiety_day_dialogues.length) {
@@ -85,6 +98,13 @@ Q.afternoon_random = Math.floor(Math.random()*Q.afternoon_dialogues.length);
 Q.afternoon_dialogue = Q.afternoon_dialogues[Q.afternoon_random];
 
 // set goto scene
+if (Q.day >= 20) {
+    Q.next_day_scene_queue.push("ending_day20");
+}
+if (Q.with_s == 1) {
+    console.log('with s');
+    Q.next_day_scene_queue.push("k_3");
+}
 if (Q.food <= 0) {
     console.log('food missing');
     Q.next_day_scene_queue.push("food");
@@ -97,7 +117,7 @@ if (Q.medicine <= 0) {
     console.log('medicine missing');
     Q.next_day_scene_queue.push("medicine");
 }
-if (Q.k_path == 1 && Q.day > Q.k_meet_day + 1) {
+if (Q.k_path == 1 && Q.day > Q.k_day + 2) {
     Q.next_day_scene_queue.push("k_bad");
 }
 if (Q.next_day_scene_queue.length > 0) {
@@ -106,7 +126,9 @@ if (Q.next_day_scene_queue.length > 0) {
 } else {
     Q.next_day_scene = "main";
 }
+console.log('eod_check_end');
 !}
+set-bg: black
 go-to-ref: next_day_scene
 
 
@@ -114,29 +136,34 @@ go-to-ref: next_day_scene
 @rent_collection
 new-page: true
 on-arrival: {!
-Q.additional_rent = 400;
+Q.additional_rent = Q.rent + 100;
+Q.old_rent = Q.rent;
 Q.fees = 50 + Math.ceil(Math.random()*50);
 Q.total_rent = Q.rent + Q.fees;
 Q.paid_full = 0;
-if (Q.rent >= 400) {
-    Q.additional_rent = 500;
-}
 if (Q.money < Q.total_rent) {
     Q.money = 0;
-    Q.rent = Q.total_rent - Q.money + 50;
+    Q.rent = Q.total_rent - Q.money;
+    Q.missed_rent += 1;
 } else {
     Q.money -= Q.total_rent;
     Q.rent = 0;
     Q.paid_full = 1;
 }
 Q.rent += Q.additional_rent;
-Q.rent_due = 5;
+Q.rent_due = 7;
+if (Q.missed_rent >= 2) {
+    // TODO: goto
+}
 !}
+go-to: eviction if missed_rent >= 2
 
-[? if paid_full = 1 : Your rent and additional costs were automatically deducted from your account. The rent was $[+ rent +] and fees plus utilities were $[+ fees +]. You have $[+ money +] remaining. ?]
-[? if paid_full = 0 : The rent due was $[+ rent +] and the fees were $[+ fees +]. Unfortunately, you did not have enough to cover the total amount due. All money in your account was automatically deducted, and the remaining balance was rolled over into the next rent payment, with an additional fee of $50. If you miss two more payments, then you will be evicted. ?]
+[? if paid_full = 1 : Your rent and additional costs were automatically deducted from your account. The rent was $[+ old_rent +] and fees plus utilities were $[+ fees +]. You have $[+ money +] remaining. ?]
+[? if paid_full = 0 : The rent due was $[+ old_rent +] and the fees were $[+ fees +]. Unfortunately, you did not have enough to cover the total amount due. All money in your account was automatically deducted, and the remaining balance was rolled over into the next rent payment, with an additional fee of $50. If you miss the next payment, then you will be evicted. ?]
+
+[? if additional_rent > 500 : They are increasing rent to absurd levels, most likely for the purpose of evicting you from this building. There are many people who would like to live here, people with more money than you, and not enough apartments for everyone. Thus, the evictions. ?]
 
 Next bill: [+ rent +] due in [+ rent_due +] days.
 
-
-@eviction
+@game_over
+game-over: true

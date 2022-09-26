@@ -1,9 +1,11 @@
 title: Mutual Aid
 subtitle: Follow the address on the flier.
-view-if: day >= 3 and stress <= 15
-on-arrival: ma_checklist = 0
-tags: major
+view-if: (day = 3 or day = 10 or day = 17) and stress <= 15 and mutual_aid_seen = 0 and (day_major = 0 or day_minor = 0)
+on-arrival: ma_checklist = 0; mutual_aid_seen = 1; day_minor += 1; stress += 1
+tags: minor
 new-page: true
+frequency: 500
+set-bg: images/city_dithered.png
 go-to: checklist
 
 Before you enter a public space where you must interact with people in more than a cursory manner, you first follow a checklist.
@@ -34,9 +36,162 @@ go-to: checklist
 on-arrival: ma_checklist += 1
 max-visits: 1
 
-Unfortunately,
+Unfortunately, you could never successfully modulate the resonance of your voice. You will just have to talk as minimally as possible.
 
 @just_go
 view-if: ma_checklist >= 3
 
-TODO
+The address on the flyer leads to a public park in the Erie District. There is a crowd already gathered. At least dozens of people mill about the lichen-covered ground. Volunteers stand behind tables, stirring vats of rice soup. At least it is not algal mush.
+
+You must have looked out of place, because a man in a volunteer's uniform shouts at you. "Hey! We can help you here." He points towards a table. "Do you need food, medicine, anything else?"
+
+He is most likely an elliotian. And you can tell that he *recognized* you immediately. It has been a while since this sort of occurrence; you do not know if said occurrence has changed the parameters of this social interaction.
+
+- @want_food: "I just need food..."
+
+@want_food
+
+"I just need food..."
+
+"Sure, go on ahead!" He smiles. "Take what you need. By the way, you look familiar. Do you happen to know R-, by any chance?"
+
+In fact, you did know R-. [? if rosa_seen = 1 : You even saw her in one of the DNA datasets. ?][? if rosa_seen = 0 : You remember her from CityNet before the Uprising; she was somewhat popular among lavernean circles. She was an acquaintance, not exactly a friend, and you fully expected that she would hate you for your choices. ?] You did not know that she survived.
+
+"Kind of," you say.
+
+"Great! She's one of the people organizing this. I'm sure she would love to see you, but first take some food. My name is L-, by the way."
+
+"Hi, L-."
+
+- @take_food: Take the food, and then see R-.
+
+@take_food
+on-arrival: food += 2; stress -= 1
+
+You take a bowl of rice porridge. They did not add beans in it as you do, so the nutritional value is reduced. Nevertheless, it tastes better than the variety you make - smoother, more watery.
+
+As you finish eating, R- and L- approach, walking together. R- is a tall and broad woman with a head of curly black hair and an intense facial expression she seems to be desperately trying to soften.
+
+"Hello, Emmeline Hsu," R- says.
+
+- @name: "How did you know my name?"
+- @hi_r: "Hi, R-."
+- @datasets: "I read your DNA diaries."
+
+@name
+go-to: wondering
+
+"How did you know my name?"
+
+"CityNet, remember? Everyone said you were an assimilationist bourgeois asshole, but I thought you had some good points. In the end you weren't even wrong."
+
+"Oh. Sorry. I forgot."
+
+"Don't go on CityNet," L- interjects. "It's horrible these days."
+
+"Don't worry about it," R- says. "How are you liking the Mutual Aid Alliance so far?"
+
+
+@hi_r
+go-to: wondering
+
+"Hi, R-."
+
+"How are you liking the Mutual Aid Alliance so far?"
+
+@datasets
+view-if: r_seen > 0
+
+"I read your DNA diaries."
+
+"Oh, really? Cassie told us the state didn't have the means to read them."
+
+Wait... "C-? C- is my boss."
+
+"Oh wow. Everything's really connected, huh?"
+
+- @c_rev: "I did not know she was on our side..."
+
+@c_rev
+go-to: wondering
+
+"I did not know she was on the revolutionary side."
+
+"Yeah, well, I never heard back from her after it all went down. Guess she sold out too. ... Anyway, how are you liking the Mutual Aid Alliance so far?"
+
+@wondering
+
+- @idk_maa: "I don't know. I just got here."
+
+@idk_maa
+
+"I don't know. I just got here."
+
+R- smiles, and sits next to you. "More of us survived the Uprising than you might think. There are a lot of us here, just trying to do what we can, hiding until it's safe to reemerge. I was hoping you could join us."
+
+- @join_why: "Do you really think it will work?"
+- @join_no: "No..."
+
+
+@join_why
+max-visits: 1
+
+"Do you really think it will work?"
+
+"The Mutual Aid Alliance is a work in progress." R- laughs, and L- puts his arm around her. "But we're trying desperately to not repeat the mistakes of the Uprising. For one, we aren't going to put laverneans or our issues at the center. That was a big part of why the Uprising failed."
+
+"Well, it's hard to gain support when people already hate you, isn't it?" says L-. "Shameful behaviour from the other nonbinaries." He chuckles.
+
+"We're going to go slow," continues R-. "We'll build up power first, build up a support base through direct action and politics where possible. We won't be brash. Maybe it will take generations."
+
+"And what next?" you ask.
+
+"When our turn comes, we will make no excuses for the terror," R- mutters. It is a quote from somewhere, you recall from the periphery of your memory.
+
+"You're gonna scare her!" L- laughs, and punches R- in the arm.
+
+- @join_no: "No..."
+- @infiltration: "Aren't you worried about infiltrators?"
+- @join_alright: "Alright... what can I do to help?"
+
+
+@join_no
+max-visits: 1
+
+"No, sorry... I can't do it."
+
+R- looks into your eyes. "That's what I thought you would say. It's fine. We hold these gatherings every week. You can come if you want free food."
+
+- @main: You are free to leave.
+
+@infiltration
+max-visits: 1
+
+"Aren't you worried about infiltrators?"
+
+R- shrugs. "Of course. But I don't believe you're an infiltrator. Or would you be, if you were paid well enough?"
+
+"No... I don't know. I never thought about it."
+
+"See, that's an honest answer. Besides, I don't think any of the current security forces can stop using slurs for long enough to recruit a lavernean."
+
+- @join_no: "No..."
+- @join_alright: "Alright... what can I do to help?"
+
+
+@join_alright
+on-arrival: support_mutual_aid = 1
+
+"Alright... what can I do to help?"
+
+R- looks at you up and down. "I don't think you're physically capable of helping out with these gatherings. Or emotionally capable. And I'm guessing you're short of financial resources?"
+
+You shrug.
+
+"Okay. Unfortunately, we don't have much need for an archivist right now. But, we might need your skills sometime. Not sure when."
+
+L- laughs. "Wow, R-, you're not really doing a good job convincing our new recruit."
+
+"Just, keep in touch," R- says. "We're among friends here. We'll try to help each other out."
+
+- @main: You are free to leave.

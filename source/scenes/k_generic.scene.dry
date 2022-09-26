@@ -1,0 +1,22 @@
+title: Call K-.
+subtitle: Ask her if there is anything you could do for money...
+view-if: k_path >= 4 and daily_k = 0 and day >= k_day + 2 and (day_major = 0 or day_minor = 0)
+on-arrival: daily_k = 1; k_day = day; day_minor += 1; k_path += 1
+max-choices: 1
+
+You call K-, and ask if there is anything you could do for money, such as perhaps taking care of S-. She says yes; you can visit her apartment.
+
+- #k_generic
+
+@k_s
+title: K- has another late-night experiment...
+tags: k_generic
+
+TODO: take care of S- for money., Or just help K- around the household for money.
+
+@k_household
+title: K- just needs some household chores done.
+tags: k_generic
+
+
+TODO: if you've had an encounter with A-, she makes a comment on it.

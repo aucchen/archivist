@@ -1,0 +1,67 @@
+new-page: true 
+set-bg: black 
+
+You awake in a hospital, in an unfamiliar bed, dressed in a blue gown, IV drip from your wrist. The window is dark. The interior lights are too bright.
+
+C- is here. It is the first time you have seen her since... since before your illness. She is more than ten years younger than you, and looks the part.
+
+"Hey, Em. Sorry you got sick. I guess it's partly my fault for pushing you."
+
+- @still_job: "Can I keep my job?"
+- @not_your_fault: "It's not your fault."
+- @okay: "Okay..."
+
+
+@still_job
+go-to: archives_c
+
+"Can I keep my job?"
+
+"Yes. Of course you can keep your job." She sighs. "I'll try to find you something more permanent and less subject to scrutiny."
+
+@not_your_fault
+go-to: archives_c
+
+"It's not your fault."
+
+She sighs. "It kind of is. I should've known how sick you really were."
+
+@okay
+go-to: archives_c
+
+"Okay..."
+
+
+@archives_c
+
+"I hope you continue working with the Archives, despite everything," she continues. "I don't think we're *that* evil. What we're doing is important, and more importantly, interesting."
+
+# TODO: introduce Lyra and Altair?
+# The hospital door opens, and two more people enter.
+
+- @ending_c: "Yes, I'll continue working here."
+- @working: You don't have any other options, do you?
+
+@working
+go-to: ending_c
+
+
+@ending_c
+achievement: ending_4
+
+"Yes, I'll continue working here."
+
+"Great! You know you're one of the best DNA archivists we have, right? To be fair we only have about five, including us, but..." C- shakes her head. "Just, take it easy, okay? I'll try to not send you to the hospital anymore."
+
+- @ending_c_epilogue: End.
+
+@ending_c_epilogue
+go-to: endings
+
+= End
+
+Unfortunately, you still have a host of other troubles. Your illness will return. Your rent is still rising, with the eventual goal of your eviction.
+
+But those are problems for another day. At least you still have a job, and at least one human with concern for your well-being. Maybe C- can help with rent.
+
+**Ending 4/9**

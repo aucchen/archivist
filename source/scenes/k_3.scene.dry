@@ -1,17 +1,23 @@
 title: K-
 subtitle: K- comes to pick up S-
+on-arrival: money += 100; with_s = 0; k_path = 3; k_day = day; k_romance = 1; day_major += 1
+new-page: true
+
+#automatically go here with the queue after waking up...
 
 # what happens here?
 
 # You take care of S- for a second time.
 
-"Wow. This is my first time being here."
+K- has arrived at your apartment. The $100 has been transferred to your account.
 
-"Really?", you ask, even though you already know the answer.
+"Wow. This is my first time being here," says K-.
 
-"Yeah. What's the floor area?"
+"Oh. Sorry it's such a mess."
 
-"20 square metres."
+"It's fine! What's the floor area?"
+
+"15 square metres."
 
 "Oh. That's pretty small."
 
@@ -21,9 +27,607 @@ subtitle: K- comes to pick up S-
 
 "Oh. Good for you."
 
-K-'s gaze wanders, until it stops at your very interesting washing machine. From experience you know that your conversation has reached an impasse. One of you has to break it. Meanwhile S- has sat up in bed, rubbing his eyes.
+K-'s gaze wanders, until it stops at your very interesting collection of pots. From experience you know that your conversation has reached an impasse. One of you has to break it. Meanwhile S- has sat up in bed, rubbing his eyes.
 
-* Wait for K-.
-* "So, S-, do you want to go to school now?"
-* "Do you want to stay here?"
+- @wait_for_k: Wait for K- to speak.
+- @go_to_school: "So, S-, do you want to go to school now?"
 
+@wait_for_k
+
+"S- has school today," she says. "I don't have work in the day. Mind if I come back here afterwards? We still haven't caught up."
+
+Meanwhile S- has slid off the bed, and has gone to the bathroom.
+
+- @sure_meet: "Sure, let's meet."
+- @no_meet: "Sorry, I'm busy..."
+
+@go_to_school
+
+"So, S-, do you want to go to school now?"
+
+He nods, groggily, and slides off the bed, grabbing his clothes before going to the bathroom.
+
+"I don't have work in the day," says K-. "Mind if I come back here afterwards? We still haven't caught up."
+
+- @sure_meet: "Sure, let's meet."
+- @i_guess_meet: "I suppose..."
+- @no_meet: "Sorry, I'm busy..."
+
+
+@sure_meet
+
+"Sure, let's meet. Later."
+
+K- makes a thin smile. "That's great."
+
+Once S- is ready, the two of them leave. You are only left alone for approximately 30 minutes before K- returns, during which time you lay on the bed, mind entranced in the past.
+
+- @k_3_meet: K- returns.
+
+@i_guess_meet
+
+"I suppose..."
+
+K- makes a thin smile. "That's great."
+
+Once S- is ready, the two of them leave. You are only left alone for approximately 30 minutes before K- returns, during which time you lay on the bed, mind entranced in the past.
+
+- @k_3_meet: K- returns.
+
+
+@no_meet
+
+"Sorry, I'm too busy today."
+
+"Oh. That's fine. Just fine I guess."
+
+K- and S- leave.
+
+
+@k_3_meet
+new-page: true
+
+You do not remember when you gave K- the keys to your apartment, but it was well prior to this encounter. The two of you had set a heartbeat system during your first nanoplague scare, in which if you did not send a message to her for three days, she would go to your apartment and check if you were still alive. That was four years ago.
+
+She enters your room without knocking.
+
+"I'm back."
+
+"I can tell."
+
+She sits on the bed, just barely missing your arm.
+
+"So. How's life?"
+
+- @why_asking: "Why are you asking?"
+- @bored: "Are you bored already?"
+- @its_fine: "It's fine."
+
+@why_asking
+
+"Why are you asking?"
+
+"It's something to talk about, I guess." She takes your hand in hers, and begins rubbing it. "What did we even talk about back when we were living together?"
+
+- @dont_remember: "I don't remember."
+
+@bored
+
+"Are you bored already?"
+
+She shrugs. Idly she takes your hand in hers, and begins rubbing it. "What did we even talk about back when we were living together?"
+
+- @dont_remember: "I don't remember."
+
+@its_fine
+
+"It's fine."
+
+"Still not much for small talk?"
+
+"No, not really."
+
+Idly she takes your hand in hers, and begins rubbing it. "What did we even talk about back when we were living together?"
+
+- @dont_remember: "I don't remember."
+
+@dont_remember
+go-to: smell_like_a if a_encounter = 1
+
+"I don't remember."
+
+"That's interesting, because I don't either. It's like it all happened in my imagination, like none of it was real." She turns to you. "Was it real?"
+
+"Of course it was real."
+
+"See, I'm just saying things now. I don't know what to talk about either so I'm just rambling on without knowing what I'm even saying. I'm just playing out these parts, like..."
+
+She stops talking, and lays down on the bed, next to you. It is a tight fit, with your body nearly squeezed against the wall.
+
+- @stay_like_this: Stay like this.
+- @get_up: Get up.
+
+@stay_like_this
+on-arrival: k_romance += 1
+
+You feel no need to move. You feel comfortable, safe. K- holds your hand, every part of her body pressed against yours.
+
+"God, I'm so tired," she says. "I haven't slept at all since getting out of the lab. I haven't slept for 24 hours and I haven't even taken a shower since last week."
+
+- @me_too: "I'm tired too."
+- @shower: "Do you want to take a shower?"
+
+
+@get_up
+
+You force yourself up.
+
+"Hey, don't push me!"
+
+"Sorry... It was too tight back there."
+
+K- chuckles. "Wow. Hey, at least I have the bed to myself now." She stretches out.
+
+"God, I'm so tired," she continues. "I haven't slept at all since getting out of the lab. I haven't slept for 24 hours and I haven't even taken a shower since last week."
+
+- @me_too: "I'm tired too."
+- @shower: "Do you want to take a shower?"
+
+
+@smell_like_a
+view-if: a_encounter = 1
+
+Suddenly she begins to sniff the bed. "This smells like A-."
+
+"Oh..."
+
+"You fucked him, didn't you? I remember that smell. It used to be everywhere in our old place."
+
+- @yes_i_fucked: "Yes, I did..."
+- @sorry_fucked: "Sorry..."
+- @she_pronouns: "It's 'she'."
+
+@yes_i_fucked
+go-to: thats_gross
+
+"Yes, I did..."
+
+@sorry_fucked
+go-to: thats_gross
+
+"Sorry..."
+
+@she_pronouns
+go-to: thats_gross
+
+"It's 'she'."
+
+"What"
+
+"A- still uses 'she' pronouns."
+
+"Whatever. You fucked A- here, right?"
+
+You nod.
+
+@thats_gross
+
+"That's fucking gross."
+
+# TODO: what if you had an encounter with A- before?
+
+
+@me_too
+
+"I'm tired too," you say.
+
+"How the fuck are you tired? You just sit at home all day."
+
+"The body is a fickle thing."
+
+"Well, whatever... I just want to sleep. Or shower. Speaking of which, do you wish to take a shower together? Solely for the purpose of reducing water consumption. Of course."
+
+- @implications: "Um, are the implications..."
+- @solely_for_water: "Solely for reducing water consumption, right?"
+- @sure_shower: "Sure. Let's do it."
+
+
+
+@shower
+on-arrival: k_romance += 1
+
+"Do you want to take a shower?", you ask.
+
+"What's your water allocation?"
+
+"50 litres per day."
+
+"God, that's relatively a lot. That's not much less than ours. When's the last time you took a shower?"
+
+"Um..." In truth, you do not remember.
+
+"You smell like shit." She gets up off the bed. "Do you wish to take a shower together? Solely for the purpose of reducing water consumption. Of course."
+
+- @implications: "Um, are the implications..."
+- @solely_for_water: "Solely for reducing water consumption, right?"
+- @sure_shower: "Sure. Let's do it."
+
+@implications
+
+"Um, are there implications that..."
+
+"There are no implications whatsoever." She stares at you straight on. Her voice is totally monotone.
+
+- @sure_shower
+- @no_shower: "Sorry, but I'd rather not..."
+
+@solely_for_water
+
+"Solely for reducing water consumption, right?"
+
+"Right. Solely for reducing water consumption. No ulterior motivations." She stares at you straight on. Her voice is totally monotone.
+
+- @sure_shower
+- @no_shower: "Sorry, but I'd rather not..."
+
+@sure_shower
+title: "Sure. Let's do it."
+subtitle: [? if cw_enabled = 1 : (CW: anatomical descriptions) ?]
+on-arrival: k_showered = 1; k_romance += 1
+
+"Sure. Let's do it."
+
+K- is already taking off her clothes.
+
+- @shower_2: Undress.
+
+@no_shower
+
+"Sorry, but I'd rather not..."
+
+K- shrugs. "Whatever. Stay disgusting. I'm gonna take a shower by myself."
+
+- @rest_in_bed: While she does so, you rest.
+
+@rest_in_bed
+
+While she does so, you rest on the bed. You hear the water splattering. It is loud.
+
+She emerges dressed in your bathrobe. "God, I'm so tired. Do you mind if I take a nap here until it's time to pick up S-?"
+
+- @dont_mind_nap: "I don't mind."
+- @nap_together: "I want to nap too..."
+- @k_leaves: "No, sorry..."
+
+@dont_mind_nap
+
+"I don't mind..."
+
+"Great!" She gets in the bed, with you still in it. It is a tight
+
+"Sorry," she says, "but it's fine if we squeeze together here, right?"
+
+"Yeah, it's fine..."
+
+- @nap_face_her
+- @nap_facing_away
+- @dilated
+
+@nap_together
+
+"I want to take a nap too..."
+
+K- looks at the narrow bed. "Well, we can squeeze together. It's just like university."
+
+"Yeah."
+
+- @nap_face_her
+- @nap_facing_away
+- @dilated
+
+@nap_face_her
+title: You face her as you sleep.
+on-arrival: k_romance += 1; stress -= 1
+
+You are pressed against the wall, facing her, as she is facing away from you. You cannot help but touch her.
+
+# TODO: elaborate on the nap
+It is difficult to fall asleep, as usual. Instead, you simply rest, lie on the bed quietly as K- falls asleep, and close your eyes.
+
+- @nap_get_up: ...
+
+@nap_facing_away
+title: You are facing away from each other.
+on-arrival: stress -= 1
+
+You are facing away from each other, just to make it clear that there are no *implications* from this incident, except for the fact that you are sleeping in the same bed in the first place.
+
+It is difficult to fall asleep, as usual. Instead, you simply rest, lie on the bed quietly as K- falls asleep, and close your eyes.
+
+- @nap_get_up: ...
+
+@nap_get_up
+new-page: true
+set-bg: black
+
+You ended up falling asleep after all. The lights are already dimming, and K- has gotten up and gotten dressed.
+
+"Sorry. I have to pick up S- from school soon. Can we maybe start the heartbeat thing again? Where you called me every day to make sure you're okay?"
+
+"Yeah... I'll try to remember."
+
+"Good. And if you need anything, just let me know. I don't know how much I can do, but I'll try to help. I'm sure S- wouldn't mind."
+
+With that, K- leaves, and you are left alone once more.
+
+
+@k_leaves
+
+"No, sorry..."
+
+"Well, whatever. I'm gonna take a nap at my place, then," she says, and leaves.
+
+
+
+@shower_2
+
+"You remember that I've seen you naked before, right?", says K-. "There's no need to hide yourself."
+
+Your longstanding hatred for your body has evolved into the indifference of pretending it does not exist. Undressing and showering breaks such pretensions. You cannot help but become aware of the fact that you are a physical entity, and even more aware of the toll entropy has taken upon you.
+
+- @sorry_shower: "Sorry..."
+# - @dilated: "I haven't dilated in a while." [? if cw_enabled: (CW: potential sexual content) ?]
+
+@sorry_shower
+
+"Sorry..." You say this more as an impulse than anything else.
+
+"What the fuck are you sorry for?"
+
+- @terrible_s: "I was terrible to S-."
+- @need_money: "Sorry I'm begging for money."
+- @idk_sorry: "Everything, I guess."
+
+
+@terrible_s
+view-if: s_cry = 1
+
+"I was terrible to S-. I messed up." You explain how you cried, and how it was as if S- parented you more than you parented him.
+
+"I didn't know what I was doing either," says K-. "None of us are born parents. Well, maybe some of us, but certainly not me. I'm still shit at it."
+
+- @in_shower: Just get in the shower.
+
+@need_money
+
+"Sorry I have to beg for money."
+
+"Fuck, don't let me make you feel bad about that!"
+
+- @in_shower: Just get in the shower.
+
+@idk_sorry
+
+"Everything, I guess."
+
+K- shrugs. "Well, that's not helpful."
+
+- @in_shower: Just get in the shower.
+
+@in_shower
+
+It is cramped. The water is cool. K- is warm. You are back-to-back, her pressed against the door, you pressed against the wall. Surprisingly, the two of you had never showered together before in all your years of dating and marriage.
+
+"Hey, I was just wondering," says K- over the sound of water. "Do you wash inside your vagina? You're not supposed to but I'm not sure if in your case it's..."
+
+You are almost certain that you have had this exact conversation before.
+
+# does em clean her vagina? Or is it better for the microbiotic environment if she doesn't?
+# hmm... (goes on wild research tangent about neovagina cleaning and whether some are self-cleaning and it turns out the evidence and anecdata are mixed (bc in trans studies anecdata is basically as good as the average scientific study due to small n and samples of convenience not to mention often researcher bias))
+
+- @its_complicated: "It's complicated..." (give the full answer)
+- @not_really: "Eh. Not really." (avoid the question)
+
+@its_complicated
+on-arrival: k_romance += 1; k_told_about_vagina = 1
+
+"Well, it's complicated. Um, there are mixed reports on whether neovaginas can be self-cleaning or self-lubricating and on how the microbiome of the neovagina compares to a natal one. It depends on the surgical technique and a host of factors. Most of us use cleaning solutions but, um, personally I don't. I like microbes. So I just let them grow naturally. Maybe there's a dataset down there."
+
+K- begins to laugh. "My God. No wonder you never bathe. It must be like burning down the Library of Alexandria every time you shower." Then she starts to cough up water. "God, I'm choking!"
+
+"I'm sorry. Do you need help?"
+
+"No! I'm just..."
+
+She is wheezing, and pounding on the door awfully hard.
+
+- @turn_off: Turn off the shower.
+#- @face_shower: Turn around and face her.
+
+
+@not_really
+
+"Eh. Not really."
+
+"Because of the microbiome?"
+
+"Because of the microbiome."
+
+K- laughs. "My God, it must be like burning down the Library of Alexandria every time you shower."
+
+- @turn_off: Turn off the shower.
+#- @face_shower: Turn around and face her.
+
+
+@turn_off
+go-to: end_shower
+
+You turn off the water.
+
+"Hey, I was still using that."
+
+"Sorry. The allocation was almost used up."
+
+# TODO: end of shower
+
+@face_shower
+go-to: end_shower
+
+You turn around to face K-.
+
+# TODO: end of shower
+
+@end_shower
+
+You are staring at each other, only wearing bathrobes.
+
+- @dilated
+- @want_to_sleep
+
+@want_to_sleep
+title: "Is it okay if I take a nap here?" asks K-.
+
+"Is it okay if I take a nap here?"
+
+"Sure, okay..."
+
+K- dresses in her underwear and enters the bed.
+
+"Sorry," she says, "but it's fine if we squeeze together, right?" She pats the spot next to her. "Come on."
+
+"Yeah, it's fine..."
+
+"Ha. It's just like back at the university."
+
+- @nap_face_her
+- @nap_facing_away
+
+@stare_at_k
+title: Stare at K-.
+
+You stare at K-, and she stares back at you.
+
+"Well, this is awkward," she says.
+
+@dilated
+title: "I haven't dilated in a while..."
+subtitle: [? if cw_enabled: (CW: potential sexual content) ?]
+max-visits: 1
+
+"I haven't dilated in a while..."
+
+K stares at your body for a moment. "Is the implication here that you wish to engage in penetrative activities in order to substitute for your lack of dilation in order to maintain the diameter of your neovagina?"
+
+- @maybe_sexual: "Maybe..."
+- @not_sexual: "No, it's not like that..."
+
+@not_sexual
+
+"No, it's not like that. I was just thinking about that because of what you asked in the shower."
+
+"Oh. Okay. Then, how about I just take a nap?"
+
+"Sure, okay..."
+
+K- dresses in her underwear and enters the bed.
+
+- @nap_face_her
+- @nap_facing_away
+
+
+@maybe_sexual
+go-to: dilated_2 if k_showered = 1; dilated_no_shower if k_showered = 0
+
+"Maybe. Something like that. Sorry..."
+
+@dilated_no_shower
+
+"No. Not until you've showered. Go shower right now. I'll wait here."
+
+- @dilated_no_shower_2: So you do.
+
+@dilated_no_shower_2
+
+# TODO: elaborate
+
+So you take a shower, and meet back on the bed.
+
+K- sighs. "You know I haven't done it since we separated, right?"
+
+"I mean, I haven't either."
+
+She smiles. "It's all good. This can count as practice."
+
+- @k_s_scene: ...
+
+@dilated_2
+
+"No, I mean, yes, let's do it." She sighs. "You know I haven't done it since we separated, right?"
+
+"I mean, I haven't either."
+
+She smiles. "It's all good. This can count as practice."
+
+# TODO: elaborate
+
+- @k_s_scene: ...
+
+@k_s_scene
+on-arrival: k_encounter = 1
+new-page: true
+set-bg: black
+
+...
+
+# TODO: sex scene here ... (save it for the extended edition)
+
+- @k_post: ...
+
+@k_post
+
+It is over. Your body is sore. The sheets are wet from the just-showered hair, now tangled together, yours and hers, nothing separating the two. For a few moments your mind was clear, as if nothing else in this world mattered. And now you are back to reality.
+
+"You're crying."
+
+- @am_i: "Oh, am I?"
+- @normal_reaction: "It's a normal physiological reaction."
+- @stay_silent: Stay silent.
+
+@am_i
+
+"Oh, am I?"
+
+"Yeah. You are."
+
+- @stay_silent
+
+@normal_reaction
+
+"It's a normal physiological reaction.
+
+"You didn't use to do this before."
+
+"Oh. Didn't I?"
+
+"No. You didn't."
+
+- @stay_silent
+
+@stay_silent
+title: Stay silent.
+
+You just stay silent. K- has fallen asleep. You are falling asleep.
+
+- @end_date: ...
+
+@end_date
+new-page: true
+set-bg: images/room1_filtered_dithered.png
+
+K- is already dressed when you wake up. "Sorry. I have to pick up S- from school soon. Can we maybe start the heartbeat thing again? Where you called me every day to make sure you're okay?"
+
+"Yeah... I'll try to remember."
+
+"Good. And if you need anything, just let me know. I don't know how much I can do, but I'll try to help. I'm sure S- wouldn't mind."
+
+With that, K- leaves, and you are left alone once more.

@@ -1,10 +1,15 @@
 title: S-
 new-page: true
-on-arrival: has_s = 1
+on-arrival: with_s = 1
+set-bg: images/room1_filtered_dithered.png
 
 # herein you take care of S-.
 
 You are home again, and it is the first time someone besides yourself has visited in over a year. That time was inspection.
+
+"Sorry this is so messy..."
+
+"Don't worry. Mom is messy too."
 
 S- paces your tiny apartment. it takes about 8 of his small steps to walk from one end to the other.
 
@@ -17,7 +22,7 @@ He looks up at you, as if expecting something.
 Half-forgotten memories of his first few years float through your mind. But those years were nothing like now. He is older. He is conscious and can think and can judge and will remember all the ways in which you have failed and will fail him.
 
 - @not_parent: You are not cut out to be a parent.
-- @one_night: It's just for one night.
+- @one_night: It is just for one night.
 - @maybe_fine: Maybe... maybe it will turn out fine.
 
 @not_parent
@@ -48,12 +53,12 @@ Burgers are not a part of your typical diet; your typical meals consist of rice 
 - @no_food_no_money: "We do not have food at home, and we do not have enough money to go out to eat."
 - @go_burgers: "Alright. Let's go."
 - @why_burgers: "Why do you want burgers?"
-- @burgers_propaganda: "The humble so-called 'burger' is a piece of the ruling party's propaganda campaign to legitimize their rule via continuity with the American Empire."
+- @burgers_propaganda: "The humble so-called 'burger' is a piece of the Ruling Party's propaganda campaign to legitimize their rule via continuity with the American Empire."
 
 @burgers_propaganda
 max-visits: 1
 
-"The humble so-called 'burger' is a piece of the ruling party's propaganda campaign to legitimize their rule via continuity with the American Empire."
+"The humble so-called 'burger' is a piece of the Ruling Party's propaganda campaign to legitimize their rule via continuity with the American Empire."
 
 "What?"
 
@@ -67,7 +72,9 @@ max-visits: 1
 
 Great. He thinks you're a loser. An accurate assessment, but a painful one nevertheless.
 
-TODO
+- @food_home: "We have food at home."
+- @no_food_no_money: "We do not have food at home, and we do not have enough money to go out to eat."
+- @go_burgers: "Alright. Let's go."
 
 
 @food_home
@@ -89,7 +96,7 @@ on-arrival: s1_knows_cook_rice = 1
 
 - @every_day: "I cook rice every day too."
 - @go_burgers: "Alright. Let's go get burgers."
-- @burgers_propaganda: "The humble so-called 'burger' is a piece of the ruling party's propaganda campaign to legitimize their rule via continuity with the American Empire."
+- @burgers_propaganda: "The humble so-called 'burger' is a piece of the Ruling Party's propaganda campaign to legitimize their rule via continuity with the American Empire."
 
 
 @every_day
@@ -112,20 +119,106 @@ view-if: food = 0 and money <= 10
 
 "We can go to our house. We have food there."
 
-TODO
+WARNING: This route should never be accessible.
 
 @go_burgers
-view-if: money >= 10
+view-if: money >= 30
 
-"Alright. Let's go."
+"Alright. Let's go. To get burgers."
 
 You swallow your small act of legitimizing regime propaganda. It's for S-. It's all for the smile on his face.
 
-TODO
+- @walking: The nearest restaurant is within walking distance.
+
+
+@walking
+
+You check your jacket and your mask. The hour is getting late; the lights have turned a dull orange, and there are few people on the streets. S- is holding your hand. You walk quickly, deliberately.
+
+This is not a restaurant you ordinarily visit, due to its high prices and promulgation of regime propaganda. But it is the only burger restaurant within a kilometre of your domicile. Its menu is unfamiliar, a jumble of strange words and anachronistic ingredient names that only have meaning for those born less than 20 years ago or more than 500 years ago - what is the meaning of a "Whopper", exactly? What is a "Mac"? You are partly to blame for this due to your discovery of historical cultural artifacts which then diffused into mainstream consciousness and thus...
+
+"Hey, I'm ready," says S-. "Can we order now?"
+
+Oh. Right. You are here to get food. Burgers.
+
+- @let_s: Get whatever S- is getting.
+- @regular_burger: Get the most normal item on the menu.
+- @random_burger: Get something random.
+- @no_burger: Nothing for you.
+
+@let_s
+go-to: order_2
+on-arrival: s_1_meal = "kids"; money -= 20; food += 1
+
+S- orders a kid's meal. "Um, two kid's meals," you say. You are worried for a moment, but the server takes your order without a second glance. S- looks at you strangely. It costs $20 in total.
+
+The kid's meal contains one "hamburger", which is a flavored algae patty between two bread buns with some leavy vegetables and unidentified sauces. There is a toy; it's a plastic figure of characters from the most recent iteration of an action movie franchise. You and S- have gotten different characters. You give him yours.
+
+
+@regular_burger
+go-to: order_2
+on-arrival: s_1_meal = "burger"; money -= 25; food += 1
+
+You order a "hamburger", which is a flavored algae patty between two bread buns with some leafy vegetables and unidentified sauces, and S- orders a kid's meal, which is the same thing but smaller. It costs $25 in total.
+
+
+@random_burger
+go-to: regular_burger
+
+@no_burger
+on-arrival: s_1_meal = "none"; money -= 10
+
+S- orders a kid's meal. "Nothing for me," you say. It costs $10 in total.
+
+S- looks at you. "Are you not hungry?", he asks.
+
+"No, I'm fine," you say, not entirely truthfully.
+
+S- eats outside, as you watch. "I can't eat if you watch me," he says, and you look away.
+
+- @back_home: You go back home.
+
+
+@order_2
+
+The two of you eat outside. There are few enough people nearby that you feel moderately safe in removing your respirator.
+
+Unfortunately, your burger tastes good. It tastes very good. Whatever synthetic flavorings they added to the algae to make it palatable did their jobs too well. S- downs his burger quickly.
+
+- @back_home: You go back home.
+
+
+@back_home
+
+"Are you full?", you ask.
+
+"Yeah. What about you?"
+
+[? if s1_meal = "none" : "I'll manage." ?]
+[? if s1_meal != "none" : "Yeah. I'm full too." ?]
+
+[? if s1_meal = "none" : "Are you sure? Aren't you going to eat something?" ?]
+
+[? if s1_meal = "none" : "Maybe later." ?]
+
+"Oh. Okay. I have to brush my teeth now."
+
+"Do you have your own things?"
+
+"Yeah. I brought my own toothbrush."
+
+- @hug_s 
+- @back_home_2: Why is he so good?
+
+@back_home_2
+go-to: bedtime
+
+S- is so *nice*.
+
 
 @why_burgers
 
-"Why do you want burgers?" you ask.
+"Why do you want burgers?", you ask.
 
 "Mom just cooks rice every day. I want something new."
 
@@ -196,9 +289,11 @@ He shrugs. "I dunno. If I'm not hungry tonight."
 
 "Then I've already failed being my own mom."
 
-"Wow."
+"Wow. That's sad."
 
 - @begin_cooking: Begin cooking.
+- @go_burgers: "Alright. Let's go get burgers."
+
 
 @begin_cooking
 
@@ -213,6 +308,7 @@ Meanwhile S- is sitting on your bed, flipping through the pages of a computer pr
 - @cook_2: Prepare another dish.
 
 @fun_book
+max-visits: 1
 
 "Is this a fun book?"
 
@@ -223,30 +319,304 @@ Meanwhile S- is sitting on your bed, flipping through the pages of a computer pr
 "I guess. Maybe."
 
 - @teach_s: Teach him?
+- @wait_cooking: Wait for the rice to finish.
 
 @teach_s
 
-"Did mom ever teach you any programming?"
+"Did mom ever teach you any programming? Or school?"
 
-TODO
+He shakes his head. "They don't teach that until high school."
+
+- @what_grade: "What grade are you in again?" You already know, but it is something to say.
+- @lets_start: "Let's start..."
+
+@what_grade
+
+"What grade are you in again?"
+
+"Second. Going to third soon." He stares at you.
+
+- @lets_start: "Let's start."
+- @done_rice: Just wait for the rice to be done.
+
+
+@lets_start
+
+"Let's start..."
+
+You turn on the computer.
+
+- @no_idea_2: You have no idea what you are doing.
+
+@no_idea_2
+
+Theoretically, you should be qualified to teach, given your educational background. However, your mind blanks. You stare at the screen and the blinking cursor.
+
+"Um, hello? Aunt Em?"
+
+"Yeah... Sorry."
+
+- @cry_1: Cry.
+
+@cry_1
+on-arrival: s_cry = 1
+
+For whatever reason, you begin to cry. A deeply irrational gesture. You bow your head. Try to hide your face.
+
+"Hey, mama?" Him calling you that just makes you cry harder. He walks to you with a tissue. A waste of perfectly good cellulose.
+
+- @dont_call_me: "Don't call me that."
+- @what_: "What?"
+- @im_fine_2: "I'm fine."
+
+@dont_call_me
+go-to: he_hugs_you
+
+"Don't call me that."
+
+"Why not?"
+
+"It makes me want to cry."
+
+"But you're already crying."
+
+"It makes me want to cry more."
+
+@what_
+go-to: he_hugs_you
+
+"What?"
+
+@im_fine_2
+go-to: he_hugs_you
+
+"I'm fine. I'm okay. Sorry."
+
+
+@he_hugs_you
+
+Suddenly, you feel a warmth around you. Physical contact. Oh. He's hugging you.
+
+You feel paper on your face, wiping away your tears. You do not deserve this.
+
+# TODO: elaborate this part?
+
+- @done_rice: Anyway, the rice is done.
 
 @wait_cooking
 
-Your hands are idle. You feel as if you should do something else.
+Your hands are idle. You feel as if you should be doing something.
 
 - @cook_2: Prepare another dish.
-#- @teach_s: Teach S- programming?
+- @entertain: Entertain S- somehow?
+- @teach_s: Teach S- programming?
+
+@entertain
+
+S- is still leafing through the programming textbook.
  
+- @fun_book: "Is this a fun book?"
+- @play_game: Play a computer game?
+- @watch_tv: Watch TV?
+
+@play_game
+
+"Do you want to, um, play a game?"
+
+"Sure, why not?"
+
+You turn on the computer. Are your usual games too violent for him? Probably. What games are suitable? Probably not any games about killing. Are there any educational games available that are not regime propaganda? You do not know.
+
+- @no_idea_play_game: You have no idea what you are doing.
+
+@no_idea_play_game
+
+You have no idea what you are doing.
+
+"Um, hello? Aunt Em?"
+
+"Yeah... Sorry."
+
+- @cry_1: Cry.
+
+@watch_tv
+
+"Do you want to, um, watch TV?"
+
+"Sure, why not?"
+
+You turn on the monitor. Currently playing on the public channel is a pre-election debate between representatives of the Ruling and Opposition parties.
+
+- @turn_off_tv: Turn off the monitor.
+- @play_game: Play a computer game?
+- @teach_s: Teach S- programming?
+
+@turn_off_tv
+
+You turn off the monitor. S- has not been watching anyway.
+
+- @done_rice: The rice is done.
+
+
+@done_rice
+
+The rice porridge is done cooking. You fill a bowl for S- and a bowl for yourself.
+
+"How do you like it?", you ask.
+
+"It's exactly like what mom makes."
+
+"Oh. No surprise there. She taught me."
+
+"You told me that already."
+
+"Is it good, at least?"
+
+He shrugs. "It's okay."
+
+- @finish_meal: S- finishes the meal.
+
+
+@finish_meal
+
+S- finishes the meal, and so do you. It's getting close to his bedtime.
+
+"I have to brush my teeth now."
+
+"Do you have your own things?"
+
+"Yeah. I brought my own toothbrush."
+
+- @hug_s
+- @bedtime: Bedtime.
+
 
 @cook_2
-go-to: cook_2_enough if food >= 2; cook_2_not_enough if food < 2
+choose-if: food >= 2
+unavailable-subtitle: You do not have enough food.
 
-Do you have enough food?
+It seems that you have enough stored food to make a small vegetable and meat stir fry dish. This is slightly more involved than cooking rice; you have to chop up the lettuce head and the dried tofu. Add oil to the heated pan, add the other ingredients, and stir. Your arms are tiring.
 
-@cook_2_enough
+When you are about to take a break, you let the spatula go, and it clatters to the floor. Oil splashes on your hand. The floor is stained. What a pain.
 
-It seems that you have enough to make a small vegetable and meat stir fry dish.
+"Can I help?", S- asks.
 
-@cook_2_not_enough
+- @s_helps: Let him help.
+- @s_no_help: No. You can do this.
 
-Unfortunately, you are out of ingredients.
+@s_helps
+
+"Sure. Help me wipe the floor."
+
+He silently takes a paper towel and begins to wipe the oil. You wash the spatula, and finish cooking the dish.
+
+"Thanks," you say. He shrugs.
+
+- @eat_2: Eat.
+
+
+@s_no_help
+
+"No. It's fine."
+
+Your body creaks as you bend downwards. "Are you sure you're fine?", S- asks.
+
+- @not_fine: "No, I'm not."
+- @im_fine: "(lie) Yes, I'm fine."
+- @cry_1: Cry.
+
+@not_fine
+
+"No. I'm not fine."
+
+"Then can I help you clean up?"
+
+- @s_helps_2: Let him help.
+- @cry_1: Cry.
+
+@s_helps_2
+
+He silently takes a paper towel and begins to wipe the oil. You wash the spatula, and finish cooking the dish.
+
+"Thanks," you say. He shrugs.
+
+"No problem."
+
+- @eat_2: Eat.
+
+
+@im_fine
+
+"Yes. I'm fine."
+
+"Are you sure?"
+
+- @not_sure: "No. I'm not sure."
+
+
+@not_sure
+
+"No. I'm not sure." You let out a deep breath. "I'm not sure of anything, really."
+
+
+
+@eat_2
+
+"So, how's the food?", you ask.
+
+"It tastes like what mom makes."
+
+"Oh. Is that a good thing or a bad thing?"
+
+"It's okay."
+
+- @hug_s
+- @bedtime: Bedtime.
+
+@hug_s
+title: Hug S-.
+on-arrival: stress -= 1
+
+An atypical urge comes over you. You wrap your arms around his shoulders, and hold him.
+
+"Why are you hugging me?"
+
+- @feel_like: "Because I feel like it."
+- @idk_why: "I don't know."
+- @because_love: "Because I love you."
+
+@idk_why
+go-to: hug_2
+
+"I don't know."
+
+@hug_2
+
+"Oh. Okay."
+
+# TODO: elaborate this part?
+
+He hugs you back, smothering you with his arms. You stay like this for a while, until you separate for S- to brush his teeth.
+
+- @bedtime: Soon, it is bedtime.
+
+@feel_like
+go-to: hug_2
+
+"Because I feel like it."
+
+
+@because_love
+go-to: hug_2
+
+"Because I love you."
+
+
+##################################################
+
+@bedtime
+
+It is S-'s normal bedtime. You arrange some sheets on the floor, which is where you will sleep. S- is sleeping in your bed. You stay awake until you hear the regular rhythms of his breathing, and then you can finally sleep.
+
+- @main.end_of_day: Sleep.
+

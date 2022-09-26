@@ -1,19 +1,34 @@
 title: K- calls.
 new-page: true
+on-arrival: k_bad += 1
 
-# TODO: 
+
+# TODO: if
 
 You receive a call from K-.
 
-"I thought we were going to meet today. Where were you?"
+"I thought we were going to meet last night. Where were you?"
 
-- @didnt_want: "Sorry, but..."
+- @didnt_want: "Sorry, but, I don't think I can..."
 - @sorry_my_bad: "Sorry, my bad. Can we meet tomorrow?"
 
 @didnt_want
+on-arrival: k_path = -1
+
+"Sorry, but, I don't think I can do this..."
+
+She sighs. "Well, whatever. S- is fine by himself. I was thinking, just maybe... nevermind."
+
+She hangs up.
 
 @sorry_my_bad
+view-if: k_bad < 2
+on-arrival: k_day = day - 1
 
-"Sorry, my bad. Can we meet tomorrow?"
+"Sorry, my bad. Can we meet tomorrow? Or another day?"
 
-She sighs. ""
+She sighs. "Fine. Do you want to take care of S- tomorrow night?"
+
+"Okay..."
+
+"Great! I'll see you then..."

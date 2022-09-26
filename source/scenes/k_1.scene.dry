@@ -1,10 +1,10 @@
 title: Call K-
-subtitle: Beg for money.
+subtitle: A scientist. Your ex-partner.
 tags: minor
 new-page: true
-view-if: k_path = 0 and (day_minor = 0 or day_major = 0)
-choose-if: numb = 1
-on-arrival: day_major += 1
+view-if: k_path = 0 and (day_minor = 0 or day_major = 0) and stress < 15 and day < 20
+choose-if: numb = 1 or rent_due = 1
+on-arrival: day_major += 1; daily_k = 1; stress += 1
 unavailable-subtitle: You are too self-aware to make the phone call. You must numb yourself first. 
 
 You need money for rent. There are two people who have a nonzero probability of helping you out at this moment. K- is one of them.
@@ -23,25 +23,13 @@ Back when it was still legal, you and K- were married. That was six years ago. S
 - @child: You and K- had a child, once.
 - @call: Make the call.
 
-@college
-max-visits: 1
-view-if: @past = 1
-count-visits-max: 1
-
-K- first met you in college.
-
-# TODO
-
-- @child: You and K- had a child, once.
-- @call: Make the call.
-
 
 @child
 view-if: @past = 1
 max-visits: 1
 count-visits-max: 1
 
-Back when it was still legal, you and K- had a child, back before the ruling party labeled women like you (*they did not call you women or even laverneans*) as a danger to women and children, before your existence was deemed a crime. S- is seven years old now. It was for his safety that you and K- had separated. That was what you told yourself.
+Back when it was still legal, you and K- had a child, back before the Ruling Party labeled women like you (*they did not call you women or even laverneans*) as a danger to women and children, before your existence was deemed a crime. S- is seven years old now. It was for his safety that you and K- had separated. That was what you told yourself.
 
 - @call: Make the call.
 
@@ -143,7 +131,7 @@ go-to: need_money
 
 "I'm sorry... forget-"
 
-"No. Look..." A pause. "There's one thing you could do to help me out, and I'll pay you. Can we meet tomorrow?"
+"No. Look..." A pause. "There's one thing you could do to help me out, and I'll pay you. I have to work overnight in two days. Can you take care of S- then?"
 
 - @yes_meet: "Sure..."
 - @idk_meet: "I'm not sure..."
@@ -151,11 +139,11 @@ go-to: need_money
 
 
 @yes_meet
-on-arrival: k_path = 1; k_meet_day = day
+on-arrival: k_path = 1; k_day = day
 
 "Sure..."
 
-"Good. How about 5PM tomorrow at LX Square?"
+"Good. Can we meet at 5PM the day after tomorrow at Founders Square? I'll bring S- then."
 
 "Yeah..."
 
@@ -166,11 +154,11 @@ She hangs up.
 - @hangup: A thread of hope.
 
 @idk_meet
-on-arrival: k_path = 1; k_meet_day = day
+on-arrival: k_path = 1; k_day = day
 
 "Um, I'm not sure..."
 
-"I mean, based on my current knowledge, I doubt you'd have anything better to do. Would you be able to meet 5PM tomorrow at LX Square?"
+"I mean, based on my current knowledge, I doubt you'd have anything better to do. Would you be able to meet 5PM the day after at Founders Square?"
 
 - @yes_meet_2: "I can be there..."
 - @idk_meet_2: "I still don't know..."
@@ -178,7 +166,7 @@ on-arrival: k_path = 1; k_meet_day = day
 
 @need_money_now
 view-if: rent_due <= 2
-on-arrival: money += 100; k_money = 1; k_path = 1; k_meet_day = day
+on-arrival: money += 100; k_money = 1; k_path = 1; k_day = day
 
 "I actually need the money right now. It's kind of an emergency..."
 

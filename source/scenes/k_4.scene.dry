@@ -1,0 +1,220 @@
+title: A call from K-.
+subtitle: Many calls, in fact.
+view-if: k_path = 3 and day >= k_day + 2 and (day_major = 0 or day_minor = 0) and day < 20 and stress < 15
+on-arrival: k_path = 4; day_minor += 1; stress += 1
+frequency: 1000
+tags: minor
+new-page: true
+
+You receive a phone call from K-'s household.
+
+"Mama? I mean, Aunt Em?"
+
+"Yes, S-?"
+
+"Something's wrong with mom. She's just sitting here. Not moving. Talking to herself. When I talk to her she doesn't say anything."
+
+- @go_there: "Okay. I'll be there."
+
+@go_there
+
+"Okay, I'll be there."
+
+You rush to K-'s apartment, as fast as you can, which is still 30 minutes by trolley. You climb up the stairs to her second floor apartment. S- opens the door.
+
+K- sits catatonic in front of the TV. Her eyes are open. She is muttering to herself, unintelligible words.
+
+- @you_okay: "Are you okay?"
+- @water: Give her some water or something.
+- @tea: Make tea.
+
+@you_okay
+
+"Are you okay?"
+
+She turns to look at you. "No I'm fucking not okay. What do you think?"
+
+"Mom is talking to you," says S-. "Wow."
+
+- @hug_her: Hug her?
+- @water: Give her some water or something.
+- @tea: Make tea.
+
+@hug_her
+go-to: thanks
+on-arrival: k_romance += 1; stress -= 1
+
+The endorphins released by physical contact will help her. Right?
+
+So you hug her.
+
+"Thanks. The endorphins released by physical contact are really helping me right now."
+
+@water
+go-to: thanks
+
+You pour a cup of hot water. K- drinks.
+
+"Thanks."
+
+@tea
+go-to: thanks
+
+She has concentrated tea powder. You boil a pot of hot water, and mix the tea. K- drinks.
+
+"Thanks."
+
+@thanks
+
+Finally she turns off the monitor, and faces you.
+
+"We were doing an experiment in the lab," she begins. "Do you know what really happened in the Cataclysm?"
+
+"You probably know more than me..."
+
+"The entity attacks and nanoplagues and infiltrations were just the start of it. It wasn't a natural occurrence. The Guards, and the security forces, and..."
+
+"Oh."
+
+"There's all sorts of shit going on here. If I don't do the experiments I'll be fired and blacklisted and starve. And if I do the experiments, I'll be complicit in murder and the perpetuation of the current fucked-up-ness. Am I willing to quit my job and get blacklisted from every future job? No, because the next person will do the same thing and he isn't even gonna have a second thought!"
+
+"And you know what I did? I tried praying to God of all things. Well guess what, God isn't fucking listening! He isn't fucking helping!"
+
+She is crying. You hand her a tissue. "Thanks."
+
+- @no_idea: You have no idea what she is talking about.
+- @comfort: But you want to comfort her.
+- @must_comfort: How do you comfort her, exactly?
+
+
+@no_idea
+
+"Uh, I don't know what you are talking about..."
+
+"It's fine. I don't expect you to. I wonder how many of my coworkers are having conversations like this. If they had any morals they sure as fuck didn't show it! Fuck science, by the way. Best case is, you do something cool and the funding gets canceled and it never sees the light of day. Worst case is, they make you do fucked up shit and..."
+
+K- has fallen on the floor. You share a glance with S-.
+
+- @help_her: Carry her to bed.
+- @cook: Cook something.
+- @clean: Clean up the apartment.
+
+@help_her
+
+Unfortunately, you are not physically strong enough to move her.
+
+- @cook: Cook something.
+- @clean: Clean up the apartment.
+
+@comfort
+go-to: must_comfort
+
+
+@must_comfort
+
+How do you comfort her, exactly? Are you going to tell her that everything will be okay when it obviously will not be?
+
+- @cook: Cook something.
+- @clean: Clean up the apartment.
+
+
+@cook
+
+There are no more groceries left in the refrigerator, but K- has a large supply of high-quality white, brown, and glutinous rice, mung beans, red beans, lentils, and even some dried dates. It must have been expensive. You wash a mixture of rice and various beans in a pot, fill it to the marking with water, add more sugar than usual, and put it into the pressure cooker. This can hardly be considered cooking, but it will do, for now.
+
+S- is reading a picture book on the couch. You sit next to K- as the rice is cooking. She places her hand on yours, and squeezes. You squeeze back.
+
+- @eat: The porridge is ready.
+
+@eat
+on-arrival: food += 1
+go-to: still_money
+
+"S-, have you eaten yet?", you ask.
+
+He shakes his head. The three of you gather around the kitchen counter. K- has finally gotten up by herself. You serve three bowls. It tastes good, better than your usual. Sweet.
+
+"Thanks," says K-.
+
+"Thank you Aunt Em," says S-.
+
+"Um. Yeah. It's fine."
+
+@clean
+
+The apartment is messy, almost as messy as yours. Socks and clothes lay strewn about the living room, along with empty wrappers and clumps of long black hair. You find a broom and dustpan, and begin sweeping.
+
+"Can I help?" asks S-.
+
+"Um, just move all the clothes out of the way." 
+
+Together the two of you clean the living room floor, until it looks almost suitable for human habitation. Then you begin folding the clothes.
+
+- @k_gets_up: K- has gotten up.
+
+@k_gets_up
+go-to: still_money
+
+K- has finally gotten up by herself. Her tears have stopped, but her eyes are still red. "You don't have to do this, you know."
+
+"I'm doing this because I want to."
+
+
+@still_money
+
+"By the way, Em, do you still need money? I can give you some right now."
+
+- @yes_money: "Yes, I still need it..."
+- @no_money: "No. Keep it."
+
+@yes_money
+on-arrival: money += 100
+go-to: are_you_okay
+
+"Yes, I need it... Sorry."
+
+"No, it's fine. Here's a hundred."
+
+@no_money
+
+"No. Keep it."
+
+"Are you sure?"
+
+"Yes."
+
+- @are_you_okay: "Are you going to be okay?"
+
+@are_you_okay
+
+"Are you going to be okay?"
+
+"Probably. I'm feeling better now. Just needed a good cry." She smiles. "It's fine. I'm just gonna look for another job."
+
+"What about the blacklist?"
+
+"What about it? So I get a pay cut and can't be called a scientist anymore. Big deal. I hear the Archives are looking for DNA technologists."
+
+- @good_for_you: "Good for you..."
+- @your_support: This means you won't be supported...
+
+@good_for_you
+
+"Good for you..."
+
+She sighs. "Maybe we'll have to downsize. Maybe I won't be able to give you money anymore."
+
+"It's fine..."
+
+"By the way, thanks for coming here. I'll be fine now."
+
+@your_support
+view-if: k_romance <= 3
+
+*If she quits the job she won't be able to financially support you anymore* is a thought you have.
+
+"Hey, we'll figure something out, okay?"
+
+"Yeah..."
+
+"By the way, thanks for coming here. I'll be fine now."

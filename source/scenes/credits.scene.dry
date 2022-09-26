@@ -1,0 +1,102 @@
+title: Credits
+
+*The Archivist and the Revolution* is the final refinement of various story ideas that have been simmering in my head for over 10 years by now. Like all of my stories, this is nothing more than a hodgepodge of my interests, obsessions, and neuroses.
+
+Written by Autumn Chen.
+
+Coded using {!<a href="https://github.com/aucchen/dendry">dendry</a>!}, originally by Ian Millington with heavy modifications from the author.
+
+Images:
+
+`monitor_dithered.png`: modified from...
+
+`monitor_2_dithered.png`:
+
+All other images by the author. The backgrounds were edited from photographs using GIMP filters and dithering with ImageMagick.
+
+= Acknowledgments
+
+Thanks to [...]
+
+#Thanks to Arlo @magiciansvoyage, Jinx @lapinlunairegames, Travis Moy,...
+
+= Science
+
+There are a number of real-world papers referenced in the story from the field of DNA data storage.
+
+> Shipman, S., Nivala, J., Macklis, J. et al. CRISPR–Cas encoding of a digital movie into the genomes of a population of living bacteria. Nature 547, 345–349 (2017). https://doi.org/10.1038/nature23017
+
+
+> Yim, S.S., McBee, R.M., Song, A.M. et al. Robust direct digital-to-biological data storage in living cells. Nat Chem Biol 17, 246–253 (2021). https://doi.org/10.1038/s41589-020-00711-4
+
+This is a work of fiction; none of the technologies described in the story are intended to be scientifically accurate.
+
+= Inspirations and Related Works
+
+Games:
+
+> *howling dogs* by Porpentine
+# for obvious reasons.
+
+> *SPY INTRIGUE* by furkle
+# because it's my favorite game.
+
+> *Bee* by Emily Short
+# because all of my storylet-based IF are inspired by Bee.
+
+> *Solarium* by Anya Johanna DeNiro
+# for the history.
+
+> *Get Your Gun, Dragonfly* by Palimrya
+# for the description of one possible trans future.
+
+> *Neo Cab* by Chance Agency
+# for the gig economy representation
+
+> *Computerfriend* by Kit Riemer
+# 
+
+
+Books:
+
+> *Oryx and Crake* by Margaret Atwood
+# for obvious reasons.
+
+> *Summer Fun* by Jeanne Thornton
+# for the virtual intergenerational conversations between trans women.
+
+> *Little Fish* by Casey Plett
+#
+
+> *Small Beauty* by Jia Qing Wilson Yang
+#
+
+> *Manhunt* by Gretchen Felker-Martin
+# i've only read a preview chapter unfortunately. but.
+
+> {!<a href="https://bostonreview.net/articles/charlie-jane-anders-dont-press-charges-and-i-wont-sue/">"Don't Press Charges and I Won't Sue" by Charlie Jane Anders</a>!}
+
+
+Web Media:
+
+> *Homestuck* by Andrew Hussie
+
+> {!<a href="https://archiveofourown.org/works/33158965/chapters/82319554"><i>Glow, Worm</i> by alysongreaves</a>!}
+
+Music: The unofficial soundtrack is {!<a href="https://open.spotify.com/playlist/4X9RQqkMnikpfSzG4Cxq3i">here</a>!}.
+
+> *Mydata* and others by Katie Dey
+
+> *Transangelic Exodus* and others by Ezra Furman
+
+
+- @one: Start game
+- @game_over: End game.
+
+@game_over
+view-if: started = 1
+game-over: true
+
+@postgame_credits
+title: Credits and Notes (post-game)
+view-if: started = 1

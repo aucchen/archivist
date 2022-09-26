@@ -1,9 +1,9 @@
 title: Call A-
-subtitle: Beg for money.
+subtitle: A doctor. Your ex-partner.
 tags: minor
-view-if: a_path = 0 and (day_major = 0 or day_minor = 0)
-on-arrival: day_minor = 1
-choose-if: numb = 1
+view-if: a_path = 0 and (day_major = 0 or day_minor = 0) and stress < 15 and day < 20
+on-arrival: day_minor = 1; daily_a = 1; a_day = day
+choose-if: numb = 1 or rent_due = 1
 new-page: true
 unavailable-subtitle: You are too self-aware to make the phone call. You must numb yourself first.
 
@@ -28,7 +28,7 @@ A- was... someone different before. At one time, she was a lavernean like you, u
 
 @a_13
 
-The two of you were... dating. Yes. That would be an accurate description. Back when she was like you. You were lovers. A-, K-, and you were in a mutual relationship together, before A- left. K- has never forgiven him. Have you?
+The two of you were... dating. Yes. That would be an accurate description. Back when she was like you. You were lovers. A-, K-, and you were in a mutual relationship together, before A- left. You hear he has a new family now, a new wife and children. K- has never forgiven him. Have you?
 
 - @call: Call A-.
 

@@ -1,9 +1,11 @@
 title: Meeting A-
 subtitle: 6PM, LX Square
-view-if: a_path = 1 and day_major = 0
-on-arrival: day_major += 1; a_path = 2; a_romance = 1
+view-if: a_path = 1 and day_major = 0 and daily_a <= 0 and stress < 15 and day < 20
+on-arrival: day_major += 1; a_path = 2; a_romance = 1; daily_a = 1; a_day = day
+frequency: 400
 tags: major
 new-page: true
+set-bg: images/windows_filtered_dithered.png
 
 Why are you meeting with A-?
 
@@ -30,11 +32,11 @@ You are meeting with A- because you still have feelings for him, or something li
 
 @lx_square
 
-Seeing A- gives you a shock. He is... well, he's dressed like a lavernean stereotype, like one of the pre-war photos found in the Archives, in addition to a wig and a thorough application of makeup. At least he's wearing a respirator.
+Seeing A- gives you a shock. He is... well, he is dressed like a lavernean stereotype, like one of the pre-war photos found in the Archives, in addition to bleached blonde hair (you cannot tell if it is a wig) and a thorough application of makeup. At least he is wearing a respirator.
 
 "Hey, Em."
 
-Oh. She's using the girlmode voice, too.
+Oh. She is using the girlmode voice, too.
 
 - @too_old: "Aren't you too old to wear striped thigh highs?"
 - @scared: "Aren't you scared to be like this in public?"
@@ -75,10 +77,13 @@ A lull in the conversation. The two of you stare at each other, A- smiling, you 
 
 
 @i_am_boring
+on-arrival: a_romance += 1
 
 You shrug, and look away from her. "I'm sorry for being such a boring person."
 
-She laughs again. "I don't think you're boring! You seem the same as always. I think the grandmacore look suits you."
+She laughs again. "I don't think you're boring! You seem the same as before. I think the grandma look suits you. It's cute."
+
+"Oh..."
 
 A lull in the conversation. The two of you stare at each other, A- smiling, you making who knows what facial expression. You glance away.
 
@@ -107,7 +112,7 @@ on-arrival: a_romance += 1
 
 "So is 'she' fine?"
 
-She shrugs. "Whatever."
+She shrugs. "Whatever. Nerd."
 
 - @what_do: "What do you want to do?"
 
@@ -158,7 +163,9 @@ on-arrival: a_romance -= 1
 
 "Sorry, I'd rather go home."
 
-"Oh. Okay."
+"Oh. Okay. Well, see you later."
+
+"Yeah. Goodbye."
 
 
 @okay_shopping
@@ -193,17 +200,180 @@ There is a warehouse store in a reclaimed pre-war building, a flat and wide gray
 - @wander_off: Wander off by yourself..
 
 @stay_with_a
+on-arrival: a_romance += 1
 
-"What do you want?", you ask.
+You stare at A-. She is tall, and her colorful attire stands out among the blandly dressed men and women in the grocery store. Not like you. You are calibrated to blend in, and she might as well be calibrated to be noticed. *What if they see? What if they check her ID and it is wrong and then both of you would be subject to...*
 
-"I don't need anything. But if they have it..."
+"Come on. Stop staring. There's something I'm looking for."
 
-She leads you towards the spice aisle.
+She leads you towards the spice aisle. Her hands hover above the dispensers. "Oh, here it is!" She waves a bottle of yellow powder at you triumphantly. "It's cumin. The synthesizers must have been working again."
 
-TODO
+"Oh. That's great."
+
+A- makes an exaggerated frown. "You don't sound too excited. Are you still eating rice and beans with no flavoring?"
+
+"Uh..."
+
+"Wow. Maybe that's why you're so sad. How do you even live without spices?"
+
+"Uh..."
+
+"Hey, I'm joking. But really, maybe we should try cooking together sometime?"
+
+- @uhhh: "Uh..."
+- @wife: "Your wife..."
+- @still_need_food: "I still need to get groceries..."
+
+@uhhh
+
+"Uh..."
+
+"Hold that thought. Let's get you some groceries."
+
+- @get_groceries: Get groceries.
+
+@wife
+
+"What about your wife..."
+
+"Oh wow. Do you think that she would think I'm having an affair with you?"
+
+"Um..."
+
+She laughs. You're ashamed. "She knows about you, remember? Not the lavernean part, but she knows we were a thing. She doesn't see you as a threat."
+
+"Okay..."
+
+"Hold that thought. Let's get you some groceries."
+
+- @get_groceries: Get groceries.
+
+
+@get_groceries
+
+A- leads you to pick up your staples, rice and legumes. Her left hand is behind your back, a protective gesture, guiding you as if you were a younger sister, while holding a basket with her right. You look normal. No one is going to notice anything wrong.
+
+She checks out and pays for you. No need for you to say a thing.
+
+- @separate_r: This is where you separate.
+- @separate_no_r: This is where you separate.
+
+
+
+@still_need_food
+
+"I still need to get groceries..."
+
+"Oh. The usual?"
+
+"Yes..."
+
+A- guides you to pick up rice and legumes. Her hand is behind your back, guiding you as if you were a younger sister. In the end, she pays for you.
+
+"I'm serious about cooking together, by the way."
+
+"Oh..."
+
+- @separate_r: This is where you separate.
+- @separate_no_r: This is where you separate.
+
 
 @wander_off
+on-arrival: food += 5
 
-You need rice, meats, and vegetables. You wander off, and see that you've lost A- along the way.
+You need rice, meats, and vegetables. You wander off, and see that you've lost A- along the way. The shelves are stocked with rice and your preferred species of legumes, thankfully. There are no fresh vegetables, as usual, so you take some canned mushrooms.
 
-TODO
+As you reach the checkout, A- taps your shoulder. "Hey, look what I found!" She shows a cannister with a yellow powder. "It's cumin. They usually don't have it here."
+
+"Oh, uh, good for you."
+
+"You should really try to have more spices in your life." She takes your basket from you and checks out.
+
+- @separate_r: This is where you separate.
+- @separate_no_r: This is where you separate.
+
+@separate_no_r
+view-if: a_romance < 3
+
+"So I'll see you again?"
+
+"Sure..."
+
+"Let me know if you need anything. Money, food, whatever. I can even put you up if you need a place to live for a while."
+
+You are alone again.
+
+- @will_call: You will call her.
+- @wont_call: You have no plans to call her.
+
+@will_call
+
+@wont_call
+
+@separate_r
+view-if: a_romance >= 3
+
+#separate ending for romance?
+
+As you leave the store, you find yourselves in a secluded locale. There is an alcove here, hidden from the store patrons and the houses. The bag drops.
+
+A- is standing close to you. Dangerously close. Your bodies touching. You feel her breath in your ears. Even through your mask you can *smell* her (a sign of poor fit or filtration?). Her hands are wrapped around your wrist and behind your back (a hug? are you correctly understanding the implications?). She is looking at you.
+
+You are alone here. No one is watching, not even a security camera.
+
+- @risk_it: Risk it.
+- @no_risk: Pull away.
+- @est: "You smell like estrogen."
+
+@risk_it
+on-arrival: kissed_a = 1; a_romance += 1
+
+She knows what to do. You know what to do.
+
+You pull down your mask, and she pulls down hers. She is wearing *lipstick* of all things. A dangerously irrational gesture.
+
+She pulls you in. You open your mouth. Close your eyes. Her lips taste of wax and artificial flavoring. Something is dripping on your face.
+
+"Wow. Are you that hungry for a taste of me?"
+
+You realize that you have been drooling. Embarassing.
+
+- @fuck_off: "Oh, fuck off."
+
+@fuck_off
+go-to: walk_end
+
+"Oh, fuck off."
+
+"Oh, Em..." A- ruffles your hair. You instinctively grab her wrist. "I missed you. I really do. I know it can't go back to the way it was before, but... maybe things could be different. Maybe we could... I don't know."
+
+"Maybe..."
+
+@no_risk
+go-to: walk_end
+
+You move away from A-. You shake her hand off your back. You pick up the bag that she dropped.
+
+"Sorry,..." you begin, but she interrupts you.
+
+"It's fine. I should be sorry."
+
+@walk_end
+
+You separate, unlinking your hands, and walk together back to the trolley stop.
+
+"Call me, okay?", she says as the trolley arrives.
+
+"Yeah. Okay."
+
+@est
+
+"You smell like estrogen."
+
+"It's perfume, idiot. Haha. I haven't been on estrogen in five years."
+
+"I know. It's just, um..."
+
+You do not know what you were going to say, but you do know that the moment was ruined.
+
+- @walk_end: You separate.

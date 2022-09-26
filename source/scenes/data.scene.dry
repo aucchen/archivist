@@ -6,12 +6,13 @@ title: DNA data recovery
 subtitle: Your paid job.
 new-page: true
 on-arrival: data_seen += 1; stress += 1; day_data_seen = 0; data_day = day
-view-if: day_major = 0 and stress < 15 and data_seen = 0
+view-if: day_major = 0 and stress < 15 and data_seen = 0 and day < 20 and has_contract = 1
 max-choices: 5
 tags: major
 frequency: 500
+set-bg: images/monitor_3_dithered.png
 
-In the middle of the 21st century, when many believed (accurately) that civilization's collapse was imminent, a group of scientists undertook a mission to preserve human knowledge. They transcribed what they considered as the most important pieces of human knowledge into DNA, and transfected the DNA into specially engineered strains of E. coli. These strains was designed to outcompete existing bacterial populations, and to replicate and preserve the data-storage DNA plasmids with minimal mutations. The scientists then released their creations into the wild, via probiotic supplements among other means.
+In the middle of the 21st century, when many believed (accurately) that civilization's collapse was imminent, a group of scientists undertook a mission to preserve human knowledge. They transcribed what they considered as the most important pieces of human knowledge into DNA, and transfected the DNA into specially engineered strains of E. coli and other bacteria. These strains were designed to outcompete existing bacterial populations, and to replicate and preserve the data-storage DNA plasmids with minimal mutations. The scientists then released their creations into the wild, via probiotic supplements among other means.
 
 Today, it is estimated that 10% of E. coli populations in still-populated areas are used for DNA storage, as the technology was used repeatedly over the years, discovered and lost and discovered again.
 
@@ -23,7 +24,7 @@ There is also a message from C-, your coworker-turned supervisor.
 
 `Hi Em,
 
-Sorry about the job title change. You're still a valuable contributor to our team, although your output has slid recently.`
+Sorry about the job title change. You're still a valuable contributor to our team, although your output has slid recently. We believe that a more flexible position will be better for both your interests and ours. You don't have to work yourself beyond your physical or mental means. Just do what you can.`
 
 `Best,
 C-.`
@@ -37,14 +38,12 @@ title: DNA data recovery
 subtitle: Your paid job. [? if prev_data_type != 0 : You have a message from the Archives about your last assignment. ?]
 new-page: true
 on-arrival: data_seen += 1; stress += 1; day_data_seen = 0; data_day = day
-view-if: day_major = 0 and stress < 15 and data_seen >= 1
+view-if: day_major = 0 and stress < 15 and data_seen >= 1 and has_contract = 1 and day < 20
 go-to: archivist_check
 set-jump: view_display
 tags: major
 frequency: 500
-
-# TODO: have the Divya diary be the only one available on the first try. Or have a sample of datasets available in the first day.
-# TODO: should we be able to decode more than one dataset per day? maybe three? and decrease payouts accordingly?
+set-bg: images/monitor_3_dithered.png
 
 You open your e-mail. There are new data recovery and archival requests.
 
@@ -85,7 +84,7 @@ on-arrival: {! Q.chosen_data_types.push('personal'); !}
 go-to: data_filed
 
 @o
-on-arrival: {! Q.chosen_data_types.push('govt'); !}
+on-arrival: {! Q.chosen_data_types.push('document'); !}
 go-to: data_filed
 
 @m
@@ -99,8 +98,9 @@ You have filed the dataset.
 
 @keep
 on-arrival: {!
+Q.correct_data_types.pop();
 var last_data = Q.prev_data.pop();
-Q['data_archives'].append(last_data);
+Q.data_archives.append(last_data);
 // wiki
 Q.data_scenes.append(window.dendryUI.game.scenes['data.' + last_data]);
 !}
@@ -111,7 +111,8 @@ You keep the dataset for yourself, without filing it with the Archives.
 
 @discard
 on-arrival: {!
-    Q['prev_data'].pop();
+Q.correct_data_types.pop();
+Q.prev_data.pop();
 !}
 go-to: post_data
 
@@ -125,7 +126,7 @@ You delete the dataset. There is no use for it.
 @post_data_2
 go-to: end_data; pre_view_display
 on-arrival: {!
-if (Q.day_data_seen > 2 && Math.random() > 0.5) {
+if (Q.day_data_seen >= 2 && Math.random() > 0.5) {
     Q.stress += 1;
 }
 !}
@@ -149,6 +150,8 @@ Q.payment = 0;
 Q.datasets_checked = 0;
 // 1. do the first data
 var i = 0;
+var has_special = false;
+var has_hoax = false;
 while (i < Q.chosen_data_types.length) {
     // randomly do one out of 50...
     if (i > 0) {
@@ -162,27 +165,47 @@ while (i < Q.chosen_data_types.length) {
     var correct_t = Q.correct_data_types.shift();
     Q.check_data_text += '\n<p>' + data + ': ';
     if (chosen_t == correct_t) {
-        Q.check_data_text += 'Your assignment of this dataset as "' + chosen_t + '" was correct. You have been paid $' + Q.type_payments[chosen_t] + '</p>';
+        Q.check_data_text += 'Your assignment of this dataset as "' + chosen_t + '" was correct. You have been paid $' + Q.type_payments[chosen_t] + '.</p>';
         Q.payment += Q.type_payments[chosen_t];
     } else {
         if (correct_t == 'obscene') {
-            Q.check_data_text += 'The dataset has been deemed contrary to public interests, and thus will not be archived. Nevertheless, you have been paid $20.</p>';
+            Q.check_data_text += 'The dataset has been deemed obscene and contrary to public interests, and thus will not be archived. Nevertheless, you have been paid $20.</p>';
             Q.payment += 20;
         } else if (correct_t == 'hoax') {
-            Q.check_data_text += 'Based on our evidence, this dataset has been deemed as a HOAX, and will not be archived.'
+            Q.check_data_text += 'Based on our evidence, this dataset has been deemed as a HOAX, and will not be archived.';
             Q.check_data_test += ' Nevertheless, you have been paid $10.</p>';
+            has_hoax = true;
+        } else if (correct_t == 'special') {
+            has_special = true;
+            Q.check_data_text += 'This dataset has been deemed of special interest, and will be disseminated more broadly within the state. You have been payed $80.</p>';
+            Q.payment += 80;
+        } else if (correct_t == 'liana') {
+            Q.check_data_text += 'A diary purportedly from Liana Xu is, of course, of deep importance to us, and we thank you for your work. You have been payed $100.</p>';
+            Q.payment += 100;
         } else {
-            Q.check_data_text += 'Your assignment of this dataset as "' + chosen_t + '" was incorrect. The correct type is "' + correct_t + '". You have been paid $30.</p>.';
+            Q.check_data_text += 'Your assignment of this dataset as "' + chosen_t + '" was incorrect. The correct type is "' + correct_t + '". You have been paid $30.</p>';
             Q.payment += 30;
         }
     }
     Q.check_data_text += '\n\n';
     i += 1;
 }
+// C- sends you a message saying that you should not sell out your people.
+if (has_special && !Q.r_processed) {
+    Q.r_processed = 1;
+    Q.check_data_text += '<p>A message from C-:</p><p>Hi Em, I saw the R dataset that you filed. Just, be careful in what you send in. We both have friends who might not want certain people to see these files.</p>';
+} else if (has_hoax && Q.l_seen == 2) {
+    Q.check_data_text += '<p>A message from C-:</p><p>Turns out, the whole Liana Xu dataset might have been some sort of hoax. Our security people think there must have been an artificial dataset injected into the pipeline by either insiders or outside hackers. We aren\'t going to penalize you, but just so you\'re aware, we will not be paying for any more of these files, and you should not regard any of these files as having veracity. Sorry to get your hopes up.</p>';
+}
+// promote some specific datasets: S101.fastq.gz, X1001.fastq.gz
+if (Q.key1001 == 0 && !Q.check_101_prompt) {
+    Q.check_data_text += '<p>A message from C-:</p><p>If you happen to see it, check out S101.fastq.gz. This file might be important.</p>';
+} else if (Q.key1001 == 1 && !Q.l_seen) {
+    Q.check_data_text += '<p>A message from C-:</p><p>If you happen to come across it, check out X1001.fastq.gz. From a preliminary analysis, a lot of people are excited about this one. Any file starting with X is something that\'s been marked to be of special interest.</p>';
+}
 Q.money += Q.payment;
 !}
 go-to: view_display if datasets_checked = 0; check_data_0 if datasets_checked > 0
-# TODO: check if data_type (user-submitted) agrees with prev_data_type (correct data type). assign the user money.
 
 @check_data_0
 
@@ -229,7 +252,7 @@ go-to: jumpScene
 
 @d606
 title: `D606.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, diaries
 choose-if: key101 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -254,10 +277,12 @@ go-to: todo
 
 `I hope your world is better than mine.`
 
+You are terrified of death. Otherwise, you might have already died.
+
 
 @d77
 title: `D77.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, diaries
 choose-if: key7 = 1 or key11 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -280,7 +305,7 @@ go-to: todo
 
 @d19
 title: `D19.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, diaries
 choose-if: key19 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -308,10 +333,11 @@ go-to: todo
 
 # outcome: suppressed
 
+You knew that the past was a more enlightened time.
 
 @d31
 title: `D31.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, diaries
 choose-if: key31 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -326,7 +352,6 @@ go-to: todo
 
 `BSRI DNA Diaries Project - #2`
 
-# TODO
 `My name is Gonzalo W (he/him) and I founded the DNA Diaries project here at the Basic Sciences Research Institue, or BSRI. The purpose of the project is multifold. First, it is to test our DNA synthesis methods, and to test our different encoding schemes, as well as both in vivo and in vitro storage methodologies and media.`
 
 
@@ -351,35 +376,17 @@ go-to: todo
 
 `My name is Jiaren Qi and I am the director of the Basic Sciences Research Institute. I was born in Shijiazhuang, China almost 50 years ago. I am a woman, and I have been for at least 20 years. I am married to Yingmei (Liana) Xu, also of BSRI.`
 
+`I find the process of writing these diaries to be somewhat therapeutic. I have not been in the habit of introspection before, but...`
+
 # outcome: suppressed
 
-@d2002
-title: `D2002.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
-tags: data, diaries
-choose-if: key1001 = 1
-unavailable-subtitle: You don't know how to decode this file.
-view-if: @d1001 >= 1
-max-visits: 1
-count-visits-max: 1
-on-arrival: {! Q.prev_data.push('d2002'); Q.correct_data_types.push('hoax'); Q.d_seen += 1; !}
-go-to: decode
-set-jump: d2002_
-
-@d2002_
-go-to: todo
-
-# TODO: view-if only when some liana diaries are seen.
-
-`Jiaren's diaries`
-
-`I find the process of writing these diaries to be somewhat therapeutic. I have not been in the habit of introspection before, but...`
+Jiaren does not occur in the historical record; the Founder's personal relationships were unknown, and she was assumed to have a husband. If this is true, then, as some revisionist pseudohistorians have suggested, Liana was indeed a lesbian, and not only that, but also have a partner who was the historical equivalent of a lavernean (probably).
 
 ################### wiki
 
 @w606
 title: `W606.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key101 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -403,7 +410,7 @@ These organisms are most likely extinct, you think. This might be the only recor
 
 @w29
 title: `W29.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key29 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -425,7 +432,7 @@ You sometimes wish you could see the world in which the creators of these archiv
 
 @w121
 title: `W121.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key121 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -447,7 +454,7 @@ Places long gone, places that might as well only exist in your imagination...
 
 @w31
 title: `W31.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key31 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -468,7 +475,7 @@ Finally, useful scientific knowledge. Or is it? The article is a collection of d
 
 @w49
 title: `W49.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key7 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -489,7 +496,7 @@ Places that might as well be infinitely far away in time and space, brought to y
 
 @w169
 title: `W169.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key13 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -508,10 +515,12 @@ go-to: todo
 
 So much detritus of the past. So many words that mean nothing to you now, but might have meant everything to the people who lived at this time. How would "Bobby Flay" feel about you reading this right now, his name written in DNA?
 
+Anyway, you are hungry, slightly more so than usual.
+
 
 @w13
 title: `W13.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key13 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -533,7 +542,7 @@ You wonder how "Sir James Thomson Ritchie" would feel about you reading his name
 
 @w63
 title: `W63.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key7 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -566,7 +575,7 @@ This article is a reference to a musical album that almost certainly does not ex
 
 @w46
 title: `W46.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key23 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -586,7 +595,7 @@ go-to: todo
 
 @w58
 title: `W58.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key29 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -608,7 +617,7 @@ go-to: todo
 
 @w17
 title: `W17.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, wiki
 choose-if: key17 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -626,17 +635,19 @@ go-to: todo
 `Joss paper, also known as incense papers, are papercrafts or sheets of paper made into burnt offerings common in Chinese ancestral worship (such as the veneration of the deceased family members and relatives on holidays and special occasions). Worship of deities in Chinese folk religion also uses a similar type of joss paper. Joss paper, as well as other papier-mâché items, are also burned or buried in various Asian funerals, "to ensure that the spirit of the deceased has sufficient needs in the afterlife."`
 
 
-######################### Liana
+######################### Liana Yingmei Xu
 
 @x1001
 title: `X1001.fastq.gz`
-subtitle: `Source: Wild. Medium: *E. coli*`
+subtitle: `Source: Wild. Medium: *in vivo - Lactobacillus colony*`
 tags: data, diaries
 choose-if: key1001 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
+frequency: 500
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('x1001'); Q.correct_data_types.push('personal'); Q.d_seen += 1; Q.key_1009 = 1; !}
+on-arrival: {! Q.prev_data.push('x1001'); Q.correct_data_types.push('liana'); Q.l_seen += 1; Q.key_1009 = 1; !}
+on-departure: liana_introduced = 1
 go-to: decode
 set-jump: x1001_
 
@@ -651,48 +662,155 @@ Today, I've been talking with our architects regarding the structure of our new 
 
 I've attached a key for the next entry. Each of my diaries will have a key to the next entry, to prevent them from being read out of order.
 
- - Liana`
+ - Liana (Yingmei) Xu`
 
-Attached is an image of an early blueprint for New Hamilton District. It matches existing urbanological knowledge.
+# TODO: introduce liana if she hasn't yet been introduced
 
-You attended an absolutionist school, so they taught you about the heroic founders of the city, two post humans who rescued the baselines from their deprivation.
+Attached is an image of an early blueprint for New Hamilton District. It matches existing urbanological knowledge. 
 
-# TODO
+# [? if liana_introduced = 0 : Liana Xu is revered as the founder of this city. ?]
+If this diary is at all true, then this is likely the most significant archaeological discovery in the past ten years.
+
+
+
+
+
 @x1009
 title: `X1009.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - Lactobacillus colony*`
 tags: data, diaries
 choose-if: key1001 = 1
 view-if: @data.x1001 > 0
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('x1009'); Q.correct_data_types.push('hoax'); Q.d_seen += 1; !}
+on-arrival: {! Q.prev_data.push('x1009'); Q.correct_data_types.push('hoax'); Q.l_seen += 1; !}
 go-to: decode
+frequency: 500
 set-jump: x1009_
 
 @x1009_
 go-to: todo
 
-`What is there to know about me? My name is Liana Yingmei Xu. I was born in Shijiazhuang, Hebei Province, China. I emigrated to America to study biophysics and biochemistry, and I have worked in a variety of scientific positions. I am married to my wife, Jiaren Qi, also of Shijiazhuang, and we have two children.`
+`What is there to know about me? My name is Liana Yingmei Xu, or \[WARNING: UNKNOWN CHARACTER ENCODING\]. I was born in Shijiazhuang, Hebei Province, People's Republic of China. Does the memory of China still exist in your time?
 
-Just like you, I am a woman who was assigned male at birth, as we say these days.
+I emigrated to America to study biophysics and biochemistry, and I have worked in a variety of scientific positions. I am married to my wife, Jiaren Qi, also of Shijiazhuang, and we had two children.
 
-I have one question for you: do we still exist?
+# Now I will tell the story of how my wife and I got together. :) (see this? this is a "smiley face emoji".)
 
- - Liana
+Jiaren and I grew up in the same town and went to the same high school. I was notorious among my classmates for being a crossdresser, for wearing girl's outfits whenever I had the opportunity. They would see me at the mall, and they would go, that is not a beautiful girl, that is our classmate Xu ---!
+
+Jiaren was the one person who drew closer to me despite these (true) rumors. He (because Jiaren was still a boy back then) was the only person who asked me if I would rather be treated as a boy or a girl. I fell in love with him, and I believe he realized so, but of course nothing came of it.
+
+Do the equivalents of people such as us still exist in your era?
+
+Relatedly, how are posthumans thought of these days? Are we still considered monsters? Or has the distinction between baselines and posthumans re-emerged? It cannot be so inconceivable, given the presence of DNA sequencing technology.
+
+Here is a picture of me. A poor picture. And here is a sample of my voice.
+
+ - Liana`
+
+ There is an unknown character encoding here.
+
+ If this diary were at all true, then this is an indication that Liana and her partner were both laverneans (or the historical equivalent of laverneans, not that historians would ever agree such a thing existed). This is a potentially monumentous discovery. Your movement had already adopted Liana Xu as a symbol, but they were never aware that she was *actually* like them.
+ 
+ In truth, posthumans are rarely thought of at all. 
+
 
 @x1013
+title: `X1013.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - Lactobacillus colony*`
+tags: data, diaries
+choose-if: key1001 = 1
+view-if: @data.x1009 > 0
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('x1013'); Q.correct_data_types.push('hoax'); Q.l_seen += 1; !}
+go-to: decode
+frequency: 500
+set-jump: x1013_
+
+@x1013_
+go-to: todo
 
 # Liana 3
 
+`I suppose these are my memoirs, abbreviated to fit inside a single microbe.
+
+The next chapter of my story is moving to America for university, and then graduate school. Does the memory of America still exist in your time?
+
+I was privileged in that I had parents who would pay for me to take my tests, but the only way we could afford an American university was through scholarships. I hope this is not too self-aggrandizing, but I was a good student.
+
+In truth, university in America was not the revelation I thought it would be. I heard that it was a haven for freedom for us queers, but in truth those like us were still few and isolated. Nevertheless, it was here that I was able to "transition".
+
+Eventually, Jiaren came to America too, and we reunited one day. We fell in love again.
+
+ - Liana`
+
+
+
 @x1019
+title: `X1019.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - Lactobacillus colony*`
+tags: data, diaries
+choose-if: key1001 = 1
+view-if: @data.x1013 > 0
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('x1019'); Q.correct_data_types.push('hoax'); Q.l_seen += 1; !}
+go-to: decode
+frequency: 500
+set-jump: x1019_
+
+@x1019_
+go-to: todo
 
 #Liana 4
 
+`We were now on our third adopted homeland. We thought we would be forced to flee because of discrimination for our gender, not because of an absurd war between our two previous homelands. But no matter.
+
+It is here that Jiaren convinced me to have the procedure done. By this time it was not such a difficult process, technically speaking. On the cellular side, all it took were some induced pluripotent stem cells and carefully tuned gene regulatory induction systems, easy ever since our advanced simulations. We grew the uterus via tissue culture. The more difficult portion was the physical trans/implant.
+
+Our first child was born via surrogacy. Our second child was born via my body, and the culmination of decades of bioengineering.
+
+ - Liana`
+
+# TODO: bad sentence?
+
+You want to die right now because what even is the point of living if you can't get a fucking uterus transplant?
+
+
+
 @x1021
+title: `X1021.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - Lactobacillus colony*`
+tags: data, diaries
+choose-if: key1001 = 1
+view-if: @data.x1019 > 0
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('x1021'); Q.correct_data_types.push('hoax'); Q.l_seen += 1; !}
+go-to: decode
+frequency: 500
+set-jump: x1021_
 
-# Liana 5
+@x1021_
+go-to: todo
 
+# Liana 5 - [the war]
+
+`I wonder what you would call the war in your time?
+
+Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3.
+
+One tidbit you will not find in your baseline histories is how trans people were treated in the war. The conflation of "transgender" or "transsexual" with "transhuman" made all trans people on the baseline side into enemies. There were purges and camps and killings, more so than usual. Even those who sympathized with the baseline cause ended up in our side.
+
+And what about you, I wonder, presumed baseline? Did trans-ness reemerge? Are there people like us in your world?
+
+ - Liana`
 
 
 
@@ -700,13 +818,13 @@ I have one question for you: do we still exist?
 
 @s101
 title: `S101.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, science
 choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('s101'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1001 = 1; !}
-frequency: 200
+on-arrival: {! Q.prev_data.push('s101'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1001 = 1; Q.key1009 = 1; Q.key1013 = 1 !}
+frequency: 500
 go-to: decode
 set-jump: s101_
 
@@ -723,15 +841,14 @@ go-to: todo
 
 You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
 
-# Other paper refs: in-vivo? 
-
 @s202
 title: `S202.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vitro*`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
 tags: data, science
 choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
+frequency: 400
 on-arrival: {! Q.prev_data.push('s202'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1009 = 1; !}
 go-to: decode
 set-jump: s202_
@@ -747,7 +864,7 @@ go-to: todo
 
 You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
 
-
+# TODO: which microbes are used here?
 
 ################################## Online discourse/fanfiction/literature
 
@@ -755,11 +872,12 @@ You have learned how to implement the decoding method described in this paper. T
 
 @f101
 title: `F101.fastq.gz`
-subtitle: `Source: Archives. Medium: *in vivo* - E. coli colony`
-tags: data, science
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, history
 choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
+frequency: 300
 on-arrival: {! Q.prev_data.push('f101'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
 go-to: decode
 set-jump: f101_
@@ -767,13 +885,13 @@ set-jump: f101_
 @f101_
 go-to: todo
 
-Most common causes of death, 99 AT
+`Most common causes of death, 99 AT
 
 1. Entity attacks
 
 2. Nanoplagues
 
-3. Gunshot wounds
+3. Interpersonal violence
 
 4. Cancer
 
@@ -787,22 +905,81 @@ Most common causes of death, 99 AT
 
 9. Suicide
 
-10. Kidney disease
+10. Medical complications
 
-Source: Census
+Source: Census`
 
-TODO
+This would be the first century. It is a blank spot in the historical records; most documents seem to disappear around then, perhaps due to a transition to DNA storage from more traditional data storage methods, or perhaps due to whatever incident caused entity attacks to become the leading cause of death.
 
-This would be the first century.
+@f102
+title: `F102.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, history
+view-if: @data.f101 = 1
+choose-if: key3 = 1
+frequency: 300
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('f102'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f102_
+
+@f102_
+go-to: todo
+
+`5th Census, 100 AT: Names Aal-Aba`
+
+`Aalto, Mireille. Born 55`
+
+`Aalto, Theodore. Born 79`
+
+`Aalto, Zina. Born 89`
+
+`Aaron, Aaron. Born 58`
+
+`Aaron, Alexander. Born 97`
+
+...
+
+The names continue for a few hundred lines. Perhaps this data would be of interest to specialists.
 
 
-# thesis: the regime of the eunuchs must be abolished, and to do so their remaining numbers must be culled.
+@f202
+title: `F202.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, history
+choose-if: key3 = 1
+view-if: @data.f101 > 0
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('f202'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f202_
 
-# antithesis: eunuchs are citizems of our great arcology like any other. They do not constitute a regime.
+@f202_
+go-to: todo
 
-# synthesis:
+`Thesis: The regime of the eunuchs represents a degeneracy must be abolished, and to do so their remaining numbers must be culled.
+
+Antithesis: Eunuchs are citizens of the arcology like any other. They do not constitute a regime, and insofar that they have undue influence in government, it has been on the net beneficial.
+
+Synthesis: All eunuchs must be removed from government, but they are to be permitted to live. However, they must be re-educated in order to remove the traces of their ideology.`
+
+`- Administrator`
+
+This is another first-century document.
 
 # commentary: I am what they call a eunuch.
+
+# 99 AT
+
+# `A report from the massacre of the eunuch temple massacre:
+
+# 234 found dead in the central temple.
+
+# commentary: 
+
+# - Emilia F. Chu
 
 ###################################### Historical - 3st Century
 
@@ -823,13 +1000,13 @@ You gave them the technology.
 
 @r1001
 title: `R1001.fastq.gz`
-subtitle: `Source: Wild. Medium: *E. coli*`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
 choose-if: key1001 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('r1001'); Q.correct_data_types.push('special');  !}
+on-arrival: {! Q.prev_data.push('r1001'); Q.correct_data_types.push('special'); Q.r_seen += 1; Q.rosa_seen = 1; !}
 go-to: decode
 set-jump: r1001_
 
@@ -842,16 +1019,23 @@ go-to: todo
 
 `- Rosa Camacho, Bread and Roses Brigade`
 
+During the Uprising, DNA storage technology was used by rebels to store their notes, diaries, and so on. They presumed that the bacteria would be read-only in the near term; they did not anticipate your technical capabilities.
+
+[? if mutual_aid_seen = 0 : Rosa was... not exactly a friend. An acquaintance, perhaps, one more familiar from CityNet than real life. You would not recognize her, and you do not know what happened to her since the Uprising. She probably would have hated you. ?]
+
+[? if r_path > 0 : You know that the author of these notes is still alive. You've seen her. ?]
+
 
 @r2002
 title: `R2002.fastq.gz`
-subtitle: `Source: Wild. Medium: *E. coli*`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
 choose-if: key1001 = 1
+view-if: @data.r1001 > 0
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('r2002'); Q.correct_data_types.push('special');  !}
+on-arrival: {! Q.prev_data.push('r2002'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
 go-to: decode
 set-jump: r2002_
 
@@ -860,7 +1044,7 @@ go-to: todo
 
 `It is increasingly clear that we are sacrificial pawns in a proxy war. When we seized arms, there was a tacit understanding with some of the security forces that they would not stop us; they virtually handed their weapons to us. The Guards have many enemies, and there are anti-coup factions in the Defense Forces and even the gendarmerie. However, they are not willing to risk their own position in a civil war.`
 
-`It is also clear that the some in the security forces see our uprising as a way to simultaneously weaken two enemies, both the radical Opposition and the reactionaries.`
+`It is also clear that the some in the security forces see our uprising as a way to simultaneously weaken two enemies, both the radical Opposition and the reactionaries as represented by the Guards. And as the general populace becomes exhausted of our fighting, the central authorities take over, order is restored, and we are all sent outside the dome.`
 
 `But what choice do we have? We either accept the aid of all who offer it, or we perish. Regardless, we have been doing quite a bit of that lately.`
 
@@ -868,57 +1052,70 @@ go-to: todo
 
 @r3003
 title: `R3003.fastq.gz`
-subtitle: `Source: Wild. Medium: *E. coli*`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
 choose-if: key1001 = 1
+view-if: @data.r1001 > 0 or @data.r2002 > 0
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('r3003'); Q.correct_data_types.push('special');  !}
+on-arrival: {! Q.prev_data.push('r3003'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
 go-to: decode
 set-jump: r3003_
 
 @r3003_
 go-to: todo
 
-`A recounting of a conversation:`
+`A recounting of a conversation:
 
-TODO
+ Leon: We're not fucking going down with this ship.
 
-# Leon and I...
+ Me: It's interesting how language works, isn't it? None of us have seen a ship before but the idiom still exists in our collective memories.
 
-``
+ Leon: Fuck off. My point is, the writing's already on the wall.
 
-`Rosa Camacho, Bread and Roses Brigade`
+ Me: Another interesting turn of phrase.
+
+ Leon: Fuck. Off. The revolution is over. We can either live to fight another day, or we can die like the rest of them. I know you're one of the more pragmatic ones here, not like the fanatics. We have to go underground. Hide. Do anything but keep on going like this. The undercity's a big place.
+
+ Me: I'm not a deserter. Maybe we can bring it to a vote-`
+
+`At that moment we were interrupted, and Leon went back to his duties. So. In truth I do not know what I should do. I do not want to die, and I can see that our current path leads to no other outcome but mass death. I think I can convince the rest of our brigade to shift our tactics from open battle to underground resistance while maintaining our civilian identities and hiding among the general populace. Of course there is a chance I'll get purged for making such a suggestion. And even if we go underground, we might find our civilian identities unusable.`
+
+`So many difficult choices.`
+
+`- Rosa Camacho, Bread and Roses Brigade`
 
 @r1009
 title: `R1009.fastq.gz`
-subtitle: `Source: Wild. Medium: *E. coli*`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
 choose-if: key1009 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('r1009'); Q.correct_data_types.push('special');  !}
+on-arrival: {! Q.prev_data.push('r1009'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
 go-to: decode
 set-jump: r1009_
 
 @r1009_
 go-to: todo
 
-`Love is the most powerful weapon in the revolutionist's arsenal.`
+`Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the laverneans or the nonbinaries, but all of us, every human being in this ark.`
+
+`For the first time in our history, our guns are pointed in unison towards the real enemy, rather than at each other.`
 
 `- Esme Franklin, Indigo Regiment`
 
 @r2018
 title: `R2018.fastq.gz`
-subtitle: `Source: Wild. Medium: *E. coli*`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
 choose-if: key1009 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('r2018'); Q.correct_data_types.push('special');  !}
+on-arrival: {! Q.prev_data.push('r2018'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
 go-to: decode
 set-jump: r2018_
 
@@ -927,32 +1124,52 @@ go-to: todo
 
 `More of us are dying everyday.`
 
-`I used to have no fear of death, because I had nothing to live for.`
+`I used to have no fear of death, because I had nothing to live for, but now, in a cruel irony, I do. I have friends in this regiment, and lovers. I have people who would care if die, whom I would care if they died.`
+
+`I do not want to die.`
 
 `- Esme Franklin, Indigo Regiment`
 
 @r1013
 title: `R1013.fastq.gz`
-subtitle: `Source: Wild. Medium: *E. coli*`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
 choose-if: key1013 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('r1013'); Q.correct_data_types.push('special');  !}
+on-arrival: {! Q.prev_data.push('r1013'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
 go-to: decode
 set-jump: r1013_
 
 @r1013_
 go-to: todo
 
-`A recounting of a conversation:`
+`Our civilization is on borrowed time, and revolution is the only way to escape the tracks that lead to our doom.
 
-`Lyra: `
+We can no longer produce computers. Within a 100-km radius of the arcology, the safe travel distance since the Cataclysm, there are zero accessible sources of neodymium, tantalum, or even lithium (at least iron and copper are plentiful). Recycling always introduces inefficiencies, and nanotechnology was lost long ago. The only hope is to make electronics last as long as possible, counter to the goals of the industry for the last few centuries.
+
+One thing is sure: the bourgeoisie will let civilization die before relinquishing its hold on power.`
+
+`- Leon Zhou, Bread and Roses Brigade`
+
+@r2026
+title: `R2026.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
+tags: data, science
+choose-if: key2026 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r2026'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
+go-to: decode
+set-jump: r2026_
+
+@r2026_
+go-to: todo
+
+`Since the coup and subsequent uprising began, Lyra and I have fallen in with a self-declared revolutionary army. We said we were on the run from the Guards, and they trusted us. It didn't hurt that one of the laverneans in the unit recognized us from school.`
+
+`Lyra says that she can no longer use her abilities. Something about the Cataclysm induced long-term changes in her nanobiotic ecosystem, whose consequences are apparently only being felt now.`
 
 `- Altair Leblanc, Popular Front Army`
-
-
-
-
-

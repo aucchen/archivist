@@ -1,10 +1,11 @@
 title: CityNet
 subtitle: An update on the present situation. [? if cw_enabled = 1 : CW: slurs ?]
 max-choices: 3
-view-if: montage_progress = 0 and day_minor = 0
+view-if: montage_progress = 0 and day_minor = 0 and stress < 15 and day < 20
 on-arrival: montage_progress += 1; numb = 1; day_minor += 1
 new-page: true
 tags: minor
+set-bg: images/monitor_dithered.png
 
 CityNet is the beating heart of the city, the online agora where its citizens gather to discuss, debate, and disseminate their opinions or the news of the day. At least, that is theoretically the case.
 
@@ -21,7 +22,7 @@ What are the headlines of the day?
 title: CityNet
 subtitle: An update on the present situation. [? if cw_enabled = 1 : CW: slurs ?]
 max-choices: 3
-view-if: day_minor = 0 and montage_progress > 0
+view-if: day_minor = 0 and montage_progress > 0 and stress < 15 and day < 20
 on-arrival: montage_progress += 1; numb = 1; day_minor += 1
 tags: minor
 new-page: true
@@ -140,7 +141,7 @@ She was your friend, once, until she started hating you (there were many such ca
 
 You keep on watching the video.
 
-Bella is wearing a tiny red dress and high heels and more makeup than you had ever seen on her (she used to call it a tool of the patriarchy). Her screams are screams of anguish, emotional more than physical pain, and her expression is one of betrayal, you imagine. The Guards have their signature boyish smiles as they easily deflect her flails and kicks and they twist her arms behind her back and push her to the floor. One of them moves to stomp on her head. The video cuts off.
+Bella is wearing a tiny red dress and high heels and more makeup than you had ever seen on her (she used to call it a tool of the patriarchy). Her screams are screams of anguish, emotional more than physical pain, and her expression is one of betrayal, you imagine. The Guards have their signature boyish smiles (they do not wear respirators as a sign of fearlessness towards the nanoplague), and they easily deflect her flails and kicks as they twist her arms behind her back and push her to the floor. One of them moves to stomp on her head. The video cuts off.
 
 You imagine various scenarios.
 
@@ -162,7 +163,7 @@ Anyway, it doesn't fucking matter. She's dead.
 
 @cn3_3
 
-Bella once said that the sociological role of the laverneans was to serve as an acceptable outlet for society to enact its libidinal urges for sexualized violence. You wonder about her last thoughts.
+Bella once said that the sociological role of the laverneans was to serve as an acceptable outlet for society to enact its libidinal urges for violence. Or something like that. You don't remember.
 
 Anyway, it doesn't fucking matter. She's dead.
 
@@ -250,7 +251,11 @@ tags: montage
 
 > `@[+ name_0 +]: fake news`
 
-> `@[+ name_1 +]: half of it js trannies keep killing themselves`
+> `@[+ name_1 +]: lmao`
+
+> `@[+ name_2 +]: fuckers need to stop eating so much`
+
+> `@[+ name_3 +]: lazy bums dont wanna get jobs`
 
 
 @cn9
@@ -276,6 +281,8 @@ tags: montage
 `@NNN: Lithium shortage leads to higher battery prices for consumers and industry.`
 
 > `@[+ name_0 +]: fake news`
+
+> `@[+ name_1 +]: lol`
 
 @cn11
 title: `MP sponsors bill aimed at terrorist sympathizers`
@@ -306,6 +313,10 @@ tags: montage
 `@NNN: Suspected rioter shows no vital signs after initiating altercation against Guards.`
 
 > `@[+ name_0 +]: fake news`
+
+> `@[+ name_1 +]: good`
+
+> `@[+ name_2 +]: great news`
 
 @cn14
 title: `Superintendent of schools: teachers and students alike are inadequate to face modern challenges.`
