@@ -132,7 +132,7 @@ Idly she takes your hand in hers, and begins rubbing it. "What did we even talk 
 - @dont_remember: "I don't remember."
 
 @dont_remember
-go-to: smell_like_a if a_encounter = 1
+go-to: smell_like_a if a_encounter = 1; k_gf if a_encounter = 0
 
 "I don't remember."
 
@@ -142,7 +142,100 @@ go-to: smell_like_a if a_encounter = 1
 
 "See, I'm just saying things now. I don't know what to talk about either so I'm just rambling on without knowing what I'm even saying. I'm just playing out these parts, like..."
 
-She stops talking, and lays down on the bed, next to you. It is a tight fit, with your body nearly squeezed against the wall.
+She lays down on the bed, next to you. It is a tight fit, with your body nearly squeezed against the wall.
+
+@k_gf
+
+"Hey, I was wondering, did you ever have another girlfriend or partner after we, you know?"
+
+- @talking_with_a: "I've been talking with A-..."
+- @honest_no: "No." [? if a_loved > 0 : (A lie? Or is it?) ?]
+- @of_course: "Lots!" (joke)
+- @what_about_you: "What about you?"
+
+@talking_with_a
+view-if: a_path >= 3
+on-arrival: k_knows_a_talking = 1
+go-to: stops_talking
+
+"I've been talking with A- again..."
+
+"Oh, don't tell me you've gotten back with him. This will not end well."
+
+- @a_loved: "We kind of are together."
+- @a_not_loved: "We're not actually together, I think."
+
+@a_loved
+view-if: a_loved > 0
+on-arrival: k_knows_a_loved = 1
+go-to: stops_talking
+
+"We kind of are together."
+
+"Oh. Gross. Have you fucked?"
+
+"No..."
+
+"Yeah. I don't smell him on you. So is he like, your sugar daddy now or something?"
+
+"She's..." You do not know what to say to that.
+
+
+@a_not_loved
+view-if: a_loved <= 0
+
+"We're not actually together, I think."
+
+"Oh. Good."
+
+- @stops_talking: She stops talking.
+- @but_talking: "But we've been talking a lot..."
+
+
+@but_talking
+go-to: stops_talking
+
+"But we've been talking a lot..."
+
+"Oh my God, is he still into you for some reason?"
+
+"I guess."
+
+"So, is he like, your sugar daddy now?"
+
+"She's..." You do not know what to say to that.
+
+
+@honest_no
+go-to: stops_talking
+
+"No."
+
+"That's what I guessed." She sighs. "We never technically broke up, did we? It was a temporary separation for the purpose of safety? Until things got better?"
+
+You do not know what to say to that.
+
+@of_course
+go-to: honest_no
+
+"Oh, of course! Lots of partners!"
+
+"Really?"
+
+
+@what_about_you
+
+"What about you?"
+
+"Nope. I'm not even out these days. Are you going to answer now?"
+
+- @talking_with_a: "I've been talking with A-..."
+- @honest_no: "No." [? if a_loved > 0 : (A lie? Or is it?) ?]
+- @of_course: "Lots!" (joke)
+
+@stops_talking
+
+K- stops talking, and moves closer to you.
 
 - @stay_like_this: Stay like this.
 - @get_up: Get up.
@@ -176,6 +269,7 @@ K- chuckles. "Wow. Hey, at least I have the bed to myself now." She stretches ou
 
 @smell_like_a
 view-if: a_encounter = 1
+on-arrival: k_knows_a_affair = 1
 
 Suddenly she begins to sniff the bed. "This smells like A-."
 
@@ -186,6 +280,7 @@ Suddenly she begins to sniff the bed. "This smells like A-."
 - @yes_i_fucked: "Yes, I did..."
 - @sorry_fucked: "Sorry..."
 - @she_pronouns: "It's 'she'."
+- @we_both_did: "We both did, remember?"
 
 @yes_i_fucked
 go-to: thats_gross
@@ -210,9 +305,88 @@ go-to: thats_gross
 
 You nod.
 
+@we_both_did
+go-to: thats_gross
+
+"We both did, remember?"
+
+"What, ten years ago? That's different. You were doing it not so long ago, here on this bed, correct?"
+
+You nod.
+
 @thats_gross
 
 "That's fucking gross."
+
+- @why_hate: "Why do you hate A-?"
+
+@why_hate
+
+"Why do you hate A-?"
+
+"He's a privileged asshole. We were just his little jaunt, like a fucking vacation trip. He could have his fill of debauched fun and meanwhile we're still living the nightmare."
+
+- @a_unfair: "That's unfair..."
+- @not_affair: "Not because she's having an extramarital affair?"
+- @hey_money: "Hey, she's giving me money."
+
+@a_unfair
+
+"That's unfair..."
+
+"What is?"
+
+"She's at risk too if they find out. If they discover these 'jaunts' then it's over for her too..."
+
+"It's fucking not. He's going to be fine. He can just say that you were manipulating him and then it's a perfect defense."
+
+- @she_wont_condemn: "She won't condemn me..."
+
+@she_wont_condemn
+
+"She won't condemn me..."
+
+"Are you sure?"
+
+You shrug.
+
+"Well, whatever."
+
+- @awkward_a: It is extremely awkward in here.
+
+@not_affair
+
+"Not because she's having an extramarital affair?"
+
+"No. I don't really give a fuck." She chuckles. "Besides, she's paying you for all this, right?"
+
+"Right..."
+
+"Hey, good for you. Sorry I can't pay as much. Or like, at all."
+
+- @awkward_a: It is extremely awkward in here.
+
+@hey_money
+
+"Hey, she's giving me money."
+
+"Right. Good for you. Get that fucking bread or whatever. Sorry I can't pay as much. Or like, at all."
+
+- @awkward_a: It is extremely awkward in here.
+
+@awkward_a
+
+The atmosphere on the bed has become extremely awkward. K- is sitting up.
+
+"I'm gonna take a shower," she says. "Wash that fucking A- odor off me."
+
+She does so, without prompting.
+
+- @water_allocation: You wish she wouldn't use up so much of your water allocation.
+
+@water_allocation
+
+Anyway, she showers, dresses, and leaves. You are left alone once more.
 
 # TODO: what if you had an encounter with A- before?
 
@@ -518,7 +692,7 @@ max-visits: 1
 
 K stares at your body for a moment. "Is the implication here that you wish to engage in penetrative activities in order to substitute for your lack of dilation in order to maintain the diameter of your neovagina?"
 
-- @maybe_sexual: "Maybe..."
+- @maybe_sexual: "Maybe..." [? if cw_enabled: (CW: sexual content) ?]
 - @not_sexual: "No, it's not like that..."
 
 @not_sexual
@@ -536,9 +710,17 @@ K- dresses in her underwear and enters the bed.
 
 
 @maybe_sexual
-go-to: dilated_2 if k_showered = 1; dilated_no_shower if k_showered = 0
+go-to: dilated_2 if k_showered = 1 and k_knows_a_loved = 0; dilated_no_shower if k_showered = 0 and k_knows_a_loved = 0; dilated_a if k_knows_a_loved > 0
 
 "Maybe. Something like that. Sorry..."
+
+@dilated_a
+
+"But aren't you with A- already? Like, aren't you in a relationship?" She plays with her hair for a moment. "Actually, I don't give a fuck. If that's what you want, then..."
+
+- @k_s_scene: ...
+- @not_sexual: "No, it's not like that..."
+
 
 @dilated_no_shower
 
@@ -550,7 +732,7 @@ go-to: dilated_2 if k_showered = 1; dilated_no_shower if k_showered = 0
 
 # TODO: elaborate
 
-So you take a shower, and meet back on the bed.
+So you take a brief shower, and meet back on the bed.
 
 K- sighs. "You know I haven't done it since we separated, right?"
 

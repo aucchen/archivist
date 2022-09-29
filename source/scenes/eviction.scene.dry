@@ -16,6 +16,7 @@ You are homeless now, or something like that. You have no phone, and no money to
 - @find_a: Visit A-.
 - @find_k: Visit K-.
 - @find_maa: Visit the Mutual Aid Alliance.
+- @liana: Liana Xu will save you.
 - @fuck: There is nothing you can do.
 
 @find_a
@@ -140,3 +141,17 @@ achievement: ending_9
 = End
 
 **Ending 9/9**
+
+
+@liana
+view-if: l_seen >= 3
+
+Liana Xu will help you. You know this. You are sure of this, for some reason, despite the irrationality of it all. She will save you from all of this.
+
+As these thoughts run through your mind, a hooded figure approaches you, and grabs you by the wrist. "Go back in. We have to talk privately. You'll be fine," they say.
+
+The figure pull you back into your apartment, unlocking the door without your assistance.
+
+"Here. Drink this."
+
+- @ending_liana.drink: Drink.

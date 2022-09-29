@@ -4,15 +4,22 @@ body {
   background-color: #000;
   padding: 0;
   line-height: 200%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: scroll;
+  opacity: 1;
 }
 header, #content, footer {
   color: #fff;
   max-width: 540px;
   margin: 0 auto;
+  z-index: 0;
 }
 footer {
   margin-top: 1em;
   font-size: 0.8em;
+  z-index: 0;
 }
 footer a {
   color: #ff8080;
@@ -52,6 +59,7 @@ header h2:before {
   border-style: double;
   border-width: 4px;
   border-color: #888;
+  z-index: 0;
 }
 #content #read-marker {
   border: none;
@@ -130,9 +138,10 @@ ul.choices li.unavailable {
   cursor: default !important;
 }
 ul.choices li:hover {
-  background-color: rgba(f, f, f, 0.1);
-  text-shadow: rgba(255, 255, 255, 0.75) 2px 2px 2px,
+  background-color: rgba(100, 100, 100, 0.1);
+  /*text-shadow: rgba(255, 255, 255, 0.75) 2px 2px 2px,
                rgba(0, 0, 0, 0.1) -1px -1px 2px;
+  */
   cursor: pointer;
 }
 ul.choices li:last-child {
@@ -174,6 +183,20 @@ blockquote + blockquote.attribution {
 .save_info {
     min-width: 10em;
 }
+.background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+}
 .overlay {
     background: rgba(0,0,0,0.7);
     display: none;
@@ -185,6 +208,7 @@ blockquote + blockquote.attribution {
     bottom: 0;
     left: 0;
     z-index: 2;
+    overflow: scroll;
 }
 .overlay_top {
     position: relative;
@@ -193,6 +217,16 @@ blockquote + blockquote.attribution {
     background: rgba(50,50,50,0.7);
     border: 2px solid;
     color: white;
+}
+/*
+ * This is used for overlaying transparencies
+ * TODO: only transition on fade-in
+ * */
+#bg2 {
+    z-index: -100;
+}
+#bg1 {
+    z-index: -99;
 }
 .b {
 }

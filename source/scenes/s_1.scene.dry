@@ -78,7 +78,8 @@ Great. He thinks you're a loser. An accurate assessment, but a painful one never
 
 
 @food_home
-view-if: food > 0
+choose-if: food > 1
+unavailable-subtitle: You do not, in fact, have food at home.
 go-to: food_home_1 if s1_knows_cook_rice = 1; food_home_2 if s1_knows_cook_rice = 0
 
 "We have food at home," you say, and S- is instantly disappointed.

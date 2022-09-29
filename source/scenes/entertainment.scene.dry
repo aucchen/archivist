@@ -1,8 +1,8 @@
 title: Entertain yourself
 subtitle: A psychological necessity.
 tags: minor
-view-if: (day_major = 0 or day_minor = 0) and day_entertainment = 0 and stress < 15 and day < 20
-on-arrival: day_entertainment = 1; entertainment_count += 1; numb = 1; day_minor = 1
+view-if: (day_major = 0 or day_minor = 0) and day_entertainment = 0 and stress < stress_threshold and day < 20
+on-arrival: day_entertainment = 1; entertainment_count += 1; numb = 1
 new-page: true
 set-bg: images/monitor_dithered.png
 
@@ -10,16 +10,19 @@ set-bg: images/monitor_dithered.png
 
 - @game: Play a game.
 - @tv: Watch TV.
-#- read the archives.
+- @archives: Read your saved files.
+- @notes
 #- stare at yourself in the mirror.
 #- wander outside.
 #- introspect.
 
 @tv
-go-to: tv_1; tv_2
+subtitle: [? if tv_seen >= 2 : A form of self-harm. ?]
+on-arrival: day_minor += 1; tv_seen += 1; numb = 1
+go-to: tv_1; tv_2; tv_3
 
 @game
-on-departure: games_played += 1
+on-departure: games_played += 1; day_minor += 1; numb = 1
 go-to: game_1 if games_played >= 1; game_2 if games_played >= 1; game_3 if games_played >= 1; game_4; game_4 if games_played = 0
 
 @game_1
@@ -50,7 +53,8 @@ There is a speech by a Ruling Party politician. "We are the true heirs of the Am
 
 @tv_3
 
-There is a debate between the Ruling Party and the Opposition Party.
+There is a show about a group of nanite-powered superheroes who save the city from entity attacks and terrorists. It claims to be based on a true story, set approximately ten years ago. You wonder if and how the Cataclysm will be covered here, but not enough to keep watching the program.
+
 
 
 @book_1
@@ -72,11 +76,19 @@ You can live in your mind forever.
 @archives
 on-arrival: {!
 // Script here
+var archiveTitles = Q.data_archives;
+var archiveContent = Q.data_scenes;
+var displayContent = document.createElement('div');
+displayContent.id = 'archives';
+for (var i = 0; i < archiveTitles.length; i++) {
+    var title = document.createElement('p');
+    title.textContent = archiveTitles[i];
+    displayContent.appendChild(title);
+    var data = window.dendryUI.dendryEngine._makeDisplayContent(archiveContent[i], true);
+    var data_div = document.createElement('div');
+    data_div.innerHTML = window.dendryUI.contentToHTML.convert(data);
+    displayContent.append(data_div);
+}
+var hr = document.getElementById('read-marker');
+hr.after(displayContent);
 !}
-
-{!<div id="archives"></div>!}
-
-Read the archives: read your saved DNA files.
-
-go outside: it is rare that you venture outside your apartment without a specific purpose.
-

@@ -1,0 +1,58 @@
+title: The Illness
+subtitle: An inexorable progression.
+view-if: stress >= 4*stress_threshold/5 and illness_seen = 1 and day_minor = 0 and day_major = 0
+frequency: 1000
+priority: 10
+max-visits: 1
+on-arrival: illness_seen = 2; day_major += 1; day_minor += 1; stress -= 2
+tags: major
+
+The illness continues to progress. It seems to be getting worse. Your mind is in a state of fear, but of what, you can only begin to conceptualize.
+
+- @death: It is a fear of death.
+- @liana: What would Liana Xu do?
+- @pills: Take medicine.
+- @rice: Drink rice porridge.
+
+@death
+subtitle: [? if cw_enabled : (CW: death, suicidal ideation) ?]
+max-visits: 1
+
+For a moment you realize that you are terrified of death. You imagine the concept of oblivion, of nonexistence, of the fact that one day you will *no longer be*, that there exists an entire universe and future that will continue without you, that you will never encounter. You remember your friends dying; some of them sought comfort in the idea of an *ending*. You do not. Or rather, the desire to end the suffering fought against the terror of nonexistence, and the terror has always won.
+
+[? if k_path > 0 : K- believed (believes?) in God, and in some kind of life after death. Does she experience the same terror? ?]
+
+- @liana: What would Liana Xu do?
+- @pills: Take medicine.
+- @rice: Drink rice porridge.
+
+@liana
+view-if: l_seen >= 2
+max-visits: 1
+
+Liana Xu was, if the diaries are not in fact a hoax, *like you*. Did the lavernean-equivalents of her era also experience the illness, or other illnesses? Did early posthumans have non-biomedical methods to treat chronic illnesses, for times when modern medicine was out of reach? Or would they simply invent new medicines? What did she eat? What did she drink? The diaries give few clues to these very basic facts.
+
+- @pills: She would tell you to take some medicine.
+- @rice: She would tell you to drink some rice porridge.
+- @power: She would tell you that your mind is strong enough to push you through this.
+
+@pills
+view-if: medicine > 1
+
+You still have a small stash of expired over-the-counter painkillers. They are apparently still effective. As the medicine takes effect, your body slowly returns to a certain equilibrium, and your terror thins.
+
+But it will return. It always returns.
+
+@rice
+choose-if: days_starved = 0
+unavailable-subtitle: You do not have enough food.
+
+Cooking rice takes too much out of you, even as you skip the addition of beans and the step of washing the rice.
+
+Nevertheless, you finish cooking. The rice porridge is warm and filling, and you feel less ill, at least for a while. Your body slowly returns to a certain equilibrium, and your terror thins.
+
+But it will return. It always returns.
+
+@power
+
+No. Liana would never tell you "mind over matter" or some pointless cliche like that. But maybe... maybe it can work, just this once. But only once.

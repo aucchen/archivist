@@ -1,6 +1,6 @@
 title: Mutual Aid
 subtitle: A regular visit
-view-if: mutual_aid_seen >= 1 and (day = 10 or day = 17) and (stress < 15) and day_minor = 0
+view-if: mutual_aid_seen >= 1 and (day = 10 or day = 17) and (stress < stress_threshold) and day_minor = 0
 on-arrival: day_minor += 1; food += 1; stress -= 1; mutual_aid_seen += 1
 tags: minor
 frequency: 400

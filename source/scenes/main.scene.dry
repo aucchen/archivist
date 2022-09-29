@@ -1,12 +1,15 @@
 title: Main
 new-page: true
-max-choices: 6
+max-choices: 7
 on-arrival: {!
 if (Q.next_day_scene_queue.length > 0) {
     Q.has_next_day = 1;
     Q.next_day_scene = Q.next_day_scene_queue.shift();
 } else {
     Q.has_next_day = 0;
+}
+if (Q.day_major >= 1) {
+    Q.main_notes = "";
 }
 !}
 go-to-ref: next_day_scene if has_next_day > 0
@@ -41,17 +44,14 @@ if (window.dendryUI.dendryEngine.state.qualities.has_next_day == 0) {
 
 @end_of_day
 title: You're too tired to do anything else.
-view-if: (day_major >= 1 or day_minor >= 1 or stress > 10 or loneliness > 10) and (stress <= 15)
+view-if: (day_major >= 1 or day_minor >= 1 or stress > 10 or loneliness > 10) and (stress < stress_threshold)
 on-arrival: day += 1; rent_due -= 1; food -= 1; medicine -= 1; got_food_today = 0; got_medicine_today = 0; went_out_today = 0; day_entertainment = 0; daily_k = 0; daily_a = 0
 go-to: eod_check
 
 @eod_check
 on-arrival: {!
-if (Q.day_major == 1) {
-    Q.stress += 1;
-}
 if (Q.day_major > 1) {
-    Q.stress += 2;
+    Q.stress += 1;
 }
 Q.day_major = 0;
 Q.day_minor = 0;
@@ -83,23 +83,31 @@ if (Q.day == Q.data_day + 8) {
 }
 // TODO: Also, C- sends you a message if you have yet to see Liana's files.
 // set daily dialogue here.
-if (Q.stress < 8) {
+if (Q.stress <= Q.stress_threshold/2) {
     // nonrandom lol
     Q.day_random += 1;
     if (Q.day >= Q.low_anxiety_day_dialogues.length) {
         Q.day_random = Math.floor(Math.random()*Q.low_anxiety_day_dialogues.length);
     }
     Q.day_dialogue = Q.low_anxiety_day_dialogues[Q.day_random];
-} else {
+} else if (Q.stress <= Q.stress_threshold - 4) {
     Q.day_random = Math.floor(Math.random()*Q.day_dialogues.length);
     Q.day_dialogue = Q.day_dialogues[Q.day_random];
+} else {
+    Q.day_random = Math.floor(Math.random()*Q.high_stress_day_dialogues.length);
+    Q.day_dialogue = Q.high_stress_day_dialogues[Q.day_random];
 }
 Q.afternoon_random = Math.floor(Math.random()*Q.afternoon_dialogues.length);
 Q.afternoon_dialogue = Q.afternoon_dialogues[Q.afternoon_random];
+// TODO: Rubberbanding ???
+if (Q.day <6 && Q.stress > 10) {
+}
+if (Q.day >10 && Q.stress < 10) {
+}
 
 // set goto scene
 if (Q.day >= 20) {
-    Q.next_day_scene_queue.push("ending_day20");
+    Q.next_day_scene_queue.push("anxiety");
 }
 if (Q.with_s == 1) {
     console.log('with s');
@@ -109,7 +117,7 @@ if (Q.food <= 0) {
     console.log('food missing');
     Q.next_day_scene_queue.push("food");
 }
-if (Q.rent_due < 0) {
+if (Q.rent_due <= 0) {
     console.log('rent missing');
     Q.next_day_scene_queue.push("main.rent_collection");
 }
@@ -136,7 +144,10 @@ go-to-ref: next_day_scene
 @rent_collection
 new-page: true
 on-arrival: {!
-Q.additional_rent = Q.rent + 100;
+Q.additional_rent = Q.base_rent + 100;
+Q.base_rent = Q.additional_rent;
+Q.grocery_cost += 10;
+Q.takeout_cost += 5;
 Q.old_rent = Q.rent;
 Q.fees = 50 + Math.ceil(Math.random()*50);
 Q.total_rent = Q.rent + Q.fees;
@@ -145,6 +156,8 @@ if (Q.money < Q.total_rent) {
     Q.money = 0;
     Q.rent = Q.total_rent - Q.money;
     Q.missed_rent += 1;
+    Q.rent += 50;
+    Q.stress += 1;
 } else {
     Q.money -= Q.total_rent;
     Q.rent = 0;
@@ -152,9 +165,6 @@ if (Q.money < Q.total_rent) {
 }
 Q.rent += Q.additional_rent;
 Q.rent_due = 7;
-if (Q.missed_rent >= 2) {
-    // TODO: goto
-}
 !}
 go-to: eviction if missed_rent >= 2
 

@@ -29,6 +29,7 @@ She looks about your age, a thin and taller than average woman wearing pre-war c
 - @life_story: Your life story flashes before your eyes.
 
 @life_story
+go-to: questions_1
 
 Your life flashes before your eyes. You were born an orphan, and was raised a ward of the state. You knew nothing about your birth parents, save their last name, and you had no living relatives. The most likely conclusion was that you were born to nomads. But you never checked the records; you never cared about your origin story. *Her story makes sense.*
 
@@ -37,6 +38,8 @@ Your life flashes before your eyes. You were born an orphan, and was raised a wa
 She pronounces your last name differently than you had ever heard. It sounds exactly like the way she pronouced her own.
 
 "I suppose you have questions," she says, smiling, with an inviting arm gesture. "Feel free to ask."
+
+@questions_1
 
 - @i_: "I..."
 - @tired_too: "Are you tired all the time, too?"
@@ -47,11 +50,15 @@ She pronounces your last name differently than you had ever heard. It sounds exa
 
 @i_
 go-to: want_to_go
+on-arrival: liana_qs += 1
+max-visits: 1
 
 "I..." You cannot say anything. You do not know what to say. A part of you wants to cry. Another part wants to laugh.
 
 @tired_too
-go-to: want_to_go
+go-to: want_to_go if liana_qs >= 3; questions_1 if liana_qs < 3
+on-arrival: liana_qs += 1
+max-visits: 1
 
 "Do you also get tired for no reason?"
 
@@ -60,7 +67,9 @@ go-to: want_to_go
 [? if medicine > 1 : She takes a look at your drug stockpile. "Wow, this concentration is pathetic. Back in my day we made bathtub estradiol valerate that was better than this. No wonder you're tired all the time." ?]
 
 @first_time
-go-to: want_to_go
+go-to: want_to_go if liana_qs >= 3; questions_1 if liana_qs < 3
+on-arrival: liana_qs += 1
+max-visits: 1
 
 "Is this the first time you've done this? Make a clone of yourself, I mean?"
 
@@ -70,21 +79,27 @@ She does not elaborate any further.
 
 
 @what_learn
-go-to: want_to_go
+go-to: want_to_go if liana_qs >= 3; questions_1 if liana_qs < 3
+on-arrival: liana_qs += 1
+max-visits: 1
 
 "What did you learn from me?"
 
 "Oh, many things! First of all, you turned out to be trans, or a lavernean as you would say, which was great. Not every clone turned out that way. Second of all, you went into science, to which I say, good for you. And third, you turned out to be fucked up in some ways I could only imagine." She laughs.
 
 @plant_diaries
-go-to: want_to_go
+go-to: want_to_go if liana_qs >= 3; questions_1 if liana_qs < 3
+on-arrival: liana_qs += 1
+max-visits: 1
 
-"Did you plant the diaries in the Archives?"
+"Did you plant the diaries in the Archives? Were they really a hoax?"
 
 "Yes, I did. They detected that it was inauthentic, which was surprising, although I think they went by the fact that the content did not conform to their preconceptions of me, and never detected my security breach in their networks. The computer breach is still open, by the way."
 
 @i_dont_believe
-go-to: want_to_go
+go-to: want_to_go if liana_qs >= 3; questions_1 if liana_qs < 3
+on-arrival: liana_qs += 1
+max-visits: 1
 
 "I don't believe you."
 
@@ -114,7 +129,7 @@ go-to: go_questions
 @why_go
 title: "Why?"
 max-visits: 1
-on-arrival: liana_qs += 1
+on-arrival: liana_qs_2 += 1
 go-to: go_questions
 
 "Why?"
@@ -123,13 +138,13 @@ go-to: go_questions
 
 "Why do... all of this? Come down to Earth and make a clone of yourself and then watch me and then..."
 
-Liana shrugs. "As an experiment, I suppose. When you've been alive for as long as we have, we get bored. This is just one of my subprocesses."
+Liana shrugs. "As an experiment, I suppose. When you've been alive for as long as we have, we get bored. Of course this is not my only body. Of course this is only a small fragment of my consciousness you're talking to."
 
 
 @dont_deserve
 title: "I don't deserve this."
 max-visits: 1
-on-arrival: liana_qs += 1
+on-arrival: liana_qs_2 += 1
 go-to: go_questions
 
 "I don't deserve this."
@@ -139,7 +154,7 @@ go-to: go_questions
 @what_about
 title: "What about my loved ones?"
 max-visits: 1
-on-arrival: liana_qs += 1
+on-arrival: liana_qs_2 += 1
 go-to: go_questions
 view-if: k_path >= 2 or a_path >= 2
 
@@ -149,12 +164,12 @@ view-if: k_path >= 2 or a_path >= 2
 
 "Can I still see them?"
 
-"I don't know. Maybe you'll be able to come back. The future is a mystery."
+"I don't know. Maybe you'll be able to see them again, in another world, in another life."
 
 @make_better
 title: "Why don't you help us here?"
 max-visits: 1
-on-arrival: liana_qs += 1
+on-arrival: liana_qs_2 += 1
 go-to: go_questions
 
 "Why don't you help us here? You could save the city."
@@ -174,7 +189,7 @@ Liana grins. "There's a loophole, if you read it carefully. Actually, I was hopi
 @ready_to_go
 title: You're ready to go.
 go-to: go_2
-view-if: liana_qs >= 2
+view-if: liana_qs_2 >= 2
 
 "I'm ready. Let's go."
 
@@ -195,7 +210,7 @@ achievement: ending_1
 
 @stay
 title: You don't want to go.
-view-if: liana_qs >= 2
+view-if: liana_qs_2 >= 2
 
 "I don't want to go. I want to stay here."
 
@@ -208,7 +223,7 @@ view-if: liana_qs >= 2
 @not_ready
 title: "I'm not ready to make a decision."
 go-to: em_stays
-view-if: liana_qs >= 2
+view-if: liana_qs_2 >= 2
 
 "I'm not ready to make a decision. I just... don't know if I want to stay or go, yet."
 

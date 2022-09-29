@@ -1,6 +1,6 @@
 title: Meeting A-
-subtitle: 6PM, LX Square
-view-if: a_path = 1 and day_major = 0 and daily_a <= 0 and stress < 15 and day < 20
+subtitle: 6PM, Founders Square
+view-if: a_path = 1 and day_major = 0 and daily_a <= 0 and stress < stress_threshold and day < 20
 on-arrival: day_major += 1; a_path = 2; a_romance = 1; daily_a = 1; a_day = day
 frequency: 400
 tags: major

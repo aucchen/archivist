@@ -1,0 +1,90 @@
+title: Notes
+subtitle: A recollection of facts.
+go-to: notes_main
+
+A collection of disconnected facts that comprise your knowledge of this world.
+
+@notes_main
+title: Other notes
+
+- @people
+- @history
+- @main: Do something else.
+
+@people
+title: People
+go-to: notes_main
+
+**A-**: [? if a_path<=1: A lover, once, along with K-. He is a doctor for an elite corporate hospital. ?][? if a_path>=2 and a_loved<=0: A lover, once. A friend now, perhaps, or something more. She is a doctor for an elite corporate hospital. ?][? if a_path>=3 and a_loved>0: A lover, once, and perhaps now, too. She is a doctor for an elite corporate hospital. ?]
+
+**K-**: [? if k_path<=2: A lover, once, along with A-. A friend, perhaps. You were married, once. She works as a scientist in one of the government research labs. ?][? if k_path >= 3 : You were once married, but you are unsure of the current status of your relationship. She works as a scientist in one of the government research labs, and is the parent of S-. ?]
+
+**S-**: [? if k_path<=2: A child. K-'s child with you. ?][? if k_path > 2: He is far more kind than you deserve. ?]
+
+# C- (Cassie)
+# might write out
+**C-**: A colleague. Your boss at the Archives, despite being 10 years your junior. [? if r_processed : She must have sympathized with the Uprising.. ?]
+
+# Rosa
+[? if mutual_aid_seen > 0 : R-: A leader of the Mutual Aid Alliance. ?] [? if r_seen > 0 : Rosa Camacho was a participant in the Uprising. ?]
+
+# Leon
+[? if mutual_aid_seen > 0 : L-: A leader of the Mutual Aid Alliance. ?] [? if r_seen > 0 : Leon Zhou was a participant in the Uprising. ?]
+
+# Liana Xu
+Liana Xu: A founding mother of the arcology. A posthuman leader during the war, she was nevertheless sympathetic to the plight of the baseline humans, and collaborated after the Treaty in order to construct this Arcology (among others) as a refuge for baseline humans. [? if l_seen >= 2 : She was also possibly the pre-war version of a lavernean, although no one would likely believe such claims. ?]
+
+@history
+title: History
+
+- @posthuman_war
+- @arcology
+- @cataclysm
+- @uprising
+- @notes_main
+- @main: Do something else.
+
+@posthuman_war
+title: The Posthuman War
+go-to: history
+
+The worst war in the history of humanity thus far. The war was between the "posthumans", or humans enhanced with cybernetic and biological modifications, and the "baseline humans", which included all humans who rejected these modifications. Both sides used coercion to recruit others to their side; the posthumans had developed infectious nanoplagues in order to convert baseline humans to a posthuman physiology, with varying degrees of success and failure. Nuclear and biological weapons were used, and over half the human population of the Earth perished.
+
+The war ended in the Treaty which cleaved humanity into two; the posthumans were to leave for outer space, while the baselines had full control of Earth. The posthumans would also help the baselines live in the radically changed environment by constructing vast arcology habitats for the remaining inhabitants.
+
+This was five hundred years ago (although some heterodox historians claim it was three hundred years ago). History is commonly divided into the pre-war and post-war epochs; years are named AT for "After Treaty".
+
+@arcology
+title: The Arcology
+go-to: history
+
+The Arcology is your home. There are others like it on Earth, but none have been in contact for the past ten years, ever since the Cataclysm. It is a sealed city with a population of over ten million, built on top of a previous trans-national metropolitan area that spanned a wide waterway. Half of the city has been abandoned since the Cataclysm, resulting in increased crowding in the remaining portions of the city.
+
+The Arcology's history is a tangled mess of theories and competing threads. There are even debates on how many years has passed since its construction. In some ways its history is even less studied and less known than the pre-war history of the united humanity. Only in the past decades, with the rediscovery of DNA storage, has its history begun to be unraveled.
+
+@cataclysm
+title: The Cataclysm
+go-to: history
+
+The Cataclysm was when the dome that had protected the city's surface failed. Entities from the wastelands outside had infiltrated in, half-living monsters created by both sides towards the end of the Posthuman War. A less visible but greater threat were the nanoplagues, engineered diseases also created by both sides near the end of the War. Most large non-human animals died. Communications and transportation outside an approximately 100km radius was also severed for unknown reasons possibly related to the dome's failure.
+
+You and most others evacuated to the undercity, the space under the old city platform, directly adjacent to the Earth. Despite the lower quality of the housing stock, rent was substantially increased following the evacuation.
+
+
+@uprising
+title: The Uprising
+go-to: history
+
+The origin for the Uprising always lied in the Laverneans. Anti-nonbinary and anti-GSM policies had been gradually increasing, but the catalyst was a coup by the Guards (a paramilitary group and the de facto armed wing of the Ruling Party). The Uprising was launched on a broad anti-Ruling Party and pro-democracy platform, but the bulk of the armed participants were from various lavernean cliques and their immediate allies, who for the first time were somewhat unified towards a single goal. Even the other nonbinary cliques were divided on participation.
+
+In retrospect, the Uprising was a total failure, and accomplished the opposite of its goals.
+
+The casualties were a few hundred Guards and a handful of regular police and military on one hand, and thousands killed in reprisals on revolutionary holdouts and any lavernean who happened to be visible enough. Images of tall and imposing laverneans clad in fetish-gear-cum-improvised-body-armor with rifles slung on their backs terrified the masses, and provided the definitive images of the Uprising and the justification for the elimination of its participants, and more broadly speaking, the lavernean population as a whole.
+
+
+
+@laverneans
+title: Laverneans
+go-to: history
+
+Laverneans: that is, you and your people. A subtype of nonbinary humans. Women and vaguely woman-affiliated people who were put into the male box at birth. Named after a popular pre-war figure discovered in the archives who was considered your foremother (historians disagree on whether they should be considered to be in the same category as a lavernean). Formerly A-. Not K-. Your lot are considered by the state to be degenerates, terrorists, sexual deviants, rioters, violent criminals, perverts, etc., and have mostly been removed from visible public life.

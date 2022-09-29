@@ -1,6 +1,6 @@
 title: Meeting K-
 subtitle: 5PM, Founders Square
-view-if: k_path = 1 and (day_major = 0 or day_minor = 0) and daily_k <= 0 and day = k_day + 2 and stress < 15 and day < 20
+view-if: k_path = 1 and (day_major = 0 or day_minor = 0) and daily_k <= 0 and day = k_day + 2 and stress < stress_threshold and day < 20
 on-arrival: day_major += 1; k_path += 1; daily_k = 1
 tags: major
 new-page: true
@@ -121,7 +121,7 @@ S- is looking at you, smiling (he is not wearing a mask). You almost can't bear 
 
 "I've been fine," you say as a reflex.
 
-"Yeah. Whatever." She sighs. "Look, I have to stay at the night overnight for an experiment, and I need someone to watch S-. I'll pay you 100 dollars for your time, plus extra for his food and water. Is that okay?"
+"Yeah. Whatever." She sighs. "Look, I have to stay at the lab overnight for an experiment, and I need someone to watch S-. I'll pay you 100 dollars for your time, plus extra for his food and water. Is that okay?"
 
 K- has always been this direct.
 

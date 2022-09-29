@@ -3,14 +3,13 @@ new-page: true
 on-arrival: k_bad += 1
 
 
-# TODO: if
-
 You receive a call from K-.
 
 "I thought we were going to meet last night. Where were you?"
 
 - @didnt_want: "Sorry, but, I don't think I can..."
 - @sorry_my_bad: "Sorry, my bad. Can we meet tomorrow?"
+- @sorry_sick: "Sorry, I was sick."
 
 @didnt_want
 on-arrival: k_path = -1
@@ -32,3 +31,19 @@ She sighs. "Fine. Do you want to take care of S- tomorrow night?"
 "Okay..."
 
 "Great! I'll see you then..."
+
+@sorry_sick
+view-if: illness_seen > 0 and k_bad < 3
+on-arrival: k_day = day
+
+"Sorry, I was sick," you say.
+
+"Not a contagious illness, right?"
+
+"No. I've just been like this for a while..."
+
+She sighs. "Do you think you'll be fine to take care of S- the day after tomorrow?"
+
+"Yes, I should be."
+
+"Great! I'll see you then."

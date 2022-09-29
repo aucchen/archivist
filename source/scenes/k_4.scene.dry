@@ -1,8 +1,9 @@
 title: A call from K-.
 subtitle: Many calls, in fact.
-view-if: k_path = 3 and day >= k_day + 2 and (day_major = 0 or day_minor = 0) and day < 20 and stress < 15
+view-if: k_path = 3 and day >= k_day + 2 and (day_major = 0 or day_minor = 0) and day < 20 and stress < stress_threshold
 on-arrival: k_path = 4; day_minor += 1; stress += 1
 frequency: 1000
+priority: 10
 tags: minor
 new-page: true
 
@@ -128,7 +129,7 @@ S- is reading a picture book on the couch. You sit next to K- as the rice is coo
 
 @eat
 on-arrival: food += 1
-go-to: still_money
+go-to: still_money if k_knows_a_affair = 0; k_apology if k_knows_a_affair = 1
 
 "S-, have you eaten yet?", you ask.
 
@@ -153,11 +154,22 @@ Together the two of you clean the living room floor, until it looks almost suita
 - @k_gets_up: K- has gotten up.
 
 @k_gets_up
-go-to: still_money
+go-to: still_money if k_knows_a_affair = 0; k_apology if k_knows_a_affair = 1
 
 K- has finally gotten up by herself. Her tears have stopped, but her eyes are still red. "You don't have to do this, you know."
 
-"I'm doing this because I want to."
+"I'm doing this because I want to," you say.
+
+@k_apology
+
+"By the way, sorry for snapping at you about A-," she says. "Do whatever you want. Just... stay safe."
+
+"It's okay..."
+
+"Do you still need money? I can give you some right now."
+
+- @yes_money: "Yes, I still need it..."
+- @no_money: "No. Keep it."
 
 
 @still_money

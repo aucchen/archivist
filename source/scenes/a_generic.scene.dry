@@ -1,19 +1,117 @@
 title: Call A-.
-subtitle: You need money, maybe...
-view-if: a_path >= 3 and daily_a = 0 and day >= a_day + 2 and (day_major = 0 or day_minor = 0)
-on-arrival: daily_a = 1; a_day = day
-go-to: a_good if a_loved = 1 and a_path < 5; a_bad if a_loved = 0; a_goto_end if a_path = 5
-tags: major
+subtitle: You need money, maybe [? if a_loved > 0 : (or maybe you just want to talk to her) ?]...
+view-if: a_path >= 3 and daily_a = 0 and day >= a_day + 2 and (day_major = 0 or day_minor = 0) and stress < stress_threshold
+on-arrival: daily_a = 1; a_day = day; a_path += 1; day_minor += 1
+go-to: a_good if a_loved >= 1 and a_path < 5; a_bad if a_loved <= 0; a_goto_end if a_path >= 4
+tags: minor
+
+You call A-...
 
 @a_good
-on-arrival: money += 100; day_major += 1; a_path += 1
+on-arrival: money += 100; day_minor += 1; a_path += 1
 
-You make the call. A- answers, and says in somewhat coded language (she must not be alone) that she can give you the money if you meet in person. And you do.
+You make the call. A- answers, and says in somewhat coded language (she must not be alone) that she can give you the money if you meet in person. And you meet, at the same isolated corner of the park by the frozen river.
 
-# TODO: elaborate
+"I just wanted to see you," she says. You hold hands and walk and let your bodies touch, as if this were a date.
+
+- @is_date: This could be a date.
+- @what_is: You have no idea what this is.
+
+@is_date
+
+This could be a date.
+
+@what_is
+
+You have no idea what *this* is.
+
+@just_like_before
+go-to: k_q if k_path >= 3 and a_knows_k = 0
+
+"It's just like before, isn't it?", she says. "Just like when we were..."
+
+She is silent for a moment.
+
+- @need_more: "I need more money."
+- @nothing_like_before: "It's nothing like before."
+
+@need_more
+on-arrival: money += 100
+
+"I need more money for rent."
+
+"Oh, sure. Here's another 100."
+
+- @not_enough: "That's not enough."
+
+@not_enough
+on-arrival: money += 200
+
+"That's not enough."
+
+"Oh? How expensive is your rent, really?"
+
+"It's $[+ rent +] per week."
+
+"Per week? Wow. I've never heard of anyone being charged per week. Fine. Here's two hundred. I'm not made of money, you know."
+
+[? if money < rent - 200 : It is still not enough, unfortunately, but you do not press her. ?]
+
+- @walk_ends
+
+
+
+@nothing_like_before
+
+"It's nothing like before."
+
+She sighs. "I suppose so. The past might as well be a fiction at this point."
+
+- @need_more: "I need more money."
+- @walk_ends
+
+@k_q
+view-if: a_knows_k = 0 and k_path >= 3
+
+"So, how is K- doing these days?", she suddenly asks.
+
+- @havent_seen: "I haven't seen her," you lie.
+- @she_is_good: "She is doing well." You are unsure if it is a lie.
+- @hates_you: "She hates you."
+
+@havent_seen
+
+"I haven't seen her," you lie.
+
+"Oh. That's too bad."
+
+@she_is_good
+
+"She is doing well." You are unsure if it is a lie.
+
+"Oh, that's good. And S-. Oh, he was so cute."
+
+@hates_you
+
+"She still hates you."
+
+"Oh. That's too bad."
+
+@walk_ends
+title: A- has to go.
+
+You arrive back on the main road. A- has to go somewhere (she will not tell you where she is going or what she is doing). And you are going home again.
+
+###########################
+
+@rent_q
+title: "How are you doing with rent?", she asks.
+view-if: missed_rent > 0
 
 @a_goto_end
 go-to: ending_a
+
+You are back at the same park by the frozen river.
 
 # TODO: transition to ending_a 
 

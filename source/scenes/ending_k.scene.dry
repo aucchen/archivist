@@ -9,6 +9,7 @@ title: Ending
 - @no_love: "No, I don't, in fact."
 - @love_bad: "Love doesn't stand a chance against the police state."
 - @maybe_love: "Maybe. I don't know."
+- @worry_a: "Aren't you worried about A-?"
 
 @no_love
 go-to: power_of
@@ -24,6 +25,15 @@ go-to: power_of
 go-to: power_of
 
 "Maybe. I don't know."
+
+@worry_a
+view-if: k_knows_a_affair > 0
+
+"Aren't you worried about A-?"
+
+"What, that you'll run off with her?" She laughs. "Well, in your darkest hour you came to me instead, right? Isn't that a sign more than any that the power of love is real?"
+
+- @love_bad: "Love doesn't stand a chance against the police state."
 
 @power_of
 
@@ -85,7 +95,7 @@ She sighs. "Look, if you start seeing yourself the way they told you to see your
 @no_move_in
 choose-if: evicted = 0
 go-to: ending_alone
-unavailable-subtitle: You do not want to be homeless.
+unavailable-subtitle: You do not have any other options.
 
 "Sorry, but... I can't do it."
 
@@ -113,10 +123,11 @@ K- wraps her arms around you, almost tackling you to her bed[? if a_romance >= 3
 @k_epilogue
 new-page: true
 go-to: endings
+achievement: ending_2
 
 = End
 
-You move in with K-. [? if is_homeless = 1 : You did not have much in the way of possessions, so the move was rather easy. ?][? if has_contract = 1 : You continue with your work as a contractor for the Archives. Since your work is more flexible than K-'s, you have become S-'s primary caretaker. ?][? if has_contract = 0 : You are unemployed, perhaps permanently, so you have become S-'s primary caretaker. ?] Being a primary caretaker is not such a negative experience. You have gotten to a comfortable rapport with him; he trusts you and listens to you, perhaps more than you deserve. Because of him, you have been learning to cook meals besides rice porridge and simple stir-fries. You even know how to make burgers from scratch now. S- was so happy.
+You move in with K-. [? if evicted = 1 : You did not have much in the way of possessions, so the move was rather easy. ?][? if has_contract = 1 : You continue with your work as a contractor for the Archives. Since your work is more flexible than K-'s, you have become S-'s primary caretaker. ?][? if has_contract = 0 : You are unemployed, perhaps permanently, so you have become S-'s primary caretaker. ?] Being a primary caretaker is not such a negative experience. You have gotten to a comfortable rapport with him; he trusts you and listens to you, perhaps more than you deserve. Because of him, you have been learning to cook meals besides rice porridge and simple stir-fries. You even know how to make burgers from scratch now. S- was so happy.
 
 Life goes on, for better or for worse. You still fear for your life, and for S-'s life, every time you leave the apartment, but finally it feels survivable. Love, as they say, is the most powerful weapon in the revolutionist's arsenal, and you have it in ample quantities.
 

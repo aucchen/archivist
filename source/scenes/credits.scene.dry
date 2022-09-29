@@ -1,6 +1,6 @@
 title: Credits
 
-*The Archivist and the Revolution* is the final refinement of various story ideas that have been simmering in my head for over 10 years by now. Like all of my stories, this is nothing more than a hodgepodge of my interests, obsessions, and neuroses.
+*The Archivist and the Revolution* is the final refinement of various story ideas that have been simmering in my head for over 10 years. Like all of my stories, this is nothing more than a hodgepodge of my interests, obsessions, and neuroses.
 
 Written by Autumn Chen.
 
@@ -8,17 +8,17 @@ Coded using {!<a href="https://github.com/aucchen/dendry">dendry</a>!}, original
 
 Images:
 
-`monitor_dithered.png`: modified from...
+`monitor_dithered.png`: modified from https://commons.wikimedia.org/wiki/File:Belinea-monitor19crt.jpg
 
-`monitor_2_dithered.png`:
+`monitor_2_dithered.png`: modified from https://commons.wikimedia.org/wiki/File:HP_Ultra_VGA_1280_text_mode_%E2%80%A2_3.jpg
+
+`monitor_3_dithered.png`: modified from https://commons.wikimedia.org/wiki/File:Kfc_ck1428g_monitor_observe.jpg
 
 All other images by the author. The backgrounds were edited from photographs using GIMP filters and dithering with ImageMagick.
 
 = Acknowledgments
 
-Thanks to [...]
-
-#Thanks to Arlo @magiciansvoyage, Jinx @lapinlunairegames, Travis Moy,...
+Thanks to Arlo @magiciansvoyage, Jinx @lapinlunairegames, Travis Moy, and Zoe M. for their testing, discussions, and amazing feedback.
 
 = Science
 
@@ -96,7 +96,3 @@ Music: The unofficial soundtrack is {!<a href="https://open.spotify.com/playlist
 @game_over
 view-if: started = 1
 game-over: true
-
-@postgame_credits
-title: Credits and Notes (post-game)
-view-if: started = 1

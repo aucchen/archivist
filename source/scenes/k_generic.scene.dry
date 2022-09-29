@@ -1,22 +1,74 @@
 title: Call K-.
-subtitle: Ask her if there is anything you could do for money...
+subtitle: Ask her if there is anything you could do...
 view-if: k_path >= 4 and daily_k = 0 and day >= k_day + 2 and (day_major = 0 or day_minor = 0)
-on-arrival: daily_k = 1; k_day = day; day_minor += 1; k_path += 1
+on-arrival: daily_k = 1; k_day = day; day_minor += 1; k_path += 1; stress += 1
 max-choices: 1
+max-visits: 2
+tags: minor
 
-You call K-, and ask if there is anything you could do for money, such as perhaps taking care of S-. She says yes; you can visit her apartment.
+You call K-, and ask if there is anything you could do to help her (and perhaps for money), such as perhaps taking care of S-. She says yes; you can visit her apartment.
 
 - #k_generic
 
 @k_s
 title: K- has another late-night experiment...
+max-visits: 1
 tags: k_generic
 
-TODO: take care of S- for money., Or just help K- around the household for money.
+K- has another late-night experiment tonight. She asks if you can stay at her apartment tonight until she returns, to help cook and take care of S-.
+
+- @of_course_go: Of course, you go there to see S-.
+
+@of_course_go
+
+Of course, you go there to see S-. He seems to be happy to see you (or is he just pretending for your or K-'s benefit?). He hugs you with a broad smile on his face.
+
+You make the usual rice and beans porridge. For some reason, it is easier to cook for others than it is to cook for yourself. You draw upon reserves of energy you never knew you had. As before, S- says he wants burgers, but K- told you to not indulge him this time. He grumbles a little, but seems happy to eat.
+
+"Hey, I can pay you," says K-, after she returns. "Is $80 okay?"
+
+- @sure_80: "Thank you."
+- @keep_money: "Keep the money."
+
+@sure_80
+on-arrival: money += 80
+
+"Thank you."
+
+
 
 @k_household
 title: K- just needs some household chores done.
+max-visits: 1
 tags: k_generic
 
+K- apparently has a messy house again. She asks if you can come over to help clean up. So you go over to her apartment.
+
+- @of_course_clean: Of course, you help her.
+
+@of_course_clean
+
+Of course, you help her. For whatever reason, it is easier to clean someone else's house than it is to clean your own. You draw upon reserves of energy you never knew you had for the purpose of sweeping the floor. Clumps of K-'s coarse black hair and S-'s fine hair lay strewn all over. By the time you are done, the rooms look rather more presentable.
+
+"Hey, I can pay you," says K-. "Is $60 okay?"
+
+- @sure_60: "Thank you."
+- @keep_money: "Keep the money."
+
+@sure_60
+on-arrival: money += 60
+
+"Thank you."
+
+@keep_money
+
+"Keep the money."
+
+"Oh. Well, okay."
+
+@smells_like_a
+view-if: a_encounter = 1 and k_knows_a_affair = 0
+
+"Hey. You smell like A-."
 
 TODO: if you've had an encounter with A-, she makes a comment on it.

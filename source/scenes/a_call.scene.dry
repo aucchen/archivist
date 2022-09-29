@@ -1,0 +1,171 @@
+title: A call from A-.
+view-if: missed_rent > 0 and day_minor = 0 and a_path = 0 and day >= 6
+on-arrival: day_minor += 1; stress -= 1
+max-visits: 1
+frequency: 1000
+priority: 10
+tags: minor
+
+# TODO: A- calls you...
+You receive a call from A-.
+
+- @answer: Answer the call.
+- @who_was: He was your former partner...
+
+@who_was
+
+He was your former partner, eight years ago, and used to live as a lavernean. He, K- and you used to be the closest of friends and lovers, or something like that, until pressures in the medical field forced A- to choose between living openly as a lavernean and having a high-paying career. He chose the latter. You broke up. K- still has a grudge.
+
+- @answer: Answer the call.
+- @ignore_call: Ignore the call.
+
+@ignore_call
+
+Are you sure you wish to ignore the call?
+
+- @main: Ignore for real.
+- @answer: Answer it.
+
+@answer
+on-arrival: a_path = 1; a_day = day
+
+"Hello, Em?"
+
+"Hi."
+
+"I heard you've been having trouble with rent. Is there anything I can do to help?"
+
+- @how_know: "How did you know?"
+- @pay_rent: "You can help me pay rent..."
+
+@how_know
+
+"How did you know I've been having trouble?"
+
+"Oh, I've been following your profile on the Archives' CityNet page. Your profile was removed, so I guessed that you've been fired."
+
+- @thats_creepy: "That's creepy."
+- @pay_rent: "You can help me pay rent..."
+
+
+@thats_creepy
+
+"That's creepy."
+
+"Sorry. But can I still help?"
+
+- @dont_want_help: "Actually, I don't want your help."
+- @pay_rent: "You can help me pay rent..."
+
+
+@dont_want_help
+
+"Actually, I don't want your help."
+
+"Are you sure? Don't worry about me. I have enough money to help you."
+
+- @dont_want_2: "Yes, I'm sure."
+- @pay_rent: "You can help me pay rent..."
+
+
+@dont_want_2
+
+"Yes, I'm sure. I don't want your help."
+
+"Oh. Okay. Well, I still really want to see you again. So if you change your mind or if you want to hang out, just let me know."
+
+"Okay."
+
+A- hangs up, leaving you alone with your thoughts.
+
+
+@pay_rent
+
+"You can help me pay rent..."
+
+"Right. How much do you need?"
+
+- @100: $100 to cover rent.
+- @200: $200 more to cover rent.
+- @300: $300 for rent.
+
+@100
+on-arrival: money += 100; a_money = 1
+go-to: money_finish
+
+"I just need Just 100 dollars."
+
+@200
+on-arrival: money += 200; a_money = 1
+go-to: money_finish
+
+"I need 200 dollars to cover rent."
+
+@300
+on-arrival: money += 300; a_money = 1
+go-to: money_finish
+
+"I need 300 dollars for rent."
+
+@money_finish
+
+"Sure, anything for you," A- says. "Anyway, could we possibly meet again soon? I really want to see you again."
+
+- @okay_see: "Okay..."
+- @maybe_see: "Maybe..."
+- @precondition: "Is that a condition for the money?"
+
+@precondition
+
+"Is that a condition for the money?"
+
+"No, of course not!" An audible sigh. "I just want to see you. Is it okay?"
+
+It doesn't feel right to refuse.
+
+- @okay_see: "Okay..."
+- @maybe_see: "Maybe..."
+- @idk_see: "I don't know..."
+
+@okay_see
+
+"Okay..."
+
+"That's great! Maybe we could meet up at Founders Square again, and wander around the city just like the old days."
+
+"Yeah, maybe."
+
+"Well, call me if you want to meet up, or if you need anything else!"
+
+- @done: A- hangs up.
+
+
+@maybe_see
+
+"Um, maybe," you say. "I'm..."
+
+"No, it's fine," he says. "I understand if you don't want to see me."
+
+"It's not that, it's... just..." You don't know what to say.
+
+"Well, then, just call me if you want to meet up, or if you need anything else."
+
+- @done: A- hangs up.
+
+@idk_see
+
+"Um, I don't know," you say.
+
+"That's fine," he says. "I understand if you don't want to see me."
+
+"It's not that, it's... just..." You don't know what to say.
+
+"Well, then, just call me if you want to meet up, or if you need anything else."
+
+- @done: A- hangs up.
+
+
+@done
+
+A- hangs up, leaving you alone with your thoughts. At least you are slightly further from total destitution.
+

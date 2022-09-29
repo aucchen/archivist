@@ -1,0 +1,114 @@
+title: A call from K-.
+view-if: day_minor = 0 and k_path = 0 and day >= 8 and stress > 3*stress_threshold/5 and stress < stress_threshold
+on-arrival: day_minor += 1; stress -= 2
+max-visits: 1
+frequency: 500
+priority: 10
+tags: minor
+
+You receive a call from K-.
+
+- @answer: Answer the call.
+- @who_is: K- was your...
+- @ignore: Ignore the call.
+
+@who_is
+
+Back when it was still legal, you and K- were married. That was six years ago. She was your first love, or something like that. 
+
+Back when it was still legal, you and K- had a child. It was for his safety that you and K- had separated. That was what you told yourself.
+
+Today she works as a scientist in one of the government labs, and lives with S-, her (and your?) child.
+
+- @answer: Answer the call.
+- @ignore: Ignore the call.
+
+@ignore
+
+Are you sure you wish to ignore the call?
+
+- @answer: Answer it.
+- @ignore_2: Ignore it.
+
+@ignore_2
+
+You do not answer the call, leaving you alone with your thoughts.
+
+@answer
+
+You answer the call.
+
+"Hello, Em?"
+
+"Yeah..."
+
+"I need you to take care of S- tomorrow, overnight. I'm going to be staying in the lab until morning. Do you think you can make it?" A pause. "Don't worry. I'll pay you."
+
+- @yes_take: "Fine..."
+- @no_take: "I don't know, sorry..."
+- @why_now: "Why are you asking me?"
+
+@yes_take
+on-arrival: k_path = 1; k_day = day - 1 
+
+"Fine, I can take care of him..."
+
+"Great! I'll see you tomorrow in Founders Square at 5PM."
+
+She hangs up. You are left alone with your thoughts once more.
+
+@no_take
+
+"I don't know, sorry..."
+
+"Are you sure? I'll pay you a hundred dollars. It'll be fine. S- misses you. He wants to see you."
+
+- @yes_take: "Fine, I can take care of him..."
+- @no_take_2: "Sorry, I can't..."
+- @why_now: "Why are you asking me?"
+
+@no_take_2
+on-arrival: a_path = -1
+
+"Sorry, I can't take care of him..."
+
+"Oh. Well. Okay then. I guess I'll talk to you later."
+
+She hangs up. You are left alone with your thoughts once more.
+
+
+
+@why_now
+max-visits: 1
+
+"Why are you asking me now? We haven't talked in..."
+
+"Forever, yes, I know. But... I was just talking to C-, and I heard that you were in trouble. I wanted to get back in touch somehow."
+
+- @talk_to_c: "You talk to C-?"
+- @better_way: "Is there better way we could have gotten back in touch?"
+- @yes_take: "Fine..."
+
+@talk_to_c
+max-visits: 1
+
+"You talk to C-?"
+
+"Hey, our lab and hers share some reagents sometimes."
+
+- @better_way: "Is there better way we could have gotten back in touch?"
+- @yes_take: "Fine, I can take care of him..."
+- @no_take: "I don't know, sorry..."
+
+@better_way
+max-visits: 1
+
+"Is there a better way we could have gotten back in touch?"
+
+"Sorry, is it wrong that I had to come up with an excuse to see you that I believed you would respond positively to? I didn't know if you still cared about me, so I guessed that you would care about S- more."
+
+"Oh..."
+
+- @talk_to_c: "You talk to C-?"
+- @yes_take: "Fine, I can take care of him..."
+- @no_take: "I don't know, sorry..."

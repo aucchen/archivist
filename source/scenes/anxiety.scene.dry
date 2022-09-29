@@ -1,8 +1,10 @@
 title: Breakdown
 subtitle: It is not good.
-view-if: stress >= 15 or day >= 20
+view-if: stress >= stress_threshold or day >= 20
 frequency: 1000
+priority: 10
 tags: major, minor
+set-bg: images/windows_filtered_dithered.png
 new-page: true
 
 You are tired, more so than usual.
@@ -159,6 +161,7 @@ new-page: true
 There is a knock on the door, before the sound of a key turning. It opens.
 
 @ending_alone
+choose-if: k_path < 3
 view-if: l_seen < 3
 go-to: endings
 achievement: ending_7

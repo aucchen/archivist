@@ -13,9 +13,9 @@ You have no more edible food left in your apartment. What are you going to do?
 - @starve: Starve.
 
 @takeout
-subtitle: $15-50, lasts 1-4 days.
-choose-if: stress <= 14
-view-if: money > 50
+subtitle: $[+ takeout_cost - 5 +]-[+ takeout_cost + 20 +], lasts 1-4 days.
+choose-if: stress <= 5*stress_threshold/6
+view-if: money >= takeout_cost + 20
 unavailable-subtitle: You don't have the energy for this.
 
 Buying takeout was your preferred option, back when you had a job. The downside is the cost, and that you could be seen. The upside is lower energy expenditures.
@@ -25,6 +25,7 @@ Buying takeout was your preferred option, back when you had a job. The downside 
 
 @takeout_2
 max-choices: 1
+on-arrival: days_starved = 0
 set-bg: images/windows_filtered_dithered.png
 
 - #takeout
@@ -32,7 +33,7 @@ set-bg: images/windows_filtered_dithered.png
 @takeout_do_1
 title: Takeout
 tags: takeout
-on-arrival: money -= 35; food += 2; stress += 1
+on-arrival: money -= takeout_cost + 10; food += 2; stress += 1
 
 The trolleys have broken down today, so you visit the nearest walkable restaurant. It is more expensive than you would like.
 
@@ -42,7 +43,7 @@ It costs $35 for food to last 2 days.
 @takeout_do_2
 title: Takeout
 tags: takeout
-on-arrival: money -= 20; food += 2; stress += 1
+on-arrival: money -= takeout_cost; food += 2; stress += 1
 
 You take the trolleys to visit your favourite restaurant near the university.
 
@@ -51,9 +52,9 @@ It costs $20 for enough food to last 2 days.
 #################
 
 @cook
-subtitle: $25-60, lasts 2-7 days.
-choose-if: stress <= 12
-view-if: money > 60
+subtitle: $[+ grocery_cost - 25 +]-[+ grocery_cost + 5 +], lasts 2-7 days.
+choose-if: stress <= 3*stress_threshold/4
+view-if: money >= grocery_cost + 5
 unavailable-subtitle: You don't have the energy for this.
 
 Perhaps a visit to the grocery store is in order. You could buy a supply of shelf-stable products to cook for yourself. The downside is the effort of walking and carrying the groceries, and that you could be seen.
@@ -65,6 +66,7 @@ Perhaps a visit to the grocery store is in order. You could buy a supply of shel
 max-choices: 1
 on-arrival: {!
 Q.post_trolley = window.randomSelect(['food.cook_2_1', 'food.cook_2_2', 'food.cook_2_3']);
+Q.days_starved = 0;
 !}
 set-bg: images/windows_filtered_dithered.png
 
@@ -113,7 +115,7 @@ The trolley is mostly empty when you board. There are posters here: advertisemen
 @cook_2_1
 title: The trip is uneventful.
 tags: cooking
-on-arrival: money -= 55; food += 5; day_major += 1
+on-arrival: money -= grocery_cost; food += 5; day_major += 1
 
 When you arrive at the store, the shelves are devoid of rice, flour, and bread, as well as long-lasting shelf-stable products in general. There must have been panic buying over the latest news of nanoplagues or strikes or equipment failures or sabotage or terrorism or...
 
@@ -127,7 +129,7 @@ It costs $55 for enough food to last five days.
 @cook_2_2
 title: The trip is uneventful.
 tags: cooking
-on-arrival: money -= 50; supply += 2; food += 5; day_major += 1
+on-arrival: money -= grocery_cost; supply += 2; food += 5; day_major += 1
 
 When you arrive at the store, the shelves are devoid of fresh fruits and produce. There must have been technical incidents at the farms or the transportation system or the refrigeration or maybe there has been sabotage (your comrades or the reactionaries?) or perhaps delivery strikes or anti-plant nanoplagues or...
 
@@ -140,7 +142,7 @@ It costs $50 for enough food to last five days.
 
 @cook_2_3
 title: The trip is uneventful.
-on-arrival: money -= 25; food += 2; day_major += 1
+on-arrival: money -= grocery_cost; food += 2; day_major += 1
 
 When you arrive at the store, the only food item available is algae paste, better known as "gray mush". It is unappetizing, but you have no other option.
 
@@ -155,7 +157,7 @@ It costs $25 for two days of food.
 @cook_new
 choose-if: supply > 0
 subtitle: You have some cooking supplies.
-on-arrival: supply -= 1; stress += 1; food += 1
+on-arrival: supply -= 1; stress += 1; food += 2; days_starved = 0
 unavailable-subtitle: You don't have any supplies.
 
 You cook using some of the supplies that you have. You make a vegetable and tofu stir fry, which will last you for all of today.
@@ -210,3 +212,4 @@ tags: starve
 
 Day ??? of no food. It is difficult to move. Everything hurts. You feel sick. You need to rest.
 
+- @anxiety: You are breaking down.

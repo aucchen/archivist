@@ -4,14 +4,20 @@ view-if: started = 0
 set-bg: images/windows_filtered_dithered.png
 on-arrival: {!
     Q.started = 1;
+    // basic stats
     Q.money = 100;
     Q.rent = 350;
+    Q.base_rent = 350;
     Q.food = 2;
     Q.rent_due = 5;
     Q.missed_rent = 0;
     Q.medicine = 7;
-    Q.medicine_cost = 40;
+    Q.medicine_cost = 50;
+    Q.grocery_cost = 50;
+    Q.takeout_cost = 20;
     Q.has_contract = 1;
+    Q.stress = 0;
+    Q.stress_threshold = 25;
     // relationships
     Q.liana_introduced = 0;
     Q.a_path = 0;
@@ -24,6 +30,7 @@ on-arrival: {!
     Q.rosa_seen = 0;
     Q.mutual_aid_seen = 0;
     // data
+    Q.key3 = 1;
     Q.key7 = 1;
     Q.key13 = 1;
     Q.key17 = 1;
@@ -37,6 +44,9 @@ on-arrival: {!
     Q.prev_data = [];
     Q.correct_data_types = [];
     Q.chosen_data_types = [];
+    // data archives (em's collection)
+    Q.data_archives = [];
+    Q.data_scenes = [];
     // how many of each data type has been seen
     Q.w_seen = 0;
     Q.d_seen = 0;
@@ -65,7 +75,7 @@ on-arrival: {!
     // low-anxiety, high-anxiety
     Q.low_anxiety_day_dialogues = [
         "It is a constant 15 degrees in the undercity. Your apartment is 15 square metres. It is 15:00 right now. It has been 10 years since the Cataclysm, and five since the Uprising. 15. You rotate the number in your mind.",
-        "Trolleys and people trudge along the street beneath your window. The city's circulatory system. Looking closer, you see cracks in the third-century concrete, exposing pre-war cobblestone. Patches of missing surface. After the Cataclysm, sourcing raw materials for routine maintenance has become difficult if not impossible. The city is a body and it is breaking down.",
+        "Trolleys and people trudge along the street beneath your window. The city's circulatory system. Looking closer, you see cracks in the third-century concrete, exposing pre-war cobblestone. Patches of missing surface. After the Cataclysm, sourcing raw materials for routine maintenance has become difficult if not impossible.",
         "The light outside is burning bright. The thin walls are far from soundproof, so you hear the clanging of the trolley and the voices of people inside and outside your building. You cannot fall back asleep.",
         "It is a luxury that you are allowed this private space. It is a luxury that you have the space to carry out your degenerate activities such as \"using the washroom\".",
         "Dishes are beginning to pile up in your sink. Washing dishes makes your arms tired, which has led to broken dishes and spilled food. Thus, you only wash dishes when you are at your most energetic, which is not right now.",
@@ -75,13 +85,19 @@ on-arrival: {!
     ];
     Q.day_dialogues = [
         "You are so, so tired.",
-        "The city is a body and it is breaking down. You are a body and you are breaking down.",
         "It is hard to carry yourself out of bed in the morning. Afternoon. Whatever.",
         "You lie in bed for hours, thinking of nothing in particular, until your unfortunate biological necessities force you out. You are so, so tired.",
         "You wake up with your stomach aching. It is likely that the previous day's diet was inadequate.",
         "You awake with a pulsing headache. The probability that you are currently dying is low, but elevated.",
         "You awake to pounding on the walls of your apartment, accompanied by shouting. It stops, but you cannot fall back asleep.",
         "You awake feeling more tired than you felt last night.",
+        "The city is a body and it is breaking down."
+    ];
+    // High anxiety is more than 20
+    Q.high_stress_day_dialogues = [
+        "You wake up with a dull, aching pain throughout your body. Everything hurts.",
+        "You are awake, for better or for worse.",
+        "You are a body and you are a machine and you are breaking down.",
     ];
     Q.day_dialogue = Q.low_anxiety_day_dialogues[0];
     Q.afternoon_dialogues = [
@@ -95,6 +111,7 @@ on-arrival: {!
         "Someone is watching television in the apartment, with the volume far too high.",
         "Someone is playing music far too loudly. The bass beats shake the walls.",
     ];
+    Q.high_stress_afternoon_dialogues = [];
     Q.afternoon_dialogue = Q.afternoon_dialogues[0];
     Q.next_day_scene = "main";
     Q.next_day_scene_queue = [];

@@ -6,7 +6,7 @@ title: DNA data recovery
 subtitle: Your paid job.
 new-page: true
 on-arrival: data_seen += 1; stress += 1; day_data_seen = 0; data_day = day
-view-if: day_major = 0 and stress < 15 and data_seen = 0 and day < 20 and has_contract = 1
+view-if: day_major = 0 and stress < stress_threshold and data_seen = 0 and day < 20 and has_contract = 1
 max-choices: 5
 tags: major
 frequency: 500
@@ -29,6 +29,8 @@ Sorry about the job title change. You're still a valuable contributor to our tea
 `Best,
 C-.`
 
+[? if data_seen = 1 : The datasets available to an archivist contractor are randomly selected from a pool of available undecoded datasets, their priorities determined by some obscure and opaque algorithm. ?]
+
 # sample data
 - #data
 
@@ -38,7 +40,7 @@ title: DNA data recovery
 subtitle: Your paid job. [? if prev_data_type != 0 : You have a message from the Archives about your last assignment. ?]
 new-page: true
 on-arrival: data_seen += 1; stress += 1; day_data_seen = 0; data_day = day
-view-if: day_major = 0 and stress < 15 and data_seen >= 1 and has_contract = 1 and day < 20
+view-if: day_major = 0 and stress < stress_threshold and data_seen >= 1 and has_contract = 1 and day < 20
 go-to: archivist_check
 set-jump: view_display
 tags: major
@@ -100,9 +102,10 @@ You have filed the dataset.
 on-arrival: {!
 Q.correct_data_types.pop();
 var last_data = Q.prev_data.pop();
-Q.data_archives.append(last_data);
+Q.data_archives.push(last_data);
 // wiki
-Q.data_scenes.append(window.dendryUI.game.scenes['data.' + last_data]);
+Q.data_scenes.push(window.dendryUI.game.scenes['data.' + last_data + '_'].content);
+console.log('data added');
 !}
 go-to: post_data
 
@@ -135,7 +138,7 @@ if (Q.day_data_seen >= 2 && Math.random() > 0.5) {
 @pre_view_display
 go-to: view_display
 
-There are still more datasets for you to decode.
+You are getting tired, but you push through. There are still more datasets to decode.
 
 
 @end_data
@@ -173,7 +176,7 @@ while (i < Q.chosen_data_types.length) {
             Q.payment += 20;
         } else if (correct_t == 'hoax') {
             Q.check_data_text += 'Based on our evidence, this dataset has been deemed as a HOAX, and will not be archived.';
-            Q.check_data_test += ' Nevertheless, you have been paid $10.</p>';
+            Q.check_data_test += ' Nevertheless, you have been paid $10 as a token fee.</p>';
             has_hoax = true;
         } else if (correct_t == 'special') {
             has_special = true;
@@ -194,8 +197,10 @@ while (i < Q.chosen_data_types.length) {
 if (has_special && !Q.r_processed) {
     Q.r_processed = 1;
     Q.check_data_text += '<p>A message from C-:</p><p>Hi Em, I saw the R dataset that you filed. Just, be careful in what you send in. We both have friends who might not want certain people to see these files.</p>';
-} else if (has_hoax && Q.l_seen == 2) {
+}
+if (has_hoax && Q.l_seen == 2 && !Q.hoax_warned) {
     Q.check_data_text += '<p>A message from C-:</p><p>Turns out, the whole Liana Xu dataset might have been some sort of hoax. Our security people think there must have been an artificial dataset injected into the pipeline by either insiders or outside hackers. We aren\'t going to penalize you, but just so you\'re aware, we will not be paying for any more of these files, and you should not regard any of these files as having veracity. Sorry to get your hopes up.</p>';
+    Q.hoax_warned = 1;
 }
 // promote some specific datasets: S101.fastq.gz, X1001.fastq.gz
 if (Q.key1001 == 0 && !Q.check_101_prompt) {
@@ -263,7 +268,7 @@ go-to: decode
 set-jump: d606_ 
 
 @d606_
-go-to: todo
+go-to: d606_c
 
 `BSRI DNA Diaries Project - #83`
 
@@ -277,7 +282,10 @@ go-to: todo
 
 `I hope your world is better than mine.`
 
-You are terrified of death. Otherwise, you might have already died.
+@d606_c
+go-to: todo
+
+# You are terrified of death. Otherwise, you might have already died.
 
 
 @d77
@@ -368,7 +376,7 @@ go-to: decode
 set-jump: d1001_
 
 @d1001_
-go-to: todo
+go-to: d1001_c
 
 # TODO: view-if only when some liana diaries are seen (providing the key).
 
@@ -379,6 +387,9 @@ go-to: todo
 `I find the process of writing these diaries to be somewhat therapeutic. I have not been in the habit of introspection before, but...`
 
 # outcome: suppressed
+
+@d1001_c
+go-to: todo
 
 Jiaren does not occur in the historical record; the Founder's personal relationships were unknown, and she was assumed to have a husband. If this is true, then, as some revisionist pseudohistorians have suggested, Liana was indeed a lesbian, and not only that, but also have a partner who was the historical equivalent of a lavernean (probably).
 
@@ -397,11 +408,14 @@ go-to: decode
 set-jump: w606_
 
 @w606_
-go-to: todo
+go-to: w606_c
 
 `URL: https://en.wikipedia.org/wiki/Disterna`
 
 `Disterna is a genus of longhorn beetles of the subfamily Lamiinae,[1] containing the following species: ...`
+
+@w606_c
+go-to: todo
 
 Your eyes glaze over. The bulk of your work consists of articles such as these, endless lists and lists of minutia of interest only to select experts.
 
@@ -421,11 +435,14 @@ go-to: decode
 set-jump: w29_
 
 @w29_
-go-to: todo
+go-to: w29_c
 
 `URL: https://en.wikipedia.org/wiki/New_York_State_Route_347`
 
 `New York State Route 347 (NY 347) is an east–west state highway located in Suffolk County, New York, in the United States. It connects the Northern State Parkway in Hauppauge to NY 25A in Mount Sinai. The route serves as a southern bypass of Smithtown and as a direct link between Nesconset and Port Jefferson...`
+
+@w29_c
+go-to: todo
 
 You sometimes wish you could see the world in which the creators of these archives lived. From the snippets and fragments you've seen, it must have been a beautiful world. A better place than this one.
 
@@ -443,11 +460,14 @@ go-to: decode
 set-jump: w121_
 
 @w121_
-go-to: todo
+go-to: w121_c
 
 `URL: https://en.wikipedia.org/wiki/Sidi_Lazreg`
 
 `Sidi Lazreg is a town and commune in Relizane Province, Algeria...`
+
+@w121_c
+go-to: todo
 
 Places long gone, places that might as well only exist in your imagination...
 
@@ -465,11 +485,14 @@ go-to: decode
 set-jump: w31_
 
 @w31_
-go-to: todo
+go-to: w31_c
 
 `URL: https://en.wikipedia.org/wiki/Structural_alignment_software`
 
 `This list of structural comparison and alignment software is a compilation of software tools and web portals used in pairwise or multiple structural comparison and structural alignment...` 
+
+@w31_c
+go-to: todo
 
 Finally, useful scientific knowledge. Or is it? The article is a collection of dead links to code long since disappeared. There does not seem to be usable technical content herein.
 
@@ -486,11 +509,14 @@ go-to: decode
 set-jump: w49_
 
 @w49_
-go-to: todo
+go-to: w49_c
 
 `URL: https://en.wikipedia.org/wiki/Marmong_Point,_New_South_Wales`
 
 `Marmong Point is a suburb of the City of Lake Macquarie in New South Wales, Australia north-north-east of the town of Toronto on the western shore of Lake Macquarie. Marmong is an Aboriginal word meaning low water or swampy water...`
+
+@w49_c
+go-to: todo
 
 Places that might as well be infinitely far away in time and space, brought to your computer by the archivists of old...
 
@@ -507,11 +533,14 @@ go-to: decode
 set-jump: w169_
 
 @w169_
-go-to: todo
+go-to: w169_c
 
 `URL: https://en.wikipedia.org/wiki/List_of_The_Best_Thing_I_Ever_Ate_episodes`
 
 `The Best Thing I Ever Ate, an American television show, premiered on June 22, 2009, on Food Network in the United States. In 2017, the series transferred to Cooking Channel for one season of compilations from the previous six seasons, then with new episodes in its eighth season. As of 2021, eleven seasons have aired, for a total of 143 episodes. (This does not include the eight-episode special series All-Star Best Thing I Ever Ate that aired on Food Network in 2020.) The show features renowned chefs like Bobby Flay, Guy Fieri, and Ted Allen talking about their favorite dishes in specific categories...`
+
+@w169_c
+go-to: todo
 
 So much detritus of the past. So many words that mean nothing to you now, but might have meant everything to the people who lived at this time. How would "Bobby Flay" feel about you reading this right now, his name written in DNA?
 
@@ -531,11 +560,14 @@ go-to: decode
 set-jump: w13_
 
 @w13_
-go-to: todo
+go-to: w13_c
 
 `URL: https://en.wikipedia.org/wiki/Sir_James_Ritchie,_1st_Baronet`
 
 `Sir James Thomson Ritchie, 1st Baronet (21 September 1833 – 18 September 1912) was a Scottish businessman who was the 576th Lord Mayor of London. He was born in Angus, the second son of William Ritchie, a landed proprietor, of Rockhill House, Broughty Ferry, Forfarshire, head of the firm of William Ritchie & Son of London and Dundee, East India merchants, jute spinners, and manufacturers. His younger brother would be ennobled as Charles Ritchie, 1st Baron Ritchie of Dundee.`
+
+@w13_c
+go-to: todo
 
 You wonder how "Sir James Thomson Ritchie" would feel about you reading his name right now. Could he imagine this world? DNA had not even been discovered in his time. Why did his name survive the ages when almost all others of his time did not?
 
@@ -553,7 +585,7 @@ go-to: decode
 set-jump: w63_
 
 @w63_
-go-to: todo
+go-to: w63_c
 
 `URL: https://en.wikipedia.org/wiki/Leningrad_Cowboys_Go_Wild`
 
@@ -569,6 +601,9 @@ No.	Title	Writer(s)	Length
 
 ...
 `
+
+@w63_c
+go-to: todo
 
 This article is a reference to a musical album that almost certainly does not exist anymore. You have no idea about the context of this album, or any hints as to the identities of the so-called "Leningrad Cowboys". They are most likely not affiliated with the historical city of Leningrad, nor the occupation of cowboy.
 
@@ -647,31 +682,34 @@ max-visits: 1
 frequency: 500
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('x1001'); Q.correct_data_types.push('liana'); Q.l_seen += 1; Q.key_1009 = 1; !}
-on-departure: liana_introduced = 1
 go-to: decode
 set-jump: x1001_
 
 @x1001_
-go-to: todo
+go-to: x1001_c
 
 `2XX3
 
 Hello from the distant past. If you are reading this, it is likely that you are in New Niagara Arcology. Since technology apparently is still advanced enough to decode DNA, your society must be flourishing, or at least stable. Is it not?
 
-Today, I've been talking with our architects regarding the structure of our new city. Your city. Hopefully the information contained herein will be helpful.
+It is my last few weeks on Earth, before I am required to leave for the space colonies as stipulated by the Posthuman Treaty. During this time, I am supervising the construction of the Arcology, also as stipulated by the Treaty. I am ensuring that the environmental seal and filtration systems will allow the city to remain free of the nanoplagues that were the most unfortunate consequence of the war.
+
+I have attached some schematics on the design and maintenance of some of these filtration systems. I hope the information contained herein will be helpful.
+
+In case you are interested in ancient history, I have written a small sample of my diaries in *Lactobacillus* colonies that have already been distributed throughout the city.
 
 I've attached a key for the next entry. Each of my diaries will have a key to the next entry, to prevent them from being read out of order.
 
  - Liana (Yingmei) Xu`
 
-# TODO: introduce liana if she hasn't yet been introduced
+Attached is an image of an early blueprint for an air scrubber. Based on your best knowledge, it matches the earliest designs. 
 
-Attached is an image of an early blueprint for New Hamilton District. It matches existing urbanological knowledge. 
+@x1001_c
+go-to: todo
+on-departure: liana_introduced += 1
 
-# [? if liana_introduced = 0 : Liana Xu is revered as the founder of this city. ?]
-If this diary is at all true, then this is likely the most significant archaeological discovery in the past ten years.
-
-
+[? if liana_introduced = 0 : Liana Xu is revered as the founder of this city. According to legends, she was a posthuman who nevertheless sympathized with the baseline humans who wished to destroy her kind. ?]
+If this diary is at all genuine, then this is likely the most significant archaeological discovery in the past ten years. If it is at all genuine, then you should be paid more for recovering it.
 
 
 
@@ -690,7 +728,7 @@ frequency: 500
 set-jump: x1009_
 
 @x1009_
-go-to: todo
+go-to: x1009_c
 
 `What is there to know about me? My name is Liana Yingmei Xu, or \[WARNING: UNKNOWN CHARACTER ENCODING\]. I was born in Shijiazhuang, Hebei Province, People's Republic of China. Does the memory of China still exist in your time?
 
@@ -710,11 +748,16 @@ Here is a picture of me. A poor picture. And here is a sample of my voice.
 
  - Liana`
 
- There is an unknown character encoding here.
+ There is an unknown character encoding here. There is a blurred, heavily dithered image of a person; you can tell that it is a face, but not much more than that. The voice sample is degraded but still audible; it repeats the first paragraph of this diary entry.
 
- If this diary were at all true, then this is an indication that Liana and her partner were both laverneans (or the historical equivalent of laverneans, not that historians would ever agree such a thing existed). This is a potentially monumentous discovery. Your movement had already adopted Liana Xu as a symbol, but they were never aware that she was *actually* like them.
+
+
+@x1009_c
+go-to: todo
+
+If this diary were at all true, then this is an indication that Liana and her partner were both laverneans (or the historical equivalent of laverneans, not that historians would ever agree such a thing existed). This is a potentially monumentous discovery. Your movement had already adopted Liana Xu as a symbol, but they were never aware that she was *actually* like them.
  
- In truth, posthumans are rarely thought of at all. 
+As to her question about posthumans, they are rarely thought of at all.
 
 
 @x1013
@@ -732,7 +775,7 @@ frequency: 500
 set-jump: x1013_
 
 @x1013_
-go-to: todo
+go-to: x1013_c
 
 # Liana 3
 
@@ -740,15 +783,21 @@ go-to: todo
 
 The next chapter of my story is moving to America for university, and then graduate school. Does the memory of America still exist in your time?
 
-I was privileged in that I had parents who would pay for me to take my tests, but the only way we could afford an American university was through scholarships. I hope this is not too self-aggrandizing, but I was a good student.
+I was privileged in that I had parents who would pay for me to take my tests, but the only way we could afford an American university was through scholarships. I hope this is not too self-aggrandizing, but I was a good student. I studied science, especially biology. When I was younger I thought that if I developed the technology to change every chromosome in my body, I could become a "real woman". Of course, I soon learned that such a technology would be less effective than a standard hormone therapy.
 
-In truth, university in America was not the revelation I thought it would be. I heard that it was a haven for freedom for us queers, but in truth those like us were still few and isolated. Nevertheless, it was here that I was able to "transition".
+In truth, university in America was not the revelation I thought it would be. I heard that it was a haven for freedom for us queers, but in truth those like us were still few and isolated. Nevertheless, it was here that I was able to "transition". I learned many other things too.
 
-Eventually, Jiaren came to America too, and we reunited one day. We fell in love again.
+Eventually, Jiaren came to America too, and we reunited one day. We fell in love again. She (because by that time she was also beginning to transition) and I eventually married and, well, the rest of the story will come later.
+
+# Today we are putting the final touches on the dome.
 
  - Liana`
 
+@x1013_c
+go-to: todo
 
+[? if hoax_warned > 0 : C- tells you that this is a hoax. But if it is a hoax, it is a hoax tailor-made for you, to hit your exact spots of cognitive weakness. ?]
+[? if hoax_warned = 0 : If this is true, then... well, she resembles you, doesn't she? There is a strange feeling of recognition in your heart, as if Liana is reaching out and touching you through the past however many hundred years. ?]
 
 @x1019
 title: `X1019.fastq.gz`
@@ -765,19 +814,24 @@ frequency: 500
 set-jump: x1019_
 
 @x1019_
-go-to: todo
+go-to: x1019_c
 
 #Liana 4
 
-`We were now on our third adopted homeland. We thought we would be forced to flee because of discrimination for our gender, not because of an absurd war between our two previous homelands. But no matter.
+`We were now on our third adopted homeland. We thought we would be forced to flee because of discrimination for our gender, not because of an absurd war between our two previous homelands. They called it the Sino-American War, or sometimes the Third World War. Does memory of the war still exist in your time? Or has it been entirely eclipsed by the Posthuman War?
 
 It is here that Jiaren convinced me to have the procedure done. By this time it was not such a difficult process, technically speaking. On the cellular side, all it took were some induced pluripotent stem cells and carefully tuned gene regulatory induction systems, easy ever since our advanced simulations. We grew the uterus via tissue culture. The more difficult portion was the physical trans/implant.
 
 Our first child was born via surrogacy. Our second child was born via my body, and the culmination of decades of bioengineering.
 
+# How are you today?
+
  - Liana`
 
 # TODO: bad sentence?
+
+@x1019_c
+go-to: todo
 
 You want to die right now because what even is the point of living if you can't get a fucking uterus transplant?
 
@@ -798,7 +852,7 @@ frequency: 500
 set-jump: x1021_
 
 @x1021_
-go-to: todo
+go-to: x1021_c
 
 # Liana 5 - [the war]
 
@@ -806,12 +860,18 @@ go-to: todo
 
 Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3.
 
+# My greatest regret was how I could not prevent my son from joining the war. He was on the baseline side, and he designed the first nanoplague.
+
 One tidbit you will not find in your baseline histories is how trans people were treated in the war. The conflation of "transgender" or "transsexual" with "transhuman" made all trans people on the baseline side into enemies. There were purges and camps and killings, more so than usual. Even those who sympathized with the baseline cause ended up in our side.
 
 And what about you, I wonder, presumed baseline? Did trans-ness reemerge? Are there people like us in your world?
 
  - Liana`
 
+@x1021_c
+go-to: todo
+
+You have no idea what to feel about this.
 
 
 ################################# Technical
@@ -824,12 +884,12 @@ choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('s101'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1001 = 1; Q.key1009 = 1; Q.key1013 = 1 !}
-frequency: 500
+frequency: 800
 go-to: decode
 set-jump: s101_
 
 @s101_
-go-to: todo
+go-to: s101_c
 
 # paper ref: https://www.nature.com/articles/s41589-020-00711-4
 
@@ -838,6 +898,9 @@ go-to: todo
 `Robust direct digital-to-biological data storage in living cells`
 
 `Abstract: DNA has been the predominant information storage medium for biology and holds great promise as a next-generation high-density data medium in the digital era. Currently, the vast majority of DNA-based data storage approaches rely on in vitro DNA synthesis. As such, there are limited methods to encode digital data into the chromosomes of living cells in a single step. Here, we describe a new electrogenetic framework for direct storage of digital data in living cells. [...] We demonstrate multiplex data encoding into barcoded cell populations to yield meaningful information storage and capacity up to 72 bits, which can be maintained over many generations in natural open environments...`
+
+@s101_c
+go-to: todo
 
 You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
 
@@ -848,19 +911,22 @@ tags: data, science
 choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
-frequency: 400
+frequency: 500
 on-arrival: {! Q.prev_data.push('s202'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1009 = 1; !}
 go-to: decode
 set-jump: s202_
 
 @s202_
-go-to: todo
+go-to: s202_c
 
 `DOI: 10.1038/nature23017`
 
 `CRISPR–Cas encoding of a digital movie into the genomes of a population of living bacteria`
 
 `Abstract: DNA is an excellent medium for archiving data. Recent efforts have illustrated the potential for information storage in DNA using synthesized oligonucleotides assembled in vitro. A relatively unexplored avenue of information storage in DNA is the ability to write information into the genome of a living cell by the addition of nucleotides over time. Using the Cas1–Cas2 integrase, the CRISPR–Cas microbial immune system stores the nucleotide content of invading viruses to confer adaptive immunity. When harnessed, this system has the potential to write arbitrary information into the genome. Here we use the CRISPR–Cas system to encode the pixel values of black and white images and a short movie into the genomes of a population of living bacteria...`
+
+@s202_c
+go-to: todo
 
 You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
 
@@ -869,6 +935,11 @@ You have learned how to implement the decoding method described in this paper. T
 ################################## Online discourse/fanfiction/literature
 
 ###################################### Historical - 1st Century
+
+@f_background
+go-to: todo
+
+The first century is something of a dark age when it comes to history, most likely owing to the fact that the government of the time moved all of their official records to DNA storage, and DNA decoding technology was lost until the past two decades. It seems to have been an era of violence, strife, and popular mysticism. It is interesting how DNA storage correlates with "Dark Ages" in arcology history (including the present day).
 
 @f101
 title: `F101.fastq.gz`
@@ -883,7 +954,7 @@ go-to: decode
 set-jump: f101_
 
 @f101_
-go-to: todo
+go-to: f_background if f_seen <= 1; f101_c if f_seen > 1
 
 `Most common causes of death, 99 AT
 
@@ -909,13 +980,15 @@ go-to: todo
 
 Source: Census`
 
+@f101_c
+go-to: todo
+
 This would be the first century. It is a blank spot in the historical records; most documents seem to disappear around then, perhaps due to a transition to DNA storage from more traditional data storage methods, or perhaps due to whatever incident caused entity attacks to become the leading cause of death.
 
 @f102
 title: `F102.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vitro*`
 tags: data, history
-view-if: @data.f101 = 1
 choose-if: key3 = 1
 frequency: 300
 max-visits: 1
@@ -925,7 +998,7 @@ go-to: decode
 set-jump: f102_
 
 @f102_
-go-to: todo
+go-to: f102_c
 
 `5th Census, 100 AT: Names Aal-Aba`
 
@@ -941,6 +1014,9 @@ go-to: todo
 
 ...
 
+@f102_c
+go-to: todo if f_seen > 1; f_background if f_seen <= 1
+
 The names continue for a few hundred lines. Perhaps this data would be of interest to specialists.
 
 
@@ -949,7 +1025,6 @@ title: `F202.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vitro*`
 tags: data, history
 choose-if: key3 = 1
-view-if: @data.f101 > 0
 max-visits: 1
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('f202'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
@@ -957,32 +1032,64 @@ go-to: decode
 set-jump: f202_
 
 @f202_
-go-to: todo
+go-to: f_background if f_seen <= 1; f202_c if f_seen > 1
 
-`Thesis: The regime of the eunuchs represents a degeneracy must be abolished, and to do so their remaining numbers must be culled.
+`Thesis: The regime of the eunuchs represents a remnant of the Absolutionist degeneracy must be abolished, and to do so their remaining numbers must be culled.
 
 Antithesis: Eunuchs are citizens of the arcology like any other. They do not constitute a regime, and insofar that they have undue influence in government, it has been on the net beneficial.
 
 Synthesis: All eunuchs must be removed from government, but they are to be permitted to live. However, they must be re-educated in order to remove the traces of their ideology.`
 
-`- Administrator`
+`- Administrator R. Beauchamp, 99 AT`
 
-This is another first-century document.
+@f202_c
+go-to: todo
 
-# commentary: I am what they call a eunuch.
+This is another first-century document, again indicating the social irrationality of this era (not unlike your own). The Absolutionists and Negationists were two factions present in the early post-war era; the Absolutionists believed that baseline humans were the cause of the War, and that cruelty on the part of the baselines pushed the posthumans to the edge. The Negationists believed that posthumans were the cause of the War, and that they inflicted violent cruelties upon the baselines. The Negationists appear to have won out in this conflict.
 
-# 99 AT
+You do not know what a eunuch is. The term does not appear in the dictionaries.
 
-# `A report from the massacre of the eunuch temple massacre:
 
-# 234 found dead in the central temple.
+@f303
+title: `F303.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, history
+choose-if: key3 = 1
+view-if: @data.f202 > 0
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('f303'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f202_
 
-# commentary: 
+@f303_
+go-to: f_background if f_seen <= 1; f303_c if f_seen > 1
 
-# - Emilia F. Chu
+`99 AT
+
+ A report from the "Night of Restoration":
+
+ 234 found dead in the central temple.
+
+ 431 found dead in Amherst District.
+
+ 512 found dead in Tonawada District.
+
+ Total dead from all districts: more than 2,500.
+
+ PM2.5 increased by 50% due to fires.
+
+ Commentary: Most of the city does not believe in our Gods, or the God that our opponents presume to be the rival of the Gods. They do not believe in Science, either, or Democracy or Liberty or any of the other pre-war ideals. They do not even believe in the sanctity of the human body, supposedly the core tenant of Negationism. So what do they believe in that makes them kill us?
+
+ - Emilia F. Chu, chief eunuch of New Hamilton Temple`
+
+@f303_c
+go-to: todo
+
+There is so much exciting and unknown here. This is an entirely new event that had hitherto never been documented.
+
 
 ###################################### Historical - 3st Century
-
 
 
 
@@ -991,11 +1098,7 @@ This is another first-century document.
 @rev_1
 go-to: todo
 
-TODO: overview of the uprising/revolution documents
-
-DNA storage is a technology that has come and gone in waves over the centuries. The latest wave has been the revolutionaries.
-
-You gave them the technology.
+DNA storage is a technology that has come and gone in waves over the centuries. The latest wave has been the revolutionaries who fought in the Uprising five years ago. [? if mutual_aid_seen = 0 : You do not know who gave them the archival technology ?]
 
 
 @r1001
@@ -1003,21 +1106,26 @@ title: `R1001.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
 choose-if: key1001 = 1
+view-if: key1001 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('r1001'); Q.correct_data_types.push('special'); Q.r_seen += 1; Q.rosa_seen = 1; !}
 go-to: decode
+frequency: 500
 set-jump: r1001_
 
 @r1001_
-go-to: todo
+go-to: r1001_c
 
 `Let it be known first of all that I opposed launching the revolution. We had no allies - how could we when the Ruling Party and every media organ in the city has been propagandizing about how we were sexual degenerates for the past ten years? Ten thousand angry laverneans did not constitute a mass movement. We had few arms, no training after being excluded from the security services, few financial resources, nearly no allies.`
 
 `But here we are now. And we must fight or die.`
 
 `- Rosa Camacho, Bread and Roses Brigade`
+
+@r1001_c
+go-to: todo
 
 During the Uprising, DNA storage technology was used by rebels to store their notes, diaries, and so on. They presumed that the bacteria would be read-only in the near term; they did not anticipate your technical capabilities.
 
@@ -1101,11 +1209,11 @@ set-jump: r1009_
 @r1009_
 go-to: todo
 
-`Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the laverneans or the nonbinaries, but all of us, every human being in this ark.`
+`Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the laverneans or the nonbinaries, but all of us, every human being in this ark. We do not have to be this way. We can unite.`
 
 `For the first time in our history, our guns are pointed in unison towards the real enemy, rather than at each other.`
 
-`- Esme Franklin, Indigo Regiment`
+`- Esme Franklin, Unity Regiment`
 
 @r2018
 title: `R2018.fastq.gz`
@@ -1124,11 +1232,11 @@ go-to: todo
 
 `More of us are dying everyday.`
 
-`I used to have no fear of death, because I had nothing to live for, but now, in a cruel irony, I do. I have friends in this regiment, and lovers. I have people who would care if die, whom I would care if they died.`
+`I used to have no fear of death, because I had nothing to live for, but now, in a cruel irony, I do. I have friends in this regiment, and lovers. I have people who would care if die, whom I would care if they died. What cruel irony that just as I found a will to live...`
 
-`I do not want to die.`
+`I don't want to die.`
 
-`- Esme Franklin, Indigo Regiment`
+`- Esme Franklin, Unity Regiment`
 
 @r1013
 title: `R1013.fastq.gz`
@@ -1157,7 +1265,7 @@ One thing is sure: the bourgeoisie will let civilization die before relinquishin
 title: `R2026.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
-choose-if: key2026 = 1
+choose-if: key1013 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
@@ -1168,8 +1276,10 @@ set-jump: r2026_
 @r2026_
 go-to: todo
 
-`Since the coup and subsequent uprising began, Lyra and I have fallen in with a self-declared revolutionary army. We said we were on the run from the Guards, and they trusted us. It didn't hurt that one of the laverneans in the unit recognized us from school.`
+`Since the coup and subsequent revolution began, Lyra and I have fallen in with a self-declared revolutionary army. We said we were on the run from the Guards, and they trusted us. It didn't hurt that one of the laverneans in the unit recognized us from school.`
 
 `Lyra says that she can no longer use her abilities. Something about the Cataclysm induced long-term changes in her nanobiotic ecosystem, whose consequences are apparently only being felt now.`
 
-`- Altair Leblanc, Popular Front Army`
+`It is strange to communicate now. I still imagine that Lyra is peering into my thoughts.`
+
+`- Altair Leblanc, Popular Front Army (for now)`

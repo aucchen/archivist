@@ -1,6 +1,6 @@
 title: Mutual Aid
 subtitle: Follow the address on the flier.
-view-if: (day = 3 or day = 10 or day = 17) and stress <= 15 and mutual_aid_seen = 0 and (day_major = 0 or day_minor = 0)
+view-if: (day = 3 or day = 10 or day = 17) and stress < stress_threshold and mutual_aid_seen = 0 and (day_major = 0 or day_minor = 0)
 on-arrival: ma_checklist = 0; mutual_aid_seen = 1; day_minor += 1; stress += 1
 tags: minor
 new-page: true

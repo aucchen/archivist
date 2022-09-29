@@ -1,7 +1,7 @@
 title: CityNet
 subtitle: An update on the present situation. [? if cw_enabled = 1 : CW: slurs ?]
 max-choices: 3
-view-if: montage_progress = 0 and day_minor = 0 and stress < 15 and day < 20
+view-if: montage_progress = 0 and day_minor = 0 and stress < stress_threshold and day < 20
 on-arrival: montage_progress += 1; numb = 1; day_minor += 1
 new-page: true
 tags: minor
@@ -20,20 +20,20 @@ What are the headlines of the day?
 
 @cn
 title: CityNet
-subtitle: An update on the present situation. [? if cw_enabled = 1 : CW: slurs ?]
+subtitle: [? if montage_progress <= 3 : An update on the present situation. ?][? if montage_progress > 3 : A form of self-harm. ?][? if cw_enabled = 1 : CW: slurs ?]
 max-choices: 3
-view-if: day_minor = 0 and montage_progress > 0 and stress < 15 and day < 20
+view-if: day_minor = 0 and montage_progress > 0 and stress < stress_threshold and day < 20
 on-arrival: montage_progress += 1; numb = 1; day_minor += 1
 tags: minor
 new-page: true
 
-What are the headlines of the day?
+[? if montage_progress <= 3 : What are the headlines of the day? ?][? if montage_progress > 3 : CityNet has been painful to read ever since the anti-echo-chamber policies following the Uprising blocked the use of filtering systems or private groups. It has only become worse, although for some reason you still feel compelled to read. A compulsion, or a habit. ?]
 
 - #montage
 
 
 @cn1
-title: `New Hamilton district evacuated indefinitely due to increased radiation leakage."
+title: `New Hamilton district evacuated indefinitely due to increased radiation leakage.`
 tags: montage
 max-visits: 1
 count-visits-max: 1
@@ -146,7 +146,7 @@ Bella is wearing a tiny red dress and high heels and more makeup than you had ev
 You imagine various scenarios.
 
 - @cn3_1: The Guard was her boyfriend, and she thought he would protect her.
-- @cn3_2: Her Guard client was found out by his comrades, and they killed her
+- @cn3_2: Her Guard client was found out by his comrades, and they killed her.
 - @cn3_3: Her Guard client decided to kill her for the fun of it.
 
 @cn3_1
@@ -294,15 +294,19 @@ tags: montage
 
 > `@[+ name_0 +]: fake news`
 
+> `@[+ name_1 +]: all terrorists need to die`
+
 @cn12
 title: `High fruit prices: are rioters and terrorists to blame?`
 max-visits: 1
 count-visits-max: 1
 tags: montage
 
-`@NNN: High fruit prices: are rioters and terrorists to blame?`
+`@NNN: High fruit prices: are terrorists and saboteurs to blame?`
 
 > `@[+ name_0 +]: fake news`
+
+> `@[+ name_1 +]: all terrorists need to die`
 
 @cn13
 title: `Suspected rioter shows no vital signs after initiating altercation against Guards.`
@@ -395,3 +399,17 @@ tags: montage
 `@NNN: Ntech CEO Leblanc accused of sexual harassment by assistant.`
 
 > `@[+ name_0 +]: fake news`
+
+@cn22
+title: `Museum of the American Empire opens in New Buffalo District.`
+max-visits: 1
+count-visits-max: 1
+tags: montage
+
+`@NNN: Museum of the American Empire opens in New Buffalo District.`
+
+> `@[+ name_0 +]: great news`
+
+> `@[+ name_1 +]: long live the ametican empire`
+
+> `@[+ name_2 +]: can't wait`

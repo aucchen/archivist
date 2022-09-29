@@ -13,11 +13,11 @@ You are out of medicine. What are you going to do?
 
 @buy
 subtitle: $50, lasts 7 days
-choose-if: stress < 8
+choose-if: stress <= stress_threshold - 5
 view-if: money >= 50
 unavailable-subtitle: You don't have the energy for this.
 on-arrival: {!
-Q.post_trolley = window.randomSelect(['medicine.pharmacy_1', 'medicine, pharmacy_2']);
+Q.post_trolley = window.randomSelect(['medicine.pharmacy_1', 'medicine.pharmacy_2']);
 !}
 max-choices: 1
 
@@ -92,7 +92,6 @@ The pharmacy is combined with the grocery store. It is a relatively easy trip. Y
 @pharmacy_2
 title: Just a brief visit...
 tags: pharmacy
-max-visits: 1
 on-arrival: money -= 50; medicine += 3; stress += 1
 
 There are shortages at the pharmacy. Your prescription hormones are out; all they can give you are some substances that are supposed to be a substitute, but are much less effective and more likely to cause harmful side effects. They are the same price, of course.

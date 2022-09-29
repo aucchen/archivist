@@ -2,7 +2,7 @@ title: Call K-
 subtitle: A scientist. Your ex-partner.
 tags: minor
 new-page: true
-view-if: k_path = 0 and (day_minor = 0 or day_major = 0) and stress < 15 and day < 20
+view-if: k_path = 0 and (day_minor = 0 or day_major = 0) and stress < stress_threshold and day < 20
 choose-if: numb = 1 or rent_due = 1
 on-arrival: day_major += 1; daily_k = 1; stress += 1
 unavailable-subtitle: You are too self-aware to make the phone call. You must numb yourself first. 
@@ -18,7 +18,7 @@ You need money for rent. There are two people who have a nonzero probability of 
 max-visits: 1
 count-visits-max: 1
 
-Back when it was still legal, you and K- were married. That was six years ago. She was your first love, or something like that. She made your cold and cruel heart believe in love, or something like that. It was an interesting era.
+Back when it was still legal, you and K- were married. That was six years ago. She was your first love, or something like that. After A- left, it was just the two of you. It was an interesting era.
 
 - @child: You and K- had a child, once.
 - @call: Make the call.
@@ -29,7 +29,7 @@ view-if: @past = 1
 max-visits: 1
 count-visits-max: 1
 
-Back when it was still legal, you and K- had a child, back before the Ruling Party labeled women like you (*they did not call you women or even laverneans*) as a danger to women and children, before your existence was deemed a crime. S- is seven years old now. It was for his safety that you and K- had separated. That was what you told yourself.
+Back when it was still legal, you and K- had a child, back before the Ruling Party labeled women like you (*they did not call you women or even laverneans*) as a danger to women and children. S- is seven years old now. It was for his safety that you and K- had separated. That was what you told yourself.
 
 - @call: Make the call.
 

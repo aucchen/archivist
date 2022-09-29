@@ -1,0 +1,49 @@
+title: The illness
+view-if: stress >= stress_threshold/2 and illness_seen = 0 and day_major = 0
+frequency: 1000
+priority: 10
+max-visits: 1
+on-arrival: illness_seen = 1; day_major += 1; stress -= 1
+tags: major
+
+The illness waxes and wanes by its own inscrutable schedule. One day you are feeling as functional as any other human, and the next you cannot stay awake for more than five hours.
+
+Today is one of the bad days, when your body is sapped of seemingly all energy. You cough. The pressure in your cranium builds. You feel dizzy and nauseous and you have the urge to vomit.
+
+- @tea: Drink some tea.
+- @water: Drink some water.
+- @rice: Drink some rice porridge.
+- @why: Why are you like this?
+
+@tea
+
+You are still well enough to make a cup of green tea. The warmth fills your body. The taste is pleasantly bitter. You feel less ill, at least for a while.
+
+But it will return. It always returns.
+
+@water
+
+You drink some lukewarm water, and it makes you feel less ill, at least for a while.
+
+But it will return. It always returns.
+
+@rice
+choose-if: days_starved = 0
+unavailable-subtitle: You don't have enough food.
+
+Cooking rice takes too much out of you, even as you skip the addition of beans and the step of washing the rice.
+
+Nevertheless, you finish cooking. The rice porridge is warm and filling, and you feel less ill, at least for a while. Your headaches ease.
+
+But it will return. It always returns.
+
+
+@why
+
+No doctor has been able to diagnose you, not that they tried very much. Nothing was revealed by the standard battery of tests. The single doctor who made an attempt told you to discontinue your hormone treatments (it did not succeed). The more doctors you see, the more likely they are to discover the biomedical discrepancies of your birth, so you have not asked again.
+
+Perhaps it began with your nanoplague infections. Or perhaps it began earlier, during the Uprising when you were kept awake by explosions in your neighborhood. Or earlier still - an accident of your genetics? A mutation, or an inheritance from your never-seen biological ancestors? You will likely never know. 
+
+- @tea: Drink some tea.
+- @water: Drink some water.
+- @rice: Drink some rice porridge.

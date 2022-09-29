@@ -113,10 +113,10 @@
   };
 
   window.showStats = function() {
-    if (window.dendryUI.dendryEngine.state.sceneId.startsWith('stats')) {
+    if (window.dendryUI.dendryEngine.state.sceneId.startsWith('status')) {
         window.dendryUI.dendryEngine.goToScene('backSpecialScene');
     } else {
-        window.dendryUI.dendryEngine.goToScene('stats');
+        window.dendryUI.dendryEngine.goToScene('status');
     }
   };
   
@@ -214,6 +214,15 @@
       return forenames[i1] + '-' + surnames[i2];
   };
 
+  window.randomSelect = function(items) {
+      return items[Math.floor(Math.random()*items.length)];
+  };
+
+  window.randomSelectProbs = function(items, probs) {
+      // TODO: select with probability
+      return items[Math.floor(Math.random()*items.length)];
+  };
+
   window.dendryModifyUI = main;
   console.log("Modifying stats: see dendryUI.dendryEngine.state.qualities");
 
@@ -225,5 +234,15 @@
           window.dendryUI.animate = true;
       }
       window.dendryUI.fade_time = 600;
+      // pre-load images
+      var images = ['images/room1_filtered_dithered.png',
+                    'images/windows_filtered_dithered.png',
+                    'images/monitor_dithered.png',
+                    'images/monitor_2_dithered.png',
+      ];
+      for (var i = 0; i < images.length; i++) {
+          var img = new Image();
+          img.src = images[i];
+      }
   };
 }());

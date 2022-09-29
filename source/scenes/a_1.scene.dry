@@ -1,7 +1,7 @@
 title: Call A-
 subtitle: A doctor. Your ex-partner.
 tags: minor
-view-if: a_path = 0 and (day_major = 0 or day_minor = 0) and stress < 15 and day < 20
+view-if: a_path = 0 and (day_major = 0 or day_minor = 0) and stress < stress_threshold and day < 20
 on-arrival: day_minor = 1; daily_a = 1; a_day = day
 choose-if: numb = 1 or rent_due = 1
 new-page: true
@@ -21,14 +21,14 @@ A- is a doctor these days. He works for one of the corporate hospitals in the ce
 
 @a_12
 
-A- was... someone different before. At one time, she was a lavernean like you, until the waves of anti-nonbinary purges hit the medical field. He could not part with his job and his relative life of normalcy. Maybe it was a surrender, or maybe it was a survival strategy. Either way, his path was not an option available to you.
+A- was... someone different before. At one time, she was a lavernean like you, until the waves of anti-nonbinary purges hit the medical field. He could not part with his job and his relative life of normalcy, so he crossed back over. Maybe it was a surrender, or maybe it was a survival strategy. Either way, his path was not an option available to you.
 
 - @a_13: The two of you were...
 - @call: Call A-.
 
 @a_13
 
-The two of you were... dating. Yes. That would be an accurate description. Back when she was like you. You were lovers. A-, K-, and you were in a mutual relationship together, before A- left. You hear he has a new family now, a new wife and children. K- has never forgiven him. Have you?
+The two of you were... dating. Yes. That would be an accurate description. She loved you, and you loved her. Back when she was like you. A-, K-, and you were in a mutual relationship together, before A- left. You hear he has a new family now, a new wife and children. K- has never forgiven him. Have you?
 
 - @call: Call A-.
 
@@ -155,7 +155,7 @@ It doesn't feel right to refuse.
 
 "Okay..."
 
-"That's great! Maybe we could meet up at LX Square again, and wander around the city just like the old days."
+"That's great! Maybe we could meet up at Founders Square again, and wander around the city just like the old days."
 
 "Yeah, maybe."
 
@@ -194,7 +194,7 @@ It doesn't feel right to refuse.
 A- hangs up, leaving you alone with your thoughts. At least you are slightly further from total destitution.
 
 - @maybe_fine: Maybe seeing A- again would be fine.
-- @dont_want: You do not want to see his face
+- @dont_want: You do not want to see his face.
 - @doesnt_matter: It doesn't matter either way.
 
 @maybe_fine
