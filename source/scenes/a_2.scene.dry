@@ -5,7 +5,7 @@ on-arrival: day_major += 1; a_path = 2; a_romance = 1; daily_a = 1; a_day = day
 frequency: 400
 tags: major
 new-page: true
-set-bg: images/windows_filtered_dithered.png
+set-bg: images/park_dithered.png
 
 Why are you meeting with A-?
 
@@ -27,16 +27,16 @@ You are meeting with A- out of a sense of obligation.
 on-arrival: a_romance += 1
 go-to: lx_square
 
-You are meeting with A- because you still have feelings for him, or something like that.
+You are meeting with A- because you still have *feelings* for him, or something like that.
 
 
 @lx_square
 
-Seeing A- gives you a shock. He is... well, he is dressed like a lavernean stereotype, like one of the pre-war photos found in the Archives, in addition to bleached blonde hair (you cannot tell if it is a wig) and a thorough application of makeup. At least he is wearing a respirator.
+Seeing A- gives you a shock. He is... well, he is dressed like a lavernean stereotype, like one of the pre-war photos found in the Archives. A small black dress with exposed arms, inpractically cold, with long socks, in addition to bleached blonde hair (you cannot tell if it is her natural hair let long again or a particularly good wig) and a thorough application of makeup. At least he is wearing a respirator.
 
 "Hey, Em."
 
-Oh. She is using the girlmode voice, too.
+Oh. She's using the girlmode voice, too.
 
 - @too_old: "Aren't you too old to wear striped thigh highs?"
 - @scared: "Aren't you scared to be like this in public?"
@@ -46,7 +46,7 @@ Oh. She is using the girlmode voice, too.
 
 "Aren't you too old to wear striped thigh highs in public?"
 
-A- laughs. "What? I'm barely 40. That's not that old, is it? Anyway, what's the point of being a deviant if you're going to be boring all the time?"
+A- laughs. "What? I'm barely 40. It's not that old, is it? Anyway, what's the point of being a deviant if you're going to be boring all the time?"
 
 You are all too conscious of your plain gray skirt and baggy blue jacket.
 
@@ -68,7 +68,7 @@ She laughs again. "Hey, I'm reclaiming it! If they're going to call us monsters 
 
 "Hypocrite."
 
-She finally sits down next to you, and gives you a wistful expression. "We're all just trying to live. We do what we have to, even if it isn't what we want to. But sometimes there are moments when we can, you know."
+She finally sits down next to you, and gives you a wistful expression. "We're all just trying to live. We do what we have to, even if it isn't what we want to. But sometimes there are moments when we can, you know, let loose just for a moment."
 
 A lull in the conversation. The two of you stare at each other, A- smiling, you making who knows what facial expression.
 
@@ -81,7 +81,7 @@ on-arrival: a_romance += 1
 
 You shrug, and look away from her. "I'm sorry for being such a boring person."
 
-She laughs again. "I don't think you're boring! You seem the same as before. I think the grandma look suits you. It's cute."
+She laughs again. "I don't think you're boring! You seem the same as before. I think the grandma look suits you. It looks cute."
 
 "Oh..."
 
@@ -208,6 +208,10 @@ You stare at A-. She is tall, and her colorful attire stands out among the bland
 
 She leads you towards the spice aisle. Her hands hover above the dispensers. "Oh, here it is!" She waves a bottle of yellow powder at you triumphantly. "It's cumin. The synthesizers must have been working again."
 
+- @oh_great: "Oh. That's great."
+
+@oh_great
+
 "Oh. That's great."
 
 A- makes an exaggerated frown. "You don't sound too excited. Are you still eating rice and beans with no flavoring?"
@@ -251,7 +255,13 @@ She laughs. You're ashamed. "She knows about you, remember? Not the lavernean pa
 
 @get_groceries
 
-A- leads you to pick up your staples, rice and legumes. Her left hand is behind your back, a protective gesture, guiding you as if you were a younger sister, while holding a basket with her right. You look normal. No one is going to notice anything wrong.
+A- leads you to pick up your staples, rice and legumes. Her left hand is behind your back, a protective gesture, guiding you as if you were a younger sister, while holding a basket with her right.
+
+- @look_normal: You look normal. No one is going to notice anything.
+
+@look_normal
+
+You look normal. No one is going to notice anything wrong.
 
 She checks out and pays for you. No need for you to say a thing.
 
@@ -327,6 +337,7 @@ You are alone here. No one is watching, not even a security camera.
 
 @risk_it
 on-arrival: kissed_a = 1; a_romance += 1
+set-bg: black
 
 She knows what to do. You know what to do.
 

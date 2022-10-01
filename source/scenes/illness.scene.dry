@@ -4,6 +4,7 @@ frequency: 1000
 priority: 10
 max-visits: 1
 on-arrival: illness_seen = 1; day_major += 1; stress -= 1
+new-page: true
 tags: major
 
 The illness waxes and wanes by its own inscrutable schedule. One day you are feeling as functional as any other human, and the next you cannot stay awake for more than five hours.

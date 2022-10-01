@@ -73,18 +73,38 @@ You and most others evacuated to the undercity, the space under the old city pla
 
 @uprising
 title: The Uprising
-go-to: history
+on-departure: uprising_seen = 1
+go-to: history if uprising_seen >= 1
 
-The origin for the Uprising always lied in the Laverneans. Anti-nonbinary and anti-GSM policies had been gradually increasing, but the catalyst was a coup by the Guards (a paramilitary group and the de facto armed wing of the Ruling Party). The Uprising was launched on a broad anti-Ruling Party and pro-democracy platform, but the bulk of the armed participants were from various lavernean cliques and their immediate allies, who for the first time were somewhat unified towards a single goal. Even the other nonbinary cliques were divided on participation.
+The origin for the Uprising always lied in the Laverneans. Anti-nonbinary and anti-GSM policies had been gradually increasing, but the immediate catalyst was a coup by the Guards (a paramilitary group and the de facto armed wing of the Ruling Party). The Uprising was launched on a broad anti-Ruling Party and pro-democracy platform, but the bulk of the armed participants were from various lavernean cliques and their immediate allies, who for the first time were somewhat unified towards a single goal. Even the other nonbinary cliques were divided on participation, especially given the Unholy Bargain.
 
 In retrospect, the Uprising was a total failure, and accomplished the opposite of its goals.
 
 The casualties were a few hundred Guards and a handful of regular police and military on one hand, and thousands killed in reprisals on revolutionary holdouts and any lavernean who happened to be visible enough. Images of tall and imposing laverneans clad in fetish-gear-cum-improvised-body-armor with rifles slung on their backs terrified the masses, and provided the definitive images of the Uprising and the justification for the elimination of its participants, and more broadly speaking, the lavernean population as a whole.
 
+[? if uprising_seen = 0 : Were you right to abscond during the Uprising, to refuse to join your comrades? ?]
+
+- @uprising_right: Yes. The uprising failed, and you stayed alive.
+- @uprising_no: No. You should have been there. You should have fought.
+- @uprising_early: It does not matter anymore.
+
+
+@uprising_right
+go-to: uprising_early
+
+
+@uprising_no
+go-to: uprising_early
+
+
+@uprising_early
+go-to: history
+
+It does not matter anymore. The past cannot be changed.
 
 
 @laverneans
 title: Laverneans
 go-to: history
 
-Laverneans: that is, you and your people. A subtype of nonbinary humans. Women and vaguely woman-affiliated people who were put into the male box at birth. Named after a popular pre-war figure discovered in the archives who was considered your foremother (historians disagree on whether they should be considered to be in the same category as a lavernean). Formerly A-. Not K-. Your lot are considered by the state to be degenerates, terrorists, sexual deviants, rioters, violent criminals, perverts, etc., and have mostly been removed from visible public life.
+Laverneans: that is, you and your people. A subtype of nonbinary humans. Women and vaguely woman-affiliated people who were put into the male box at birth (a pun, in your case). Named after a popular pre-war figure discovered in the archives who was considered your foremother (historians disagree on whether they should be considered to be in the same category as a lavernean). Formerly A-. Not K-. Your lot are considered by the state to be degenerates, terrorists, sexual deviants, rioters, violent criminals, perverts, etc., and have mostly been removed from visible public life.

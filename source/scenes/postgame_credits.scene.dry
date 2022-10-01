@@ -1,11 +1,164 @@
 title: Post-game notes
 view-if: started = 1
-
+go-to: endgame_options
 
 = Endings
 
 **Completed Endings:**
 
+[? if achievement_ending_1 = 1 : 1: Liana: Escape ?]
 
+[? if achievement_ending_2 = 1 : 2 - K-: A New Family ?]
+
+[? if achievement_ending_3 = 1 : 3 - A-: Another World ?]
+
+[? if achievement_ending_4 = 1 : 4 - Life Goes On ?]
+
+[? if achievement_ending_5 = 1 : 5 - Liana: Default Solution ?]
+
+[? if achievement_ending_6 = 1 : 6 - Alone ?]
+
+[? if achievement_ending_7 = 1 : 7 - Alone: Normal End ?]
+
+[? if achievement_ending_8 = 1 : 8 - Destitute ?]
+
+[? if achievement_ending_9 = 1 : 9 - Mutual Aid ?]
 
 **Unreached Endings:**
+
+[? if achievement_ending_1 = 0 : 1 ?]
+
+[? if achievement_ending_2 = 0 : 2 ?]
+
+[? if achievement_ending_3 = 0 : 3 ?]
+
+[? if achievement_ending_4 = 0 : 4 ?]
+
+[? if achievement_ending_5 = 0 : 5 ?]
+
+[? if achievement_ending_6 = 0 : 6 ?]
+
+[? if achievement_ending_7 = 0 : 7 ?]
+
+[? if achievement_ending_8 = 0 : 8 ?]
+
+[? if achievement_ending_9 = 0 : 9 ?]
+
+@endgame_options
+
+- @credits: Credits
+- @postgame_credits: Endings
+- @related_works: Inspirations and related works
+- @guide: Guide (Spoiler warning for all endings)
+- @game_over: End game.
+#- @notes: Notes (Spoiler warning for all game content)
+
+@guide
+go-to: endgame_options
+
+\[Spoiler warning\]
+
+There are 9 endings in this game.
+
+1. View all of the datasets starting with an "X". When a crisis comes, choose Liana, and choose to leave.
+
+2. Interact positively with K- as much as you can. When a crisis comes, choose K-.
+
+3. Interact positively with A- as much as you can. When a crisis comes, choose A-. There are two variants of this ending, one explicitly romantic and one non-romantic.
+
+4. Do DNA data recovery at least 6 times. When you reach the "Breakdown" scene, call C-.
+
+5. Same as Ending 1, except choose to stay (or to delay making a decision).
+
+6. Reach endings 2 or 3, but turn down the offers for help.
+
+7. Reach the "Breakdown" scene without making the conditions for endings 1, 2, 3, or 4.
+
+8. Reach the "Eviction" scene without making the conditions for endings 2, 3, or 9.
+
+9. Join the Mutual Aid Alliance, and visit them a second time when it is available. Then reach the Eviction scene, and choose to go to the Mutual Aid Alliance.
+
+Paying off rent: If you talk to A- and are open about needing money, they will help you. Ask for as much money as you can, as often as you can. If you are in a romantic relationship, they will be more likely to help.
+
+
+@notes
+go-to: endgame_options
+
+\[Spoiler warning\]
+
+*The Archivist and the Revolution* is the final refinement of various story ideas that have been simmering in my head many years. Like all of my stories, this is nothing more than a hodgepodge of my interests, obsessions, and neuroses.
+
+The characters of Em, K-, and A- are loosely based on Emily, Karen, and Aubrey from Pageant/NYE2019, especially the former two. This game could be seen as kind of a spiritual sequel to Pageant/NYE2019, showing one possible scenario for what could happen to Emily and Karen when they grow older (A- has some similarities to Aubrey but is much more distinct).
+
+Yingmei (Liana) Xu is basically an OC that has existed in my head for over 10 years (with some changes along the way), along with Jiaren Qi. She is... well, kind of a Mary Sue. This was my first opportunity to bring her to life in a "published" story.
+
+R-/Rosa and L-/Leon were originally from another game, a choicescript game in the same setting. That game will never be made, and most of its ideas have been folded in here (or into another loosely ongoing project). C-/Cassie was from that latter project, along with Lyra and Altair, who have a brief cameo in a hard-to-reach DNA dataset. You might see more of them.
+
+
+@related_works
+go-to: endgame_options
+
+= Inspirations and Related Works
+
+Games:
+
+> *howling dogs* by Porpentine
+# for obvious reasons.
+
+> *SPY INTRIGUE* by furkle
+# because it's my favorite game.
+
+> *Bee* by Emily Short
+# because all of my storylet-based IF are inspired by Bee.
+
+> *Solarium* by Anya Johanna DeNiro
+# for the history.
+
+> *Get Your Gun, Dragonfly* by Palimrya
+# for the description of one possible trans future.
+
+> *Neo Cab* by Chance Agency
+# for the gig economy representation
+
+> *Computerfriend* by Kit Riemer
+# 
+
+> *Citizen Sleeper* by Jump Over The Age
+# a lot of similar themes.
+
+Books:
+
+> *Oryx and Crake* by Margaret Atwood
+# for obvious reasons.
+
+> *Summer Fun* by Jeanne Thornton
+# for the virtual intergenerational conversations between trans women.
+
+> *Small Beauty* by Jia Qing Wilson-Yang
+
+> *An Unkindness of Ghosts* by Rivers Solomon (I have not finished this yet)
+
+> *Manhunt* by Gretchen Felker-Martin (I have not finished this yet)
+# i've only read a preview chapter unfortunately. but.
+
+> {!<a href="https://bostonreview.net/articles/charlie-jane-anders-dont-press-charges-and-i-wont-sue/">"Don't Press Charges and I Won't Sue"</a>!} by Charlie Jane Anders
+
+
+Web Media:
+
+> *Homestuck* by Andrew Hussie
+
+> {!<a href="https://archiveofourown.org/works/33158965/chapters/82319554"><i>Glow, Worm</i></a>!} by alysongreaves
+
+
+Music: The unofficial soundtrack is {!<a href="https://open.spotify.com/playlist/4X9RQqkMnikpfSzG4Cxq3i">here</a>!}.
+
+> *Mydata* and others by Katie Dey
+
+> *Transangelic Exodus* and others by Ezra Furman
+
+
+
+@game_over
+view-if: started = 1
+game-over: true

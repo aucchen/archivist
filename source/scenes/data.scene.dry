@@ -62,7 +62,7 @@ go-to: main
 
 How do you wish to file the retrieved dataset?
 
-- @s: Class A: High-priority scientific or technical information.
+- @s: Class A: Scientific or technical information.
 - @l: Class B: Literature.
 - @d: Class C: Personal or private information.
 - @o: Class D: Official government documents.
@@ -730,7 +730,7 @@ set-jump: x1009_
 @x1009_
 go-to: x1009_c
 
-`What is there to know about me? My name is Liana Yingmei Xu, or \[WARNING: UNKNOWN CHARACTER ENCODING\]. I was born in Shijiazhuang, Hebei Province, People's Republic of China. Does the memory of China still exist in your time?
+`What is there to know about me? My name is Liana Yingmei Xu, or \[WARNING: UNKNOWN CHARACTER ENCODING\]. I was born in Shijiazhuang, Hebei Province, People's Republic of China. Do you know where that is? Does the memory of China still exist in your time?
 
 I emigrated to America to study biophysics and biochemistry, and I have worked in a variety of scientific positions. I am married to my wife, Jiaren Qi, also of Shijiazhuang, and we had two children.
 
@@ -738,7 +738,7 @@ I emigrated to America to study biophysics and biochemistry, and I have worked i
 
 Jiaren and I grew up in the same town and went to the same high school. I was notorious among my classmates for being a crossdresser, for wearing girl's outfits whenever I had the opportunity. They would see me at the mall, and they would go, that is not a beautiful girl, that is our classmate Xu ---!
 
-Jiaren was the one person who drew closer to me despite these (true) rumors. He (because Jiaren was still a boy back then) was the only person who asked me if I would rather be treated as a boy or a girl. I fell in love with him, and I believe he realized so, but of course nothing came of it.
+Jiaren was the one person who drew closer to me despite these (true) rumors. He (because Jiaren was still a boy back then) was the only person who asked me if I would rather be treated as a boy or a girl. I fell in love with Jiaren, and I believe she realized so, but of course nothing came of it.
 
 Do the equivalents of people such as us still exist in your era?
 
@@ -783,7 +783,7 @@ go-to: x1013_c
 
 The next chapter of my story is moving to America for university, and then graduate school. Does the memory of America still exist in your time?
 
-I was privileged in that I had parents who would pay for me to take my tests, but the only way we could afford an American university was through scholarships. I hope this is not too self-aggrandizing, but I was a good student. I studied science, especially biology. When I was younger I thought that if I developed the technology to change every chromosome in my body, I could become a "real woman". Of course, I soon learned that such a technology would be less effective than a standard hormone therapy.
+I was privileged in that I had parents who would pay for me to take my tests, but the only way we could afford an American university was through scholarships. I hope this is not too self-aggrandizing, but I was a good student. I studied science, especially biology. When I was younger I thought that if I developed the technology to change every chromosome in my body, I could become a "real woman". Of course, I soon learned that such a technology would be less effective at altering my anatomy than the standard hormone therapy.
 
 In truth, university in America was not the revelation I thought it would be. I heard that it was a haven for freedom for us queers, but in truth those like us were still few and isolated. Nevertheless, it was here that I was able to "transition". I learned many other things too.
 
@@ -858,11 +858,11 @@ go-to: x1021_c
 
 `I wonder what you would call the war in your time?
 
-Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3.
+Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3. I was, as you obviously know, a posthuman, so my side in the war was clear.
 
-# My greatest regret was how I could not prevent my son from joining the war. He was on the baseline side, and he designed the first nanoplague.
+One tidbit you will not find in your baseline histories is how trans people were treated in the war. The conflation of "transgender" or "transsexual" with "transhuman" made all trans people in baseline territories into enemies. There were purges and camps and killings, more so than usual. Even those who sympathized with the baseline cause ended up on the posthuman side.
 
-One tidbit you will not find in your baseline histories is how trans people were treated in the war. The conflation of "transgender" or "transsexual" with "transhuman" made all trans people on the baseline side into enemies. There were purges and camps and killings, more so than usual. Even those who sympathized with the baseline cause ended up in our side.
+# My greatest regret was how I could not prevent my son from joining the war. He supported the baselines, and he designed the first nanoplague.
 
 And what about you, I wonder, presumed baseline? Did trans-ness reemerge? Are there people like us in your world?
 
@@ -912,7 +912,7 @@ choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
 frequency: 500
-on-arrival: {! Q.prev_data.push('s202'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1009 = 1; !}
+on-arrival: {! Q.prev_data.push('s202'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1009 = 1; Q.key1001 = 1; Q.key1013 = 1;!}
 go-to: decode
 set-jump: s202_
 
@@ -930,7 +930,59 @@ go-to: todo
 
 You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
 
+# TODO: add medium preservation
 # TODO: which microbes are used here?
+
+@s303
+title: `S303.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
+tags: data, science
+choose-if: key101 = 1
+max-visits: 1
+count-visits-max: 1
+frequency: 100
+on-arrival: {! Q.prev_data.push('s303'); Q.correct_data_types.push('science'); Q.s_seen += 1; !}
+go-to: decode
+set-jump: s303_
+
+@s303_
+go-to: s303_c
+
+`DOI: 10.1126/sciadv.abo7415`
+
+`In vivo processing of digital information molecularly with targeted specificity and robust reliability`
+
+`Abstract: DNA has attracted increasing interest as an appealing medium for information storage. However, target-specific rewriting of the digital data stored in intracellular DNA remains a grand challenge because the highly repetitive nature and uneven guanine-cytosine content render the encoded DNA sequences poorly compatible with endogenous ones. In this study, a dual-plasmid system based on gene editing tools was introduced into Escherichia coli to process information accurately. Digital data containing large repeat units in binary codes, such as text, codebook, or image, were involved in the realization of target-specific rewriting in vivo, yielding up to 94% rewriting reliability. An optical reporter was introduced as an advanced tool for presenting data processing at the molecular level. Rewritten information was stored stably and amplified over hundreds of generations. Our work demonstrates a digital-to-biological information processing approach for highly efficient data storage, amplification, and rewriting, thus robustly promoting the application of DNA-based information technology.`
+
+@s303_c
+go-to: todo
+
+@s404
+title: `S404.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, science
+choose-if: key101 = 1
+max-visits: 1
+count-visits-max: 1
+frequency: 100
+on-arrival: {! Q.prev_data.push('s404'); Q.correct_data_types.push('science'); Q.s_seen += 1; !}
+go-to: decode
+set-jump: s404_
+
+@s404_
+go-to: s404_c
+
+`DOI: 10.1002/anie.201411378`
+
+`Robust Chemical Preservation of Digital Information on DNA in Silica with Error-Correcting Codes`
+
+`Abstract: Information, such as text printed on paper or images projected onto microfilm, can survive for over 500 years. However, the storage of digital information for time frames exceeding 50 years is challenging. Here we show that digital information can be stored on DNA and recovered without errors for considerably longer time frames. To allow for the perfect recovery of the information, we encapsulate the DNA in an inorganic matrix, and employ error-correcting codes to correct storage-related errors. Specifically, we translated 83 kB of information to 4991 DNA segments, each 158 nucleotides long, which were encapsulated in silica. Accelerated aging experiments were performed to measure DNA decay kinetics, which show that data can be archived on DNA for millennia under a wide range of conditions. The original information could be recovered error free, even after treating the DNA in silica at 70 °C for one week. This is thermally equivalent to storing information on DNA in central Europe for 2000 years.`
+
+@s404_c
+go-to: todo
+
+
+
 
 ################################## Online discourse/fanfiction/literature
 
@@ -948,7 +1000,7 @@ tags: data, history
 choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
-frequency: 300
+frequency: 200
 on-arrival: {! Q.prev_data.push('f101'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
 go-to: decode
 set-jump: f101_
@@ -990,7 +1042,7 @@ title: `F102.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vitro*`
 tags: data, history
 choose-if: key3 = 1
-frequency: 300
+frequency: 200
 max-visits: 1
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('f102'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
@@ -1017,7 +1069,7 @@ go-to: f102_c
 @f102_c
 go-to: todo if f_seen > 1; f_background if f_seen <= 1
 
-The names continue for a few hundred lines. Perhaps this data would be of interest to specialists.
+The names continue for a few hundred lines. This is potentially very interesting data for specialists; a wealth of demographic data can be gleaned from statistical analysis on just this small subset of names.
 
 
 @f202
@@ -1026,7 +1078,9 @@ subtitle: `Source: Archives. Medium: *in vitro*`
 tags: data, history
 choose-if: key3 = 1
 max-visits: 1
+view-if: @data.f101 > 0 or @data.f102 > 0
 count-visits-max: 1
+frequency: 200
 on-arrival: {! Q.prev_data.push('f202'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
 go-to: decode
 set-jump: f202_
@@ -1055,12 +1109,13 @@ title: `F303.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vitro*`
 tags: data, history
 choose-if: key3 = 1
-view-if: @data.f202 > 0
+view-if: @data.f101 > 0 or @data.f102 > 0
 max-visits: 1
 count-visits-max: 1
+frequency: 200
 on-arrival: {! Q.prev_data.push('f303'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
 go-to: decode
-set-jump: f202_
+set-jump: f303_
 
 @f303_
 go-to: f_background if f_seen <= 1; f303_c if f_seen > 1
@@ -1073,20 +1128,48 @@ go-to: f_background if f_seen <= 1; f303_c if f_seen > 1
 
  431 found dead in Amherst District.
 
- 512 found dead in Tonawada District.
+ 512 found dead in Tonawanda District.
 
  Total dead from all districts: more than 2,500.
 
  PM2.5 increased by 50% due to fires.
 
- Commentary: Most of the city does not believe in our Gods, or the God that our opponents presume to be the rival of the Gods. They do not believe in Science, either, or Democracy or Liberty or any of the other pre-war ideals. They do not even believe in the sanctity of the human body, supposedly the core tenant of Negationism. So what do they believe in that makes them kill us?
+ Commentary: Most of the city does not believe in our Ancestors, or the God that our opponents presume to be the rival of the Ancestors. They do not believe in Science, either, or Democracy or Liberty or any of the other pre-war ideals. They do not even believe in the sanctity of the human body, supposedly the core tenant of Negationism. So what do they believe in that makes them kill us?
 
- - Emilia F. Chu, chief eunuch of New Hamilton Temple`
+ - Emilia F. Chu, eunuch of New Hamilton Temple`
 
 @f303_c
 go-to: todo
 
 There is so much exciting and unknown here. This is an entirely new event that had hitherto never been documented.
+
+@f404
+title: `F404.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, history
+choose-if: key3 = 1
+view-if: @data.f202 > 0
+max-visits: 1
+count-visits-max: 1
+frequency: 300
+on-arrival: {! Q.prev_data.push('f404'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f404_
+
+@f404_
+go-to: f_background if f_seen <= 1; f404_c if f_seen > 1
+
+`99 AT
+
+ Tonight our order convened a circle of prayer. We devoted our Great Prayer in memories of all those killed on the Night of Restoration. May they be with the Ancestors. Our Lesser Prayer was dedicated to our lost friend, Emilia Chu, who had taken great care in documenting the atrocities committed against our comrades before she disappeared. We hope she is in a better place.
+
+ We ask the Ancestors in the Sky to absolve us of our mistakes, so that we may join them once more in the Temple of Heaven. We ask the Ancestors forgiveness for our enemies even as they imprison and torture us.
+
+ - Stella Smith, eunuch of St. Catherines Temple`
+
+@f404_c
+go-to: todo
+
 
 
 ###################################### Historical - 3st Century
@@ -1098,7 +1181,9 @@ There is so much exciting and unknown here. This is an entirely new event that h
 @rev_1
 go-to: todo
 
-DNA storage is a technology that has come and gone in waves over the centuries. The latest wave has been the revolutionaries who fought in the Uprising five years ago. [? if mutual_aid_seen = 0 : You do not know who gave them the archival technology ?]
+DNA storage is a technology that has come and gone in waves over the centuries. The latest wave has been the revolutionaries who fought in the Uprising five years ago. During the Uprising, DNA storage technology was used by rebels to store their notes, diaries, and so on. They presumed that the bacteria would be read-only in the near term; they did not anticipate your technical capabilities.
+
+[? if mutual_aid_seen = 0 : You do not know who gave them the archival technology ?]
 
 
 @r1001
@@ -1112,7 +1197,7 @@ max-visits: 1
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('r1001'); Q.correct_data_types.push('special'); Q.r_seen += 1; Q.rosa_seen = 1; !}
 go-to: decode
-frequency: 500
+frequency: 400
 set-jump: r1001_
 
 @r1001_
@@ -1127,11 +1212,11 @@ go-to: r1001_c
 @r1001_c
 go-to: todo
 
-During the Uprising, DNA storage technology was used by rebels to store their notes, diaries, and so on. They presumed that the bacteria would be read-only in the near term; they did not anticipate your technical capabilities.
+[? if r_seen = 1 : DNA storage is a technology that has come and gone in waves over the centuries. The latest wave has been the revolutionaries who fought in the Uprising five years ago. During the Uprising, DNA storage technology was used by rebels to store their notes, diaries, and so on. They presumed that the bacteria would be read-only in the near term; they did not anticipate your technical capabilities. ?]
 
 [? if mutual_aid_seen = 0 : Rosa was... not exactly a friend. An acquaintance, perhaps, one more familiar from CityNet than real life. You would not recognize her, and you do not know what happened to her since the Uprising. She probably would have hated you. ?]
 
-[? if r_path > 0 : You know that the author of these notes is still alive. You've seen her. ?]
+[? if support_mutual_aid > 0 : You know that the author of these notes is still alive. You've seen her at the Mutual Aid Alliance. ?]
 
 
 @r2002
@@ -1145,6 +1230,7 @@ max-visits: 1
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('r2002'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
 go-to: decode
+frequency: 200
 set-jump: r2002_
 
 @r2002_
@@ -1166,6 +1252,7 @@ choose-if: key1001 = 1
 view-if: @data.r1001 > 0 or @data.r2002 > 0
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
+frequency: 200
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('r3003'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
 go-to: decode
@@ -1207,7 +1294,7 @@ go-to: decode
 set-jump: r1009_
 
 @r1009_
-go-to: todo
+go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 `Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the laverneans or the nonbinaries, but all of us, every human being in this ark. We do not have to be this way. We can unite.`
 
@@ -1228,13 +1315,13 @@ go-to: decode
 set-jump: r2018_
 
 @r2018_
-go-to: todo
+go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 `More of us are dying everyday.`
 
-`I used to have no fear of death, because I had nothing to live for, but now, in a cruel irony, I do. I have friends in this regiment, and lovers. I have people who would care if die, whom I would care if they died. What cruel irony that just as I found a will to live...`
+`I used to have no fear of death, because I had nothing to live for, but now, in a cruel irony, I do. I have friends in this regiment, and lovers. I have people who would care if die, whom I would care if they died. What cruel irony that just as I found a will to live, my existence is in more danger than ever...`
 
-`I don't want to die.`
+`I don't want to die. Is that too much to ask?`
 
 `- Esme Franklin, Unity Regiment`
 
@@ -1251,7 +1338,7 @@ go-to: decode
 set-jump: r1013_
 
 @r1013_
-go-to: todo
+go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 `Our civilization is on borrowed time, and revolution is the only way to escape the tracks that lead to our doom.
 
@@ -1264,6 +1351,7 @@ One thing is sure: the bourgeoisie will let civilization die before relinquishin
 @r2026
 title: `R2026.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
+view-if: r_seen >= 2
 tags: data, science
 choose-if: key1013 = 1
 unavailable-subtitle: You don't know how to decode this file.
@@ -1280,6 +1368,6 @@ go-to: todo
 
 `Lyra says that she can no longer use her abilities. Something about the Cataclysm induced long-term changes in her nanobiotic ecosystem, whose consequences are apparently only being felt now.`
 
-`It is strange to communicate now. I still imagine that Lyra is peering into my thoughts.`
+`It is strange to communicate now. I still imagine that Lyra is peering into my thoughts. She is not used to this new state of affairs either.`
 
 `- Altair Leblanc, Popular Front Army (for now)`

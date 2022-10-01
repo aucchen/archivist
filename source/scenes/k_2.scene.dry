@@ -5,7 +5,7 @@ on-arrival: day_major += 1; k_path += 1; daily_k = 1
 tags: major
 new-page: true
 frequency: 1000
-set-bg: images/windows_filtered_dithered.png
+set-bg: images/park_dithered.png
 
 How long has it been since you last saw her?
 
@@ -40,7 +40,7 @@ It was a CityNet article about the latest nanoplague variant. She was the "Unive
 
 @anticipation
 
-Founders Square was dedicated to Liana Xu, a posthuman and one of the founders of this city. It acts as the central square. It was a 30-minute trip by trolley, and presently you are sitting on a bench.
+Founders Square was dedicated to Liana Xu, a posthuman and one of the founders of this city. It acts as the central square. It was a 30-minute trip by trolley, and presently you are sitting on a bench in an isolated alcove, surrounded by macroalgae and lichen-based decorative vegetation and a fenced informal settlement.
 
 You have not been able to do much of anything today, your mind so preoccupied on your meeting with K- and S-.
 
@@ -81,7 +81,7 @@ You are wearing your standard leaving-your-apartment outfit: a long gray tweed s
 max-visits: 1
 on-arrival: k2_checks += 1
 
-There are no immediate threats in the vicinity. The plaza is sparser than usual at this time of day, just elderly men and women milling about the statue of Liana Xu, and refugees sitting on their mattresses in the fenced encampment. No police, no Guards, and no one looking in your direction.
+There are no immediate threats in the vicinity. The plaza is sparser than usual at this time of day, just elderly men and women milling about the statue of Liana Xu, and refugees sitting on their mattresses and in their tents in the fenced encampment. No police, no Guards, and no one looking in your direction.
 
 - @check_respirator: Check your respirator.
 - @check_outfit: Check your outfit.

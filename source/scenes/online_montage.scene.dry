@@ -52,8 +52,6 @@ count-visits-max: 1
 
 > `@[+ name_5 +]: fake news`
 
-> `@[+ name_6 +]: `
-
 You read, but you aren't reading. You're not feeling anything at all.
 
 
@@ -65,9 +63,10 @@ subtitle: [? if cw_enabled = 1 : CW: transphobia, slurs ?]
 max-visits: 1
 on-arrival: stress += 1
 count-visits-max: 1
+frequency: 300
 tags: montage
 
-`@NNN: Stealth transvestite teacher found indoctrinating students in gender ideology. Video: (link)`  
+`@NNN: Stealth transvestite teacher found indoctrinating students in gender ideology. Video: (link)`
 
 > `@[+ name_1 +]: pedophile`
 
@@ -91,13 +90,19 @@ tags: montage
 
 >> `@[+ name_1 +]: "woman"`
 
->> `@[+ name_0 +]: i have sympathey for the fact that he was lead astray from the sacred path of humanity into the demonic embrase of transhumanism`
+>> `@[+ name_0 +]: i have sympathey for the fact that he was lead astray from the sacred path of humanity into the demonic embrase of TransHumanism`
+
+- @cn2_watch_video: Watch the video.
+- @main: No. Don't.
+
+@cn2_watch_video
+on-arrival: stress += 1
 
 You watch the video. It is an elementary school classroom, shot from what seems to be a hidden security camera. The teacher is a well-dressed woman most likely in her late thirties or forties, similar to you. "I am a girl now, but when I was born, they thought I was a boy," she says. The students are staring at her. The video cuts off right there.
 
 You knew many laverneans, but you did not know her; she must have been stealth in the days before the Uprising.
 
-- @cn2_2: It makes you strangely pleased to see her.
+- @cn2_2: You are pleased to see her.
 - @cn2_1: This is your future.
 
 @cn2_2
@@ -111,10 +116,11 @@ They're talking about *you*, or *people like you*. This is your fate if your gen
 
 @cn3
 title: `Male prostitute attacks Guards after found to have been impersonating a woman.`
-subtitle: [? if cw_enabled = 1 : CW: transphobia, slurs ?]
+subtitle: [? if cw_enabled = 1 : CW: violence, transphobia, slurs ?]
 on-arrival: stress += 1
 max-visits: 1
 count-visits-max: 1
+frequency: 300
 tags: montage
 
 `@NNN: Male prostitute attacks Guards after found to have been impersonating a woman. Video: (link)`
@@ -126,6 +132,8 @@ tags: montage
 > `@[+ name_2 +]: all real women detest men who pretend to be women.`
 
 > `@[+ name_3 +]: long live the guards!!!`
+
+> `@[+ name_4 +]: DEATH TO ALL TRANSHUMANISTS AN D NEO-ABSOLUTIONISTS!!!`
 
 From one second of the video, you realize that you knew her. She was a lavernean, like you.
 
@@ -173,6 +181,7 @@ title: `Opposition party leader: 'gender and sexual minorities deserve human rig
 subtitle: [? if cw_enabled = 1 : CW: homophobia, transphobia, slurs ?]
 max-visits: 1
 count-visits-max: 1
+frequency: 300
 tags: montage
 
 `@NNN: Opposition party leader: "gender and sexual minorities deserve human rights"`
@@ -189,11 +198,14 @@ tags: montage
 
 > `@[+ name_5 +]: every single woman knows that males do not have a right to impersonate women.`
 
+> `@[+ name_6 +]: ELIMINATION OF TRANSHUMAMIST SYMPATHISZERS IS NECESSARY FOR HUMAN BODILY FREEDOM`
+
 
 @cn5
 title: `University scientists: nanoplague infection level 'at highest extent in years'`
 max-visits: 1
 count-visits-max: 1
+frequency: 300
 tags: montage
 
 `@NNN: University scientist: nanoplague infection level "at highest extent in years".`
@@ -209,6 +221,7 @@ tags: montage
 title: `Shortage of rare earth minerals continues.`
 max-visits: 1
 count-visits-max: 1
+frequency: 400
 tags: montage
 
 `@NNN: Shortage of rare earth minerals continues. Electronics industry association asks consumers to recycle their obsolete devices.`
@@ -221,12 +234,13 @@ tags: montage
 
 > `@[+ name_3 +]: you can pry my X101 from my cold, dead hands.`
 
-
+> `@[+ name_4 +]: THE NEO-ABSOLUTIONIST REGIME SEEKS TO REGIMENT YOUR LIFE AND STEAL YOUR CHILDREN TO BE TRANSHUMANIZED INTO MONSTROSITIES BEYOND YOUR CONMPREHENSINO`
 
 @cn7
-title: Seven homeless encampments removed from public square by police and Guards.
+title: `Seven homeless encampments removed from public square by police and Guards.`
 max-visits: 1
 count-visits-max: 1
+frequency: 200
 tags: montage
 
 `@NNN: Seven homeless encampments removed from public square by police and Guards.`
@@ -284,6 +298,8 @@ tags: montage
 
 > `@[+ name_1 +]: lol`
 
+> `@[+ name_2 +]: THEY ARE LYING TO YOU. SHORTAGES DO NOT EXIST. THE CATACLYSM NEVER HAPPENED.`
+
 @cn11
 title: `MP sponsors bill aimed at terrorist sympathizers`
 max-visits: 1
@@ -295,6 +311,8 @@ tags: montage
 > `@[+ name_0 +]: fake news`
 
 > `@[+ name_1 +]: all terrorists need to die`
+
+> `@[+ name_2 +]: death to the terrorists and long live the guard!!!`
 
 @cn12
 title: `High fruit prices: are rioters and terrorists to blame?`
@@ -342,6 +360,8 @@ tags: montage
 
 > `@[+ name_0 +]: fake news`
 
+> `@[+ name_1 +]: WHEN WILL WE BE FREE OF THIS NEO-ABSOLUTINOIST EVIL REGIME OF UNIMAGINABLE CRUELTY AND HADTRED`
+
 @cn16
 title: `Trailer for Long Live the Guards III released.`
 max-visits: 1
@@ -349,6 +369,10 @@ count-visits-max: 1
 tags: montage
 
 `@NNN: Trailer for Long Live the Guards III released.`
+
+> `@[+ name_0 +]: can't wait`
+
+> `@[+ name_1 +]: can't wait`
 
 @cn17
 title: `Heartwarming: students stand up to female-impersonator teacher promoting gender ideology.`
@@ -358,7 +382,7 @@ tags: montage
 
 `@NNN: Heartwarming: students stand up to female-impersonator teacher promoting gender ideology.`
 
-> `@[+ name_0 +]: fake news`
+> `@[+ name_0 +]: good`
 
 @cn18
 title: `Quarterly profits in ag-tech sector up despite greenhouse failures.`
@@ -413,3 +437,5 @@ tags: montage
 > `@[+ name_1 +]: long live the ametican empire`
 
 > `@[+ name_2 +]: can't wait`
+
+> `@[+ name_3 +]: fake news`

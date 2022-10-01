@@ -21,6 +21,7 @@ You are homeless now, or something like that. You have no phone, and no money to
 
 @find_a
 view-if: a_path >= 3
+set-bg: images/windows_filtered_dithered.png
 
 A- is most likely at work right now. So you wait until night in the park before traveling to her Central District apartment. You do not fit in here. It is only due to your luck that no one called security.
 

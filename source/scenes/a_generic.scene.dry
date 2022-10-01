@@ -1,14 +1,15 @@
 title: Call A-.
 subtitle: You need money, maybe [? if a_loved > 0 : (or maybe you just want to talk to her) ?]...
 view-if: a_path >= 3 and daily_a = 0 and day >= a_day + 2 and (day_major = 0 or day_minor = 0) and stress < stress_threshold
-on-arrival: daily_a = 1; a_day = day; a_path += 1; day_minor += 1
-go-to: a_good if a_loved >= 1 and a_path < 5; a_bad if a_loved <= 0; a_goto_end if a_path >= 4
+on-arrival: daily_a = 1; a_day = day; day_minor += 1
+go-to: a_good if a_loved >= 1 and a_path < 5; a_bad if a_loved <= 0; a_goto_end if a_path >= 5
 tags: minor
 
 You call A-...
 
 @a_good
 on-arrival: money += 100; day_minor += 1; a_path += 1
+set-bg: images/park_2_dithered.png
 
 You make the call. A- answers, and says in somewhat coded language (she must not be alone) that she can give you the money if you meet in person. And you meet, at the same isolated corner of the park by the frozen river.
 
@@ -18,17 +19,19 @@ You make the call. A- answers, and says in somewhat coded language (she must not
 - @what_is: You have no idea what this is.
 
 @is_date
+go-to: just_like_before
 
 This could be a date.
 
 @what_is
+go-to: just_like_before
 
 You have no idea what *this* is.
 
 @just_like_before
 go-to: k_q if k_path >= 3 and a_knows_k = 0
 
-"It's just like before, isn't it?", she says. "Just like when we were..."
+"It's just like before, isn't it?", she says. "Just like when we were together..."
 
 She is silent for a moment.
 
@@ -85,17 +88,28 @@ view-if: a_knows_k = 0 and k_path >= 3
 
 "Oh. That's too bad."
 
+- @walk_ends
+
 @she_is_good
 
 "She is doing well." You are unsure if it is a lie.
 
 "Oh, that's good. And S-. Oh, he was so cute."
 
+- @walk_ends
+
 @hates_you
 
 "She still hates you."
 
 "Oh. That's too bad."
+
+- @walk_ends
+
+@kiss
+title: Kiss her.
+
+First, you make sure that your vicinity is clear, and that there are no prying eyes.
 
 @walk_ends
 title: A- has to go.
@@ -111,7 +125,7 @@ view-if: missed_rent > 0
 @a_goto_end
 go-to: ending_a
 
-You are back at the same park by the frozen river.
+You make the call, and you are back at the same park by the frozen river.
 
 # TODO: transition to ending_a 
 

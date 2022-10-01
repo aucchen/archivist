@@ -2,6 +2,7 @@ title: K-
 subtitle: K- comes to pick up S-
 on-arrival: money += 100; with_s = 0; k_path = 3; k_day = day; k_romance = 1; day_major += 1
 new-page: true
+set-bg: images/room1_filtered_dithered.png
 
 #automatically go here with the queue after waking up...
 
@@ -88,6 +89,10 @@ K- and S- leave.
 new-page: true
 
 You do not remember when you gave K- the keys to your apartment, but it was well prior to this encounter. The two of you had set a heartbeat system during your first nanoplague scare, in which if you did not send a message to her for three days, she would go to your apartment and check if you were still alive. That was four years ago.
+
+- @enters_room: She enters your room without knocking.
+
+@enters_room
 
 She enters your room without knocking.
 

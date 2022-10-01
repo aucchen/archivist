@@ -1,12 +1,18 @@
 title: Credits
 
-*The Archivist and the Revolution* is the final refinement of various story ideas that have been simmering in my head for over 10 years. Like all of my stories, this is nothing more than a hodgepodge of my interests, obsessions, and neuroses.
-
 Written by Autumn Chen.
 
 Coded using {!<a href="https://github.com/aucchen/dendry">dendry</a>!}, originally by Ian Millington with heavy modifications from the author.
 
-Images:
+= Acknowledgments
+
+Thanks to Arlo @magiciansvoyage, Jinx @lapinlunairegames, Travis Moy, and Zoe M. for their testing, discussions, and amazing feedback.
+
+= Text
+
+Some of the text in this game is adapted from Wikipedia, the Free Encyclopedia. Sources are included where they appear in the game text.
+
+= Images
 
 `monitor_dithered.png`: modified from https://commons.wikimedia.org/wiki/File:Belinea-monitor19crt.jpg
 
@@ -16,82 +22,28 @@ Images:
 
 All other images by the author. The backgrounds were edited from photographs using GIMP filters and dithering with ImageMagick.
 
-= Acknowledgments
-
-Thanks to Arlo @magiciansvoyage, Jinx @lapinlunairegames, Travis Moy, and Zoe M. for their testing, discussions, and amazing feedback.
-
 = Science
 
-There are a number of real-world papers referenced in the story from the field of DNA data storage.
+There are a number of real-world papers referenced in the story from the field of DNA data storage, with abstracts included in the game text.
 
 > Shipman, S., Nivala, J., Macklis, J. et al. CRISPR–Cas encoding of a digital movie into the genomes of a population of living bacteria. Nature 547, 345–349 (2017). https://doi.org/10.1038/nature23017
 
-
 > Yim, S.S., McBee, R.M., Song, A.M. et al. Robust direct digital-to-biological data storage in living cells. Nat Chem Biol 17, 246–253 (2021). https://doi.org/10.1038/s41589-020-00711-4
 
-This is a work of fiction; none of the technologies described in the story are intended to be scientifically accurate.
+> Grass, R.N., Heckel, R., Puddu, M., Paunescu, D. and Stark, W.J. (2015), Robust Chemical Preservation of Digital Information on DNA in Silica with Error-Correcting Codes. Angew. Chem. Int. Ed., 54: 2552-2555. https://doi.org/10.1002/anie.201411378
 
-= Inspirations and Related Works
+> Liu, Y., Ren, Y., Li, J., Wang, F., Wang, F., Ma, C. et al. (2022). In vivo processing of digital information molecularly with targeted specificity and robust reliability. Science advances, 8(31), https://doi.org/10.1126/sciadv.abo7415
 
-Games:
+This is a work of fiction; the technologies described in the game are not used in a scientifically accurate fashion.
 
-> *howling dogs* by Porpentine
-# for obvious reasons.
+= Music
 
-> *SPY INTRIGUE* by furkle
-# because it's my favorite game.
-
-> *Bee* by Emily Short
-# because all of my storylet-based IF are inspired by Bee.
-
-> *Solarium* by Anya Johanna DeNiro
-# for the history.
-
-> *Get Your Gun, Dragonfly* by Palimrya
-# for the description of one possible trans future.
-
-> *Neo Cab* by Chance Agency
-# for the gig economy representation
-
-> *Computerfriend* by Kit Riemer
-# 
-
-
-Books:
-
-> *Oryx and Crake* by Margaret Atwood
-# for obvious reasons.
-
-> *Summer Fun* by Jeanne Thornton
-# for the virtual intergenerational conversations between trans women.
-
-> *Little Fish* by Casey Plett
-#
-
-> *Small Beauty* by Jia Qing Wilson Yang
-#
-
-> *Manhunt* by Gretchen Felker-Martin
-# i've only read a preview chapter unfortunately. but.
-
-> {!<a href="https://bostonreview.net/articles/charlie-jane-anders-dont-press-charges-and-i-wont-sue/">"Don't Press Charges and I Won't Sue" by Charlie Jane Anders</a>!}
-
-
-Web Media:
-
-> *Homestuck* by Andrew Hussie
-
-> {!<a href="https://archiveofourown.org/works/33158965/chapters/82319554"><i>Glow, Worm</i> by alysongreaves</a>!}
-
-Music: The unofficial soundtrack is {!<a href="https://open.spotify.com/playlist/4X9RQqkMnikpfSzG4Cxq3i">here</a>!}.
-
-> *Mydata* and others by Katie Dey
-
-> *Transangelic Exodus* and others by Ezra Furman
-
+The game does not include music, but if you wish to listen to an unofficial soundtrack, there is one {!<a href="https://open.spotify.com/playlist/4X9RQqkMnikpfSzG4Cxq3i">here</a>!}.
 
 - @one: Start game
+- @postgame_credits: Endings
 - @game_over: End game.
+
 
 @game_over
 view-if: started = 1

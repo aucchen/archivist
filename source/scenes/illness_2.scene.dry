@@ -5,6 +5,7 @@ frequency: 1000
 priority: 10
 max-visits: 1
 on-arrival: illness_seen = 2; day_major += 1; day_minor += 1; stress -= 2
+new-page: true
 tags: major
 
 The illness continues to progress. It seems to be getting worse. Your mind is in a state of fear, but of what, you can only begin to conceptualize.
