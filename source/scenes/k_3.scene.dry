@@ -135,90 +135,6 @@ She shrugs. Idly she takes your hand in hers, and begins rubbing it. "What did w
 Idly she takes your hand in hers, and begins rubbing it. "What did we even talk about back when we were living together?"
 
 - @dont_remember: "I don't remember."
-# - @history_talk: "We talked about history. We talked about my datasets."
-
-@history_talk
-view-if: data_seen > 2
-
-# TODO: talk about data
-
-"We talked about history. We talked about my datasets."
-
-"And are you still working on decoding DNA archives?"
-
-"Yes..."
-
-- @talk_w
-- @talk_d
-- @talk_x
-- @talk_s
-- @talk_f
-- @talk_r
-
-@talk_w
-title: "There have been some encyclopedia articles..."
-view-if: w_seen > 0
-on-arrival: k_talk_w = 1
-
-"There have been some encyclpedia articles from the pre-war era."
-
-"Oh? Were they interesting?"
-
-- @talk_w_interesting: "Sure, I guess."
-- @talk_w_not_interesting: "Not really."
-
-@talk_w_interesting
-go-to: end_a_talk_doc
-
-"Sure, I guess."
-
-"Yeah?"
-
-"They were just... random," you say. "Geography, mostly."
-
-@talk_w_not_interesting
-go-to: end_a_talk_doc
-
-"Not really."
-
-
-
-@talk_d
-title: "There have been some pre-war diary entries..."
-view-if: d_seen > 0
-on-arrival: k_talk_d = 1
-
-"There were some pre-war diaries, by scientists. Maybe you would have liked them."
-
-"Oh really?"
-
-@talk_x
-title: "Apparently there were original writings by Liana Xu..."
-view-if: x_seen > 0
-on-arrival: k_talk_x = 1
-
-@talk_s
-title: "Just some scientific papers..."
-view-if: s_seen > 0
-on-arrival: k_talk_s = 1
-
-@talk_f
-title: "Some historical documents from the first century..."
-view-if: f_seen > 0
-on-arrival: k_talk_f = 1
-
-@talk_r
-title: "Documents from the uprising..."
-view-if: r_seen > 0
-on-arrival: k_talk_r = 1
-# TODO: talk about dataset groups 
-
-
-@end_a_talk_doc
-go-to: smell_like_a if a_encounter = 1; k_gf if a_encounter = 0
-
-She stops talking, and lays down on the bed, next to you. It is a tight fit, with your body nearly squeezed against the wall.
-
 
 @dont_remember
 go-to: smell_like_a if a_encounter = 1; k_gf if a_encounter = 0
@@ -227,7 +143,7 @@ go-to: smell_like_a if a_encounter = 1; k_gf if a_encounter = 0
 
 "That's interesting, because I don't either. It's like it all happened in my imagination, like none of it was real." She turns to you. "Was it real?"
 
-"Of course it was real," you say.
+"Of course it was real."
 
 "See, I'm just saying things now. I don't know what to talk about either so I'm just rambling on without knowing what I'm even saying. I'm just playing out these parts, like..."
 
@@ -386,7 +302,7 @@ go-to: thats_gross
 
 "It's 'she'."
 
-"What."
+"What"
 
 "A- still uses 'she' pronouns."
 
@@ -706,8 +622,6 @@ She is wheezing, and pounding on the door awfully hard.
 
 - @turn_off: Turn off the shower.
 #- @face_shower: Turn around and face her.
-
-# TODO: talk to K about why you don't shower - because youre too lazy, because yiu hate seeing lots body, or because of the microbiome.
 
 
 @not_really

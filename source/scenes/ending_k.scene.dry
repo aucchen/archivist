@@ -8,7 +8,6 @@ title: Ending
 
 - @no_love: "No, I don't, in fact."
 - @love_bad: "Love doesn't stand a chance against the police state."
-- @do_you_love: "Do you love me?"
 - @maybe_love: "Maybe. I don't know."
 - @worry_a: "Aren't you worried about A-?"
 
@@ -42,19 +41,8 @@ view-if: k_knows_a_affair > 0
 
 - @more_like_it: "That's more like it."
 - @not_good_enough: "That's not good enough..."
-- @why: "Why are you doing this?"
 - @easy_for_you: "Easy for you to say."
 - @what_about_job: "What about quitting your job?"
-
-
-@do_you_love
-
-
-"Do you love me?"
-
-"Do I seem like someone in touch with their emotions?" K- sighs. "Look. I care about S- and I care about you. Who cares what we call it. We need each other. That's how we'll survive this mess."
-
-
 
 @what_about_job
 view-if: k_path >= 4

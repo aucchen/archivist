@@ -29,7 +29,6 @@ on-arrival: {!
     Q.r_path = 0;
     Q.rosa_seen = 0;
     Q.mutual_aid_seen = 0;
-    Q.daily_mutual_aid = 0;
     // data
     Q.key3 = 1;
     Q.key7 = 1;
@@ -137,7 +136,7 @@ tags: top
 @watch
 max-visits: 1
 
-*The light outside the window was bright and artificial, emanating from a poor simulacrum of the sun hanging on the metal ceiling above. Rows of green and violet macroalgal trees emulated an ancient streetscape, the scene completed by the humans walking by. It was the equivalent of midday.*
+*The light outside the window was bright and artificial, emanating from a poor simulacrum of the sun hanging on the metal ceiling above. Rows of green and violet macroalgal trees emulated an ancient streetscape, the scene completed by the humans walking by. It was the equivalent of midday in the city without a sun.*
 
 - @listen: Listen.
 - @remember: Remember.
@@ -153,6 +152,8 @@ max-visits: 1
 @remember
 
 *The Archivist remembered. Memories, real and imagined, flowed forth like a wellspring.*
+
+# TODO: write this part...
 
 - @5_years_ago: 5 years ago.
 - @10_years_ago: 10 years ago.
