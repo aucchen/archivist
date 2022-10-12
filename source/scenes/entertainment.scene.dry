@@ -6,7 +6,7 @@ on-arrival: day_entertainment = 1; entertainment_count += 1; numb = 1
 new-page: true
 set-bg: images/monitor_dithered.png
 
-# [? if entertainment_count = 0 : Your computer is the most prized posession you have, or perhaps the only prized posession. It is approximately 15 years old, which, given that new computers have not been produced since the Cataclysm, makes it relatively recent. It is your primary instrument for both work and entertainment. ?]
+[? if entertainment_count = 0 : Your computer is the most prized posession you have, or perhaps the only prized posession. It is approximately 15 years old, which, given that new computer models have not been produced since the Cataclysm, makes it relatively recent. It is your primary instrument for both work and entertainment. ?]
 
 - @game: Play a game.
 - @tv: Watch TV.

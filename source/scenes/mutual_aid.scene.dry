@@ -1,7 +1,7 @@
 title: Mutual Aid
 subtitle: Follow the address on the flier.
 view-if: (day = 3 or day = 10 or day = 17) and stress < stress_threshold and mutual_aid_seen = 0 and (day_major = 0 or day_minor = 0)
-on-arrival: ma_checklist = 0; mutual_aid_seen = 1; day_minor += 1; stress += 1
+on-arrival: ma_checklist = 0; mutual_aid_seen = 1; day_minor += 1; stress += 1; daily_mutual_aid = 1;
 tags: minor
 new-page: true
 frequency: 500
@@ -150,7 +150,7 @@ max-visits: 1
 
 "You're gonna scare her!" L- laughs, and punches R- in the arm.
 
-- @join_no: "No..."
+- @join_no: "No, I don't want to get invovled..."
 - @infiltration: "Aren't you worried about infiltrators?"
 - @join_alright: "Alright... what can I do to help?"
 
@@ -175,7 +175,7 @@ R- shrugs. "Of course. But I don't believe you're an infiltrator. Or would you b
 
 "See, that's an honest answer. Besides, I don't think any of the current security forces can stop using slurs for long enough to recruit a lavernean."
 
-- @join_no: "No..."
+- @join_no: "No, I don't want to get involved..."
 - @join_alright: "Alright... what can I do to help?"
 
 

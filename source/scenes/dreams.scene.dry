@@ -1,4 +1,132 @@
 title: Dreams
+set-bg: black
+
+You lie in the bed, unsure if you are asleep or awake.
+
+- #dream
+
+# TODO: have a variety of dreams that are unlocked in various special circumstances.
+
+############################# dream k
+
+@dream_k_1
+title: Dream of K- and A-.
+view-if: k_path >= 1 and a_path >= 1 and dream_k_a_viewed = 0
+on-arrival: dream_k_a_viewed += 1
+tags: dream
+
+You dream of K-, and A-. It is a memory, distorted by entropy.
+
+"Do you love me?", A- muttered softly, not to you but to the woman on the other side of you.
+
+You were in the center of the couch, with A- and K- on either side. Your arms and bodies intertwined, K- and A- holding hands behind the back of your neck. K- played with your hair, and A- held your hand. At this time, the three of you were in what was typically called a "polycule". You were in love with each other. You had a future, or something like that.
+
+"That's an asinine question," K- said in her monotone voice. "Love is an illusion. The only purpose of love is the mutually beneficial exchange of resources."
+
+- @dream_k_neoliberal: "That's awfully neoliberal of you."
+- @dream_k_agree: "I agree. There is no such thing as love."
+- @dream_k_silent: You remained silent.
+
+@dream_k_neoliberal
+go-to: dream_k_world
+
+"That's awfully neoliberal of you," you said, with what you hoped was a degree of levity.
+
+"It's not. A polycule is really just a form of mutual aid, like what Kropotkin said. We support each other. We pool together our resources to help us survive." She continues to twirl your hair around her finger.
+
+"Who's Kropotkin?", asked A-.
+
+"Pre-war philosopher," said K-. "They recently rediscovered his works at the Archives."
+
+"Sorry. I'm not into that sort of stuff."
+
+K- sighed. "That's all your girlfriend's been talking about these days. You'd better at least pretend to be interested."
+
+
+
+
+@dream_k_agree
+go-to: dream_k_world
+
+"I agree. There is no such thing as love."
+
+"Wow. You two ganging up against me again," A- spoke.
+
+@dream_k_silent
+go-to: dream_k_world
+
+You were silent.
+
+
+@dream_k_world
+
+Just then, the emergency sirens started to ring. It was the day of the Cataclysm, and everything hereafter would change.
+
+- @dream_k_end: Is this what happened?
+
+@dream_k_end
+
+Is this what happened?
+
+- @dream_k_yes: Yes, it happened like this.
+- @dream_k_no: No; it wasn't like this.
+- @dream_k_idk: It doesn't matter.
+
+@dream_k_yes
+
+It happened like this, you think.
+
+@dream_k_no
+
+Of course it did not happen like this. The story is too clean, with an arc and juxtaposition that is all too convenient. True stories do not have arcs. They start and end with no lessons or morals.
+
+@dream_k_idk
+
+It doesn't matter.
+
+
+######################################## dream uprising
+
+
+@dream_uprising
+
+You dream of the uprising. It is not a product of your imagination, but a memory, distorted by entropy.
+
+
+######################################### dream first century
+
+
+
+
+########################################### dream liana
+
+@dream_l
+title: Dream of the past.
+view-if: l_seen > 1 and l_dream = 0
+on-arrival: l_dream += 1
+tags: dream
+
+
+############################################# dream k only (marriage and s-)
+
+
+############################################# dream a only (a- crossing back)
+
+@dream_a_1
+
+You dream of A-.
+
+
+
+################################################ dream of nothing
+
+@dream_nothing
+title: Dream of nothing at all.
+tags: dream
+
+You dream of nothing at all.
+
+
 
 @dream_1
 

@@ -8,7 +8,8 @@ if (Q.next_day_scene_queue.length > 0) {
 } else {
     Q.has_next_day = 0;
 }
-if (Q.day_major >= 1) {
+// TODO: make sure that mutual aid clears the thing...
+if ((Q.day_major >= 1 && Q.day_minor >= 1) || Q.daily_mutual_aid == 1) {
     Q.main_notes = "";
 }
 !}
@@ -45,7 +46,7 @@ if (window.dendryUI.dendryEngine.state.qualities.has_next_day == 0) {
 @end_of_day
 title: You're too tired to do anything else.
 view-if: (day_major >= 1 or day_minor >= 1 or stress > 10 or loneliness > 10) and (stress < stress_threshold)
-on-arrival: day += 1; rent_due -= 1; food -= 1; medicine -= 1; got_food_today = 0; got_medicine_today = 0; went_out_today = 0; day_entertainment = 0; daily_k = 0; daily_a = 0
+on-arrival: day += 1; rent_due -= 1; food -= 1; medicine -= 1; got_food_today = 0; got_medicine_today = 0; went_out_today = 0; day_entertainment = 0; daily_k = 0; daily_a = 0; daily_mutual_aid = 0;
 go-to: eod_check
 
 @eod_check
@@ -128,12 +129,17 @@ if (Q.medicine <= 0) {
 if (Q.k_path == 1 && Q.day > Q.k_day + 2) {
     Q.next_day_scene_queue.push("k_bad");
 }
+// TODO: if you don't have anything else going on, you have dreams.
+//if (Q.next_day_scene_queue.length == 0) {
+//    Q.next_day_scene_queue.push('dreams');
+//}
 if (Q.next_day_scene_queue.length > 0) {
     Q.next_day_scene = Q.next_day_scene_queue.shift();
     console.log('next day scene: ' + Q.next_day_scene);
 } else {
     Q.next_day_scene = "main";
 }
+
 console.log('eod_check_end');
 !}
 set-bg: black

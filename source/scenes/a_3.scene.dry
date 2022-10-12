@@ -122,8 +122,16 @@ For some reason, there is a part of you that wants to laugh, because this scenar
 - @married: "You're married..."
 - @i_love_you_too: "I love you too..."
 - @still_love_money
+#- @dont_love
 - @love_k
 - @mistake
+
+
+@dont_love
+title: "There is no such thing as love."
+view-if: dream_k_1_viewed >= 1
+
+TODO
 
 
 @love_k

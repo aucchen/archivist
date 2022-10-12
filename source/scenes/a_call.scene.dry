@@ -6,7 +6,6 @@ frequency: 1000
 priority: 10
 tags: minor
 
-# TODO: A- calls you...
 You receive a call from A-.
 
 - @answer: Answer the call.

@@ -224,6 +224,8 @@ Some of your decoded datasets have been received and processed. Here are the res
 {!<script>$('#check_data_text').append($(window.dendryUI.dendryEngine.state.qualities.check_data_text));</script>
 <code id="check_data_text"></code>!}
 
+# TODO: if the datasets have been received but haven't been processed in the queue: let the player know that? Or just remove the idea of randomly not processing datasets?
+
 
 - @view_display: Continue.
 - @back: Do something else.
@@ -395,6 +397,11 @@ Jiaren does not occur in the historical record; the Founder's personal relations
 
 ################### wiki
 
+@w_intro
+go-to: todo
+
+Unfortunately, the importance of a document does not necessarily correlate with its likelihood of preservation. This is especially true in this document class; in all their wisdom the pre-war scientists never cared to duplicate copies of the most central articles in this encyclopedia, instead simply shotgun-encoding the entire encyclopedia into a bacterial colony. Due to various biological factors, shorter sequences and thus shorter articles were more likely to successfully replicate, thus leading to the proliferation of small and seemingly insignificant articles
+
 @w606
 title: `W606.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
@@ -408,7 +415,7 @@ go-to: decode
 set-jump: w606_
 
 @w606_
-go-to: w606_c
+go-to: w606_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Disterna`
 
@@ -435,7 +442,7 @@ go-to: decode
 set-jump: w29_
 
 @w29_
-go-to: w29_c
+go-to: w29_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/New_York_State_Route_347`
 
@@ -460,7 +467,7 @@ go-to: decode
 set-jump: w121_
 
 @w121_
-go-to: w121_c
+go-to: w121_c if w_seen > 1; w_intro if w_seen = 1
 
 `URL: https://en.wikipedia.org/wiki/Sidi_Lazreg`
 
@@ -485,7 +492,7 @@ go-to: decode
 set-jump: w31_
 
 @w31_
-go-to: w31_c
+go-to: w31_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Structural_alignment_software`
 
@@ -509,7 +516,7 @@ go-to: decode
 set-jump: w49_
 
 @w49_
-go-to: w49_c
+go-to: w49_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Marmong_Point,_New_South_Wales`
 
@@ -533,7 +540,7 @@ go-to: decode
 set-jump: w169_
 
 @w169_
-go-to: w169_c
+go-to: w169_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/List_of_The_Best_Thing_I_Ever_Ate_episodes`
 
@@ -560,7 +567,7 @@ go-to: decode
 set-jump: w13_
 
 @w13_
-go-to: w13_c
+go-to: w13_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Sir_James_Ritchie,_1st_Baronet`
 
@@ -585,7 +592,7 @@ go-to: decode
 set-jump: w63_
 
 @w63_
-go-to: w63_c
+go-to: w63_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Leningrad_Cowboys_Go_Wild`
 
@@ -621,7 +628,7 @@ go-to: decode
 set-jump: w46_
 
 @w46_
-go-to: todo
+go-to: todo if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/List_of_people_from_the_Halifax_Regional_Municipality`
 
@@ -641,7 +648,7 @@ go-to: decode
 set-jump: w58_
 
 @w58_
-go-to: todo
+go-to: todo if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Sint-Truiden`
 
@@ -668,6 +675,12 @@ go-to: todo
 `URL: https://en.wikipedia.org/wiki/Joss_paper`
 
 `Joss paper, also known as incense papers, are papercrafts or sheets of paper made into burnt offerings common in Chinese ancestral worship (such as the veneration of the deceased family members and relatives on holidays and special occasions). Worship of deities in Chinese folk religion also uses a similar type of joss paper. Joss paper, as well as other papier-mâché items, are also burned or buried in various Asian funerals, "to ensure that the spirit of the deceased has sufficient needs in the afterlife."`
+
+
+@w17_c
+go-to: todo
+
+You have read about this before. It was the inspiration for your periodic funerary rituals.
 
 
 ######################### Liana Yingmei Xu
@@ -820,20 +833,24 @@ go-to: x1019_c
 
 `We were now on our third adopted homeland. We thought we would be forced to flee because of discrimination for our gender, not because of an absurd war between our two previous homelands. They called it the Sino-American War, or sometimes the Third World War. Does memory of the war still exist in your time? Or has it been entirely eclipsed by the Posthuman War?
 
-It is here that Jiaren convinced me to have the procedure done. By this time it was not such a difficult process, technically speaking. On the cellular side, all it took were some induced pluripotent stem cells and carefully tuned gene regulatory induction systems, easy ever since our advanced simulations. We grew the uterus via tissue culture. The more difficult portion was the physical trans/implant.
+It is here that Jiaren convinced me to have the procedure done. By this time it was not such a difficult process, technically speaking. On the cellular side, all it took were some induced pluripotent stem cells and carefully tuned gene regulatory induction systems, easy ever since our advanced simulations. We grew the uterus via tissue culture. The more difficult portion was the physical trans/implant. But it was not my first such surgery, obviously.
 
 Our first child was born via surrogacy. Our second child was born via my body, and the culmination of decades of bioengineering.
 
-# How are you today?
+How are you today? We are currently assembling the organics recycling system, which involved a level of microbiotic engineering on par with the artificial womb system :). It will allow your city to produce hydrocarbons from any organic feedstock, for energy or in the manufacture of chemicals and materials. I have attached the schematics and blueprints for some of the systems most likely to break down. You might need them in your time. Nothing lasts forever.
 
  - Liana`
-
-# TODO: bad sentence?
 
 @x1019_c
 go-to: todo
 
 You want to die right now because what even is the point of living if you can't get a fucking uterus transplant?
+
+Oh right, the blueprints. Surprisingly enough, they are readable even through the data compression and five hundred years of mutations. You are not an expert, but they seem legitimate. They might be crucial for saving the city, or something like that, as the recycling system is yet another critical subsystem that has been failing recently. [? if hoax_warned = 1 : Even though the Archivies think the Liana diaries are a hoax, perhaps this document would convince them otherwise. ?]
+
+But none of that seems to matter at this moment. The city is far away. You are floating, lost in the haze of engineered anatomies you will never embody.
+
+# TODO: hoax... 2!!! they think that yingmei is a hoax but the blueprints are real.
 
 
 
@@ -858,7 +875,7 @@ go-to: x1021_c
 
 `I wonder what you would call the war in your time?
 
-Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3. I was, as you obviously know, a posthuman, so my side in the war was clear.
+Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3. I was, as you obviously know, a posthuman, so my side in the war was clear. It was a fratricidal, even omnicidal war at times. Our spokespersons said that we were fighting for liberation and bodily autonomy. The baseline leaders claimed to be fighting for the existence of humanity.
 
 One tidbit you will not find in your baseline histories is how trans people were treated in the war. The conflation of "transgender" or "transsexual" with "transhuman" made all trans people in baseline territories into enemies. There were purges and camps and killings, more so than usual. Even those who sympathized with the baseline cause ended up on the posthuman side.
 
@@ -871,7 +888,15 @@ And what about you, I wonder, presumed baseline? Did trans-ness reemerge? Are th
 @x1021_c
 go-to: todo
 
-You have no idea what to feel about this.
+You have no idea what to feel about this. All respectable historians would discount the connections between the pre-war "transsexuals" and the modern "laverneans" and "elliotians".
+
+
+# Liana 6?
+@x1029
+
+`The war ended when we became tired of it.
+
+ - Liana`
 
 
 ################################# Technical
@@ -930,8 +955,6 @@ go-to: todo
 
 You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
 
-# TODO: add medium preservation
-# TODO: which microbes are used here?
 
 @s303
 title: `S303.fastq.gz`
@@ -1078,12 +1101,12 @@ subtitle: `Source: Archives. Medium: *in vitro*`
 tags: data, history
 choose-if: key3 = 1
 max-visits: 1
-view-if: @data.f101 > 0 or @data.f102 > 0
 count-visits-max: 1
 frequency: 200
 on-arrival: {! Q.prev_data.push('f202'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
 go-to: decode
 set-jump: f202_
+#view-if: @data.f101 > 0 or @data.f102 > 0
 
 @f202_
 go-to: f_background if f_seen <= 1; f202_c if f_seen > 1
@@ -1099,7 +1122,7 @@ Synthesis: All eunuchs must be removed from government, but they are to be permi
 @f202_c
 go-to: todo
 
-This is another first-century document, again indicating the social irrationality of this era (not unlike your own). The Absolutionists and Negationists were two factions present in the early post-war era; the Absolutionists believed that baseline humans were the cause of the War, and that cruelty on the part of the baselines pushed the posthumans to the edge. The Negationists believed that posthumans were the cause of the War, and that they inflicted violent cruelties upon the baselines. The Negationists appear to have won out in this conflict.
+This is a first-century document, indicating the social irrationality of this era (not unlike your own). The Absolutionists and Negationists were two factions present in the early post-war era; the Absolutionists believed that baseline humans were the cause of the War, and that cruelty on the part of the baselines pushed the posthumans to the edge. The Negationists believed that posthumans were the cause of the War, and that they inflicted violent cruelties upon the baselines. The Negationists appear to have won out in this conflict.
 
 You do not know what a eunuch is. The term does not appear in the dictionaries.
 
@@ -1109,7 +1132,7 @@ title: `F303.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vitro*`
 tags: data, history
 choose-if: key3 = 1
-view-if: @data.f101 > 0 or @data.f102 > 0
+view-if: f_seen > 0
 max-visits: 1
 count-visits-max: 1
 frequency: 200
@@ -1148,7 +1171,7 @@ title: `F404.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vitro*`
 tags: data, history
 choose-if: key3 = 1
-view-if: @data.f202 > 0
+view-if: @data.f202 > 0 or f_seen > 1
 max-visits: 1
 count-visits-max: 1
 frequency: 300
@@ -1161,9 +1184,11 @@ go-to: f_background if f_seen <= 1; f404_c if f_seen > 1
 
 `99 AT
 
- Tonight our order convened a circle of prayer. We devoted our Great Prayer in memories of all those killed on the Night of Restoration. May they be with the Ancestors. Our Lesser Prayer was dedicated to our lost friend, Emilia Chu, who had taken great care in documenting the atrocities committed against our comrades before she disappeared. We hope she is in a better place.
+ Tonight our order convened a circle of prayer. We devoted our Great Prayer in memories of all those killed on the Night of Restoration. May they be with the Ancestors. Our Lesser Prayer was dedicated to our lost Sister, Emilia Chu, who had taken great care in documenting the atrocities committed against our comrades before she disappeared. We hope she is with the Ancestors in the Temple of Heaven.
 
- We ask the Ancestors in the Sky to absolve us of our mistakes, so that we may join them once more in the Temple of Heaven. We ask the Ancestors forgiveness for our enemies even as they imprison and torture us.
+ We asked the Ancestors in the Sky to absolve us of our mistakes, so that we may join them once more in the Temple of Heaven. We asked the Ancestors forgiveness for our enemies even as they persecute and torture us. Even as the fires burn all around us and the skies are brown with the ashes of our Sisters and friends, we beg the Ancestors for absolution for our Administrators.
+
+ Tonight we consumed the blood of the Ancestors, and we dreamed.
 
  - Stella Smith, eunuch of St. Catherines Temple`
 
@@ -1171,10 +1196,20 @@ go-to: f_background if f_seen <= 1; f404_c if f_seen > 1
 go-to: todo
 
 
+# TODO: more 1st century notes: a few years later, an administrator writes about the equivalent of a cataclysm. Thinks the eunuchs cursed them.
 
-###################################### Historical - 3st Century
+# Since the triumph of Bureaucratic rule and the purging of the eunuchs, our position has not improved as we hoped. The superstitious among us believe that the eunuchs have been continuing to curse us.
+
+# - Administrator Beauchamp, 101 AT
+
+#  a eunuch writes about the remnants of her order and religion and a gathering of the faithful and their hope to be one with the Ancestors.
+
+###################################### Historical - 2nd/3rd Century
 
 
+# Well, if accurate, this document has put a nail in the claims of the False Century Hypothesis. The FHC claims that the period between 147 and 255 AT did not exist, and that the year change was imposed by the Imperial Era to create an auspicious numerological pattern.
+
+# the mid-imperial era...
 
 ###################################### Uprising/revolution
 
@@ -1296,9 +1331,9 @@ set-jump: r1009_
 @r1009_
 go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
-`Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the laverneans or the nonbinaries, but all of us, every human being in this ark. We do not have to be this way. We can unite.`
+`Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the laverneans or the nonbinaries, but all of us, every human being in this ark. We do not have to be this way. We can unite. I find myself as comrades with those I had passed by on the street, as I held my head down in fear of discovery. And I finally see them for the first time, as they see me, and we look into each others' eyes.`
 
-`For the first time in our history, our guns are pointed in unison towards the real enemy, rather than at each other.`
+`For the first time in our history, our guns are pointed in unison towards the real enemy, rather than at each other. For the first time in history, we can stand up without fear, with the force of love for each other propelling us forward to victory.`
 
 `- Esme Franklin, Unity Regiment`
 
@@ -1323,13 +1358,46 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 `I don't want to die. Is that too much to ask?`
 
+# I used to think of the future, often. I used to dream of becoming a writer, of telling my stories.
+
 `- Esme Franklin, Unity Regiment`
+
+@r3027
+title: `R3027.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [if enable_cw = 1 : (CW: violence) ?]
+tags: data, science
+choose-if: key1009 = 1
+view-if: @data.r1001 > 0
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r3027'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
+go-to: decode
+set-jump: r3027_
+
+@r3027_
+go-to: rev_1 if r_seen = 1; todo if r_seen > 1
+
+`Here is what happened:
+
+We were hiding in a safehouse, watching a patrol of Guards. They had dragged a woman out of the neighboring apartment. They must have thought she was a lavernean, because she was tall and broad-shouldered, but maybe they were wrong. They couldn't always tell, and rarely cared. 
+
+She was crying, struggling, trying to pull away, but there were too many of them. They were trying to pull down her pants, and they laughed as they did so. Something in me broke right then.
+
+I wanted to fire. The squad leader shook her head. I fired anyway. I killed the man. His colleague put a bullet in the woman's head. We exchanged bullets. More guards dropped dead. A few survivors fled. None of us in the Unity Regiment were hurt.
+
+Was this a victory? What did we gain? Our commander admonished me for betraying our location, for burning one more safehouse. We won the battle, but I took us one step closer to losing the war. I couldn't even save her. I couldn't even save one life. And all the revolutionary struggle in the world will not bring that anonymous person back.
+
+Cygne is trying to comfort me right now. They say that writing it down will make it better. All it has done is made me realize what a waste this all is.
+
+ - Esme Franklin`
 
 @r1013
 title: `R1013.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science
 choose-if: key1013 = 1
+view-if: @data.r1001 > 0
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
@@ -1344,9 +1412,29 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 We can no longer produce computers. Within a 100-km radius of the arcology, the safe travel distance since the Cataclysm, there are zero accessible sources of neodymium, tantalum, or even lithium (at least iron and copper are plentiful). Recycling always introduces inefficiencies, and nanotechnology was lost long ago. The only hope is to make electronics last as long as possible, counter to the goals of the industry for the last few centuries.
 
+Our city is breaking down. Our air is toxic to breathe, filled with nanoplagues and fallout. The filters aren't working. The water is barely enough to drink. Our streets are turning to mud. We have no food, no shelter, no hope.
+
 One thing is sure: the bourgeoisie will let civilization die before relinquishing its hold on power.`
 
 `- Leon Zhou, Bread and Roses Brigade`
+
+# TODO: leon or someone else talks about communism. Rosa talks about how the uprising was suppos d to be a working class movement but it turned out to be a lavernean movement. Where are the true proletariat?
+
+#R1017
+
+# `This revolution does not have a proletarian character. Rosa and I have been studying the pre-war revolutionary philosophers, most notably Marx and Engels, who have a surprising link to our current situation. Rosa discussed The 12th Brumaire.
+
+# `Notes from a political philosophy discussion group:
+
+# Rosa: This revolution does not have a proletarian character (cf. Marx and Engels). What would the pre-war philosophers think of the laverneans? (laughs)
+
+# Leon: 
+
+# Bella: Perhaps we are a lumpen 
+
+# Rosa: None of us know what we are talking about.
+
+# - Leon Zhou `
 
 @r2026
 title: `R2026.fastq.gz`

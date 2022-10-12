@@ -10,3 +10,5 @@ set-bg: images/city_dithered.png
 You visit the Mutual Aid Alliance's food distribution area at the park. You get free food. R- and L- are here, and you make a brief conversation. It is a productive use of your time, more so than usual.
 
 [? if support_mutual_aid > 0 : You talk to R- and L- about how you might help the Alliance. They tell you that they still do not have anything for you to do, but they give you more information on the Alliance's activities, and how to contact them. ?]
+
+# TODO: extended conversation with the mutual aid people. You can show rosa some documents.
