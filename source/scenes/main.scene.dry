@@ -155,11 +155,15 @@ Q.old_rent = Q.rent;
 Q.fees = 50 + Math.ceil(Math.random()*50);
 Q.total_rent = Q.rent + Q.fees;
 Q.paid_full = 0;
+Q.left_over = 0;
+Q.amount_paid = 0;
 if (Q.money < Q.total_rent) {
+    Q.amount_paid = Q.money;
+    Q.left_over = Q.total_rent - Q.money;
+    Q.rent = Q.left_over;
     Q.money = 0;
-    Q.rent = Q.total_rent - Q.money;
     Q.missed_rent += 1;
-    Q.rent += 50;
+    Q.rent += 100;
     Q.stress += 1;
 } else {
     Q.money -= Q.total_rent;
@@ -172,7 +176,7 @@ Q.rent_due = 7;
 go-to: eviction if missed_rent >= 2
 
 [? if paid_full = 1 : Your rent and additional costs were automatically deducted from your account. The rent was $[+ old_rent +] and fees plus utilities were $[+ fees +]. You have $[+ money +] remaining. ?]
-[? if paid_full = 0 : The rent due was $[+ old_rent +] and the fees were $[+ fees +]. Unfortunately, you did not have enough to cover the total amount due. All money in your account was automatically deducted, and the remaining balance was rolled over into the next rent payment, with an additional fee of $50. If you miss the next payment, then you will be evicted. ?]
+[? if paid_full = 0 : The rent due was $[+ old_rent +] and the fees were $[+ fees +]. Unfortunately, you did not have enough to cover the total amount due - there was still $[+ left_over +] left over after your payment of $[+ amount_paid +]. All money in your account was automatically deducted, and the remaining balance was rolled over into the next rent payment, with a late payment fee of $100. If you miss the next payment, then you will be evicted. ?]
 
 [? if additional_rent > 500 : They are increasing rent to absurd levels, most likely for the purpose of evicting you from this building. There are many people who would like to live here, people with more money than you, and not enough apartments for everyone. Thus, the evictions. ?]
 

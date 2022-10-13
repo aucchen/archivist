@@ -59,6 +59,8 @@ on-arrival: {!
     Q.r_warned = 0;
     Q.hoax_processed = 0;
     Q.hoax_warned = 0;
+    Q.check_l_prompt = 0;
+    Q.check_101_prompt = 0;
     Q.type_payments = {
         'misc': 30,
         'science': 60,
