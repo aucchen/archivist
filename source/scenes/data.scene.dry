@@ -155,15 +155,14 @@ Q.datasets_checked = 0;
 var i = 0;
 var has_special = false;
 var has_hoax = false;
-while (i < Q.chosen_data_types.length) {
+while (Q.chosen_data_types.length > 0) {
     // randomly do one out of 50...
-    /* Don't do random stuff here
+    // TODO: decide if we should do random stuff here?
     if (i > 0) {
         if (Math.random() > 0.5) {
             break;
         }
     }
-    */
     Q.datasets_checked += 1;
     var data = Q.prev_data.shift();
     var chosen_t = Q.chosen_data_types.shift();
@@ -205,9 +204,10 @@ if (has_hoax && Q.l_seen == 2 && !Q.hoax_warned) {
     Q.hoax_warned = 1;
 }
 // promote some specific datasets: S101.fastq.gz, X1001.fastq.gz
-if (Q.key1001 == 0 && !Q.check_101_prompt) {
+if (Q.key1001 == 0 && !Q.check_101_prompt && Q.day >= 3) {
     Q.check_data_text += '<p>A message from C-:</p><p>If you happen to see it, check out S101.fastq.gz. This file might be important.</p>';
-} else if (Q.key1001 == 1 && !Q.l_seen) {
+} else if (Q.key1001 == 1 && !Q.l_seen && !Q.check_l_prompt && Q.day >= 1) {
+    Q.check_l_prompt = 1;
     Q.check_data_text += '<p>A message from C-:</p><p>If you happen to come across it, check out X1001.fastq.gz. From a preliminary analysis, a lot of people are excited about this one. Any file starting with X is something that\'s been marked to be of special interest.</p>';
 }
 Q.money += Q.payment;
