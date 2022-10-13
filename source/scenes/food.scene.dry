@@ -1,5 +1,6 @@
 title: Food
 go-to: food_options
+on-arrival: got_food_today = 1;
 new-page: true
 
 You have no more edible food left in your apartment. What are you going to do?

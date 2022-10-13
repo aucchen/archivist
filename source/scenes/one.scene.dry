@@ -109,7 +109,7 @@ on-arrival: {!
         "It is too loud in here. Voices shouting. Trolley clanging.",
         "The lights outside are dimming. You should sleep, perhaps.",
         "Loud music and voices filters through the walls. There must be a \"party\" going on. You have never enjoyed parties.",
-        "Someone is watching television in the apartment, with the volume far too high.",
+        "Someone is watching television in the apartment complex, with the volume far too high.",
         "Someone is playing music far too loudly. The bass beats shake the walls.",
     ];
     Q.high_stress_afternoon_dialogues = [];

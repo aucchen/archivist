@@ -1,7 +1,7 @@
 title: Mutual Aid
 subtitle: Follow the address on the flier.
 view-if: (day = 3 or day = 10 or day = 17) and stress < stress_threshold and mutual_aid_seen = 0 and (day_major = 0 or day_minor = 0)
-on-arrival: ma_checklist = 0; mutual_aid_seen = 1; day_minor += 1; stress += 1; daily_mutual_aid = 1;
+on-arrival: ma_checklist = 0; mutual_aid_seen = 1; day_minor += 1; stress += 1; daily_mutual_aid = 1
 tags: minor
 new-page: true
 frequency: 500
@@ -130,7 +130,7 @@ go-to: wondering
 R- smiles, and sits next to you. "More of us survived the Uprising than you might think. There are a lot of us here, just trying to do what we can, hiding until it's safe to reemerge. I was hoping you could join us."
 
 - @join_why: "Do you really think it will work?"
-- @join_no: "No..."
+- @join_no: "No, I don't want to join..."
 
 
 @join_why
@@ -150,7 +150,11 @@ max-visits: 1
 
 "You're gonna scare her!" L- laughs, and punches R- in the arm.
 
+<<<<<<< HEAD
 - @join_no: "No, I don't want to get invovled..."
+=======
+- @join_no: "No, I don't want to join..."
+>>>>>>> 8f70b4d... bugfix
 - @infiltration: "Aren't you worried about infiltrators?"
 - @join_alright: "Alright... what can I do to help?"
 

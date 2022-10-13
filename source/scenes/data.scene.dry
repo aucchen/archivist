@@ -157,11 +157,13 @@ var has_special = false;
 var has_hoax = false;
 while (i < Q.chosen_data_types.length) {
     // randomly do one out of 50...
+    /* Don't do random stuff here
     if (i > 0) {
         if (Math.random() > 0.5) {
             break;
         }
     }
+    */
     Q.datasets_checked += 1;
     var data = Q.prev_data.shift();
     var chosen_t = Q.chosen_data_types.shift();
