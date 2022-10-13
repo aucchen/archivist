@@ -29,6 +29,7 @@ on-arrival: {!
     Q.r_path = 0;
     Q.rosa_seen = 0;
     Q.mutual_aid_seen = 0;
+    Q.daily_mutual_aid = 0;
     // data
     Q.key3 = 1;
     Q.key7 = 1;
@@ -108,7 +109,7 @@ on-arrival: {!
         "It is too loud in here. Voices shouting. Trolley clanging.",
         "The lights outside are dimming. You should sleep, perhaps.",
         "Loud music and voices filters through the walls. There must be a \"party\" going on. You have never enjoyed parties.",
-        "Someone is watching television in the apartment, with the volume far too high.",
+        "Someone is watching television in the apartment complex, with the volume far too high.",
         "Someone is playing music far too loudly. The bass beats shake the walls.",
     ];
     Q.high_stress_afternoon_dialogues = [];
@@ -136,7 +137,7 @@ tags: top
 @watch
 max-visits: 1
 
-*The light outside the window was bright and artificial, emanating from a poor simulacrum of the sun hanging on the metal ceiling above. Rows of green and violet macroalgal trees emulated an ancient streetscape, the scene completed by the humans walking by. It was the equivalent of midday in the city without a sun.*
+*The light outside the window was bright and artificial, emanating from a poor simulacrum of the sun hanging on the metal ceiling above. Rows of green and violet macroalgal trees emulated an ancient streetscape, the scene completed by the humans walking by. It was the equivalent of midday.*
 
 - @listen: Listen.
 - @remember: Remember.

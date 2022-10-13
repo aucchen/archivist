@@ -1,6 +1,9 @@
 title: Evicted!
 set-bg: images/city_dithered.png
+new-page: true
 on-arrival: evicted = 1
+
+[? if paid_full = 0 : The rent due was $[+ old_rent +] and the fees were $[+ fees +]. Unfortunately, you did not have enough to cover the total amount due. ?]
 
 The message is automated: `Due to your non-payment of rent, we are sorry to inform you that we have initiated eviction proceedings against you. Security services are on their way to assist you in moving out of these premises as soon as possible.`
 

@@ -10,6 +10,9 @@ if (Q.next_day_scene_queue.length > 0) {
 }
 if (Q.day_major >= 1) {
     Q.main_notes = "";
+    if ((Q.day == 3 || Q.day == 10 || Q.day == 17) && !Q.mutual_aid_seen && Q.day_minor == 0) {
+        Q.main_notes += '<p>You see a flyer that has been slid under your door. "Mutual Aid Alliance hosting free community meals weekly at Moses Park." Below is a black-and-white picture of figures serving soup, and a time and an address. It is not too late. You can still go.</p>';
+    }
 }
 !}
 go-to-ref: next_day_scene if has_next_day > 0
@@ -45,7 +48,7 @@ if (window.dendryUI.dendryEngine.state.qualities.has_next_day == 0) {
 @end_of_day
 title: You're too tired to do anything else.
 view-if: (day_major >= 1 or day_minor >= 1 or stress > 10 or loneliness > 10) and (stress < stress_threshold)
-on-arrival: day += 1; rent_due -= 1; food -= 1; medicine -= 1; got_food_today = 0; got_medicine_today = 0; went_out_today = 0; day_entertainment = 0; daily_k = 0; daily_a = 0
+on-arrival: day += 1; rent_due -= 1; food -= 1; medicine -= 1; got_food_today = 0; got_medicine_today = 0; went_out_today = 0; day_entertainment = 0; daily_k = 0; daily_a = 0; daily_mutual_aid = 0
 go-to: eod_check
 
 @eod_check

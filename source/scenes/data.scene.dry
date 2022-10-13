@@ -157,11 +157,13 @@ var has_special = false;
 var has_hoax = false;
 while (i < Q.chosen_data_types.length) {
     // randomly do one out of 50...
+    /* Don't do random stuff here
     if (i > 0) {
         if (Math.random() > 0.5) {
             break;
         }
     }
+    */
     Q.datasets_checked += 1;
     var data = Q.prev_data.shift();
     var chosen_t = Q.chosen_data_types.shift();
@@ -1161,9 +1163,9 @@ go-to: f_background if f_seen <= 1; f404_c if f_seen > 1
 
 `99 AT
 
- Tonight our order convened a circle of prayer. We devoted our Great Prayer in memories of all those killed on the Night of Restoration. May they be with the Ancestors. Our Lesser Prayer was dedicated to our lost friend, Emilia Chu, who had taken great care in documenting the atrocities committed against our comrades before she disappeared. We hope she is in a better place.
+ Tonight our order convened a circle of prayer. We devoted our Great Prayer in memories of all those killed on the Night of Restoration. May they be with the Ancestors. Our Lesser Prayer was dedicated to our lost Sister, Emilia Chu, who had taken great care in documenting the atrocities committed against our comrades before she disappeared. We hope she is with the Ancestors in the Temple of Heaven.
 
- We ask the Ancestors in the Sky to absolve us of our mistakes, so that we may join them once more in the Temple of Heaven. We ask the Ancestors forgiveness for our enemies even as they imprison and torture us.
+ We asked the Ancestors in the Sky to absolve us of our mistakes, so that we may join them once more in the Temple of Heaven. We asked the Ancestors forgiveness for our enemies even as they persecute and torture us. Even as the fires burn all around us and the skies are brown with the ashes of our Sisters and friends, we beg the Ancestors for absolution for our Administrators.
 
  - Stella Smith, eunuch of St. Catherines Temple`
 
@@ -1298,7 +1300,7 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 `Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the laverneans or the nonbinaries, but all of us, every human being in this ark. We do not have to be this way. We can unite.`
 
-`For the first time in our history, our guns are pointed in unison towards the real enemy, rather than at each other.`
+`For the first time in our history, our guns are pointed in unison towards the real enemy, rather than at each other. For the first time in history, we can stand up without fear, with the force of love for each other propelling us forward to victory.`
 
 `- Esme Franklin, Unity Regiment`
 
@@ -1343,6 +1345,8 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 `Our civilization is on borrowed time, and revolution is the only way to escape the tracks that lead to our doom.
 
 We can no longer produce computers. Within a 100-km radius of the arcology, the safe travel distance since the Cataclysm, there are zero accessible sources of neodymium, tantalum, or even lithium (at least iron and copper are plentiful). Recycling always introduces inefficiencies, and nanotechnology was lost long ago. The only hope is to make electronics last as long as possible, counter to the goals of the industry for the last few centuries.
+
+Our city is breaking down. Our air is toxic to breathe, filled with nanoplagues and fallout. The filters aren't working. The water is barely enough to drink. Our streets are turning to mud. We have no food, no shelter, no hope.
 
 One thing is sure: the bourgeoisie will let civilization die before relinquishing its hold on power.`
 

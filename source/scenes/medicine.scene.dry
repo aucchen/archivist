@@ -1,5 +1,6 @@
 title: Medicine
 go-to: med_options
+on-arrival: got_medicine_today = 1
 new-page: true
 
 You are out of medicine. What are you going to do?
