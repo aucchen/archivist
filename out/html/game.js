@@ -220,7 +220,20 @@
 
   window.randomSelectProbs = function(items, probs) {
       // TODO: select with probability
-      return items[Math.floor(Math.random()*items.length)];
+      if (!probs) {
+          return items[Math.floor(Math.random()*items.length)];
+      } else {
+          var cprob = probs[0];
+          var index = Math.random();
+          for (var i = 0; i < probs.length; i++) {
+              if (i > 0) {
+                  cprob += probs[i];
+              }
+              if (index < cprob) {
+                  return items[i];
+              }
+          }
+      }
   };
 
   window.dendryModifyUI = main;

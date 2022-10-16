@@ -5,7 +5,14 @@ title: Data
 title: DNA data recovery
 subtitle: Your paid job.
 new-page: true
-on-arrival: data_seen += 1; stress += 1; day_data_seen = 0; data_day = day
+on-arrival: {!
+    Q.data_seen += 1;
+    Q.stress += 1;
+    Q.day_data_seen = 0;
+    Q.data_day = Q.day;
+    // max datas that can be seen per day
+    Q.max_data_day = window.randomSelectProbs([1,2,3,4], [0.2, 0.5, 0.15, 0.15]);
+!}
 view-if: day_major = 0 and stress < stress_threshold and data_seen = 0 and day < 20 and has_contract = 1
 max-choices: 5
 tags: major
@@ -39,7 +46,14 @@ C-.`
 title: DNA data recovery
 subtitle: Your paid job. [? if prev_data_type != 0 : You have a message from the Archives about your last assignment. ?]
 new-page: true
-on-arrival: data_seen += 1; stress += 1; day_data_seen = 0; data_day = day
+on-arrival: {! 
+    Q.data_seen += 1;
+    Q.stress += 1;
+    Q.day_data_seen = 0;
+    Q.data_day = Q.day;
+    // max datas that can be seen per day
+    Q.max_data_day = window.randomSelectProbs([1,2,3,4], [0.2, 0.5, 0.15, 0.15]);
+!}
 view-if: day_major = 0 and stress < stress_threshold and data_seen >= 1 and has_contract = 1 and day < 20
 go-to: archivist_check
 set-jump: view_display
@@ -123,16 +137,19 @@ You delete the dataset. There is no use for it.
 
 @post_data
 
-- @post_data_2: Look at more datasets.
+- @post_data_2: Look at more datasets. [? if day_data_seen >= 1 : (You're getting tired...) ?]
 - @back: Stop looking at datasets.
 
 @post_data_2
-go-to: end_data; pre_view_display
 on-arrival: {!
-if (Q.day_data_seen >= 2 && Math.random() > 0.5) {
+if (Q.day_data_seen == 1 && Math.random() > 0.5) {
+    Q.stress += 1;
+}
+if (Q.day_data_seen >= 2 && Math.random() > 0.25) {
     Q.stress += 1;
 }
 !}
+go-to: end_data if day_data_seen >= max_data_day; pre_view_display if day_data_seen < max_data_day
 # 50% chance of getting tired
 
 @pre_view_display
@@ -158,11 +175,13 @@ var has_hoax = false;
 while (Q.chosen_data_types.length > 0) {
     // randomly do one out of 50...
     // TODO: decide if we should do random stuff here?
+    /*
     if (i > 0) {
         if (Math.random() > 0.5) {
             break;
         }
     }
+    */
     Q.datasets_checked += 1;
     var data = Q.prev_data.shift();
     var chosen_t = Q.chosen_data_types.shift();

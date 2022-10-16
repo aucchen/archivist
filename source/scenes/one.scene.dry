@@ -31,6 +31,8 @@ on-arrival: {!
     Q.mutual_aid_seen = 0;
     Q.daily_mutual_aid = 0;
     // data
+    Q.data_seen = 0;
+    Q.day_data_seen = 0;
     Q.key3 = 1;
     Q.key7 = 1;
     Q.key13 = 1;
@@ -48,7 +50,7 @@ on-arrival: {!
     // data archives (em's collection)
     Q.data_archives = [];
     Q.data_scenes = [];
-    // how many of each data type has been seen
+    // how many of each data type have been seen
     Q.w_seen = 0;
     Q.d_seen = 0;
     Q.s_seen = 0;

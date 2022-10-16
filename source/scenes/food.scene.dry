@@ -15,7 +15,7 @@ You have no more edible food left in your apartment. What are you going to do?
 
 @takeout
 subtitle: $[+ takeout_cost - 5 +]-[+ takeout_cost + 20 +], lasts 1-4 days.
-choose-if: stress <= 5*stress_threshold/6
+choose-if: stress < stress_threshold
 view-if: money >= takeout_cost + 20
 unavailable-subtitle: You don't have the energy for this.
 
