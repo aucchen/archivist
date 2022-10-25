@@ -1,0 +1,39 @@
+title: Archives
+subtitle: Your own historical archives.
+go-to: archive_choices
+
+# TODO: view the archives
+
+You keep your own archives on a magdisk. It is a collection of notes and writings on various topics that you have appended to over the past 20 years. Most of it is utterly banal.
+
+@archive_choices
+
+- @war: The War
+- @city: The City
+- @cataclysm: The Cataclysm
+- @uprising: The Uprising
+- @laverneans: The Laverneans
+- @main: Back
+
+
+@war
+
+@city
+
+`On the Ruling Party
+
+Bella X.
+
+Abstract: `
+
+{!<hr>!}
+
+`The War in the City
+
+@cataclysm
+
+@uprising
+
+
+@laverneans
+

@@ -17,9 +17,9 @@ tags: dream
 
 You dream of K-, and A-. It is a memory, distorted by entropy.
 
-"Do you love me?", A- muttered softly, not to you but to the woman on the other side of you.
+"Do you love me?", A- muttered softly, not to you but to the woman on the other side of you. This was ten years ago.
 
-You were in the center of the couch, with A- and K- on either side. Your arms and bodies intertwined, K- and A- holding hands behind the back of your neck. K- played with your hair, and A- held your hand. At this time, the three of you were in what was typically called a "polycule". You were in love with each other. You had a future, or something like that.
+You were in the center of the couch, with A- and K- on either side. Your arms and bodies intertwined, K- and A- holding hands behind the back of your neck. K- played with your hair, and A- held your hand. At this time, the three of you were in what was typically called a "polycule". You were in love with each other, or something like that. You had a future, or something like that.
 
 "That's an asinine question," K- said in her monotone voice. "Love is an illusion. The only purpose of love is the mutually beneficial exchange of resources."
 
@@ -32,7 +32,7 @@ go-to: dream_k_world
 
 "That's awfully neoliberal of you," you said, with what you hoped was a degree of levity.
 
-"It's not. A polycule is really just a form of mutual aid, like what Kropotkin said. We support each other. We pool together our resources to help us survive." She continues to twirl your hair around her finger.
+"It's not. A polycule is really just a form of mutual aid, like what Kropotkin said. We support each other. We pool together our resources to help us survive." She continued to twirl your hair around her finger.
 
 "Who's Kropotkin?", asked A-.
 
@@ -42,6 +42,10 @@ go-to: dream_k_world
 
 K- sighed. "That's all your girlfriend's been talking about these days. You'd better at least pretend to be interested."
 
+A- shrugged. "Sorry. Tell me when they've discovered something of practical use."
+
+"They have," said K-.
+
 
 
 
@@ -50,12 +54,14 @@ go-to: dream_k_world
 
 "I agree. There is no such thing as love."
 
-"Wow. You two ganging up against me again," A- spoke.
+"Wow. You two ganging up against me again," said A-. "Do you really believe that?"
 
 @dream_k_silent
 go-to: dream_k_world
 
 You were silent.
+
+"Do you really believe that?" A- asked K-.
 
 
 @dream_k_world
@@ -89,8 +95,81 @@ It doesn't matter.
 
 
 @dream_uprising
+go-to: dream_rev
 
 You dream of the uprising. It is not a product of your imagination, but a memory, distorted by entropy.
+
+@dream_rev
+
+It was the tenth day of the revolution, and you were bedridden, ensconced in your apartment with the curtains drawn so tightly that no light may enter or escape. You had electricity. You had running water. You had several months' worth of nonperishable food. You could begin to walk, months following your surgery. Life continued, as usual.
+
+- @you_were_fine: You were fine. Nothing was wrong.
+- @but_heard: But you heard the explosions. They came closer each night.
+- @better_live: It was better to live on your knees than die on your feet.
+
+@you_were_fine
+go-to: dream_rev_phone
+
+You were fine here. Nothing was wrong. They would not find you here. Contrary to your former comrades, you did not reveal your identity whenever possible. No one here knew, you hoped.
+
+@but_heard
+go-to: dream_rev_phone
+
+The explosions seemed to come closer each night, or day. Time was an illusion. In the cramped darkness of your apartment, the hours merged into one.
+
+@better_live
+go-to: dream_rev_phone
+
+Contrary to the popular saying, it was in fact better to live on your knees than die on your feet. None of your former comrades would be convinced of that. Perhaps you were not, either. But you would live, and they would not.
+
+@dream_rev_phone
+
+You heard the phone ring.
+
+- @dream_rev_answer: You answered it.
+
+
+@dream_rev_answer
+
+"Hey, Em?" K-'s voice. "Are you doing okay?"
+
+- @hows_s: "How's S-?"
+- @dream_im_fine: "I'm fine..."
+
+@hows_s
+go-to: k_continues
+
+"How's S-?"
+
+"He's awake. That's why I'm calling you so late." You heard the distant sounds of a toddler crying. You checked the clock. It was 1AM.
+
+@dream_im_fine
+go-to: k_continues
+
+"I'm fine," you say.
+
+"That's good. S- is awake. That's why I'm calling you so late." You heard the distant sounds of a toddler crying. You checked the clock. It was 1AM.
+
+@k_continues
+
+"How's your recovery?" K- continues. "Can you walk yet? Can you pee without the catheter? Are you eating solid foods?"
+
+- @nothings_wrong: "Nothing's wrong."
+
+@nothings_wrong
+
+
+...
+
+Despite everything, despite the war raging on the ground, the lights outside continued their autonomic cycle, unbound by mere mortal concerns. The machines of the Ancestors did not rely on the skills or trust of mere baselines.
+
+...
+
+"Have you maintained your homeostasis recently?"
+
+"They can clock me from the sound of my urine."
+
+"Look, I can't even do that."
 
 
 ######################################### dream first century
@@ -108,6 +187,8 @@ tags: dream
 
 
 ############################################# dream k only (marriage and s-)
+
+
 
 
 ############################################# dream a only (a- crossing back)
