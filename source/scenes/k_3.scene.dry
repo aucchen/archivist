@@ -12,6 +12,8 @@ set-bg: images/room1_filtered_dithered.png
 
 K- has arrived at your apartment. The $100 has been transferred to your account.
 
+# TODO: there are circumstances in which it's not k's first time being here?
+
 "Wow. This is my first time being here," says K-.
 
 "Oh. Sorry it's such a mess."
@@ -135,12 +137,10 @@ She shrugs. Idly she takes your hand in hers, and begins rubbing it. "What did w
 Idly she takes your hand in hers, and begins rubbing it. "What did we even talk about back when we were living together?"
 
 - @dont_remember: "I don't remember."
-# - @history_talk: "We talked about history. We talked about my datasets."
+- @history_talk: "We talked about history. We talked about my datasets."
 
 @history_talk
 view-if: data_seen > 2
-
-# TODO: talk about data
 
 "We talked about history. We talked about my datasets."
 
@@ -174,19 +174,23 @@ go-to: end_a_talk_doc
 
 "Yeah?"
 
-"They were just... random," you say. "Geography, mostly."
+"They were just... random," you say. "Geography, mostly. People. Media. Stuff like that."
+
+"Oh."
 
 @talk_w_not_interesting
 go-to: end_a_talk_doc
 
 "Not really."
 
+"Oh."
 
 
 @talk_d
 title: "There have been some pre-war diary entries..."
 view-if: d_seen > 0
 on-arrival: k_talk_d = 1
+go-to: end_a_talk_doc
 
 "There were some pre-war diaries, by scientists. Maybe you would have liked them."
 
@@ -194,30 +198,77 @@ on-arrival: k_talk_d = 1
 
 @talk_x
 title: "Apparently there were original writings by Liana Xu..."
-view-if: x_seen > 0
+view-if: x_seen > 1
 on-arrival: k_talk_x = 1
+
+"Apparently there were some original writings by Liana Xu."
+
+"Oh? That seems interesting."
+
+"Yeah. They might have been a hoax. They said that she was a *trans woman*."
+
+"Of course, she was a transhuman woman, right?"
+
+- @talk_x_1: "Yeah..."
+- @talk_x_2: "That meant something else back then."
+
+@talk_x_1
+go-to: end_a_talk_doc
+
+"Yeah..."
+
+@talk_x_2
+go-to: end_a_talk_doc
+
+"That meant something else back then. It meant something more like 'neowoman'."
+
+"Oh, really?"
+
+"I suppose. Maybe no one will ever know."
+
 
 @talk_s
 title: "Just some scientific papers..."
 view-if: s_seen > 0
 on-arrival: k_talk_s = 1
+go-to: end_a_talk_doc
+
+"Just some scientific papers..."
+
+"Oh, really? Were they interesting papers?"
+
+"They were mostly about DNA storage."
+
+"I think that's interesting..."
 
 @talk_f
 title: "Some historical documents from the first century..."
 view-if: f_seen > 0
 on-arrival: k_talk_f = 1
+go-to: end_a_talk_doc
+
+"There were some historical documents from the first century..."
+
+"Oh..."
 
 @talk_r
 title: "Documents from the uprising..."
 view-if: r_seen > 0
 on-arrival: k_talk_r = 1
+go-to: end_a_talk_doc
 # TODO: talk about dataset groups 
+
+"There were documents from the uprising..."
+
+"Oh? I didn't know they had DNA writers."
+
+"They did..."
 
 
 @end_a_talk_doc
 go-to: smell_like_a if a_encounter = 1; k_gf if a_encounter = 0
 
-She stops talking, and lays down on the bed, next to you. It is a tight fit, with your body nearly squeezed against the wall.
+There is nothing more to say. Instead, K- lays down on the bed, next to you. It is a tight fit, with your body nearly squeezed against the wall.
 
 
 @dont_remember
@@ -477,8 +528,6 @@ She does so, without prompting.
 
 Anyway, she showers, dresses, and leaves. You are left alone once more.
 
-# TODO: what if you had an encounter with A- before?
-
 
 @me_too
 
@@ -503,9 +552,9 @@ on-arrival: k_romance += 1
 
 "What's your water allocation?"
 
-"50 litres per day."
+"60 litres per week."
 
-"God, that's relatively a lot. That's not much less than ours. When's the last time you took a shower?"
+"God, that's a lot. That's not much less than ours. When's the last time you took a shower?"
 
 "Um..." In truth, you do not remember.
 
@@ -683,7 +732,7 @@ It is cramped. The water is cool. K- is warm. You are back-to-back, her pressed 
 
 "Hey, I was just wondering," says K- over the sound of water. "Do you wash inside your vagina? You're not supposed to but I'm not sure if in your case it's..."
 
-You are almost certain that you have had this exact conversation before.
+The two of you separated prior to your surgery, so this is her first encounter with your...
 
 # does em clean her vagina? Or is it better for the microbiotic environment if she doesn't?
 # hmm... (goes on wild research tangent about neovagina cleaning and whether some are self-cleaning and it turns out the evidence and anecdata are mixed (bc in trans studies anecdata is basically as good as the average scientific study due to small n and samples of convenience not to mention often researcher bias))
@@ -837,7 +886,7 @@ She smiles. "It's all good. This can count as practice."
 
 "No, I mean, yes, let's do it." She sighs. "You know I haven't done it since we separated, right?"
 
-"I mean, I haven't either."
+"I mean, I haven't either," you say.
 
 She smiles. "It's all good. This can count as practice."
 

@@ -42,7 +42,7 @@ view-if: k_knows_a_affair > 0
 
 - @more_like_it: "That's more like it."
 - @not_good_enough: "That's not good enough..."
-- @why: "Why are you doing this?"
+#- @why: "Why are you doing this?"
 - @easy_for_you: "Easy for you to say."
 - @what_about_job: "What about quitting your job?"
 

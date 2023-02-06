@@ -2,8 +2,8 @@ all:
 	dendry make-html --pretty
 	cp out/html/* ./
 	zip game.zip *.js index.html *.css images/*
-	html-inline index.html > archivist.html
-	zip archivist.zip archivist.html *.css images/*
+	#html-inline index.html > archivist.html
+	#zip archivist.zip archivist.html *.css images/*
 deploy:
 	butler push game.zip red-autumn/archivist:win-mac-linux-android
 deploy-dl:

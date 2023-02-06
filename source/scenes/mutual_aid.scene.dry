@@ -55,7 +55,7 @@ He is most likely an elliotian. And you can tell that he *recognized* you immedi
 
 "Sure, go on ahead!" He smiles. "Take what you need. By the way, you look familiar. Do you happen to know R-, by any chance?"
 
-In fact, you did know R-. [? if rosa_seen = 1 : You even saw her in one of the DNA datasets. ?][? if rosa_seen = 0 : You remember her from CityNet before the Uprising; she was somewhat popular among lavernean circles. She was an acquaintance, not exactly a friend, and you fully expected that she would hate you for your choices. ?] You did not know that she survived.
+In fact, you did know R-. [? if rosa_seen = 1 : You even saw her in one of the DNA datasets. ?][? if rosa_seen = 0 : You remember her from CityNet before the Uprising; she was somewhat popular among neogen circles. She was an acquaintance, not exactly a friend, and you fully expected that she would hate you for your choices. ?] You did not know that she survived.
 
 "Kind of," you say.
 
@@ -138,7 +138,7 @@ max-visits: 1
 
 "Do you really think it will work?"
 
-"The Mutual Aid Alliance is a work in progress." R- laughs, and L- puts his arm around her. "But we're trying desperately to not repeat the mistakes of the Uprising. For one, we aren't going to put laverneans or our issues at the center. That was a big part of why the Uprising failed."
+"The Mutual Aid Alliance is a work in progress." R- laughs, and L- puts his arm around her. "But we're trying desperately to not repeat the mistakes of the Uprising. For one, we aren't going to put neogens or our issues at the center. That was a big part of why the Uprising failed."
 
 "Well, it's hard to gain support when people already hate you, isn't it?" says L-. "Shameful behaviour from the other nonbinaries." He chuckles.
 
@@ -150,11 +150,7 @@ max-visits: 1
 
 "You're gonna scare her!" L- laughs, and punches R- in the arm.
 
-<<<<<<< HEAD
 - @join_no: "No, I don't want to get invovled..."
-=======
-- @join_no: "No, I don't want to join..."
->>>>>>> 8f70b4d... bugfix
 - @infiltration: "Aren't you worried about infiltrators?"
 - @join_alright: "Alright... what can I do to help?"
 
@@ -177,7 +173,7 @@ R- shrugs. "Of course. But I don't believe you're an infiltrator. Or would you b
 
 "No... I don't know. I never thought about it."
 
-"See, that's an honest answer. Besides, I don't think any of the current security forces can stop using slurs for long enough to recruit a lavernean."
+"See, that's an honest answer. Besides, I don't think any of the current security forces can stop using slurs for long enough to recruit a neogen."
 
 - @join_no: "No, I don't want to get involved..."
 - @join_alright: "Alright... what can I do to help?"

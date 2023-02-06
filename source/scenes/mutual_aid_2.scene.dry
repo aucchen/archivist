@@ -12,3 +12,23 @@ You visit the Mutual Aid Alliance's food distribution area at the park. You get 
 [? if support_mutual_aid > 0 : You talk to R- and L- about how you might help the Alliance. They tell you that they still do not have anything for you to do, but they give you more information on the Alliance's activities, and how to contact them. ?]
 
 # TODO: extended conversation with the mutual aid people. You can show rosa some documents.
+
+# - @ask: Ask some questions.
+
+# @ask
+
+# - @ask_1: "Do you believe that the revolution will succeed?"
+# - @ask_2: "I found your diaries..."
+# - @ask_3: "How much of the persisterhood still exists?"
+# - @ask_4: "How are the Elliotians doing?"
+# - @ask_5: "There are datasets I want to show you..."
+
+@ask_1
+
+"Do you believe that the revolution will succeed?"
+
+Rosa draws a deep breath. "I don't know. Not in our lifetimes. Maybe not in our children's lifetimes. But if we believe never comes, then what are we fighting for?"
+
+"I believe in dialectical materialism," says Leon. "I believe that the class contradictions in our society will eventually lead to... Something."
+
+# - "Maybe we're fighting to make our lives better today."

@@ -86,7 +86,7 @@ max-visits: 1
 
 "What did you learn from me?"
 
-"Oh, many things! First of all, you turned out to be trans, or a lavernean as you would say, which was great. Not every clone turned out that way. Second of all, you went into science, to which I say, good for you. And third, you turned out to be fucked up in some ways I could only imagine." She laughs.
+"Oh, many things! First of all, you turned out to be trans, or whatever your analogous term is, which was great. Not every clone turned out that way. Second of all, you went into science, to which I say, good for you. And third, you turned out to be fucked up in some ways I could only imagine." She laughs.
 
 @plant_diaries
 go-to: want_to_go if liana_qs >= 3; questions_1 if liana_qs < 3

@@ -30,6 +30,10 @@ on-arrival: {!
     Q.rosa_seen = 0;
     Q.mutual_aid_seen = 0;
     Q.daily_mutual_aid = 0;
+    // dream stuff
+    // dream timer increases each time you dream and decreases by 1 each day; if dream timer > 0, you do not have a dream.
+    Q.dream_timer = 0;
+    Q.has_medicine = 1; // you can only dream when you have medicine
     // data
     Q.data_seen = 0;
     Q.day_data_seen = 0;
@@ -44,6 +48,7 @@ on-arrival: {!
     Q.key49 = 1;
     Q.key101 = 1;
     Q.key121 = 1;
+    Q.key1001 = 0;
     Q.prev_data = [];
     Q.correct_data_types = [];
     Q.chosen_data_types = [];
@@ -51,12 +56,14 @@ on-arrival: {!
     Q.data_archives = [];
     Q.data_scenes = [];
     // how many of each data type have been seen
-    Q.w_seen = 0;
-    Q.d_seen = 0;
-    Q.s_seen = 0;
-    Q.f_seen = 0;
-    Q.l_seen = 0;
-    Q.r_seen = 0;
+    Q.w_seen = 0; // wiki
+    Q.d_seen = 0; // diaries
+    Q.s_seen = 0; // science
+    Q.f_seen = 0; // history/first century
+    Q.l_seen = 0; // liana yingmei xu
+    Q.r_seen = 0; // revolution
+    Q.i_seen = 0; // currently unused?
+    Q.c_seen = 0; // citynet
     Q.r_processed = 0;
     Q.r_warned = 0;
     Q.hoax_processed = 0;
@@ -77,6 +84,8 @@ on-arrival: {!
     };
     Q.main_notes = ' ';
     Q.day_random = 0;
+    Q.closure_warned = 0; // have you been warned of the imminent closure of the DNA storage department?
+    Q.closure_just_warned = 0;
     // low-anxiety, high-anxiety
     Q.low_anxiety_day_dialogues = [
         "It is a constant 15 degrees in the undercity. Your apartment is 15 square metres. It is 15:00 right now. It has been 10 years since the Cataclysm, and five since the Uprising. 15. You rotate the number in your mind.",
@@ -84,25 +93,29 @@ on-arrival: {!
         "The light outside is burning bright. The thin walls are far from soundproof, so you hear the clanging of the trolley and the voices of people inside and outside your building. You cannot fall back asleep.",
         "It is a luxury that you are allowed this private space. It is a luxury that you have the space to carry out your degenerate activities such as \"using the washroom\".",
         "Dishes are beginning to pile up in your sink. Washing dishes makes your arms tired, which has led to broken dishes and spilled food. Thus, you only wash dishes when you are at your most energetic, which is not right now.",
+        "When you awake, the lights do not turn on. The computer does not turn on. Another brownout. Fortunately, this one is over in an hour.",
         "You are tired when you wake up, but not more so than usual. You are still alive.",
         "There is nothing you particularly desire to do today.",
         "You are tired, slighty more so than usual.",
     ];
     Q.day_dialogues = [
+        "It is always too cold, but today feels colder than usual. You awake in shivers, your skin gooseflesh. Gooseflesh. You remember that the word is an allusion to an extinct organism, and wonder how its usage survived.",
         "You are so, so tired.",
         "It is hard to carry yourself out of bed in the morning. Afternoon. Whatever.",
         "You lie in bed for hours, thinking of nothing in particular, until your unfortunate biological necessities force you out. You are so, so tired.",
         "You wake up with your stomach aching. It is likely that the previous day's diet was inadequate.",
+        "When you awake, the lights do not turn on. The computer does not turn on. Another brownout. Fortunately, this one is over in an hour.",
         "You awake with a pulsing headache. The probability that you are currently dying is low, but elevated.",
         "You awake to pounding on the walls of your apartment, accompanied by shouting. It stops, but you cannot fall back asleep.",
         "You awake feeling more tired than you felt last night.",
-        "The city is a body and it is breaking down."
+        "The city is a body and it is breaking down.",
     ];
     // High anxiety is more than 20
     Q.high_stress_day_dialogues = [
         "You wake up with a dull, aching pain throughout your body. Everything hurts.",
         "You are awake, for better or for worse.",
         "You are a body and you are a machine and you are breaking down.",
+        "When you awake, the lights do not turn on. The computer does not turn on. Another brownout. Fortunately, this one is over in an hour.",
     ];
     Q.day_dialogue = Q.low_anxiety_day_dialogues[0];
     Q.afternoon_dialogues = [

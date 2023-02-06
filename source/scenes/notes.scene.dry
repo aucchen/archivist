@@ -63,6 +63,29 @@ The Arcology is your home. There are others like it on Earth, but none have been
 
 The Arcology's history is a tangled mess of theories and competing threads. There are even debates on how many years has passed since its construction. In some ways its history is even less studied and less known than the pre-war history of the united humanity. Only in the past decades, with the rediscovery of DNA storage, has its history begun to be unraveled.
 
+Pre-war: earlier than -10 AT
+
+Posthuman War and aftermath: -10 to 10 AT
+
+Age of Myth: 11 to 99 AT - eunuchs/priestesses (they never called themselves eunuchs, only priestesses) held great power, temples, councils, elected government (Senate). Absolutionist ascendance, widespread religious view of the posthumans.
+
+Absolutionists believe that science is the path towards enlightenment, and brings us closer to the posthuman ancestors. Negationists believe that their sacred mission is to restore the earth to its previous glory.
+
+First Age of Strife: 100 AT to 110 AT - conflict between administrators and eunuchs. Administrators are mostly baseline-human-supremacists and negationists.
+
+Dark Age/First Age of Rationality: 111 to 255 AT. Rule of the administrators who perpetuated an eternal bureaucracy. Puppet elected council. Administrators promulgate some draconian policies like the banning of electronic storage media and declare only a single valid DNA encoding, the Fazlian encoding, which is now lost. Very few records due to these policies. They are atheistic and promote a cult of rationality. But also they sought to restore earth, clean up the radiation and nanoplagues and so on. Which was their primary source of legitimacy, and their holy mission.
+
+Second Age of Strife: 255 to 265 AT - the administrators sought to expand to other territories and invade the Halifax Arcology. This cayalyzed a civil war between the isolationist and expansionist factions.
+
+Age of Autarchy: 266 to 399 AT - some historians believe that the dark age and the age of autarchy substantially overlapped or were even the same time period. This era is also sparse in the records. Monarchy established, total isolationism. Tolerance of absolutionism.
+
+Third Age of Strife: 400 to 409 AT - less brutal than the previous eras of strife, this was a democratic revolution catalyzed by the knowledge contained in the Buffalo Cache.
+
+New Age of Rationality: 410 AT to 457 AT - marked by the dissemination of the contents of the Buffalo Cache, a collection of documents and even some machinery created by archivists from the pre-war era. This lead to the overthrow of the kingdom and the establishment of a constitutional democratic government based on pre-war examples. It also revolutionized Arcology culture, and lead to a resurgence of pre-war trends and art forms.
+
+Post-cataclysm: 457 AT to present. The puncture of the dome forced all humans to the undercity. Ruling Party (former monarchists) increasingly ascendant, view neogens as the new absolutionistd and destroyed them. Coup following a narrow opposition party victory, lead by the fascist Guards.
+
+
 @cataclysm
 title: The Cataclysm
 go-to: history
@@ -77,7 +100,7 @@ title: The Uprising
 on-departure: uprising_seen = 1
 go-to: history if uprising_seen >= 1
 
-The origin for the Uprising always lied in the Laverneans. Anti-nonbinary and anti-GSM policies had been gradually increasing, but the immediate catalyst was a coup by the Guards (a paramilitary group and the de facto armed wing of the Ruling Party). The Uprising was launched on a broad anti-Ruling Party and pro-democracy platform, but the bulk of the armed participants were from various persisterhood cliques and their immediate allies, who for the first time were somewhat unified towards a single goal. Even the other nonbinary cliques were divided on participation, especially given the Unholy Bargain.
+The origin for the Uprising always lied in the persisterhood. Anti-nonbinary and anti-GSM policies had been gradually increasing, but the immediate catalyst was a coup by the Guards (a paramilitary group and the de facto armed wing of the Ruling Party). The Uprising was launched on a broad anti-Ruling Party and pro-democracy platform, but the bulk of the armed participants were from various persisterhood cliques and their immediate allies, who for the first time were somewhat unified towards a single goal. Even the other nonbinary cliques were divided on participation, especially given the Unholy Bargain.
 
 In retrospect, the Uprising was a total failure, and accomplished the opposite of its goals.
 
@@ -108,4 +131,6 @@ It does not matter anymore. The past cannot be changed.
 title: THe Neogenic Persisterhood
 go-to: history
 
-Laverneans: that is, you and your people. A subtype of nonbinary humans (see also: elliotians). Women and vaguely woman-affiliated people who were put into the male box at birth (a pun, in your case). Named after a popular pre-war figure discovered in the archives who was considered your foremother (historians disagree on whether they should be considered to be in the same category as a lavernean). Formerly A-. Not K-. Your lot are considered by the state to be degenerates, terrorists, sexual deviants, rioters, violent criminals, perverts, etc., and have mostly been removed from visible public life.
+That is, you and your people. A subtype of nonbinary humans (see also: elliotians). Women and vaguely woman-affiliated people who were put into the male box at birth (a pun, in your case). Formerly A-. Not K-. Your lot are considered by the state to be degenerates, terrorists, sexual deviants, rioters, violent criminals, perverts, etc., and have mostly been removed from visible public life.
+
+Other terms, all with indescribably subtle gradations of connotation: neos (considered slightly derogatory), neogens, persisters, neowomen, neofemales/neofems, neosis, neosisters, sisters (considered awkward but affectionate), Laverneans (after a well-known pre-war figure whom historians deny as a precursor to your movement), Jennerites (after another pre-war figure, considered derogatory), transvestites (usually considered derogatory), MIW (short for "male impersonating women", considered extremely derogatory), biomale (considered very derogatory, never applied to actual GNT males).

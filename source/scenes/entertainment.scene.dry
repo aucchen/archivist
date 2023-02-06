@@ -39,21 +39,27 @@ You play a game recovered from the archives, from the 3rd century. It is a polit
 
 @game_4
 
-You play a now-banned, formerly controversial game developed during the Uprising. It is a role playing game about a militarized polycule that does battle against the Guards and security forces, gaining experience as they kill more enemies. It was praised for having excellent lavernean representation, not a surprise given its development team, who are now mostly known to have died in the Uprising.
+You play a now-banned, formerly controversial game developed during the Uprising. It is a role playing game about a militarized polycule that does battle against the Guards and security forces, gaining experience as they kill more enemies. It was praised for having excellent nonbinary representation, not a surprise given its development team, who are now mostly known to have died in the Uprising.
 
 [? if games_played = 1 : You wonder if you could encode this game in DNA. ?]
 
 @tv_1
 
-Now playing is a film about a woman who disguises herself as a man to join the Guards during the Uprising. The villain is a lavernean with cartoonishly exaggerated features and a constantly visible bulge.
+Now playing is a film about a woman who disguises herself as a man to join the Guards during the Uprising. The villain is a neowoman (they would most likely not use that term) with a cartoonishly masculine body and a constantly visible bulge in the crotch.
 
 @tv_2
 
 There is a speech by a Ruling Party politician. "We are the true heirs of the American Empire... We will not repeat the decadence and so-called toleration that led to the transhumanist order..." You tune out.
 
 @tv_3
+on-arrival: starlight_defenders_seen = 1
 
-There is a show about a group of nanite-powered superheroes who save the city from entity attacks and terrorists. It claims to be based on a true story, set approximately ten years ago. You wonder if and how the Cataclysm will be covered here, but not enough to keep watching the program.
+*Starlight Defenders* is on - this is a show about a group of nanite-powered school-aged superheroes who save the city from entity attacks and terrorists. It claims to be based on a true story, set approximately ten years ago. You wonder if and how the Cataclysm will be covered here, but not enough to keep watching the program.
+
+@tv_4
+view-if: starlight_defenders_seen >= 1
+
+*Starlight Defenders* is playing.
 
 
 

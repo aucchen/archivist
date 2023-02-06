@@ -1,5 +1,6 @@
 title: Dreams
-set-bg: black
+set-bg: rgba(0,0,0,0)
+max-choices: 5
 
 You lie in the bed, unsure if you are asleep or awake.
 
@@ -17,7 +18,7 @@ tags: dream
 
 You dream of K-, and A-. It is a memory, distorted by entropy.
 
-"Do you love me?", A- muttered softly, not to you but to the woman on the other side of you. This was ten years ago.
+"Do you love me?", A- muttered softly, not to you but to the woman on the other side of you. This was ten years ago when you all lived together in the EKA Residence Cube (K-'s neologism).
 
 You were in the center of the couch, with A- and K- on either side. Your arms and bodies intertwined, K- and A- holding hands behind the back of your neck. K- played with your hair, and A- held your hand. At this time, the three of you were in what was typically called a "polycule". You were in love with each other, or something like that. You had a future, or something like that.
 
@@ -28,15 +29,17 @@ You were in the center of the couch, with A- and K- on either side. Your arms an
 - @dream_k_silent: You remained silent.
 
 @dream_k_neoliberal
-go-to: dream_k_world
+go-to: dream_k_kropotkin
 
 "That's awfully neoliberal of you," you said, with what you hoped was a degree of levity.
 
 "It's not. A polycule is really just a form of mutual aid, like what Kropotkin said. We support each other. We pool together our resources to help us survive." She continued to twirl your hair around her finger.
 
+@dream_k_kropotkin
+
 "Who's Kropotkin?", asked A-.
 
-"Pre-war philosopher," said K-. "They recently rediscovered his works at the Archives."
+"Pre-war philosopher," said K-. "Mutual Aid: A Factor of Evolution. They recently rediscovered his works in DNA."
 
 "Sorry. I'm not into that sort of stuff."
 
@@ -44,29 +47,32 @@ K- sighed. "That's all your girlfriend's been talking about these days. You'd be
 
 A- shrugged. "Sorry. Tell me when they've discovered something of practical use."
 
-"They have," said K-.
+"They have," said K-. "The archivists were the generation that produced posthumans, after all. Their science was centuries ahead of ours."
 
-
-
+- @dream_k_world: Just then, the emergency sirens started to ring.
 
 @dream_k_agree
-go-to: dream_k_world
+go-to: dream_k_kropotkin
 
 "I agree. There is no such thing as love."
 
-"Wow. You two ganging up against me again," said A-. "Do you really believe that?"
+"Wow. You two ganging up against me again," said A-. "Why are you here, then? Why are you... together with me?"
+
+"A polycule is just the most efficient way of delivering mutual aid. It's like what Kropotkin said."
 
 @dream_k_silent
-go-to: dream_k_world
+go-to: dream_k_kropotkin
 
 You were silent.
 
-"Do you really believe that?" A- asked K-.
+"Do you really believe that?" A- asked K-. "Why are you here, then? Why are you... together with me?"
+
+"A polycule is just the most efficient way of delivering mutual aid. It's like what Kropotkin said."
 
 
 @dream_k_world
 
-Just then, the emergency sirens started to ring. It was the day of the Cataclysm, and everything hereafter would change.
+Just then, the emergency sirens started to ring. A harsh, shrieking ringing penetrated the walls of your apartment. It was the day of the Cataclysm, and everything hereafter would change.
 
 - @dream_k_end: Is this what happened?
 
@@ -88,39 +94,52 @@ Of course it did not happen like this. The story is too clean, with an arc and j
 
 @dream_k_idk
 
-It doesn't matter.
+It doesn't matter, either way.
 
 
 ######################################## dream uprising
-
+# view if you know about the uprising
 
 @dream_uprising
+title: You dream of the uprising.
+subtitle: [? if enable_cw : CW: violence, transphobia ?]
+view-if: dream_rev_viewed = 0 and (r_seen > 0 or mutual_aid_seen > 0)
+on-arrival: dream_rev_viewed += 1
+tags: dream
 go-to: dream_rev
 
 You dream of the uprising. It is not a product of your imagination, but a memory, distorted by entropy.
 
 @dream_rev
 
-It was the tenth day of the revolution, and you were bedridden, ensconced in your apartment with the curtains drawn so tightly that no light may enter or escape. You had electricity. You had running water. You had several months' worth of nonperishable food. You could begin to walk, months following your surgery. Life continued, as usual.
+It was the n-th day of the revolution, and you were bedridden, ensconced in your apartment with the curtains drawn so tightly that no light may enter or escape. You had electricity. You had running water. You had several months' worth of nonperishable food. You could begin to walk, one month following your surgery.
+
+Life continued, as usual. Despite everything, despite the war raging on the ground, the lights outside continued their autonomic cycle, unbound by the mere mortal concerns of baseline humans.
 
 - @you_were_fine: You were fine. Nothing was wrong.
-- @but_heard: But you heard the explosions. They came closer each night.
+- @but_heard: But you heard the explosions.
 - @better_live: It was better to live on your knees than die on your feet.
 
 @you_were_fine
-go-to: dream_rev_phone
+go-to: surgical_revision
 
-You were fine here. Nothing was wrong. They would not find you here. Contrary to your former comrades, you did not reveal your identity whenever possible. No one here knew, you hoped.
+You were fine here. Nothing was wrong. They would not find you here. Contrary to your former comrades, you always hid your identity. None of your neighbors even knew your name.
 
 @but_heard
-go-to: dream_rev_phone
+go-to: surgical_revision
 
-The explosions seemed to come closer each night, or day. Time was an illusion. In the cramped darkness of your apartment, the hours merged into one.
+The explosions waxed and waned with each night and day, coming closer then retreating further away. Time was an illusion. In the cramped darkness of your apartment, the hours merged into a blur.
 
 @better_live
-go-to: dream_rev_phone
+go-to: surgical_revision
 
-Contrary to the popular saying, it was in fact better to live on your knees than die on your feet. None of your former comrades would be convinced of that. Perhaps you were not, either. But you would live, and they would not.
+Contrary to the popular saying, it was in fact better to live on your knees than die on your feet. None of your former comrades would be convinced of that fact. Perhaps you were not, either. But you would live, and they would not.
+
+@surgical_revision
+
+Your most pressing problem was that you were supposed to have a follow-up appointment with your surgeon. Unfortunately, he was murdered by a mob for false allegations that he "forcibly castrated teenage boys". Propaganda works. Your painkiller prescriptions would never be refilled.
+
+- @dream_rev_phone: You heard the phone ring.
 
 @dream_rev_phone
 
@@ -146,30 +165,117 @@ go-to: k_continues
 @dream_im_fine
 go-to: k_continues
 
-"I'm fine," you say.
+"I'm fine," you said.
 
 "That's good. S- is awake. That's why I'm calling you so late." You heard the distant sounds of a toddler crying. You checked the clock. It was 1AM.
 
 @k_continues
 
-"How's your recovery?" K- continues. "Can you walk yet? Can you pee without the catheter? Are you eating solid foods?"
+"How's your maintenance of homeostasis?" K- continued. "Can you walk yet? Can you pee without the catheter? Are you eating solid foods?"
 
 - @nothings_wrong: "Nothing's wrong."
 
 @nothings_wrong
 
+"Nothing's wrong," you said, trying to believe it. "I can walk. I have food. I haven't removed the catheter yet."
 
-...
+"Seriously? It's been almost a month."
 
-Despite everything, despite the war raging on the ground, the lights outside continued their autonomic cycle, unbound by mere mortal concerns. The machines of the Ancestors did not rely on the skills or trust of mere baselines.
+- @too_painful: "It's too painful."
+- @clock_urine: "They'll read me from the sound of my urination."
 
-...
+@too_painful
+go-to: clock_urine_2
 
-"Have you maintained your homeostasis recently?"
+"It's too painful," you said.
 
-"They can clock me from the sound of my urine."
+"Do you need help? I can come over and help you. If all else fails, call A-. She-, I mean, he's probably fine passing through the battle lines."
 
-"Look, I can't even do that."
+- @clock_urine_2: "It's fine."
+
+@clock_urine
+go-to: clock_urine_2
+
+"They'll read me from the sound of my urination," you said.
+
+"That's fucking ridiculous."
+
+"I read that even after surgery, the position of the urethra is slightly different, so they'll be able to tell from the sounds in the toilet bowl. I'm in a hostile neighborhood. They all watch that show where they explain how to know when there's a pervert nearby."
+
+An audible sigh. "Look, do you need help? I can come over and help you. If all else fails, can you call A-?"
+
+- @clock_urine_2: "It's fine.
+- @shoot_him: "Our people will probably shoot him."
+
+
+@clock_urine_2
+
+"It's fine. I can do it myself."
+
+You heard the sounds of explosions through the phone.
+
+"Shit," said K-. "Guards coming. I have to go."
+
+She hung up.
+
+- @call_a: You called A-.
+- @remove_c: You tried to remove the catheter yourself.
+
+@shoot_him
+
+"Our people will probably shoot him," you said.
+
+"My god, is that still about the fucking desistance thing? Sure he's an asshole for those interviews, but-"
+
+You heard the sounds of explosions through the phone.
+
+"Shit," said K-. "Guards coming. I have to go."
+
+She hung up.
+
+- @call_a: You called A-.
+- @remove_c: You tried to remove the catheter yourself.
+- @tried_sleep: You tried to sleep.
+
+@call_a
+
+Next, you called A-. There was no response, obviously given the hour. Unlike you or K-, he always kept to normal hours.
+
+- @dream_uprising_end: ...
+
+@remove_c
+
+You tried to remove the catheter yourself. You were taught the procedure. It should have been easy. It was fine. It worked. You lived.
+
+- @dream_uprising_end: ...
+
+@tried_sleep
+
+You attempted to sleep. It was a way to conserve energy in an environment of energy scarcity. You were too cold to fall asleep, so instead you closed your eyes as you laid beneath your thin blankets.
+
+- @dream_uprising_end: ...
+
+
+@dream_uprising_end
+
+Was any of this real?
+
+- @dream_uprising_yes: Yes, it happened like this.
+- @dream_uprising_no: No; it wasn't like this.
+- @dream_uprising_idk: It doesn't matter.
+
+@dream_uprising_yes
+
+Did it really happen like this?
+
+@dream_uprising_no
+
+No, not exactly.
+
+@dream_uprising_idk
+
+It doesn't matter.
+
 
 
 ######################################### dream first century
@@ -180,29 +286,219 @@ Despite everything, despite the war raging on the ground, the lights outside con
 ########################################### dream liana
 
 @dream_l
-title: Dream of the past.
+title: Dream of an unknown past.
 view-if: l_seen > 1 and l_dream = 0
 on-arrival: l_dream += 1
 tags: dream
 
+# TODO
+
+You were living in a faraway land, in a far away time. Instead of the metal ceiling or even the translucent dome, there was a hazy unencumbered sky. Instead of the macroalgal trees there were genuine plants, photosynthesizing under a non-simulated sun.
+
+You were surrounded by a forest of apartment towers, each one like its companions.
+
+"There are a number of surgeries I would like to undergo," you said, and pointed to your forehead. "First is the cranioplasty."
 
 ############################################# dream k only (marriage and s-)
 
+@dream_k2
 
 
-
-############################################# dream a only (a- crossing back)
+############################################# dream a only (first meeting)
 
 @dream_a_1
+title: Dream of meeting A- for the first time.
+subtitle: [? if enable_cw : CW: self-harm, transphobia, sexual content ?]
+view-if: a_path >= 0 and dream_a_viewed = 0
+on-arrival: dream_a_viewed += 1
+tags: dream
 
-You dream of A-.
+In the University's office, the Administrator watched, and the Psychologist listened.
 
+"We understand that you've been having a difficult time lately," the Administrator began. "The transition to adulthood is always fraught, and it goes double for someone who grew up in tough circumstances. Many young males lash out, especially those with a history of gender identity like yours."
+
+It was after your first incident, 20 years ago, and the words "gender identity" felt like ichor in your ears.
+
+- @dream_a_die: You had tried to die.
+- @dream_a_disappear: You had tried to disappear.
+- @dream_a_slip: You were discovered barely conscious in your dorm room, without food for five days.
+
+@dream_a_disappear
+go-to: dream_a_die
+
+@dream_a_slip
+go-to: dream_a_die
+
+@dream_a_die
+
+The phrase "gender identity" had been discovered in the Buffalo Cache of fifty years prior, always adjacent to the words "cure" or "disorder" or "problem" or "issue". Learning the phrase was a revelation and a poison: *feelings* like yours were not unique, and for the sake of a rational society, your degeneracy must be abolished.
+
+"Yes, we understand your problems with gender identity," said the Psychologist, brusquely. "I see a young man, a boy really, without a father figure to guide him to manhood. I see a boy who feels lonely and wants to belong to something, and thinks the way to do so is to indulge in his fantasies of living in a woman's skin and-"
+
+The Administrator cut him off, too late. "Gender identity is a complicated issue, and there are many paths to... Never mind. The reason we have called you here is that..." She paused, and smiled gently.
+
+- @dream_a_obvious: The point was obvious. 
+
+@dream_a_obvious
+
+The Administrator continued, her voice soft and soothing, her facial gestures a simulacrum of empathy. "I think it's obvious to both of us that this environment is not a good place for you. It's not conducive to learning or socialization. We think it would be better for you, and for your classmates, if you took a break."
+
+She expounded upon your litany of problems, your social isolation and gender identity disorder and self-harm. She explained that your scholarship was being withdrawn; even if the university would have you, you could not pay. She explained that you would be given five days to vacate the premises, and offered to "connect you to resources" to find a job or shelter. The weightless words faded away, and you could no longer comprehend their meaning.
+
+"Do you have any questions?" The Administrator finally asked. This was your first opportunity to speak, but it was as if your mind was hollow.
+
+- @dream_a_where: "Where am I supposed to go?"
+- @dream_a_fuck_off: "Fuck off."
+- @dream_a_leave: Just walk out.
+
+@dream_a_where
+
+"Where am I supposed to go?" You could barely muster the words.
+
+"As I said, you'll have access to our external resources office for the next..."
+
+You could not bear to listen anymore, and walked out. If it was important, you would hear about it; the office was stifling.
+
+- @dream_a_meet_a: It was then that she saw you.
+
+# Psychologist: "That is enough of an answer for me." He smiled, and you attempted to hide your grimace. "I see many young men like you, and you all have much in common. The same patterns of anomie and self-harm, the same sexual fetishes about inhabiting a woman's body. It severely impedes your ability to connect with normal people, those without your particular fetishes, does it not?"
+
+# "So tell me," he continued, "what do you think of when you masturbate? Do you ever wear women's underwear while pleasuring yourself?"
+
+#"I'm not telling you."
+
+#"Too bad," he said. "Your sexual fantasies say a great deal about you. No matter. You are a well-trod specimen."
+
+@dream_a_fuck_off
+
+Anger. There was a part of you that still felt it. But you did not speak. You never could. Instead, you simply walked out without uttering a single word. You did not listen to the Administrator's parting words.
+
+- @dream_a_meet_a: It was then that she saw you.
+
+@dream_a_leave
+
+You walked out without uttering another word. The Psychologist said something, and you did not listen.
+
+- @dream_a_meet_a: It was then that she saw you.
+
+@dream_a_meet_a
+
+Her eyes caught yours as you exited the office.
+
+"Are you a new inductee into the neogenic persisterhood?" She had stopped, and she was talking to you.
+
+She was tall. She was beautiful. She was radiant, surrounded by a halo of light, the diffuse glow of the dome glinting off her bleached golden curls. She was *smiling* at you, seemingly genuine. You wanted to distrust this stranger, but...
+
+- @dream_a_maybe: "Maybe..."
+- @dream_a_idk: "I don't know..."
+- @dream_a_want: "I wish..."
+- @dream_a_how_know: "How did you know...?"
+
+@dream_a_maybe
+go-to: dream_a_1_3
+
+"Maybe..."
+
+@dream_a_idk
+go-to: dream_a_1_3
+
+"I don't know..."
+
+@dream_a_want
+go-to: dream_a_1_3
+
+"I wish..."
+
+@dream_a_how_know
+
+"How did you know...?"
+
+She laughed, a sarcastic chortle. "Oh please. You don't go to *that* office looking like that without some, uh, problems." Another chuckle. You are conscious of your unruly long hair and loose clothing.
+
+"What's your name?" she asked.
+
+- @dream_a_em: "Em..."
+- @dream_a_emmeline: "Emmeline..."
+- @dream_a_name_idk: "I don't know yet..."
+
+@dream_a_1_3
+
+"Well, you won't get an answer from Dr. B. He fucking sucks." She laughed, a sarcastic chortle. "What's your name?"
+
+- @dream_a_em: "Em..."
+- @dream_a_emmeline: "Emmeline..."
+- @dream_a_name_idk: "I don't know yet..."
+
+@dream_a_em
+go-to: dream_a_im_a
+
+"I'm Em..." Short for Emmeline, of course, but no one needed to know that yet.
+
+"My name's A-." She laughed again. "Nice to meet you, Em."
+
+@dream_a_emmeline
+go-to: dream_a_im_a
+
+"I'm Emmeline..." You did not recall how the name becamed lodged in your mind, but you knew that it was *you*.
+
+"My name's A-." She laughed again. "Nice to meet you, Emmeline."
+
+@dream_a_name_idk
+go-to: dream_a_im_a
+
+"I don't know yet..." *What kind of an answer was that?*
+
+"My name's A-." She laughed again. "You don't have to have everything decided yet. Nice to meet you."
+
+@dream_a_im_a
+
+She approached you, placing a hand on your shoulder. You instinctively recoiled, pushing her arm away.
+
+"Oh, I'm so sorry!"
+
+"It's okay..."
+
+"No, I shouldn't have, I know a lot of us... well, if you are one of us, have sensitivities about these things." She smiled, and you could not bare to look. "Well, if you want to learn more about the persisters, or if you have any troubles at all, just contact me. I promise I can help."
+
+You nodded, because that was all you could do. "Yeah, I'll... ask for help. If I need it."
+
+- @dream_a_1_wake_up: And you did.
+
+@dream_a_1_wake_up
+
+And you did. You lived with her after getting expelled. For whatever reason, she became attached to you, and at some point the two of you seemlessly transitioned from a hand-holding friendship into dating. She was your first girlfriend. And somehow, she stayed with you even as she entered medical school, as one of the earliest neowomen to study medicine. Then K- encountered you, and then there were three, and then...
+
+*Is this what happened?*
+
+- @dream_a_yes: Yes, it happened like this.
+- @dream_a_no: No; it wasn't like this.
+- @dream_a_no_matter: It doesn't matter.
+
+@dream_a_yes
+go-to: dream_a_end
+
+It happened like this, you think. This was how you first met A-.
+
+@dream_a_no
+go-to: dream_a_end
+
+Of course it did not happen like this. It was most likely a far more banal occasion.
+
+@dream_a_no_matter
+go-to: dream_a_end
+
+It doesn't matter either way.
+
+@dream_a_end
+
+The Psychologist is alive. Based on actuarial statistics, he has outlived or will outlive every single neowoman who went through his program. He will outlive you.
 
 
 ################################################ dream of nothing
 
 @dream_nothing
 title: Dream of nothing at all.
+frequency: 500
 tags: dream
 
 You dream of nothing at all.

@@ -97,6 +97,7 @@ A man on the trolley attempts to strike up a conversation with you. He sits next
 title: A man accosts you on the trolley.
 view-if: cw_enabled = 0
 on-arrival: stress += 1; money += 20
+max-visits: 1
 tags: trolley
 go-to-ref: post_trolley
 
@@ -111,6 +112,12 @@ go-to-ref: post_trolley
 
 The trolley is mostly empty when you board. There are posters here: advertisements for high-interest loans, property investment schemes, multi-level marketing opportunities.
 
+@trolley_5
+title: The trolley is mostly empty when you board.
+tags: trolley
+go-to-ref: post_trolley
+
+The trolley is mostly empty when you board. The interior is papered in advertisements, but you still see the outlines of the revolutionary insignia, three thick "X" characters arranged in a triangle.
 
 
 @cook_2_1
