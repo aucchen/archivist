@@ -1,6 +1,6 @@
 title: A call from K-.
 subtitle: Many calls, in fact.
-view-if: k_path = 3 and day >= k_day + 2 and (day_major = 0 or day_minor = 0) and day < 20 and stress < stress_threshold
+view-if: k_path = 3 and day >= k_day + 2 and (day_major = 0 or day_minor = 0) and day < last_day and stress < stress_threshold
 on-arrival: k_path = 4; day_minor += 1; stress += 1
 frequency: 1000
 priority: 10

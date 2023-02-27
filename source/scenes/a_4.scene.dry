@@ -1,20 +1,118 @@
 title: A-
-subtitle: Going out for dinner
+subtitle: An invitation to dinner
 
 # TODO: A- takes you out for dinner
 
-The surroundings are far more upscale than any place you have been since... likely before the Cataclysm. You did not know that such palaces of luxury existed (or had ever been built) in the undercity. Crystalline decorations. Faux-wood tables. Artificial photosynthetic organisms.
+The surroundings are far more upscale than any place you have been since... likely before the Cataclysm. You did not know that such palaces of luxury existed (or had ever been built) in the undercity. Crystalline decorations. Faux-wood tables. Artificial photosynthetic organisms. None of this feels real.
 
 A- had picked out a fancy metallic-sheen dress for you to wear for this occasion, to fit in, which you are currently sullying with algae-steak juices. She has a bemused look as you ravenously devour the algae-steak and braised mushrooms.
 
-"You're eating like a barbarian."
+"You're eating like a barbarian." She smiles as she delicately cuts her steak with a knife, and then places the piece in her mouth without staining her lipstick. "Want me to teach you how to eat properly?"
 
-# - @why_like: "Why do you even like me?"
-# - @help_rent: "Can you help me pay rent?"
-# - @pronouns: "What pronouns should I use for you?"
+- @teach_me
+- @beautiful
+- @help_rent: "Can you help me pay rent?"
+- @desist
+
+@teach_me
+title: "Teach me..."
 
 @why_like
 
 "Why do you even like me?"
 
-"It's the shared struggle."
+A- pauses for a moment. "Mutual history, I suppose. They say that shared struggles make people closer."
+
+- @is_that_all: "Is that all?"
+
+
+@is_that_all
+
+"Is that all?"
+
+"What do you want me to say? That I'm dissatisfied with my marriage so I'm looking for release? That I'm a pervert attracted to neogenic bodies?"
+
+"I don't know," you say.
+
+"Emotional inertia," she says. "It's a powerful force."
+
+- @attractive: "Am I still physically attractive?"
+
+@attractive
+
+"Am I still physically attractive?"
+
+She shrugs. "Of course."
+
+@help_rent
+
+"Can you help me pay my rent?"
+
+"Of course. That's why we're here, isn't it?"
+
+
+@beautiful
+title: "You're really beautiful tonight..."
+
+"You're really beautiful tonight..."
+
+She was always so *good* at being a neogen. Her face was so much less readable than yours. Her sing-song voice. Her ability to make herself presentable. Even now, she looks like a human woman, whereas you must appear as some sort of feral creature.
+
+She shrugs. "Hey, it takes practice."
+
+
+@excuse
+
+@desist
+view-if: @data.c123 >= 1
+title: Finally ask about A-'s desistance.
+
+"So, um, what happened to you?" you ask.
+
+"What do you mean?"
+
+Are you really ready to ask?
+
+- @yes_ask: Yes, ask her.
+- @no_ask: No, I'm not.
+
+@no_ask
+
+"Never mind."
+
+"Oh. Okay. Well, not much's happened to me. What about you?"
+
+TODO
+
+@yes_ask
+
+"There were all those headlines about you. That you thought we were a cult and we were horrible..."
+
+"How long have you been waiting to ask that?"
+
+"I just saw the messages at the archives, and they were about you."
+
+"Oh, really? I thought CityNet had been wiped clean."
+
+- @citynet_archives: "There were some DNA archives left."
+
+@citynet_archives
+
+
+
+@how_stand
+title: "How can you stand it?"
+
+"How can you stand it?"
+
+"What do you mean?"
+
+"Living like this. Not saying anything. While everyone else is..."
+
+A- grimaces. "There are more of us secret neogens than you think. Under different circumstances, you could've been here too. Remember when we talked about how we would outwardly desist when the crackdown came?"
+
+"I'm not good at pretending."
+
+@circles
+
+You were going around in circles, an involute conversation.

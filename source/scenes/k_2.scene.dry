@@ -1,6 +1,6 @@
 title: Meeting K-
 subtitle: 5PM, Founders Square
-view-if: k_path = 1 and (day_major = 0 or day_minor = 0) and daily_k <= 0 and day = k_day + 2 and stress < stress_threshold and day < 20
+view-if: k_path = 1 and (day_major = 0 or day_minor = 0) and daily_k <= 0 and day = k_day + 2 and stress < stress_threshold and day < last_day
 on-arrival: day_major += 1; k_path += 1; daily_k = 1
 tags: major
 new-page: true
@@ -164,7 +164,7 @@ If your hormone-deprived body were physiologically capable of crying, you would 
 
 You nod.
 
-"Here's 50 dollars, by the way. Buy some food."
+"Here's 50 dollars, by the way. Buy some food." She raps a button on her mobile, and you receive the confirmation.
 
 S- leads you up to your feet. K- waves the two of you goodbye, and heads back to the trolley stop. You head to a different trolley stop.
 

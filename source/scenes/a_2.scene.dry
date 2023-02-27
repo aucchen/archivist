@@ -1,6 +1,6 @@
 title: Meeting A-
 subtitle: 6PM, Founders Square
-view-if: a_path = 1 and day_major = 0 and daily_a <= 0 and stress < stress_threshold and day < 20
+view-if: a_path = 1 and day_major = 0 and daily_a <= 0 and stress < stress_threshold and day < last_day
 on-arrival: day_major += 1; a_path = 2; a_romance = 1; daily_a = 1; a_day = day
 frequency: 400
 tags: major
@@ -32,7 +32,7 @@ You are meeting with A- because you still have *feelings* for him, or something 
 
 @lx_square
 
-Seeing A- gives you a shock. He is... well, he is dressed like a neofem stereotype, like one of the pre-war photos found in the Archives. A small black dress with exposed arms, inpractically cold, with long socks, in addition to bleached blonde hair (you cannot tell if it is her natural hair let long again or a particularly good wig) and a thorough application of makeup. At least he is wearing a respirator.
+Seeing A- gives you a shock. He is... well, he is dressed like a neogirl stereotype, like one of the pre-war photos found in the Archives. A small black dress with exposed arms, inpractically cold, with long socks, in addition to bleached blonde hair (you cannot tell if it is her natural hair let long again or a particularly good wig) and a thorough application of makeup. At least he is wearing a respirator.
 
 "Hey, Em."
 

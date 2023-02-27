@@ -1,7 +1,7 @@
 title: Call A-
 subtitle: A doctor. Your ex-partner.
 tags: minor
-view-if: a_path = 0 and (day_major = 0 or day_minor = 0) and stress < stress_threshold and day < 20
+view-if: a_path = 0 and (day_major = 0 or day_minor = 0) and stress < stress_threshold and day < last_day
 on-arrival: day_minor = 1; daily_a = 1; a_day = day
 choose-if: numb = 1 or rent_due = 1
 new-page: true
@@ -133,7 +133,7 @@ go-to: money_finish
 
 @money_finish
 
-"Sure, anything for you," A- says. "Anyway, could we possibly meet again soon? I really want to see you again."
+"Sure, anything for you," A- says, and you receive the confirmation on your mobile. "Anyway, could we possibly meet again soon? I really want to see you again."
 
 - @okay_see: "Okay..."
 - @maybe_see: "Maybe..."

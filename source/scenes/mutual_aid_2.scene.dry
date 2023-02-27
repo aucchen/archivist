@@ -1,15 +1,240 @@
 title: Mutual Aid
 subtitle: A regular visit
-view-if: mutual_aid_seen >= 1 and (day = 10 or day = 17) and (stress < stress_threshold) and day_minor = 0
+view-if: mutual_aid_seen = 1 and (day = 10 or day = 17) and (stress < stress_threshold) and day_minor = 0
 on-arrival: day_minor += 1; food += 1; stress -= 1; mutual_aid_seen += 1
 tags: minor
 frequency: 400
 new-page: true
 set-bg: images/city_dithered.png
 
+As you approach the distribution site, you see more Guards than last time. They have smirks on their bare faces as they patrol around the fenced camp, fidgeting with their guns. On the other side, Mutual Aid Alliance volunteers armed with poles and full-face respirators stare back. The Guards do not stop you from entering, but they stare closely at your body. 
+
+- @lower_face: You lower your face and quicken your pace.
+
+@lower_face
+
+You lower your face and quicken your pace, averting the gazes of the Guards as much as possible. As before, R- and L- greet you. You have food, watery rice porridge as before (still better than algae mush). You have clean-tasting water.
+
+- @ask_help: Ask if you can help the Alliance.
+- @ask_help_2: Ask if you can help the Alliance.
+- @change_mind: Ask if you can help the Alliance.
+- @just_eat: Just consume your food in silence.
+- @talk_else: Talk to R- and L- about anything else.
+
+@ask_help
+view-if: support_mutual_aid = 0 and mutual_aid_join_interested = 0
+
+"Is there a way I can help you?"
+
+"Well, is there anything you can do? Do you have any useful skills?"
+
+- @archivist_skill: "I'm an archivist..."
+- @history_skill: History must be helpful, right?
+
+@history_skill
+view-if: l_seen > 1 or f_seen > 0 or r_seen > 0
+go-to: archivist_skill_2
+
+"History must be helpful, right? I've discovered some DNA files that might change the way people see things..."
+
+@archivist_skill
+go-to: archivist_skill_2
+
+"Um, I'm an archivist... Maybe I can provide historical files? Maybe learning the real history will convince people that this world is unjust."
+
+@archivist_skill_2
+
+"No. The revolution doesn't need any more history or ideology. It needs warm bodies and kinetic energy. We had theory on our side for the last revolution and look how that turned out."
+
+R- glances at you, sighs, and continues.
+
+"What we need for the revolution is to provide for people where the established powers cannot. They need food, water, shelter, even companionship. That's why we are the Mutual Aid Alliance. That's why we're building up our own production and distribution channels for basic supplies. Can you do any of that?"
+
+- @want_to_try: "I want to try..."
+- @join_no: "No, sorry, I can't do this..."
+
+@want_to_try
+on-arrival: support_mutual_aid = 1
+
+"I want to try... I can be a warm body, if that's what you need."
+
+"Oh, really? Are you physically capable of labor?"
+
+"There are more ways to help than the purely physical," says L-. "You can talk to our suppliers... but you might not want to do that either." He laughs. "Or there's always data entry, keeping the books, any number of tasks."
+
+"Fine. We'll think of something for you to do," says R-. "Maybe next week we'll..."
+
+- @commotion
+
+
+@join_no
+
+"No, sorry, I can't do this."
+
+"Fine. You can still come here and eat, though."
+
+- @commotion
+
+
+@change_mind
+view-if: support_mutual_aid = 0 and mutual_aid_join_interested = 1
+go-to: tasks
+
+"I've changed my mind," you say to R-. "I want to help you."
+
+
+@ask_help_2
+view-if: support_mutual_aid = 1
+go-to: tasks
+
+"I still want to help the alliance," you say to R-.
+
+
+@tasks
+
+R- stares at you for a moment. "Not what I expected, but okay." She sits on the bench next to you. "I was thinking, we could use more clerical workers. We need to keep track of our inventory and supply chains, volunteers, event scheduling, and so on. Do you think you could help with any of that?"
+
+- @help_join: You nod.
+- @help_join_no: You can't do this.
+
+
+@help_join
+
+You nod.
+
+"It's not life or death, but..."
+
+- @commotion
+
+
+@help_join_no
+
+You shake your head. "Sorry, but..."
+
+"You don't need to give a reason. I didn't expect anything else from you." R- sighs. "It's fine. It wasn't a crucial job."
+
+- @commotion
+
+
+@just_eat
+on-arrival: food += 1
+
+You eat the rice porridge in silence. There are various spices and protein components added this time, altering the flavor profile somewhat. It tastes good. It provides you with the nutrients necessary to survive.
+
+- @commotion
+
+@talk_else
+go-to: ask
+
+What did you want to talk about?
+
+@ask
+
+- @ask_1: "Do you believe that the revolution will succeed?"
+- @ask_2: "I found your diaries..."
+- @ask_3: "How much of the persisterhood still exists?"
+- @ask_4: "How are the other nonbinary communities doing?"
+- @ask_5: "There are datasets I want to show you..."
+
+@ask_1
+on-arrival: n_ma2_qs += 1
+go-to: ask if n_ma2_qs < 3
+
+"Do you believe that the revolution will succeed?"
+
+R- draws a deep breath. "I don't know. Not in our lifetimes. Maybe not in our children's lifetimes. But if we believe the revolution will never, then what are we fighting for?"
+
+"I believe in dialectical materialism," says L-. "I believe that the class contradictions in our society will eventually lead to... something."
+
+- @commotion
+
+@ask_2
+view-if: r_seen >= 0
+on-arrival: n_ma2_qs += 1
+on-departure: told_r_about_diaries = 2
+go-to: ask if n_ma2_qs < 3
+
+"I found your diaries in the DNA..."
+
+[? if told_r_about_diaries = 1 : "You told me that already." ?]
+[? if told_r_about_diaries = 0 : "Oh, really? I thought it was write-only media." ?]
+
+- @commotion
+
+@ask_3
+on-arrival: n_ma2_qs += 1
+go-to: ask if n_ma2_qs < 3
+
+- @commotion
+
+@ask_4
+on-arrival: n_ma2_qs += 1
+go-to: ask if n_ma2_qs < 3
+
+- @commotion
+
+@ask_5
+on-arrival: n_ma2_qs += 1
+go-to: ask if n_ma2_qs < 3
+
+- @commotion
+
+
+
+
+
+############################################################
+
+@commotion
+title: There is a commotion occurring by the fence.
+
+There is a commotion occurring by the fence.
+
+One of the Guards approaches an Alliance cadre, and pulls on the cadre's long pole. The cadre pulls back, yanking away from the Guard. More Guards approach. Now the Guards push through the fence, resisted by more cadre. A punch, and now it is a brawl.
+
+Somewhere, a gunshot rings.
+
+- @drop: You drop to the ground.
+
+@drop
+
+You drop to the ground.
+
+There are more gunshots amidst the pell-mell of footsteps and screams. The Alliance volunteers retreat behind sacs of rice and overturned tables, but some are still fughting back. At least one of the Guards has fallen from a metal pole to the head, and a couple of Alliance volunteers are bleeding out. The civilians are running away, scattering. Fortunately for them, the Guards are not paying attention.
+
+- @calm: You are calm, somehow.
+
+@calm
+
+You are calm, somehow.
+
+R-, also laying on her stomach, grabs your wrist amidst the chaos. "Get out. There's an unguarded way out back. Then take the first trolley, or drop to the riverside trail. Go home."
+
+- @nod: Nod, and go.
+- @can_help: "Can I help?"
+
+@nod
+
+You nod, and crawl away. The sounds of the brawl die down as your distance grows.
+
+@can_help
+
+"Can I help?"
+
+"No. Don't be a fucking hero. This isn't your time to die yet."
+
+R- pushes you away from the brawl, now .
+
+
+@scratch
+
+#################33
+
 You visit the Mutual Aid Alliance's food distribution area at the park. You get free food. R- and L- are here, and you make a brief conversation. It is a productive use of your time, more so than usual.
 
 [? if support_mutual_aid > 0 : You talk to R- and L- about how you might help the Alliance. They tell you that they still do not have anything for you to do, but they give you more information on the Alliance's activities, and how to contact them. ?]
+
+# TODO: ask 
 
 # TODO: extended conversation with the mutual aid people. You can show rosa some documents.
 
@@ -22,13 +247,5 @@ You visit the Mutual Aid Alliance's food distribution area at the park. You get 
 # - @ask_3: "How much of the persisterhood still exists?"
 # - @ask_4: "How are the Elliotians doing?"
 # - @ask_5: "There are datasets I want to show you..."
-
-@ask_1
-
-"Do you believe that the revolution will succeed?"
-
-Rosa draws a deep breath. "I don't know. Not in our lifetimes. Maybe not in our children's lifetimes. But if we believe never comes, then what are we fighting for?"
-
-"I believe in dialectical materialism," says Leon. "I believe that the class contradictions in our society will eventually lead to... Something."
 
 # - "Maybe we're fighting to make our lives better today."

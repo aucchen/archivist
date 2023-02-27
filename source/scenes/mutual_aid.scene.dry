@@ -15,6 +15,7 @@ Before you enter a public space where you must interact with people in more than
 - @mask: Mask.
 - @clothes: Attire.
 - @voice: Voice.
+- @mobile: Mobile.
 - @just_go: Just go.
 
 @mask
@@ -22,7 +23,7 @@ go-to: checklist
 on-arrival: ma_checklist += 1
 max-visits: 1
 
-You are wearing a respirator partly for the nanoplagues, partly to hide your facial features. 
+You are wearing a respirator partly for the nanoplagues, partly to hide your facial features.
 
 @clothes
 go-to: checklist
@@ -38,14 +39,21 @@ max-visits: 1
 
 Unfortunately, you could never successfully modulate the resonance of your voice. You will just have to talk as minimally as possible.
 
+@mobile
+go-to: checklist
+on-arrival: ma_checklist += 1
+max-visits: 1
+
+You check your mobile device. It is in your jacket pocket, as usual. At one time, it was a general-purpose communication device, but with the breakdown of wireless infrastructure following the Cataclysm and Uprising, its utility is limited to payments.
+
 @just_go
 view-if: ma_checklist >= 3
 
-The address on the flyer leads to a public park in the Erie District. There is a crowd already gathered. At least dozens of people mill about the lichen-covered ground. Volunteers stand behind tables, stirring vats of rice soup. At least it is not algal mush.
+The address on the flyer leads to a public park in the Erie District, an area fenced off and patrolled by a lazy coterie of Guards, who do not pay you any more attention than their usual crude stares and smirks. *They haven't read you, yet.* Inside the camp away from the eyes of the Guards, there is a crowd already gathered. Dozens of people mill about the lichen-covered ground, carrying bowls. Volunteers stand behind tables, stirring vats of rice soup. At least it is not algal mush.
 
 You must have looked out of place, because a man in a volunteer's uniform shouts at you. "Hey! We can help you here." He points towards a table. "Do you need food, medicine, anything else?"
 
-He is most likely an elliotian. And you can tell that he *recognized* you immediately. It has been a while since this sort of occurrence; you do not know if said occurrence has changed the parameters of this social interaction.
+He is most likely an Elliotian. And you can tell that he *recognized* you immediately. It has been a while since this sort of occurrence; you do not know if said occurrence has changed the parameters of this social interaction.
 
 - @want_food: "I just need food..."
 
@@ -63,33 +71,29 @@ In fact, you did know R-. [? if rosa_seen = 1 : You even saw her in one of the D
 
 "Hi, L-."
 
-- @take_food: Take the food, and then see R-.
+- @take_food: Take the food, and eat.
 
 @take_food
 on-arrival: food += 2; stress -= 1
 
 You take a bowl of rice porridge. They did not add beans in it as you do, so the nutritional value is reduced. Nevertheless, it tastes better than the variety you make - smoother, more watery.
 
-As you finish eating, R- and L- approach, walking together. R- is a tall and broad woman with a head of curly black hair and an intense facial expression she seems to be desperately trying to soften.
+As you finish eating, R- and L- approach, walking together. R- is a tall and broad woman with a head of curly black hair and a commanding presence, surveying the other volunteers. When she notices you, her facial expression shifts, passing through a whole incomprehensible gamut of emotions.
 
-"Hello, Emmeline Hsu," R- says.
+"Hello, Emmeline Hsu," R- says. "I thought you were dead."
 
-- @name: "How did you know my name?"
+- @you_dead_too: "I thought you were dead, too."
 - @hi_r: "Hi, R-."
 - @datasets: "I read your DNA diaries."
 
-@name
+@you_dead_too
 go-to: wondering
 
-"How did you know my name?"
+"I thought you were dead, too."
 
-"CityNet, remember? Everyone said you were an assimilationist bourgeois asshole, but I thought you had some good points. In the end you weren't even wrong."
+"It's the neogenic greeting these days," says R-. "So many of us are dead now. Bella, Lilian, Esme... From what I knew of you on CityNet, I thought it would be a fitting end to your story too. But it turns out, us traitors have a way of persevering. The cowards build their houses over the heroes' graves. Or something like that." She chuckles.
 
-"Oh. Sorry. I forgot."
-
-"Don't go on CityNet," L- interjects. "It's horrible these days."
-
-"Don't worry about it," R- says. "How are you liking the Mutual Aid Alliance so far?"
+"So, what is your opinion of the Mutual Aid Alliance so far?" asks R-.
 
 
 @hi_r
@@ -101,6 +105,7 @@ go-to: wondering
 
 @datasets
 view-if: r_seen > 0
+on-arrival: told_r_about_diaries = 1
 
 "I read your DNA diaries."
 
@@ -108,16 +113,16 @@ view-if: r_seen > 0
 
 Wait... "C-? C- is my boss."
 
-"Oh wow. Everything's really connected, huh?"
+"Oh. Interesting. Everything is connected, huh?"
 
 - @c_rev: "I did not know she was on our side..."
 
 @c_rev
 go-to: wondering
 
-"I did not know she was on the revolutionary side."
+"I did not know she was on our side..."
 
-"Yeah, well, I never heard back from her after it all went down. Guess she sold out too. ... Anyway, how are you liking the Mutual Aid Alliance so far?"
+"*Our* side? I wasn't aware you had ever joined us." She chuckles. "Unfair, I know. I never heard back from C- after it all went down. Guess she sold out too. ... Anyway, how are you liking the Mutual Aid Alliance so far?"
 
 @wondering
 
@@ -127,11 +132,79 @@ go-to: wondering
 
 "I don't know. I just got here."
 
-R- smiles, and sits next to you. "More of us survived the Uprising than you might think. There are a lot of us here, just trying to do what we can, hiding until it's safe to reemerge. I was hoping you could join us."
+R- smiles, and sits next to you. "Was the food good, at least?"
 
+You nod.
+
+"More of us survived the Uprising than you might think," R- continues. "There are plenty of us here, hiding until it's safe to reemerge. We're building a new world atop the ruins of the old, a world where all can finally be free. Whether it takes ten years or a hundred." A practiced laugh. L- sits next to her, listening and watching you.
+
+- @can_join: "Is there a way I can help?"
 - @join_why: "Do you really think it will work?"
-- @join_no: "No, I don't want to join..."
+- @join_nice: "That's nice..."
 
+@join_nice
+max-visits: 1
+on-arrival: join_nice = 1
+
+"Oh, that's nice..."
+
+"Yeah, it is. I probably shouldn't even be talking about this with you." She turns to L-.
+
+"I don't think we have to worry about Em snitching on us," says L-. "She doesn't seem the type."
+
+"Is there really a 'type'? Or is this some bizarre intuition?" asks R-.
+
+"Just an educated guess. Anyway, it's not like we revealed any nefarious plans that the security services couldn't guess." He turns to you. "Em, we'll be having another distribution session in a week. See you then? And if you want to volunteer with us, I'm sure we'll find something."
+
+- @can_join: "Is there a way I can help?"
+- @join_why: "Do you really think it will work?"
+- @leave: You are free to leave.
+
+@can_join
+on-arrival: mutual_aid_join_interested = 1
+
+"Is there a way I can help you?"
+
+"Well, is there anything you can do? Do you have any useful skills?"
+
+- @archivist_skill: "I'm an archivist..."
+- @history_skill: History must be helpful, right?
+
+@history_skill
+view-if: l_seen > 1 or f_seen > 0 or r_seen > 0
+go-to: archivist_skill_2
+
+"History must be helpful, right? I've discovered some DNA files that might change the way people see things..."
+
+@archivist_skill
+go-to: archivist_skill_2
+
+"Um, I'm an archivist... Maybe I can provide historical files? Maybe learning the real history will convince people that this world is unjust."
+
+@archivist_skill_2
+
+"No. The revolution doesn't need any more history or ideology. It needs warm bodies and kinetic energy. We had theory on our side for the last revolution and look how that turned out."
+
+R- glances at you, sighs, and continues.
+
+"What we need for the revolution is to provide for people where the established powers cannot. They need food, water, shelter, even companionship. That's why we are the Mutual Aid Alliance. That's why we're building up our own production and distribution channels for basic supplies. Can you do any of that?"
+
+- @want_to_try: "I want to try..."
+- @infiltration: "Aren't you worried about infiltrators?"
+- @join_no: "No, sorry, I can't do this..."
+
+@want_to_try
+on-arrival: support_mutual_aid = 1
+
+"I want to try... I can be a warm body, if that's what you need."
+
+"Oh, really? Are you physically capable of labor?"
+
+"There are more ways to help than the purely physical," says L-. "You can talk to our suppliers... but you might not want to do that either." He laughs. "Or there's always data entry, keeping the books, any number of tasks."
+
+"Fine. We'll think of something for you to do, but maybe next time," says R-. "We'll be having another distribution session here in a week. Come back if you still want to work with us."
+
+- @main: You are free to leave.
 
 @join_why
 max-visits: 1
@@ -142,7 +215,7 @@ max-visits: 1
 
 "Well, it's hard to gain support when people already hate you, isn't it?" says L-. "Shameful behaviour from the other nonbinaries." He chuckles.
 
-"We're going to go slow," continues R-. "We'll build up power first, build up a support base through direct action and politics where possible. We won't be brash. Maybe it will take generations."
+"We're going to proceed cautiously," continues R-. "We'll build up power first, build up a support base through direct action and politics where possible. We won't be brash. Maybe it will take generations."
 
 "And what next?" you ask.
 
@@ -150,9 +223,9 @@ max-visits: 1
 
 "You're gonna scare her!" L- laughs, and punches R- in the arm.
 
-- @join_no: "No, I don't want to get invovled..."
-- @infiltration: "Aren't you worried about infiltrators?"
-- @join_alright: "Alright... what can I do to help?"
+- @can_join: "Is there a way I can help?"
+- @join_nice: "That's nice..."
+- @leave: You are free to leave.
 
 
 @join_no
@@ -160,7 +233,7 @@ max-visits: 1
 
 "No, sorry... I can't do it."
 
-R- looks into your eyes. "That's what I thought you would say. It's fine. We hold these gatherings every week. You can come if you want free food."
+R- looks into your eyes. "That's what I thought. It's fine. We hold these gatherings every week. You can come next time if you want free food. Or if you change your mind, we'll always be looking for more volunteers."
 
 - @main: You are free to leave.
 
@@ -169,29 +242,15 @@ max-visits: 1
 
 "Aren't you worried about infiltrators?"
 
-R- shrugs. "Of course. But I don't believe you're an infiltrator. Or would you be, if you were paid well enough?"
+R- shrugs. "Of course. But I don't believe you're an infiltrator. Or would you choose to be a spy for them, if you were paid well enough?"
 
 "No... I don't know. I never thought about it."
 
-"See, that's an honest answer. Besides, I don't think any of the current security forces can stop using slurs for long enough to recruit a neogen."
+"See, that's an honest answer. Besides, I don't think any neogens work at the security servicesince the purges."
 
-- @join_no: "No, I don't want to get involved..."
-- @join_alright: "Alright... what can I do to help?"
+- @want_to_try: "I want to try..."
+- @join_no: "No, I can't do it..."
 
-
-@join_alright
-on-arrival: support_mutual_aid = 1
-
-"Alright... what can I do to help?"
-
-R- looks at you up and down. "I don't think you're physically capable of helping out with these gatherings. Or emotionally capable. And I'm guessing you're short of financial resources?"
-
-You shrug.
-
-"Okay. Unfortunately, we don't have much need for an archivist right now. But, we might need your skills sometime. Not sure when."
-
-L- laughs. "Wow, R-, you're not really doing a good job convincing our new recruit."
-
-"Just, keep in touch," R- says. "We're among friends here. We'll try to help each other out."
-
-- @main: You are free to leave.
+@leave
+view-if: join_nice >= 1
+go-to: main

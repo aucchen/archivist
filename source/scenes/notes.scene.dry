@@ -23,13 +23,13 @@ go-to: notes_main
 
 # C- (Cassie)
 # might write out
-**C-**: A colleague. Your boss at the Archives, despite being 10 years your junior. [? if r_processed : She must have sympathized with the Uprising.. ?]
+**C-**: A colleague. Your boss at the Archives, despite being 10 years your junior. [? if r_processed : She must have sympathized with the Uprising, or something to that effect. ?]
 
 # Rosa
-[? if mutual_aid_seen > 0 : R-: A leader of the Mutual Aid Alliance. ?] [? if r_seen > 0 : Rosa Camacho was a participant in the Uprising. ?]
+[? if mutual_aid_seen > 0 : R-: A leader of the Mutual Aid Alliance. ?] [? if mutual_aid_seen > 0 and r_seen > 0 : Rosa Camacho was a participant in the Uprising, who escaped. ?]
 
 # Leon
-[? if mutual_aid_seen > 0 : L-: A leader of the Mutual Aid Alliance. ?] [? if r_seen > 0 : Leon Zhou was a participant in the Uprising. ?]
+[? if mutual_aid_seen > 0 : L-: A leader of the Mutual Aid Alliance. ?] [? if mutual_aid_seen > 0 and r_seen > 0 : Leon Zhou was a participant in the Uprising, who escaped. ?]
 
 # Liana Xu
 Liana Xu: A founding mother of the arcology. A posthuman leader during the war, she was nevertheless sympathetic to the plight of the baseline humans, and collaborated after the Treaty in order to construct this Arcology (among others) as a refuge for baseline humans. [? if l_seen >= 2 : She was also possibly the pre-war version of a neowoman, although no one would likely believe such claims. ?]
@@ -41,15 +41,15 @@ title: History
 - @arcology
 - @cataclysm
 - @uprising
-- @notes_main
 - @persisterhood
+- @notes_main
 - @main: Do something else.
 
 @posthuman_war
 title: The Posthuman War
 go-to: history
 
-The worst war in the history of humanity thus far. The war was between the "posthumans", or humans enhanced with cybernetic and biological modifications, and the "baseline humans", which included all humans who rejected these modifications. Both sides used coercion to recruit others to their side; the posthumans had developed infectious nanoplagues in order to convert baseline humans to a posthuman physiology, with varying degrees of success and failure. Nuclear and biological weapons were used, and over half the human population of the Earth perished.
+The worst war in the history of humanity thus far. The war was between the "posthumans", or humans enhanced with cybernetic and biological modifications, and the "baseline humans", which included all humans who rejected these modifications. Both sides used coercion to recruit others to their side; the posthumans had developed infectious nanoplagues in order to convert baseline humans to a posthuman physiology, with varying degrees of success and failure, or to simply kill them. Nuclear and biological weapons were used, and over half the human population of the Earth perished.
 
 The war ended in the Treaty which cleaved humanity into two; the posthumans were to leave for outer space, while the baselines had full control of Earth. The posthumans would also help the baselines live in the radically changed environment by constructing vast arcology habitats for the remaining inhabitants.
 
@@ -63,25 +63,27 @@ The Arcology is your home. There are others like it on Earth, but none have been
 
 The Arcology's history is a tangled mess of theories and competing threads. There are even debates on how many years has passed since its construction. In some ways its history is even less studied and less known than the pre-war history of the united humanity. Only in the past decades, with the rediscovery of DNA storage, has its history begun to be unraveled.
 
+Here is a brief overview:
+
 Pre-war: earlier than -10 AT
 
-Posthuman War and aftermath: -10 to 10 AT
+Posthuman War and aftermath: -10 to 10 AT - war between genetically/cybernetically enhanced "posthumans" and "baselines".
 
 Age of Myth: 11 to 99 AT - eunuchs/priestesses (they never called themselves eunuchs, only priestesses) held great power, temples, councils, elected government (Senate). Absolutionist ascendance, widespread religious view of the posthumans.
 
-Absolutionists believe that science is the path towards enlightenment, and brings us closer to the posthuman ancestors. Negationists believe that their sacred mission is to restore the earth to its previous glory.
+Absolutionists believe that science is the path towards enlightenment, and brings humanity closer to the posthuman ancestors, at least some of whom were good people who rescued the baseline humans from a disastrous fate. Negationists believe that there were no good posthumans, that all of them were complicit in the poisoning of the Earth, and that their sacred mission is to restore the earth to its previous glory.
 
-First Age of Strife: 100 AT to 110 AT - conflict between administrators and eunuchs. Administrators are mostly baseline-human-supremacists and negationists.
+First Age of Strife: 100 AT to 110 AT - conflict between administrators and eunuchs. Administrators are described as negationists, who believe in the superiority of "natural" baseline humanity.
 
 Dark Age/First Age of Rationality: 111 to 255 AT. Rule of the administrators who perpetuated an eternal bureaucracy. Puppet elected council. Administrators promulgate some draconian policies like the banning of electronic storage media and declare only a single valid DNA encoding, the Fazlian encoding, which is now lost. Very few records due to these policies. They are atheistic and promote a cult of rationality. But also they sought to restore earth, clean up the radiation and nanoplagues and so on. Which was their primary source of legitimacy, and their holy mission.
 
 Second Age of Strife: 255 to 265 AT - the administrators sought to expand to other territories and invade the Halifax Arcology. This cayalyzed a civil war between the isolationist and expansionist factions.
 
-Age of Autarchy: 266 to 399 AT - some historians believe that the dark age and the age of autarchy substantially overlapped or were even the same time period. This era is also sparse in the records. Monarchy established, total isolationism. Tolerance of absolutionism.
+Age of Autarchy: 266 to 399 AT - some historians believe that the dark age and the age of autarchy substantially overlapped or were even the same time period. This era is also sparse in the records. Monarchy established, total isolationism. Absolutionism makes a brief resurgence.
 
 Third Age of Strife: 400 to 409 AT - less brutal than the previous eras of strife, this was a democratic revolution catalyzed by the knowledge contained in the Buffalo Cache.
 
-New Age of Rationality: 410 AT to 457 AT - marked by the dissemination of the contents of the Buffalo Cache, a collection of documents and even some machinery created by archivists from the pre-war era. This lead to the overthrow of the kingdom and the establishment of a constitutional democratic government based on pre-war examples. It also revolutionized Arcology culture, and lead to a resurgence of pre-war trends and art forms.
+New Age of Rationality: 410 AT to 457 AT - marked by the dissemination of the contents of the Buffalo Cache, a collection of documents and even some machinery created by archivists from the pre-war era. This lead to the overthrow of the kingdom and the establishment of a constitutional democratic government based on pre-war exemplars. It also revolutionized Arcology culture, and lead to a resurgence of pre-war trends and art forms. Rationality prevails over the previous absolutionist and negationist mythologies.
 
 Post-cataclysm: 457 AT to present. The puncture of the dome forced all humans to the undercity. Ruling Party (former monarchists) increasingly ascendant, view neogens as the new absolutionistd and destroyed them. Coup following a narrow opposition party victory, lead by the fascist Guards.
 

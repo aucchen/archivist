@@ -18,6 +18,7 @@ on-arrival: {!
     Q.has_contract = 1;
     Q.stress = 0;
     Q.stress_threshold = 25;
+    Q.last_day = 21;
     // relationships
     Q.liana_introduced = 0;
     Q.a_path = 0;
@@ -32,7 +33,7 @@ on-arrival: {!
     Q.daily_mutual_aid = 0;
     // dream stuff
     // dream timer increases each time you dream and decreases by 1 each day; if dream timer > 0, you do not have a dream.
-    Q.dream_timer = 0;
+    Q.dream_timer = 1;
     Q.has_medicine = 1; // you can only dream when you have medicine
     // data
     Q.data_seen = 0;
@@ -49,6 +50,8 @@ on-arrival: {!
     Q.key101 = 1;
     Q.key121 = 1;
     Q.key1001 = 0;
+    Q.key1009 = 0;
+    Q.key1013 = 0;
     Q.prev_data = [];
     Q.correct_data_types = [];
     Q.chosen_data_types = [];
@@ -109,9 +112,11 @@ on-arrival: {!
         "You awake to pounding on the walls of your apartment, accompanied by shouting. It stops, but you cannot fall back asleep.",
         "You awake feeling more tired than you felt last night.",
         "The city is a body and it is breaking down.",
+        "The cold tremors wake you from your sleep.",
     ];
     // High anxiety is more than 20
     Q.high_stress_day_dialogues = [
+        "The cold tremors wake you from your sleep.",
         "You wake up with a dull, aching pain throughout your body. Everything hurts.",
         "You are awake, for better or for worse.",
         "You are a body and you are a machine and you are breaking down.",
@@ -128,6 +133,7 @@ on-arrival: {!
         "Loud music and voices filters through the walls. There must be a \"party\" going on. You have never enjoyed parties.",
         "Someone is watching television in the apartment complex, with the volume far too high.",
         "Someone is playing music far too loudly. The bass beats shake the walls.",
+        "You are feeling cold, somewhat more so than usual.",
     ];
     Q.high_stress_afternoon_dialogues = [];
     Q.afternoon_dialogue = Q.afternoon_dialogues[0];

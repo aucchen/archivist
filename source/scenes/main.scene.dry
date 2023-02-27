@@ -34,6 +34,7 @@ Medicine: [+ medicine +] day[? if medicine != 1 :s ?] remaining
 [? if day_major = 0 : [+ day_dialogue +] ?]
 [? if day_major > 0 : [+ afternoon_dialogue +] ?]
 
+# OMG WHY are we using script in here
 {!<script>$('#main_notes').append($(window.dendryUI.dendryEngine.state.qualities.main_notes));
 if (window.dendryUI.dendryEngine.state.qualities.has_next_day == 0) {
     window.dendryUI.setBg('images/room1_filtered_dithered.png');
@@ -133,9 +134,12 @@ if (Q.k_path == 1 && Q.day > Q.k_day + 2) {
     Q.next_day_scene_queue.push("k_bad");
 }
 // TODO: if you don't have anything else going on, you have dreams.
-//if (Q.next_day_scene_queue.length == 0) {
-//    Q.next_day_scene_queue.push('dreams');
-//}
+if (Q.next_day_scene_queue.length == 0 && Q.dream_timer <= 0 && Q.has_medicine > 0) {
+    Q.dream_timer = 1;
+    Q.next_day_scene_queue.push('dreams');
+} else {
+    Q.dream_timer -= 1;
+}
 if (Q.next_day_scene_queue.length > 0) {
     Q.next_day_scene = Q.next_day_scene_queue.shift();
     console.log('next day scene: ' + Q.next_day_scene);

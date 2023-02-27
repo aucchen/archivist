@@ -1,7 +1,7 @@
 title: Entertain yourself
 subtitle: A psychological necessity.
 tags: minor
-view-if: (day_major = 0 or day_minor = 0) and day_entertainment = 0 and stress < stress_threshold and day < 20
+view-if: (day_major = 0 or day_minor = 0) and day_entertainment = 0 and stress < stress_threshold and day < last_day
 on-arrival: day_entertainment = 1; entertainment_count += 1; numb = 1
 new-page: true
 set-bg: images/monitor_dithered.png
@@ -44,12 +44,14 @@ You play a now-banned, formerly controversial game developed during the Uprising
 [? if games_played = 1 : You wonder if you could encode this game in DNA. ?]
 
 @tv_1
+on-arrival: tv_1_seen += 1
 
-Now playing is a film about a woman who disguises herself as a man to join the Guards during the Uprising. The villain is a neowoman (they would most likely not use that term) with a cartoonishly masculine body and a constantly visible bulge in the crotch.
+Now playing is a film about a woman who disguises herself as a man to join the Guards during the Uprising. The villain is a neowoman (they would most likely not use that term) with a cartoonishly masculine body and a constantly visible bulge in the crotch, who is grooming young girls into a self-mutilation suicide cult by convincing them that they could become men. The hero rescues the poor innocent young girls from the villain (*who looks like you* you try to stop yourself from thinking).
 
 @tv_2
+on-arrival: tv_2_seen += 1
 
-There is a speech by a Ruling Party politician. "We are the true heirs of the American Empire... We will not repeat the decadence and so-called toleration that led to the transhumanist order..." You tune out.
+There is a speech by a Ruling Party politician. "We are the true heirs of the American Empire... We will not repeat the decadence and so-called toleration that led to the transhumanist order, nor any absolutionist apologia for the atrocities committed in the name of transforming humanity..." You tune out.
 
 @tv_3
 on-arrival: starlight_defenders_seen = 1
@@ -61,7 +63,13 @@ view-if: starlight_defenders_seen >= 1
 
 *Starlight Defenders* is playing.
 
+@tv_4
 
+There is a program about the history of the American Empire, and its heroism in resisting the posthuman plagues. Negationist propaganda.
+
+@tv_5
+
+There is a game tournament playing.
 
 @book_1
 

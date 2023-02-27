@@ -1,6 +1,6 @@
 title: The Ritual
 subtitle: An excursion...
-view-if: ritual_done = 0 and day >= 3 and (day_major = 0 or day_minor = 0) and day < 20 and stress < stress_threshold
+view-if: ritual_done = 0 and day >= 3 and (day_major = 0 or day_minor = 0) and day < last_day and stress < stress_threshold
 on-arrival: ritual_done = 1; day_minor += 1; stress -= 1
 frequency: 300
 tags: major

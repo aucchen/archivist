@@ -13,7 +13,7 @@ on-arrival: {!
     // max datas that can be seen per day
     Q.max_data_day = window.randomSelectProbs([1,2,3,4], [0.2, 0.5, 0.15, 0.15]);
 !}
-view-if: day_major = 0 and stress < stress_threshold and data_seen = 0 and day < 20 and has_contract = 1
+view-if: day_major = 0 and stress < stress_threshold and data_seen = 0 and day < last_day and has_contract = 1
 max-choices: 5
 tags: major
 frequency: 500
@@ -52,9 +52,9 @@ on-arrival: {!
     Q.day_data_seen = 0;
     Q.data_day = Q.day;
     // max datas that can be seen per day
-    Q.max_data_day = window.randomSelectProbs([1,2,3,4], [0.2, 0.5, 0.15, 0.15]);
+    Q.max_data_day = window.randomSelectProbs([1,2,3,4], [0.2, 0.4, 0.25, 0.15]);
 !}
-view-if: day_major = 0 and stress < stress_threshold and data_seen >= 1 and has_contract = 1 and day < 20
+view-if: day_major = 0 and stress < stress_threshold and data_seen >= 1 and has_contract = 1 and day < last_day
 go-to: archivist_check
 set-jump: view_display
 tags: major
@@ -64,13 +64,15 @@ set-bg: images/monitor_3_dithered.png
 You open your e-mail. There are new data recovery and archival requests.
 
 @view_display
-max-choices: 5
+max-choices: 6
 
 - #data
 
 # TODO: choice of which dataset groups you view
 
 @view_display_2
+frequency: 1000000
+view-if: total_data_seen >= 10
 
 As a valued employee, you have the choice of which dataset groups you want to decode.
 
@@ -113,6 +115,16 @@ max-choices: 5
 max-choices: 5
 
 - #wild
+
+@unavailable
+title: No more datasets found.
+frequency: 1
+tags: archives, in_vitro, e_coli, b_subtilis, lactobacillus, wild
+
+Unfortunately, no more datasets with the selected criteria could be found.
+
+- @view_display: Basic view
+- @view_display_2: Back to advanced view
 
 @back
 go-to: main
@@ -199,9 +211,10 @@ go-to: end_data if day_data_seen >= max_data_day; pre_view_display if day_data_s
 # 50% chance of getting tired
 
 @pre_view_display
-go-to: view_display
+go-to: view_display if total_data_seen < 10; view_display_2 if total_data_seen >= 10
 
 You are getting tired, but you push through. There are still more datasets to decode.
+
 
 
 @end_data
@@ -216,7 +229,7 @@ Q.payment = 0;
 Q.datasets_checked = 0;
 Q.c_has_message = 0;
 Q.closure_just_warned = 0;
-Q.total_data_seen = Q.d_seen + Q.l_seen + Q.w_seen + Q.f_seen + Q.s_seen + Q.r_seen + Q.i_seen;
+Q.total_data_seen = Q.d_seen + Q.l_seen + Q.w_seen + Q.f_seen + Q.s_seen + Q.r_seen + Q.i_seen + Q.c_seen;
 // 1. do the first data
 var i = 0;
 var has_special = false;
@@ -285,13 +298,13 @@ if (Q.key1001 == 0 && !Q.check_101_prompt && Q.day >= 3) {
     Q.c_has_message = 1;
     Q.check_data_text += '<p>A message from C-:</p><p>What the hell are you doing? Do you *know* what this message implies? Do you have no sense of self-preservation whatsoever? Do you know that I fought for you to be able to have this job, and that were it not for me, you would have been gone long ago? Obviously I did not allow the file to go through; be thankful of that. Anyway, here\'s $50. Don\'t ever file documents like this one again.</p><p>By the way, Esme didn\'t have to die. I was going to destroy the records myself, in a more selective way that didn\'t involve fire and explosives. Really, that says something about how the last days of the uprising went.</p>';
 }
-Q.money += Q.payment;
-// TODO
+// warning that the DNA archives will close down.
 if (Q.c_has_message == 0 && Q.total_data_seen > 10 && Q.closure_warned == 0) {
     Q.closure_warned = 1;
     Q.closure_just_warned = 1;
-    Q.check_data_text += '<p>A message from C-:</p><p>Hi Em,</p><p>Unfortunately, there is some rather unpleasant news for us. The DNA archival unit will be disbanded once our current backlog of datasets is done. They aren\'t making new DNA sequencers anymore. Ours is too precious to waste on reading all of these banal diaries of dead people, so it\'s being requisitioned for more practical purposes. </p> <p>Sorry. I wish I could say it\'ll be okay. I know how hard it was for you to keep this job. We\'ll both be looking for new work, so let\'s keep in touch. </p><p>- C.</p>';
+    Q.check_data_text += '<p>A message from C-:</p><p>Hi Em,</p><p>Unfortunately, there is some rather unpleasant news for us. The DNA archival unit will be disbanded once our current backlog of datasets is done. They aren\'t making new DNA sequencers anymore (and they\'re certainly not making any more synthesizers). Ours is too precious to waste on reading all of these banal diaries of dead people, so it\'s being requisitioned for more practical purposes, like medial research and diagnosis. </p> <p>Sorry. I wish I could say it\'ll be okay. I know how hard it was for you to keep this job. We\'ll both be looking for new work, so let\'s keep in touch. </p><p>- C.</p>';
 }
+Q.money += Q.payment;
 !}
 go-to: view_display if datasets_checked = 0; check_data_0 if datasets_checked > 0
 
@@ -308,6 +321,7 @@ Some of your decoded datasets have been received and processed. Here are the res
 <code id="check_data_text"></code>!}
 
 - @view_display: Continue.
+- @view_display_2: Continue (advanced view).
 - @back: Do something else.
 
 @todo
@@ -322,6 +336,10 @@ on-arrival: day_major += 1; day_data_seen += 1
 # keys: primes - 11, 101, 23, 29, 31, 59, 419,...
 
 # Liana keys: 1009, 1013, 1019, 1021, 1031, 1033, 1039, 1049
+
+# key1001 is the "past" key, for l_ (liana) and f_ (first age) files.
+
+# key1013 is the revolutionaries' key, for r_ and c_ files.
 
 @decode
 new-page: true
@@ -473,7 +491,18 @@ go-to: d1001_c
 
 `My name is Jiaren Qi and I am the director of the Basic Sciences Research Institute. I was born in Shijiazhuang, China almost 50 years ago. I am a woman, and I have been for at least 20 years. I am married to Yingmei (Liana) Xu, also of BSRI.`
 
-`I find the process of writing these diaries to be somewhat therapeutic. I have not been in the habit of introspection before, but...`
+`The process of writing these diaries allows for me to explore thoughts and aspects of myself that I have been deeply reluctant to express. In particular, I will turn to the perhaps tired question of my own trans identity.`
+
+`Yingmei has lived most of her life as a woman, and I am close, but there are still worries and doubts I have, connecting me like a tether to the years before.
+
+For a substantial period of time, I wondered if I was correct to feel this way. When we look to the past, will we find exemplars of or justifications for our existence? Our detractors and some of our allies say that we, as trans lesbians, are creatures unmoored from time and tradition, people without precedent, an ahistorical anomaly at best, a mentally ill predatory abomination at worst. We are a people without a history, they say, except some revisionist vestiges, a postmodern invention of a few doctors, a meme gone wrong.
+
+But I don't care about any of this.
+
+I am a posthuman because I want to cut away all of the tethers chaining us to the arbitrary circumstances of our birth, to give us true freedom down to the molecular scale. Everything Yingmei and I have built is for this goal. We will almost certainly fail, but there is no other path.
+
+My name is \[WARNING: UNKNOWN CHARACTER ENCODING\] and I existed.`
+
 
 # outcome: suppressed
 
@@ -481,6 +510,8 @@ go-to: d1001_c
 go-to: todo
 
 Jiaren does not occur in the historical record; the Founder's personal relationships were unknown, and she was assumed to have a husband. If this is true, then, as some revisionist pseudohistorians have suggested, Liana was indeed a lesbian, and not only that, but also have a partner who was the historical equivalent of a neowoman (probably).
+
+However, the likelihood of this discovery being believed is approximately zero.
 
 ################### wiki
 
@@ -757,7 +788,7 @@ go-to: decode
 set-jump: w17_
 
 @w17_
-go-to: todo
+go-to: todo if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Joss_paper`
 
@@ -768,6 +799,129 @@ go-to: todo
 go-to: todo
 
 You have read about this before. It was the inspiration for your periodic funerary rituals.
+
+@w19
+title: `W19.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
+tags: data, wiki, e_coli, archives
+choose-if: key17 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w19'); Q.correct_data_types.push('misc'); Q.w_seen += 1; Q.incense_seen = 1; !}
+go-to: decode
+set-jump: w19_
+
+@w19_
+go-to: w19_c if w_seen > 1; w_intro if w_seen <= 1
+
+`URL: https://en.wikipedia.org/wiki/Richard_Smith_(died_1581)`
+
+`Richard Smith (by 1516 – buried on 22 May 1581) was an English politician.
+
+ He was Mayor of Newcastle-under-Lyme 1547–48 and 1549–50. He was a Member (MP) of the Parliament of England for Newcastle-under-Lyme in November 1554 and 1555.` 
+
+@w19_c
+go-to: todo
+
+This is apparently the entirety of this article. This does not seem to have been an important figure, but he was a human who lived in an incomprehensible time.
+
+
+@w23
+title: `W23.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
+tags: data, wiki, e_coli, archives
+choose-if: key17 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w23'); Q.correct_data_types.push('misc'); Q.w_seen += 1; Q.incense_seen = 1; !}
+go-to: decode
+set-jump: w23_
+
+@w23_
+go-to: w23_c if w_seen > 1; w_intro if w_seen <= 1
+
+`URL: https://en.wikipedia.org/wiki/Ritchey_(Martian_crater)`
+
+`Ritchey is a crater on Mars, located in the Coprates quadrangle at 28.8° South and 51° West. It measures 79 kilometers in diameter and was named after George W. Ritchey, an American astronomer (1864–1945). Ritchey lies south of Valles Marineris and north of Argyre Planitia, a large impact crater. There is strong evidence that it was once a lake.` 
+
+@w23_c
+go-to: todo
+
+You are reminded of the posthumans residing in space. Are they still watching over you?
+
+
+@w37
+title: `W37.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
+tags: data, wiki, e_coli, archives
+choose-if: key17 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w37'); Q.correct_data_types.push('misc'); Q.w_seen += 1; Q.incense_seen = 1; !}
+go-to: decode
+set-jump: w37_
+
+@w37_
+go-to: w37_c if w_seen > 1; w_intro if w_seen <= 1
+
+`URL: https://en.wikipedia.org/wiki/Nantoa`
+
+`Nantoa is a village in Ancuabe District in Cabo Delgado Province in northeastern Mozambique.` 
+
+@w37_c
+go-to: todo
+
+
+@w59
+title: `W59.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
+tags: data, wiki, e_coli, archives
+choose-if: key17 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w59'); Q.correct_data_types.push('misc'); Q.w_seen += 1; Q.incense_seen = 1; !}
+go-to: decode
+set-jump: w59_
+
+@w59_
+go-to: w59_c if w_seen > 1; w_intro if w_seen <= 1
+
+`URL: https://en.wikipedia.org/wiki/15_Sagittarii`
+
+`15 Sagittarii is a blue-hued binary star system in the southern zodiac constellation of Sagittarius. The estimated distance based upon photometry is around 4,200 ly (1,300 pc). It is faintly visible to the naked eye with an apparent visual magnitude of 5.37. The system is moving closer to the Sun with a heliocentric radial velocity of around −6 km/s.` 
+
+@w59_c
+go-to: todo
+
+Stars, like atoms, are things that you know scientifically exist, but cannot be seen with the naked eye. The pre-war humans could see stars, which inspired so many of their scientific discoveries, which are now impossible to replicate if enough technology is lost.
+
+@w67
+title: `W67.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vivo - E. coli colony*`
+tags: data, wiki, e_coli, archives
+choose-if: key17 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('w67'); Q.correct_data_types.push('misc'); Q.w_seen += 1; Q.incense_seen = 1; !}
+go-to: decode
+set-jump: w67_
+
+@w67_
+go-to: w67_c if w_seen > 1; w_intro if w_seen <= 1
+
+`URL: https://en.wikipedia.org/wiki/2016_Recopa_Sudamericana`
+
+`The 2016 Recopa Sudamericana (Portuguese: Recopa Sul-Americana 2016) was the 24th edition of the Recopa Sudamericana, the football competition organized by CONMEBOL between the winners of the previous season's two major South American club tournaments, the Copa Libertadores and the Copa Sudamericana. ` 
+
+@w67_c
+go-to: todo
+
+
 
 
 ######################### Liana Yingmei Xu
@@ -958,11 +1112,11 @@ go-to: x1021_c
 
 `I wonder what you would call the war in your time?
 
-Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3. I was, as you obviously know, a posthuman, so my side in the war was clear, despite my misgivings about some of the radicals on our side. It was a fratricidal, even omnicidal war at times. Our spokespersons said that we were fighting for liberation and bodily autonomy. The baseline leaders claimed to be fighting for the preservation of humanity.
+Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3. I was, as you obviously know, a posthuman, so my side in the war was clear, despite my misgivings about some of the factions on our side. It was a fratricidal, even omnicidal war at times. Our spokespersons said that we were fighting for liberation and bodily autonomy. The baseline leaders claimed to be fighting for the preservation of humanity.
 
 One tidbit you will not find in your baseline histories is how trans people were treated in the war. The conflation of "transgender" or "transsexual" with "transhuman" made all trans people in baseline territories into enemies. There were purges and camps and killings, more so than usual. Even those who sympathized with the baseline cause ended up on the posthuman side.
 
-# My greatest regret was how I could not prevent my son from joining the war. He supported the baselines, and he designed the first nanoplague.
+My greatest regret was how I could not prevent my son from joining the war. He was a nanoplague designer for the Analysts. Perhaps those words mean nothing to you? He was responsible for the deaths of millions.
 
 And what about you, I wonder, presumed baseline? Did trans-ness reemerge? Are there people like us in your world?
 
@@ -973,13 +1127,31 @@ go-to: todo
 
 You have no idea what to feel about this. All respectable historians would discount the connections between the pre-war "transsexuals" and the modern "neogens".
 
+@x1029
+title: `X1029.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - Lactobacillus colony*`
+tags: data, diaries, wild, lactobacillus
+choose-if: key1001 = 1
+view-if: @data.x1019 > 0
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('x1029'); Q.correct_data_types.push('hoax'); Q.l_seen += 1; !}
+go-to: decode
+frequency: 300
+set-jump: x1029_
 
-# Liana 6?
+
+# Liana 6
 @x1029_
 
-`You might be more familiar with intra-baseline politics of the war, but the posthumans were hardly unified either. The Analysts were our largest faction. Naturally, they believed that any future society must be rationally organized, and that the posthumans had the computational apparatus necessary to implement the best possible society for the baselines. All who disagreed with them, me included, were part of the very loosely defined Coalition. You see, there was no place for trans existence in the Analysts' rationally organized society, and I had some fading attachment to my mortal ideals.
+`You might be more familiar with intra-baseline politics of the war, but the posthumans were hardly unified either. The Analysts were our largest faction. Naturally, they believed that any future society must be rationally organized, and that the posthumans had the computational apparatus necessary to implement the best possible society for the baselines. All who disagreed with them, me included, were part of the very loosely defined Coalition. You see, there was no place for something as messy as trans existence in the Analysts' rationally organized society, and I had some fading irrational attachment to my mortal ideals.
 
- I killed him, of course. The rest of the Analysts quickly became pliant. I wonder why they folded so quickly. Afterwards, we signed the Treaty stipulating non-interference in baseline affairs (although one might consider this document a form of interference, I know that the Analysts have placed their own data caches in your city).
+The trouble was that my son was a supporter of the Analysts. He rose to their leadership on the basis of his nanoplague designs. The Analysts and the Coalition did not directly fight yet, but the Analysts took the lead on committing atrocities to cow the baseline populace. They had a whole litany of justifications, including that by making the neohumans to be the baselines' perpetual villain, a more stable society would develop in the aftermath, one free from wars amongst each other.
+
+ I killed him, of course. It was done with a nanoplague specifically keyed to his genome - his favorite weapon. The rest of the Analysts quickly became pliant, after updating their game-theoretic model of my behavior. Afterwards, we signed the Treaty stipulating non-interference in baseline affairs (although one might consider this document a form of interference, I know that the Analysts have placed their own data caches in your city).
+
+ Anyway, it will soon be time for me to leave this city. So long. I hope we can see each other soon.
 
  - Liana`
 
@@ -987,7 +1159,7 @@ You have no idea what to feel about this. All respectable historians would disco
 @x1029_c
 go-to: todo
 
-You have no idea if what this supposed "Liana Xu" is saying has any basis in truth. It is not in any of the histories or the legends or the novels.
+You have no idea if what this supposed "Liana Xu" is saying has any basis in truth. It is not in any of the histories or the legends or the novels. For all you know, this could be total fiction.
 
 
 ################################# Technical
@@ -999,7 +1171,7 @@ tags: data, science, archives, e_coli
 choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
-on-arrival: {! Q.prev_data.push('s101'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1001 = 1; Q.key1009 = 1; Q.key1013 = 1 !}
+on-arrival: {! Q.prev_data.push('s101'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1001 = 1; Q.key1009 = 1 !}
 frequency: 800
 go-to: decode
 set-jump: s101_
@@ -1028,7 +1200,7 @@ choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
 frequency: 500
-on-arrival: {! Q.prev_data.push('s202'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1009 = 1; Q.key1001 = 1; Q.key1013 = 1;!}
+on-arrival: {! Q.prev_data.push('s202'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key1009 = 1; Q.key1013 = 1;!}
 go-to: decode
 set-jump: s202_
 
@@ -1259,7 +1431,7 @@ go-to: f_background if f_seen <= 1; f303_c if f_seen > 1
 
  Commentary: Most of the city does not believe in our Ancestors, or the God that our opponents presume to be the rival of the Ancestors. They do not believe in Science, either, or Democracy or Liberty or any of the other pre-war ideals. They do not even believe in the sanctity of the human body, supposedly the core tenant of Negationism. So what do they believe in that makes them kill us?
 
- - Emilia F. Chu, eunuch of New Hamilton Temple`
+ - Emilia F. Chu, priestess of New Hamilton Temple`
 
 @f303_c
 go-to: todo
@@ -1370,8 +1542,10 @@ set-jump: f707_
 @f707_
 go-to: todo
 
+# TODO: a description of the ritual
 
-A report from a caravan arriving from Lake Superior Arcology:
+`We have many rituals with which we celebrate our ancestors. The most sacred is the Sacrifice, representing how our Ancestor sacrificed Her son to save the baseline humans`
+
 
 ###################################### Historical - 2nd/3rd Century
 
@@ -1523,7 +1697,7 @@ go-to: todo
 title: `R1009.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science, wild, b_subtilis
-choose-if: key1009 = 1
+choose-if: key1001 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
@@ -1545,7 +1719,7 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 title: `R2018.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
 tags: data, science, wild, b_subtilis
-choose-if: key1009 = 1
+choose-if: key1001 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
@@ -1571,7 +1745,7 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 title: `R3027.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [if enable_cw = 1 : (CW: violence) ?]
 tags: data, science, wild, b_subtilis
-choose-if: key1009 = 1
+choose-if: key1001 = 1
 view-if: @data.r1001 > 0
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
@@ -1602,7 +1776,7 @@ Cygne is trying to comfort me right now. They say that writing it down will make
 title: `R4000.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [if enable_cw = 1 : (CW: violence) ?]
 tags: data, science, wild, b_subtilis
-choose-if: key1009 = 1
+choose-if: key1001 = 1
 view-if: @data.r1001 > 0 and esme_seen > 0
 frequency: 1000
 unavailable-subtitle: You don't know how to decode this file.
@@ -1767,16 +1941,10 @@ go-to: todo
 ######################## cxxx - CityNet archives
 
 
-@c_intro
-go-to: todo
-
-Before the bombings of the servers, there had been talk of archiving parts of CityNet, so that the existence of the neogens wouldn't be lost forever. Apparently, they had done so without your knowledge.
-
 @c123
 title: `C123.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
-view-if: r_seen >= 1
-tags: data, wild, b_subtilis
+tags: data, wild, b_subtilis, citynet
 choose-if: key1013 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
@@ -1806,6 +1974,8 @@ go-to: c123_c
 @c123_c
 go-to: todo
 
+Before the bombings of the servers, there had been talk of archiving parts of CityNet, so that the existence of the neogens wouldn't be lost forever. Apparently, some of your comrades had archived CityNet in DNA.
+
 A- told you that her prostrations were not genuine, that she was only telling them what they wanted to hear.
 
 But what did any of it matter?
@@ -1814,8 +1984,8 @@ But what did any of it matter?
 @c124
 title: `C124.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
-view-if: r_seen >= 1
-tags: data, wild, b_subtilis
+view-if: c_seen >= 1
+tags: data, wild, b_subtilis, citynet
 choose-if: key1013 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
@@ -1841,18 +2011,21 @@ go-to: todo
  @bellaxo: True, although there are allusions to some unrecovered works that discuss non-economic labour.
 
  @JuneInMay: none of us know what we're talking about what are we even doing here
-
 `
 
 
-
-@c125_
-go-to: todo
-
-`@bellaxo: Every political conflict so far in our history has been divided into absolutionists and negationists, even if they never used the terms. We have to transcend that dichotomy. We cannot survive if we're nothing but a revived absolutionist movement.
-
- @Luxembourgist: 
-`
+@c126
+title: `C126.fastq.gz` 
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [if cw_enabled = 1 : CW: slurs ?]
+view-if: c_seen >= 1
+tags: data, wild, b_subtilis, citynet
+choose-if: key1013 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('c126'); Q.correct_data_types.push('personal'); Q.c_seen += 1;  !}
+go-to: decode
+set-jump: c126_
 
 
 @c126_
@@ -1864,18 +2037,122 @@ go-to: c126_c
 
  @oneeyedlilith: obviously it was just the bioengineering to make her transhuman?
 
- @yxxuajj: the pre-war trannies weren't women. they were mentally ill.
+ @yxxuajj: the pre-war trannies weren't women, everyone saw them as men with gender identity disorder.
+
+ @lianalover69: But how did they see themselves?
 
  @bellaxo: Liana Xu is an emblem of the dictatorship of the bourgeoisie. We don't want her.
 
- @luxemburgist: Perhaps for pragmatic reasons, it would be nice to have her as our symbol.
+ @luxemburgist: Perhaps for pragmatic reasons, it would be nice to have a national hero as our symbol?
 
- @yxxuajj: wouldn't normal people get more disgusted at us
+ @yxxuajj: wouldn't normal people get more disgusted at us?
 
- @luxemburgist: Do you have any better ideas about how to make "normal people" not disgusted by us?
+ @luxemburgist: Do you have any better ideas about how to make "normal people" *not* disgusted by us?
 `
 
 @c126_c
 go-to: todo
 
 You had never ran into this `@lianalover69` on CityNet before. There is an at least 50% chance they are deceased. [? if l_seen > 1 :  Unfortunate; they would loved to have learned of your potential discoveries regarding Liana (or Yingmei) Xu. ?]
+
+###
+
+@c127
+title: `C127.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
+view-if: c_seen >= 1
+tags: data, wild, b_subtilis, citynet
+choose-if: key1013 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('c127'); Q.correct_data_types.push('personal'); Q.c_seen += 1;  !}
+go-to: decode
+set-jump: c127_
+
+
+@c127_
+go-to: todo
+
+`@LilianO: The systems will fall apart slowly, then all at once. First, maybe you will notice the nights grow longer. Maybe the odors in the air will grow stronger. Maybe the water rations will fall again.
+
+ @LilianO: It'll get worse, gradually, until one day you turn the spigot and nothing comes out ever again. Or the discretionary electricity budget becomes negative.
+
+ @LilianO: It's not just a raw material issue. Our skilled technicians are dying faster than we can replace them, and the rest are getting overworked to death. Out of everyone who worked at the waterworks before the cataclysm, I'm the only one left.
+
+ @LilianO: I'm 40 and I'm the third oldest technician here. I have, what, 10 years of functional health remaining, with the nanoplague and all. And now they're fucking telling me to desist or get fired.
+ 
+  @LilianO: Now my boss is telling me women are uncomfortable with me in their washrooms, even though I've been using the women's room for 10 years. Coworkers and cousins I used to be friends with are telling me to stay away from their children. I feel like I'm going mad.
+  
+ @LilianO: Needless to say, this will not fix our infrastructure.
+
+ @zhouenlai: What the fuck are we supposed to do about it?
+
+ @LilianO: A proletarian revolution, of course. Nothing can stop working-class solidarity. The hard part is building up that solidarity.`
+ 
+###
+
+@c129
+title: `C129.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
+view-if: c_seen >= 1
+tags: data, wild, b_subtilis, citynet
+choose-if: key1013 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('c129'); Q.correct_data_types.push('personal'); Q.c_seen += 1;  !}
+go-to: decode
+set-jump: c129_
+
+
+@c129_
+go-to: todo
+ 
+`@es-em-ef: What if when we all got infected with the nanoplague we entered a nonconsensual shared hallucination and this is why nothing feels real anymore
+
+ @fungalspires: Which psychotropic substances have you been consuming?
+
+ @es-em-ef: It's like the arcology is a purgatory existing beyond time, like a bubble in the middle of the earth. This is an afterlife. This is hell. This is Samsara. Maybe the Ancestors are all living among us and we just don't know it. Maybe we're all really in the Ancestral Simulation and we're being tortured for failing to support the posthuman revolution.
+
+ @cassiopeia: Interesting theology you got there. You should publish it.
+
+ @es-em-ef: I am not insane. The city is. The neo-absolutionists were right.
+
+ @luxemburgist: This is counter-productive. We need to have an accurate awareness of reality if we are to change it.
+
+ @es-em-ef: booooooooring`
+ 
+ 
+
+@c131
+title: `C131.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
+view-if: c_seen >= 1
+tags: data, wild, b_subtilis, citynet
+choose-if: key1013 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('c131'); Q.correct_data_types.push('personal'); Q.c_seen += 1;  !}
+go-to: decode
+set-jump: c131_
+
+
+@c131_
+go-to: todo
+ 
+`@xxxneogenxxx: The neowoman is a creature unmoored from all history and tradition. She is an anomalous existence.
+
+ @xxxneogenxxx: The idea that 
+
+ @es-em-ef: are you saying it's a good thing or bad thing?
+
+ @luxemburgist: I don't know. It's not that complicated. Please, no more obscurantist ideologies.
+
+ @luxemburgist: I don't think it would make much of a difference if we had a history. We are creatures of flesh and blood. We still need to work and pay rent, like anyone else, except the powers that be have made it harder for us.
+
+ @luxemburgist: If there is any hope for the neogens, it lies in the unity of the working class.`
+
+
+

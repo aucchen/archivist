@@ -1,7 +1,7 @@
 title: CityNet
 subtitle: An update on the present situation. [? if cw_enabled = 1 : CW: slurs ?]
 max-choices: 3
-view-if: montage_progress = 0 and day_minor = 0 and stress < stress_threshold and day < 20
+view-if: montage_progress = 0 and day_minor = 0 and stress < stress_threshold and day < last_day
 on-arrival: montage_progress += 1; numb = 1; day_minor += 1
 new-page: true
 tags: minor
@@ -439,3 +439,23 @@ tags: montage
 > `@[+ name_2 +]: can't wait`
 
 > `@[+ name_3 +]: fake news`
+
+@cn23
+title: `Riot in Erie District kills 4.`
+view-if: mutual_aid_seen >= 2
+max-visits: 1
+frequency: 1000
+count-visits-max: 1
+tags: montage
+
+`@NNN: Riot in Erie District kills 4, as so-called "Mutual Aid Alliance" incites violence against Guards.`
+
+> `@[+ name_0 +]: kill all rioters`
+
+> `@[+ name_1 +]: everyone here should die.`
+
+> `@[+ name_2 +]: glad the guards were safe`
+
+> `@[+ name_3 +]: fake news`
+
+You were there. You could have been one of the four. It does not seem as if visiting the Mutual Aid Alliance is still a possibility, unless you are truly committed to the life of the underground revolutionary.

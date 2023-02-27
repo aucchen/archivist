@@ -1,5 +1,7 @@
 title: Dreams
+new-page: true
 set-bg: rgba(0,0,0,0)
+on-arrival: dream_timer = 2
 max-choices: 5
 
 You lie in the bed, unsure if you are asleep or awake.
@@ -101,7 +103,7 @@ It doesn't matter, either way.
 # view if you know about the uprising
 
 @dream_uprising
-title: You dream of the uprising.
+title: Dream of the uprising.
 subtitle: [? if enable_cw : CW: violence, transphobia ?]
 view-if: dream_rev_viewed = 0 and (r_seen > 0 or mutual_aid_seen > 0)
 on-arrival: dream_rev_viewed += 1
@@ -189,7 +191,7 @@ go-to: clock_urine_2
 
 "It's too painful," you said.
 
-"Do you need help? I can come over and help you. If all else fails, call A-. She-, I mean, he's probably fine passing through the battle lines."
+"Do you need help? I can come over and help you. If all else fails, call A-..."
 
 - @clock_urine_2: "It's fine."
 
@@ -214,7 +216,7 @@ An audible sigh. "Look, do you need help? I can come over and help you. If all e
 
 You heard the sounds of explosions through the phone.
 
-"Shit," said K-. "Guards coming. I have to go."
+"Shit," said K-. "S- is getting fussy. Say hi to your mom, will you? I have to go."
 
 She hung up.
 
@@ -229,7 +231,7 @@ She hung up.
 
 You heard the sounds of explosions through the phone.
 
-"Shit," said K-. "Guards coming. I have to go."
+"Shit," said K-. "S- is getting fussy. Say hi to your mom, will you? I have to go."
 
 She hung up.
 
@@ -240,6 +242,8 @@ She hung up.
 @call_a
 
 Next, you called A-. There was no response, obviously given the hour. Unlike you or K-, he always kept to normal hours.
+
+But then again, it's not as if he's responded to any of your attempts at contact recently.
 
 - @dream_uprising_end: ...
 
@@ -293,11 +297,18 @@ tags: dream
 
 # TODO
 
-You were living in a faraway land, in a far away time. Instead of the metal ceiling or even the translucent dome, there was a hazy unencumbered sky. Instead of the macroalgal trees there were genuine plants, photosynthesizing under a non-simulated sun.
+You were living in a faraway land, in a far away time. Instead of the metal ceiling or even the translucent dome, there was a hazy unencumbered sky. Instead of the macroalgal trees there were genuine *Plantae*, photosynthesizing under a non-simulated sun.
 
-You were surrounded by a forest of apartment towers, each one like its companions.
+You were surrounded by a forest of apartment towers, each one like its companions. You were on the rooftop of one of them, sitting with your friend (lover?), a boy (like you? What were you?).
 
-"There are a number of surgeries I would like to undergo," you said, and pointed to your forehead. "First is the cranioplasty."
+"There are a number of surgeries I would like to undergo," you said, and pointed to your forehead. You were speaking an unfamiliar language, yet you understood every word. "First is the cranioplasty, to reduce the size of my brow ridges. Second is the genioplasty, to reduce these uncomfortable protrusions on my chin. These can be done together as part of a facial feminisation procedure. Of course, the other is... I'm too embarrassed to say it, of course."
+
+- @you_laugh: You laughed.
+
+@you_laugh
+
+You laughed. Your companion smiled.
+
 
 ############################################# dream k only (marriage and s-)
 
@@ -317,7 +328,7 @@ In the University's office, the Administrator watched, and the Psychologist list
 
 "We understand that you've been having a difficult time lately," the Administrator began. "The transition to adulthood is always fraught, and it goes double for someone who grew up in tough circumstances. Many young males lash out, especially those with a history of gender identity like yours."
 
-It was after your first incident, 20 years ago, and the words "gender identity" felt like ichor in your ears.
+It was after the first time they discovered you, 20 years ago, and the words "gender identity" felt like ichor in your ears.
 
 - @dream_a_die: You had tried to die.
 - @dream_a_disappear: You had tried to disappear.
@@ -337,7 +348,7 @@ The phrase "gender identity" had been discovered in the Buffalo Cache of fifty y
 
 The Administrator cut him off, too late. "Gender identity is a complicated issue, and there are many paths to... Never mind. The reason we have called you here is that..." She paused, and smiled gently.
 
-- @dream_a_obvious: The point was obvious. 
+- @dream_a_obvious: Any information you reveal can and will be used against you.
 
 @dream_a_obvious
 
