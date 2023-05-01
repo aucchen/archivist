@@ -96,7 +96,14 @@ A lull in the conversation. The two of you stare at each other, A- smiling, you 
 
 "I don't know," she replies. "I don't think it matters right now."
 
+- @desist
 - @pronouns: "What pronouns should I use?"
+
+@desist
+choose-if: 1 = 0
+view-if: @data.c123 >= 1
+title: Ask about A-'s desistance.
+unavailable-subtitle: You're not ready for that conversation yet.
 
 
 @pronouns

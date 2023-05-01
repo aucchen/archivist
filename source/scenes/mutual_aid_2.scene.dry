@@ -133,8 +133,7 @@ What did you want to talk about?
 - @ask_1: "Do you believe that the revolution will succeed?"
 - @ask_2: "I found your diaries..."
 - @ask_3: "How much of the persisterhood still exists?"
-- @ask_4: "How are the other nonbinary communities doing?"
-- @ask_5: "There are datasets I want to show you..."
+#- @ask_5: "There are datasets I want to show you..."
 
 @ask_1
 on-arrival: n_ma2_qs += 1
@@ -142,9 +141,11 @@ go-to: ask if n_ma2_qs < 3
 
 "Do you believe that the revolution will succeed?"
 
-R- draws a deep breath. "I don't know. Not in our lifetimes. Maybe not in our children's lifetimes. But if we believe the revolution will never, then what are we fighting for?"
+R- draws a deep breath. "I don't know. Not in our lifetimes. Maybe not in our children's lifetimes. But if we believe the revolution will never win, then what are we fighting for?"
 
-"I believe in dialectical materialism," says L-. "I believe that the class contradictions in our society will eventually lead to... something."
+"I believe in dialectical materialism," says L-. "I believe that the class contradictions in our society will eventually lead to its collapse."
+
+R- laughs.
 
 - @commotion
 
@@ -157,7 +158,7 @@ go-to: ask if n_ma2_qs < 3
 "I found your diaries in the DNA..."
 
 [? if told_r_about_diaries = 1 : "You told me that already." ?]
-[? if told_r_about_diaries = 0 : "Oh, really? I thought it was write-only media." ?]
+[? if told_r_about_diaries = 0 : "Oh, really? I thought it was write-only media." ?] R- shrugs. "It doesn't matter anymore. What are they gonna do with my diaries, use them to come arrest me? Make TV propaganda programs about how I'm a violent terrorist? What do they change?"
 
 - @commotion
 
@@ -165,13 +166,12 @@ go-to: ask if n_ma2_qs < 3
 on-arrival: n_ma2_qs += 1
 go-to: ask if n_ma2_qs < 3
 
-- @commotion
+"How much of the persisterhood still exists?"
 
-@ask_4
-on-arrival: n_ma2_qs += 1
-go-to: ask if n_ma2_qs < 3
+R- shrugs. "Who knows? Maybe it's better if we don't know. There was a reason why we carried out the historicide."
 
 - @commotion
+
 
 @ask_5
 on-arrival: n_ma2_qs += 1
@@ -187,6 +187,7 @@ go-to: ask if n_ma2_qs < 3
 
 @commotion
 title: There is a commotion occurring by the fence.
+on-arrival: stress += 1
 
 There is a commotion occurring by the fence.
 
@@ -206,9 +207,9 @@ There are more gunshots amidst the pell-mell of footsteps and screams. The Allia
 
 @calm
 
-You are calm, somehow.
+You are calm, somehow. None of this is real. You might as well exist in a reverie between worlds.
 
-R-, also laying on her stomach, grabs your wrist amidst the chaos. "Get out. There's an unguarded way out back. Then take the first trolley, or drop to the riverside trail. Go home."
+R-, also laying on her stomach, grabs your wrist, shaking you free from your calm. "Get out. There's an unguarded way out back. Then take the first trolley, or drop to the riverside trail. Go home."
 
 - @nod: Nod, and go.
 - @can_help: "Can I help?"
@@ -217,35 +218,14 @@ R-, also laying on her stomach, grabs your wrist amidst the chaos. "Get out. The
 
 You nod, and crawl away. The sounds of the brawl die down as your distance grows.
 
+- @root: You find your way back home.
+
 @can_help
 
 "Can I help?"
 
 "No. Don't be a fucking hero. This isn't your time to die yet."
 
-R- pushes you away from the brawl, now .
+R- pushes you away from the brawl. You crawl away. The sounds of the brawl die down as your distance grows.
 
-
-@scratch
-
-#################33
-
-You visit the Mutual Aid Alliance's food distribution area at the park. You get free food. R- and L- are here, and you make a brief conversation. It is a productive use of your time, more so than usual.
-
-[? if support_mutual_aid > 0 : You talk to R- and L- about how you might help the Alliance. They tell you that they still do not have anything for you to do, but they give you more information on the Alliance's activities, and how to contact them. ?]
-
-# TODO: ask 
-
-# TODO: extended conversation with the mutual aid people. You can show rosa some documents.
-
-# - @ask: Ask some questions.
-
-# @ask
-
-# - @ask_1: "Do you believe that the revolution will succeed?"
-# - @ask_2: "I found your diaries..."
-# - @ask_3: "How much of the persisterhood still exists?"
-# - @ask_4: "How are the Elliotians doing?"
-# - @ask_5: "There are datasets I want to show you..."
-
-# - "Maybe we're fighting to make our lives better today."
+- @root: You find your way back home.

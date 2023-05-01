@@ -12,7 +12,6 @@ You need money for rent. There are two people who have a nonzero probability of 
 - @past: You and K- were married once.
 - @call: Make the call.
 
-# TODO: think about K.
 
 @past
 max-visits: 1
@@ -180,7 +179,6 @@ You aren't exactly in a position to refuse.
 
 - @yes_meet: "Sure..."
 
-# TODO
 
 @yes_meet_2
 

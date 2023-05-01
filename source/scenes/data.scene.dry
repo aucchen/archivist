@@ -11,7 +11,7 @@ on-arrival: {!
     Q.day_data_seen = 0;
     Q.data_day = Q.day;
     // max datas that can be seen per day
-    Q.max_data_day = window.randomSelectProbs([1,2,3,4], [0.2, 0.5, 0.15, 0.15]);
+    Q.max_data_day = window.randomSelectProbs([1,2,3,4,5], [0.1, 0.3, 0.3, 0.2, 0.1]);
 !}
 view-if: day_major = 0 and stress < stress_threshold and data_seen = 0 and day < last_day and has_contract = 1
 max-choices: 5
@@ -68,13 +68,13 @@ max-choices: 6
 
 - #data
 
-# TODO: choice of which dataset groups you view
+# choice of which dataset groups you view
 
 @view_display_2
 frequency: 1000000
 view-if: total_data_seen >= 10
 
-As a valued employee, you have the choice of which dataset groups you want to decode.
+As a valued contractor, you have the choice of which dataset groups you want to decode.
 
 - @view_display: All
 - @source_archives: Source: Archives
@@ -87,32 +87,32 @@ As a valued employee, you have the choice of which dataset groups you want to de
 
 
 @source_archives
-max-choices: 5
+max-choices: 6
 
 - #archives
 
 @in_vitro
-max-choices: 5
+max-choices: 6
 
 - #in_vitro
 
 @e_coli
-max-choices: 5
+max-choices: 6
 
 - #e_coli
 
 @b_subtilis
-max-choices: 5
+max-choices: 6
 
 - #b_subtilis
 
 @lactobacillus
-max-choices: 5
+max-choices: 6
 
 - #lactobacillus
 
 @source_wild
-max-choices: 5
+max-choices: 6
 
 - #wild
 
@@ -316,9 +316,11 @@ Some of your decoded datasets have been received and processed. Here are the res
 
 
 @check_data
+on-display: {!
+$('#check_data_text').append($(window.dendryUI.dendryEngine.state.qualities.check_data_text));
+!}
 
-{!<script>$('#check_data_text').append($(window.dendryUI.dendryEngine.state.qualities.check_data_text));</script>
-<code id="check_data_text"></code>!}
+{!<code id="check_data_text"></code>!}
 
 - @view_display: Continue.
 - @view_display_2: Continue (advanced view).
@@ -385,7 +387,7 @@ go-to: d606_c
 @d606_c
 go-to: todo
 
-# You are terrified of death. Otherwise, you might have already died.
+You are terrified of death, of course. Otherwise, you might have already died.
 
 
 @d77
@@ -443,9 +445,9 @@ go-to: todo
 
 # outcome: suppressed
 
-# TODO: em's response?
+@d19_c
 
-# You knew that the past was a more enlightened time.
+You knew that the past was a more enlightened time, of course.
 
 
 @d31
@@ -484,8 +486,6 @@ set-jump: d1001_
 
 @d1001_
 go-to: d1001_c
-
-# TODO: view-if only when some liana diaries are seen (providing the key).
 
 `BSRI DNA Diaries Project - #1`
 
@@ -773,7 +773,6 @@ go-to: todo if w_seen > 1; w_intro if w_seen <= 1
 `Sint-Truiden (Dutch pronunciation: [sɪnˈtrœydə(n)]; French: Saint-Trond [sɛ̃ tʁɔ̃]; Limburgish: Sintruin [sɪnˈtʀœyn]) is a city and municipality located in the province of Limburg, Flemish Region, Belgium, near the towns of Hasselt and Tongeren. The municipality includes the former communes (now deelgemeenten) of Aalst, Brustem, Duras, Engelmanshoven, Gelinden, Gorsem, Groot-Gelmen, Halmaal, Kerkom-bij-Sint-Truiden, Melveren, Metsteren, Ordingen, Runkelen, Velm, Wilderen, and Zepperen.`
 
 
-# TODO: wiki-scene about trans stuff?
 
 @w17
 title: `W17.fastq.gz`
@@ -849,7 +848,7 @@ go-to: w23_c if w_seen > 1; w_intro if w_seen <= 1
 @w23_c
 go-to: todo
 
-You are reminded of the posthumans residing in space. Are they still watching over you?
+You are reminded of the posthumans residing in space, on Mars, perhaps in places such as this. Are they still watching over the baselines?
 
 
 @w37
@@ -873,6 +872,8 @@ go-to: w37_c if w_seen > 1; w_intro if w_seen <= 1
 
 @w37_c
 go-to: todo
+
+This is another geographic locale from an impossibly distant time and place.
 
 
 @w59
@@ -916,11 +917,12 @@ go-to: w67_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/2016_Recopa_Sudamericana`
 
-`The 2016 Recopa Sudamericana (Portuguese: Recopa Sul-Americana 2016) was the 24th edition of the Recopa Sudamericana, the football competition organized by CONMEBOL between the winners of the previous season's two major South American club tournaments, the Copa Libertadores and the Copa Sudamericana. ` 
+`The 2016 Recopa Sudamericana (Portuguese: Recopa Sul-Americana 2016) was the 24th edition of the Recopa Sudamericana, the football competition organized by CONMEBOL between the winners of the previous season's two major South American club tournaments, the Copa Libertadores and the Copa Sudamericana.` 
 
 @w67_c
 go-to: todo
 
+This seemed to have been an event in the distant past. It is unclear what this event involved.
 
 
 
@@ -1114,7 +1116,7 @@ go-to: x1021_c
 
 Some called it World War 3. Others called it World War 4, because the Sino-American war was already World War 3. I was, as you obviously know, a posthuman, so my side in the war was clear, despite my misgivings about some of the factions on our side. It was a fratricidal, even omnicidal war at times. Our spokespersons said that we were fighting for liberation and bodily autonomy. The baseline leaders claimed to be fighting for the preservation of humanity.
 
-One tidbit you will not find in your baseline histories is how trans people were treated in the war. The conflation of "transgender" or "transsexual" with "transhuman" made all trans people in baseline territories into enemies. There were purges and camps and killings, more so than usual. Even those who sympathized with the baseline cause ended up on the posthuman side.
+One tidbit you will not find in your baseline histories is how trans people were treated in the war. The conflation of "transgender" or "transsexual" with "transhuman" made all trans people in baseline territories into enemies. There were purges and imprisonments and killings, more so than usual. Even those who sympathized with the baseline cause ended up on the posthuman side.
 
 My greatest regret was how I could not prevent my son from joining the war. He was a nanoplague designer for the Analysts. Perhaps those words mean nothing to you? He was responsible for the deaths of millions.
 
@@ -1125,7 +1127,7 @@ And what about you, I wonder, presumed baseline? Did trans-ness reemerge? Are th
 @x1021_c
 go-to: todo
 
-You have no idea what to feel about this. All respectable historians would discount the connections between the pre-war "transsexuals" and the modern "neogens".
+You have no idea what to feel about this. All respectable historians would discount the connections between the pre-war "transsexuals" and the modern "neogens". No one saw the transsexuals as women, and they did not claim to be so, as go the respectable histories.
 
 @x1029
 title: `X1029.fastq.gz`
@@ -1145,9 +1147,9 @@ set-jump: x1029_
 # Liana 6
 @x1029_
 
-`You might be more familiar with intra-baseline politics of the war, but the posthumans were hardly unified either. The Analysts were our largest faction. Naturally, they believed that any future society must be rationally organized, and that the posthumans had the computational apparatus necessary to implement the best possible society for the baselines. All who disagreed with them, me included, were part of the very loosely defined Coalition. You see, there was no place for something as messy as trans existence in the Analysts' rationally organized society, and I had some fading irrational attachment to my mortal ideals.
+`You might be more familiar with intra-baseline politics of the war, but the posthumans were hardly unified either. The Analysts were our largest faction. Naturally, they believed that any future society must be rationally organized, and that the posthumans had the computational apparatus necessary to implement the best possible society for the baselines. All who disagreed with them, me included, were part of the very loosely defined Coalition. You see, there was no place for something as messy as transsexuality in the Analysts' rationally organized society, and I had some fading irrational attachment to my mortal ideals.
 
-The trouble was that my son was a supporter of the Analysts. He rose to their leadership on the basis of his nanoplague designs. The Analysts and the Coalition did not directly fight yet, but the Analysts took the lead on committing atrocities to cow the baseline populace. They had a whole litany of justifications, including that by making the neohumans to be the baselines' perpetual villain, a more stable society would develop in the aftermath, one free from wars amongst each other.
+The trouble was that my son was a supporter of the Analysts. He rose to their leadership on the basis of his nanoplague designs. The Analysts and the Coalition had not directly engaged in strife, but the Analysts took the lead on committing atrocities to cow the baseline populace. They had a whole litany of justifications, including that by making the neohumans to be the baselines' perpetual villain, a more stable society would develop in the aftermath, one free from wars amongst each other.
 
  I killed him, of course. It was done with a nanoplague specifically keyed to his genome - his favorite weapon. The rest of the Analysts quickly became pliant, after updating their game-theoretic model of my behavior. Afterwards, we signed the Treaty stipulating non-interference in baseline affairs (although one might consider this document a form of interference, I know that the Analysts have placed their own data caches in your city).
 
@@ -1227,7 +1229,7 @@ choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
 frequency: 100
-on-arrival: {! Q.prev_data.push('s303'); Q.correct_data_types.push('science'); Q.s_seen += 1; !}
+on-arrival: {! Q.prev_data.push('s303'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key_303 = 1; !}
 go-to: decode
 set-jump: s303_
 
@@ -1243,6 +1245,8 @@ go-to: s303_c
 @s303_c
 go-to: todo
 
+You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
+
 @s404
 title: `S404.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vitro*`
@@ -1251,7 +1255,7 @@ choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
 frequency: 100
-on-arrival: {! Q.prev_data.push('s404'); Q.correct_data_types.push('science'); Q.s_seen += 1; !}
+on-arrival: {! Q.prev_data.push('s404'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key_404 = 1; !}
 go-to: decode
 set-jump: s404_
 
@@ -1267,8 +1271,34 @@ go-to: s404_c
 @s404_c
 go-to: todo
 
+You have learned how to implement the decoding method described in this paper. This allows you to view datasets created using this system.
 
-# TODO: add another science doc - use the storage times document
+
+@s505
+title: `S505.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+tags: data, science, archives, e_coli
+choose-if: key101 = 1
+max-visits: 1
+count-visits-max: 1
+frequency: 100
+on-arrival: {! Q.prev_data.push('s505'); Q.correct_data_types.push('science'); Q.s_seen += 1; !}
+go-to: decode
+set-jump: s505_
+
+@s505_
+go-to: s505_c
+
+`DOI: 10.1002/smtd.202001094`
+
+`An Empirical Comparison of Preservation Methods for Synthetic DNA Data Storage`
+
+`Abstract: Synthetic DNA has recently risen as a viable alternative for long-term digital data storage. To ensure that information is safely recovered after storage, it is essential to appropriately preserve the physical DNA molecules encoding the data. While preservation of biological DNA has been studied previously, synthetic DNA differs in that it is typically much shorter in length, it has different sequence profiles with fewer, if any, repeats (or homopolymers), and it has different contaminants. In this paper, nine different methods used to preserve data files encoded in synthetic DNA are evaluated by accelerated aging of nearly 29 000 DNA sequences. In addition to a molecular count comparison, the DNA is also sequenced and analyzed after aging. These findings show that errors and erasures are stochastic and show no practical distribution difference between preservation methods. Finally, the physical density of these methods is compared and a stability versus density trade-offs discussion provided.`
+
+
+@s505_c
+
+This paper describes how long DNA storage methods might last. This sequence was likely first synthesized at least 470 years ago (unless the False Century school is true), so its preservation was a success.
 
 
 
@@ -1364,7 +1394,7 @@ go-to: f102_c
 @f102_c
 go-to: todo if f_seen > 1; f_background if f_seen <= 1
 
-The names continue for a few hundred lines. This is potentially very interesting data for specialists; a wealth of demographic data can be gleaned from statistical analysis on just this small subset of names.
+The names continue for a few hundred lines. This is potentially very interesting data for specialists; a wealth of demographic data can be gleaned from statistical analysis on just this small subset of names, but that is beyond the scope of your work.
 
 
 @f202
@@ -1468,8 +1498,6 @@ go-to: f_background if f_seen <= 1; f404_c if f_seen > 1
 go-to: todo
 
 
-# TODO: more 1st century notes: a few years later, an administrator writes about the equivalent of a cataclysm. Thinks the eunuchs cursed them.
-
 @f505
 title: `F505.fastq.gz`
 subtitle: `Source: Archives. Medium: *in vitro*`
@@ -1512,9 +1540,11 @@ set-jump: f606_
 @f606_
 go-to: f606_c
 
-`By decree of the high administrators:
+`105 AT
 
-All electronic information storage media save DNA storage are hereby prohibited. For too long, the anti-human absolutionists have spread their poison over the wires, 
+By decree of the High Administrators:
+
+All electronic information storage media save DNA storage are hereby prohibited. For too long, the anti-human absolutionists have spread their poison over the wires, \[UNKNOWN CHARACTER SEQUENCE\]
 
 The only true medium of long-term information storage is DNA, the sacred molecule at the root of humanity. As the molecule preserves the shared biological origin of humanity, so too will it preserve our knowledge.
 
@@ -1542,13 +1572,18 @@ set-jump: f707_
 @f707_
 go-to: todo
 
-# TODO: a description of the ritual
+`We have many rituals with which we celebrate our ancestors. The most sacred is the Sacrifice, representing how our Ancestor sacrificed Her son to save baseline humans from the tyranny of the Analysts. First, a willing participant enters the temple, and is cleansed and anesthesized.`
 
-`We have many rituals with which we celebrate our ancestors. The most sacred is the Sacrifice, representing how our Ancestor sacrificed Her son to save the baseline humans`
+`[WARNING: IMAGE UNABLE TO BE RECOVERED]`
+
+`Man becomes woman, and flesh becomes one with the Ancestors.`
+
+`- Priestess Stella Smith, 97 AT`
 
 
 ###################################### Historical - 2nd/3rd Century
 
+# TODO: more 1st century notes: a few years later, an administrator writes about the equivalent of a cataclysm. Thinks the eunuchs cursed them.
 
 # Well, if accurate, this document has put a nail in the claims of the False Century Hypothesis. The FHC claims that the period between 147 and 255 AT did not exist, and that the year change was imposed by the Imperial Era to create an auspicious numerological pattern.
 
@@ -1684,6 +1719,10 @@ go-to: todo
  Me: Another interesting turn of phrase.
 
  Leon: Fuck. Off. The revolution is over. We can either live to fight another day, or we can die like the rest of them. I know you're one of the more pragmatic ones here, not like the fanatics. We have to go underground. Hide. Do anything but keep on going like this. The undercity's a big place.
+ 
+ Me: Do you think someone who looks like me can live openly ever again?
+ 
+ Leon: That's the point of the historicide, isn't it?
 
  Me: I'm not a deserter. Maybe we can bring it to a vote-`
 
@@ -1709,7 +1748,7 @@ set-jump: r1009_
 on-arrival: esme_seen += 1
 go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
-`Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the persisterhood or the nonbinaries, but all of us, every human being in this ark. We do not have to be this way. We can unite. I find myself as comrades with those I had passed by on the street, as I held my head down in fear of discovery. And I finally see them for the first time, as they see me, and we look into each others' eyes.`
+`Love is the most powerful weapon in the revolutionist's arsenal. The reactionaries work to isolate us, so that each of us is an island onto herself. Not just the persisterhood or the nonbinaries, but all of us, every human being in this ark. We do not have to be divided. I find myself as comrades with those I had passed by on the street, as I held my head down in fear of discovery. And I finally see them for the first time, as they see me, and we look into each others' eyes without fear, but with love and solidarity.`
 
 `For the first time in our history, our guns are pointed in unison towards the real enemy, rather than at each other. For the first time in history, we can stand up without fear, with the force of love for each other propelling us forward to victory.`
 
@@ -1733,11 +1772,9 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 `More of us are dying everyday.`
 
-`I used to have no fear of death, because I had nothing to live for, but now, in a cruel irony, I do. I have friends in this regiment, and lovers. I have people who would care if die, whom I would care if they died. What cruel irony that just as I found a will to live, my existence is in more danger than ever...`
+`I used to have no fear of death, because I had nothing to live for, but now, in a cruel irony, I do. I have friends in this regiment, and lovers. I have people who would care if die, whom I would care if they died. What cruel irony that just as I found a will to live, my existence is in more danger than ever.`
 
-`I don't want to die. Is that too much to ask?`
-
-# I used to think of the future, often. I used to dream of becoming a writer, of telling my stories.
+`I don't want to die. Is that too much to ask? Are the Ancestors still watching over us?`
 
 `- Esme Franklin, Unity Regiment`
 
@@ -1760,7 +1797,7 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 `Here is what happened:
 
-We were hiding in a safehouse, watching a patrol of Guards. They had dragged a woman out of the neighboring apartment. They must have thought she was a neowoman, because she was tall and broad-shouldered, but maybe they were wrong. They couldn't always tell, and rarely cared. 
+We were hiding in a safehouse, watching a patrol of Guards. They had dragged a woman out of the neighbouring apartment. They must have thought she was a neowoman, because she was tall and broad-shouldered, but maybe they were wrong. They couldn't always tell, and rarely cared. 
 
 She was crying, struggling, trying to pull away, but there were too many of them. They were trying to pull down her pants, and they laughed as they did so. Something in me broke right then.
 
@@ -1792,7 +1829,9 @@ go-to: rev_1 if r_seen = 1; r4000_c if r_seen > 1
 
 `It is obvious that the revolution is over. However, there is one more action we must take to ensure that not all of us will be lost.
 
- The Archives store the records of every name change and sex change, every birth and death and marriage certificate in the city, all on flimsy sheets of cellulose and magnetic tape. They used these records to find us and murder us. Burning them is self-defense, same as destroying the CityNet servers.
+ The historicide, they call it. A cruel joke. By destroying all records that we ever existed, it is hoped that some of us will survive the upcoming conflagration. Sacrificing the future to preserve some vestige of our present.
+
+ The Archives store the records of every name change and sex change, every birth and death and marriage certificate in the city, all on flimsy sheets of cellulose and magnetic tape. They used these records to find us and murder us. Burning them is self-defense. Destroying the CityNet servers is self-defense.
 
  We have allies on the inside, and they have opened the door. A few incendiary devices is all it takes to stop an even greater massacre.
 
@@ -1851,11 +1890,11 @@ One thing is sure: the bourgeoisie will let civilization die before relinquishin
 
 ###
 
-# Here is a timeline of recent events that have affected our community:
+# Since our history will be destroyed, it might be useful for future historians to have a timeline of recent events that have affected our community:
 
-# At the beginning, of course, was the cataclysm. I doubt any of this would have happened were it not for its impact
+# At the beginning, of course, was the cataclysm. I doubt any of this would have happened were it not for its impact. However, the seeds for persecution were laid long before, perhaps even from the dawn of human history. But here is where the recent history starts:
 
-# 1 AC: "NeoCrimes" column on citynet begins broadcasting. This becomes one of the most popular columns on CityNet.
+# 4 BC (before the cataclysm - I have no idea if this calendar will come into use but it should): "NeoCrimes" column on CityNet begins broadcasting, referencing. This becomes one of the most popular columns on CityNet.
 
 # - Ruling party passes bill to ban neowomen from athletics, owing to "unfairness", provoked by an example of a neofemale weightlifter achieving a historical competitive record among women weighing between the ages of 36 and 46 weighing between 55 and 75 kilograms who were born in the West Side. Only ten known athletes were affected by the policy due to the preexisting underrepresentation of neowomen in sports, so it was largely ignored by the community.
 
@@ -1956,13 +1995,13 @@ set-jump: c123_
 @c123_
 go-to: c123_c
 
-`@bellaxo: Here. Look at this. "Doctor describes recruiting tactics of the neogenic cult." "Doctor claims to have been mislead into belief that neogender is possible." "Acclaimed doctor describes his escape from neogenic cult." What the fuck. @ArchivistEm you said he was fine.
+`@bellaxo: Here. Look at this. "Doctor describes recruiting tactics of the neogenic cult." "Doctor claims to have been mislead into belief that neogender is possible." "Acclaimed doctor describes his escape from neogenic cult." What the fuck. @archivistem you said he was fine.
 
- @ArchivistEm: Can we please talk about anything else?
+ @archivistem: What's the point of talking about this anymore? Can we just stop it?
 
- @neobb: @ArchivistEm why the fuck are you still defending someone who's throwing our bodies into the fucking plastic mills
+ @neobb: @archivistem why the fuck are you still defending someone who's throwing our bodies into the fucking plastic mills
  
- @bellaxo: @ArchivistEm No, this matters. How can anyone still trust you, when you've been sharing information with a reactionary infiltrator this whole time?
+ @bellaxo: @archivistem No, this matters. How can anyone still trust you, when you've been sharing information with a reactionary infiltrator this whole time?
  
  @scientistcat: that's not what A- fucking said. stop reading the headlines.
  
@@ -1998,19 +2037,19 @@ set-jump: c124_
 go-to: todo
 
 `
- @Luxemburgist: If the revolution fails, it would be because it did not have a proletarian character. It's just like Marx discussed in the 12th Brumaire.
+ @luxemburgist: If the revolution fails, it would be because it did not have a purely proletarian character. It's just like Marx discussed in the 12th Brumaire.
 
- @ZhouEnlai: Of course.
+ @zhouenlai: Of course, it's like how the Opposition Party collapsed because of its embrace of free-market ideology. Everything is ruined by the presence bourgeoisie.
 
- @Luxemburgist: What the fuck would the pre-war philosophers have thought about the "persisterhood"?
+ @luxemburgist: What the fuck would the pre-war philosophers have thought about the "persisterhood"?
 
  @bellaxo: Perhaps they would have classified us among the lumpen?
 
- @Luxemburgist: No, that makes no sense. We're not an economic class. We don't have a unified relationship to the means of production.
+ @luxemburgist: No, that makes no sense. We're not an economic class, despite many of us being pushed from the formal labour sector. We don't have a unified relationship to the means of production.
 
- @bellaxo: True, although there are allusions to some unrecovered works that discuss non-economic labour.
+ @bellaxo: True, although there are allusions to some unrecovered works by the philosophers that discuss non-economic and reproductive/sexual labour.
 
- @JuneInMay: none of us know what we're talking about what are we even doing here
+ @juneinmay: none of us know what we're talking about what are we even doing here
 `
 
 
@@ -2039,7 +2078,7 @@ go-to: c126_c
 
  @yxxuajj: the pre-war trannies weren't women, everyone saw them as men with gender identity disorder.
 
- @lianalover69: But how did they see themselves?
+ @lianalover69: But how did they see themselves? Does anyone even fucking know? Did they write that shit in DNA?
 
  @bellaxo: Liana Xu is an emblem of the dictatorship of the bourgeoisie. We don't want her.
 
@@ -2082,13 +2121,13 @@ go-to: todo
 
  @LilianO: I'm 40 and I'm the third oldest technician here. I have, what, 10 years of functional health remaining, with the nanoplague and all. And now they're fucking telling me to desist or get fired.
  
-  @LilianO: Now my boss is telling me women are uncomfortable with me in their washrooms, even though I've been using the women's room for 10 years. Coworkers and cousins I used to be friends with are telling me to stay away from their children. I feel like I'm going mad.
+  @LilianO: Now my boss is telling me women are uncomfortable with me in their washrooms, even though I've been using the women's room for 10 years. Coworkers and cousins I used to be friends with are telling me to stay away from their children. What the fuck is even happening here?
   
  @LilianO: Needless to say, this will not fix our infrastructure.
 
  @zhouenlai: What the fuck are we supposed to do about it?
 
- @LilianO: A proletarian revolution, of course. Nothing can stop working-class solidarity. The hard part is building up that solidarity.`
+ @LilianO: A proletarian revolution, of course. Nothing can stop working-class solidarity. The hard part is building up that solidarity in the first place.`
  
 ###
 
@@ -2141,10 +2180,11 @@ set-jump: c131_
 
 @c131_
 go-to: todo
- 
-`@xxxneogenxxx: The neowoman is a creature unmoored from all history and tradition. She is an anomalous existence.
 
- @xxxneogenxxx: The idea that 
+ 
+`@xxxneogenxxx: The neogen is a creature unmoored from all history and tradition. They are an anomalous existence never foreseen by the Ancestors.
+
+ @xxxneogenxxx: The idea that you can change your sex on your own volition is unprecedented. There is no historical precedent for this.
 
  @es-em-ef: are you saying it's a good thing or bad thing?
 

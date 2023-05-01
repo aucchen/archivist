@@ -12,8 +12,6 @@ set-bg: images/room1_filtered_dithered.png
 
 K- has arrived at your apartment. The $100 has been transferred to your account.
 
-# TODO: there are circumstances in which it's not k's first time being here?
-
 "Wow. This is my first time being here," says K-.
 
 "Oh. Sorry it's such a mess."
@@ -84,13 +82,13 @@ Once S- is ready, the two of them leave. You are only left alone for approximate
 
 "Oh. That's fine. Just fine I guess."
 
-K- and S- leave.
+K- and S- leave. You are left alone, as usual.
 
 
 @k_3_meet
 new-page: true
 
-You do not remember when you gave K- the keys to your apartment, but it was well prior to this encounter. The two of you had set a heartbeat system during your first nanoplague scare, in which if you did not send a message to her for three days, she would go to your apartment and check if you were still alive. That was four years ago.
+You do not remember when you gave K- the keys to your apartment, but it was well prior to this encounter. The two of you had set a heartbeat system during your first nanoplague scare, in which if you did not send a message to her for three days, she would go to your apartment and check if you were still alive. That was four years ago. The system was never used.
 
 - @enters_room: She enters your room without knocking.
 
@@ -249,20 +247,21 @@ go-to: end_a_talk_doc
 
 "There were some historical documents from the first century..."
 
-"Oh..."
+"Oh. That's nice, I suppose..."
 
 @talk_r
 title: "Documents from the uprising..."
 view-if: r_seen > 0
 on-arrival: k_talk_r = 1
 go-to: end_a_talk_doc
-# TODO: talk about dataset groups 
 
 "There were documents from the uprising..."
 
 "Oh? I didn't know they had DNA writers."
 
 "They did..."
+
+"Oh. That's nice, I suppose..."
 
 
 @end_a_talk_doc
@@ -643,7 +642,6 @@ on-arrival: k_romance += 1; stress -= 1
 
 You are pressed against the wall, facing her, as she is facing away from you. You cannot help but touch her.
 
-# TODO: elaborate on the nap
 It is difficult to fall asleep, as usual. Instead, you simply rest, lie on the bed quietly as K- falls asleep, and close your eyes.
 
 - @nap_get_up: ...
@@ -732,13 +730,17 @@ It is cramped. The water is cool. K- is warm. You are back-to-back, her pressed 
 
 "Hey, I haven't seen your vagina before," she says, turning around and leaning down. "It looks nice."
 
-Your surgery was in the weeks prior to the uprising; it is quite likely that yours was the final non-clandestine bottom surgery in the city. Your surgeon, the last one remaining at that time, was executed a week hence. He was a pervert, of course, but not the kind of pervert the fascists accused him of. He styled himself an artist. In his notes he praised your emaciated figure as a "waifish androgynous specimen", waxing poetic on the things he would do to your body. The other persisters hated him for his bias against fat women, so some saw his death as a perverse cosmic justice.
+- @surgery: Your surgery was in the weeks prior to the uprising.
+
+@surgery
+
+Your surgery was in the weeks prior to the uprising; it is quite likely that yours was the final non-clandestine bottom surgery in the city. Your surgeon, the last one remaining at that time, was executed a week hence. He was a pervert, of course, but not the kind of pervert the fascists accused him of. He styled himself an artist whose medium was the neovagina. In his notes he praised your emaciated figure as a "waifish androgynous specimen", waxing poetic on the things he would do to your body. The other persisters hated him for his bias against fat women, so some saw his death as a perverse cosmic justice.
 
 Fortunately, you did not need revisions.
 
 "Hey, I was just wondering," says K- over the sound of water. "Do you wash inside your vagina? You're not supposed to but I'm not sure if in your case it's..."
 
-The two of you separated prior to your surgery, so this is her first encounter with your...
+
 
 # does em clean her vagina? Or is it better for the microbiotic environment if she doesn't?
 # hmm... (goes on wild research tangent about neovagina cleaning and whether some are self-cleaning and it turns out the evidence and anecdata are mixed (bc in trans studies anecdata is basically as good as the average scientific study due to small n and samples of convenience not to mention often researcher bias))
@@ -751,7 +753,7 @@ on-arrival: k_romance += 1; k_told_about_vagina = 1
 
 "Well, it's complicated. Um, there are mixed reports on whether neovaginas can be self-cleaning or self-lubricating and on how the microbiome of the neovagina compares to a natal one. It depends on the surgical technique and a host of factors. Most of us use cleaning solutions but, um, personally I don't. I like microbes. So I just let them grow naturally. Maybe there's a dataset down there."
 
-K- begins to laugh. "My God. No wonder you never bathe. It must be like burning down the Library of Alexandria every time you shower." Then she starts to cough up water. "God, I'm choking!"
+K- begins to laugh. "My God. No wonder you never bathe. It must be like a fucking historicide every time you shower." Then she starts to cough up water. "God, I'm choking!"
 
 "I'm sorry. Do you need help?"
 
@@ -771,7 +773,7 @@ She is wheezing, and pounding on the door awfully hard.
 
 "Because of the microbiome."
 
-K- laughs. "My God, it must be like burning down the Library of Alexandria every time you shower."
+K- laughs. "My God, it must be like the fucking historicide every time you shower."
 
 - @turn_off: Turn off the shower.
 #- @face_shower: Turn around and face her.
@@ -782,18 +784,16 @@ go-to: end_shower
 
 You turn off the water.
 
-"Hey, I was still using that."
+"Hey, I was still using that," K- says.
 
 "Sorry. The allocation was almost used up."
 
-# TODO: end of shower
 
 @face_shower
 go-to: end_shower
 
 You turn around to face K-.
 
-# TODO: end of shower
 
 @end_shower
 
@@ -815,7 +815,7 @@ K- dresses in her underwear and enters the bed.
 
 "Yeah, it's fine..."
 
-"Ha. It's just like back at the university."
+"Ha. It's like we're back in our BC times."
 
 - @nap_face_her
 - @nap_facing_away
@@ -874,9 +874,7 @@ go-to: dilated_2 if k_showered = 1 and k_knows_a_loved = 0; dilated_no_shower if
 
 @dilated_no_shower_2
 
-# TODO: elaborate
-
-So you take a brief shower, and meet back on the bed.
+So you take a brief shower, and meet back on the bed. You try to avoid taking too much notice of your physiological state.
 
 K- sighs. "You know I haven't done it since we separated, right?"
 

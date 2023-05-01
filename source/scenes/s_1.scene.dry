@@ -5,7 +5,9 @@ set-bg: images/room1_filtered_dithered.png
 
 # herein you take care of S-.
 
-You are home again, and it is the first time someone besides yourself has visited in over a year. That time was inspection.
+# TODO: is this really the first time
+
+You are home again[? if a_loved < 1 :, and it is the first time someone besides yourself has visited in over a year. That time was a property inspection ?].
 
 "Sorry this is so messy..."
 
@@ -246,7 +248,7 @@ on-arrival: s1_knows_cook_rice = 1
 
 "Gross. That's all they give us at school. It makes me want to throw up."
 
-"Yeah. It is gross. That's all they had at the children's center."
+"Yeah. It is gross. That's all they had at the children's centre."
 
 "Sorry. That sucks."
 
@@ -399,8 +401,6 @@ go-to: he_hugs_you
 Suddenly, you feel a warmth around you. Physical contact. Oh. He's hugging you.
 
 You feel paper on your face, wiping away your tears. You do not deserve this.
-
-# TODO: elaborate this part?
 
 - @done_rice: Anyway, the rice is done.
 
@@ -594,8 +594,6 @@ go-to: hug_2
 @hug_2
 
 "Oh. Okay."
-
-# TODO: elaborate this part?
 
 He hugs you back, smothering you with his arms. You stay like this for a while, until you separate for S- to brush his teeth.
 

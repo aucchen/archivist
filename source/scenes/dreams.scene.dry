@@ -10,19 +10,29 @@ You lie in the bed, unsure if you are asleep or awake.
 
 # TODO: have a variety of dreams that are unlocked in various special circumstances.
 
+############################# dream no medicine.
+
+@dream_no_med
+title: You have no dreams.
+frequency: 1000
+tags: dream
+
+Your sleep is devoid of dreams. [? if has_medicine = 0 : Vivid dreams are a side effect of one of your medications; without it, you dream of nothing. ?]
+
+
 ############################# dream k
 
 @dream_k_1
 title: Dream of K- and A-.
-view-if: k_path >= 1 and a_path >= 1 and dream_k_a_viewed = 0
+view-if: k_path >= 1 and a_path >= 1 and dream_k_a_viewed = 0 and has_medicine > 0
 on-arrival: dream_k_a_viewed += 1
 tags: dream
 
 You dream of K-, and A-. It is a memory, distorted by entropy.
 
-"Do you love me?", A- muttered softly, not to you but to the woman on the other side of you. This was ten years ago when you all lived together in the EKA Residence Cube (K-'s neologism).
+"Do you love me?", A- muttered softly, not to you but to the woman on the other side of you. This was ten years ago, when you all resided in the EKA Residence Cube (K-'s neologism).
 
-You were in the center of the couch, with A- and K- on either side. Your arms and bodies intertwined, K- and A- holding hands behind the back of your neck. K- played with your hair, and A- held your hand. At this time, the three of you were in what was typically called a "polycule". You were in love with each other, or something like that. You had a future, or something like that.
+You were in the centre of the couch, with A- and K- on either side. Your arms and bodies were intertwined, K- and A- holding hands behind the back of your neck. K- played with your hair, and A- held your hand. At this time, the three of you were in what was typically called a "polycule". You were in love with each other, or something like that. You had a future, or something like that.
 
 "That's an asinine question," K- said in her monotone voice. "Love is an illusion. The only purpose of love is the mutually beneficial exchange of resources."
 
@@ -74,7 +84,13 @@ You were silent.
 
 @dream_k_world
 
-Just then, the emergency sirens started to ring. A harsh, shrieking ringing penetrated the walls of your apartment. It was the day of the Cataclysm, and everything hereafter would change.
+Just then, the emergency sirens started to ring. A harsh shrieking penetrated the walls of your apartment. It was the day of the Cataclysm, and everything hereafter would change.
+
+- @dream_k_time_dilates: Time dilates...
+
+@dream_k_time_dilates
+
+Time dilates. The dream, or memory, accelerates. You put on your respirators, following the procedure every Arcology resident practice but never expected to implement. You gathered at the meeting points, made your way down to the undercity for the first and last time, lived in tents, watched others succumb to the nanoplagues, watched the confusion and cataclysm and strife and the search for scapegoats turn to *people like you*, whatever that means...
 
 - @dream_k_end: Is this what happened?
 
@@ -105,7 +121,7 @@ It doesn't matter, either way.
 @dream_uprising
 title: Dream of the uprising.
 subtitle: [? if enable_cw : CW: violence, transphobia ?]
-view-if: dream_rev_viewed = 0 and (r_seen > 0 or mutual_aid_seen > 0)
+view-if: dream_rev_viewed = 0 and (r_seen > 0 or mutual_aid_seen > 0) and has_medicine > 0
 on-arrival: dream_rev_viewed += 1
 tags: dream
 go-to: dream_rev
@@ -125,7 +141,7 @@ Life continued, as usual. Despite everything, despite the war raging on the grou
 @you_were_fine
 go-to: surgical_revision
 
-You were fine here. Nothing was wrong. They would not find you here. Contrary to your former comrades, you always hid your identity. None of your neighbors even knew your name.
+You were fine here. Nothing was wrong. They would not find you here. Contrary to your former comrades, you always hid your identity. None of your neighbours even knew your name.
 
 @but_heard
 go-to: surgical_revision
@@ -202,7 +218,7 @@ go-to: clock_urine_2
 
 "That's fucking ridiculous."
 
-"I read that even after surgery, the position of the urethra is slightly different, so they'll be able to tell from the sounds in the toilet bowl. I'm in a hostile neighborhood. They all watch that show where they explain how to know when there's a pervert nearby."
+"I read that even after surgery, the position of the urethra is slightly different, so they'll be able to tell from the sounds in the toilet bowl. I'm in a hostile neighbourhood. They all watch that show where they explain how to know when there's a pervert nearby."
 
 An audible sigh. "Look, do you need help? I can come over and help you. If all else fails, can you call A-?"
 
@@ -291,13 +307,13 @@ It doesn't matter.
 
 @dream_l
 title: Dream of an unknown past.
-view-if: l_seen > 1 and l_dream = 0
+view-if: l_seen > 1 and l_dream = 0 and has_medicine > 0
 on-arrival: l_dream += 1
 tags: dream
 
 # TODO
 
-You were living in a faraway land, in a far away time. Instead of the metal ceiling or even the translucent dome, there was a hazy unencumbered sky. Instead of the macroalgal trees there were genuine *Plantae*, photosynthesizing under a non-simulated sun.
+You were living in a faraway land, in a far away time. Instead of the metal ceiling or even the translucent dome, there was a hazy unencumbered sky. Instead of the macroalgal trees there were genuine organisms of the phylum *Plantae*, photosynthesizing under a non-simulated sun.
 
 You were surrounded by a forest of apartment towers, each one like its companions. You were on the rooftop of one of them, sitting with your friend (lover?), a boy (like you? What were you?).
 
@@ -307,12 +323,21 @@ You were surrounded by a forest of apartment towers, each one like its companion
 
 @you_laugh
 
-You laughed. Your companion smiled.
+You laughed. Your companion smiled. He held you by the waist. "Do you think I could go, too?" they asked. "Of course!" you replied.
+
+- @dream_l_end: The dream fades away.
+
+@dream_l_end
+new-page: true
+
+The dream fades away, the images disappearing from your mind. When you wake, all that is left is an empty memory.
 
 
 ############################################# dream k only (marriage and s-)
 
 @dream_k2
+
+Won't implement
 
 
 ############################################# dream a only (first meeting)
@@ -320,7 +345,7 @@ You laughed. Your companion smiled.
 @dream_a_1
 title: Dream of meeting A- for the first time.
 subtitle: [? if enable_cw : CW: self-harm, transphobia, sexual content ?]
-view-if: a_path >= 0 and dream_a_viewed = 0
+view-if: a_path >= 0 and dream_a_viewed = 0 and has_medicine > 0
 on-arrival: dream_a_viewed += 1
 tags: dream
 
@@ -398,7 +423,7 @@ Her eyes caught yours as you exited the office.
 
 "Are you a new inductee into the neogenic persisterhood?" She had stopped, and she was talking to you.
 
-She was tall. She was beautiful. She was radiant, surrounded by a halo of light, the diffuse glow of the dome glinting off her bleached golden curls. She was *smiling* at you, seemingly genuine. You wanted to distrust this stranger, but...
+She was tall. She was beautiful. She was radiant, surrounded by a halo of light, the diffuse glow of the dome glinting off her curls. She was *smiling* at you, seemingly genuine. You wanted to distrust this stranger, but...
 
 - @dream_a_maybe: "Maybe..."
 - @dream_a_idk: "I don't know..."
@@ -477,7 +502,7 @@ You nodded, because that was all you could do. "Yeah, I'll... ask for help. If I
 
 @dream_a_1_wake_up
 
-And you did. You lived with her after getting expelled. For whatever reason, she became attached to you, and at some point the two of you seemlessly transitioned from a hand-holding friendship into dating. She was your first girlfriend. And somehow, she stayed with you even as she entered medical school, as one of the earliest neowomen to study medicine. Then K- encountered you, and then there were three, and then...
+And you did. Here is where time dilates, and your memories accelerate. You lived with her after getting expelled. For whatever reason, she became attached to you, and at some point the two of you seemlessly transitioned from a hand-holding friendship into dating. She was your first girlfriend. And somehow, she stayed with you even as she entered medical school, as one of the earliest neowomen to study medicine. Then K- encountered you, and then there were three, and then...
 
 *Is this what happened?*
 

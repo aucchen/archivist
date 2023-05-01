@@ -3,7 +3,7 @@ subtitle: Ask her if there is anything you could do...
 view-if: k_path >= 4 and daily_k = 0 and day >= k_day + 2 and (day_major = 0 or day_minor = 0)
 on-arrival: daily_k = 1; k_day = day; day_minor += 1; k_path += 1; stress += 1
 max-choices: 1
-max-visits: 2
+max-visits: 3
 tags: minor
 
 You call K-, and ask if there is anything you could do to help her (and perhaps for money), such as perhaps taking care of S-. She says yes; you can visit her apartment.
@@ -58,17 +58,124 @@ Of course, you help her. For whatever reason, it is easier to clean someone else
 @sure_60
 on-arrival: money += 60
 
-"Thank you."
+"Thank you," you say, as K- keys in the numbers in her mobile.
+
+"Yeah. Whatever. It's the least I could do."
 
 @keep_money
 
 "Keep the money."
 
-"Oh. Well, okay."
+"Oh. Well, okay." K- shrugs. "You need it more than I do, but whatever."
+
+
+@k_visit_you
+title: K- wants to visit you again.
+view-if: k_knows_a_affair = 0 and k_encounter > 0
+max-visits: 1
+tags: k_generic
+
+K- wants to visit you at your apartment again. S- is at school, and you are alone, as always. She stares at you, and touches you more than usual. You kiss, and hold each other for far too long.
+
+- @k_visit_encounter
+- @k_visit_no_encounter
+- @smells_like_a
+
+
+@k_visit_encounter
+title: The implications are clear...
+subtitle: [? if cw_enabled: (CW: potential sexual content) ?] 
+choose-if: a_encounter = 0
+set-bg: rgba(0,0,0,0)
+
+As K- pulls you on top of her on the narrow bed, she asks, "you haven't dilated recently, have you?"
+
+You laugh, and shake your head.
+
+- @k_encounter_2: ...
+
+@k_encounter_2
+new-page: true
+
+...
+
+- @k_encounter_3: ...
+
+@k_encounter_3
+
+Your naked bodies are entangled on the bed, arms and legs intertwined. It is warm, so much warmer than is usual in this apartment. The heat permeates through your skin, through your bones and brain.
+
+"You're still crying," she notices. "A lot."
+
+Oh. You are. "It's a normal physiological reaction. Same as always."
+
+K- sighs. "Well, I hope your physiology becomes less frightening."
+
+"Me too."
+
+- @k_encounter_4: You clothe yourselves.
+
+
+@k_encounter_4
+
+You clothe yourselves, and talk for a while about nothing in particular.
+
+"Do you need any more money?" she asks. "Whatever. Here's $50."
+
+- @k_visit_money_thanks: "Thank you..."
+- @k_visit_no_money: "I don't need it."
+
+
+
+@k_visit_no_encounter
+title: But nothing of the sort happens.
+
+All you do is talk for a while about nothing in particular, or rather K- talks to you, and then she leaves.
+
+"Do you need any more money?" she asks. "Whatever. Here's $50."
+
+- @k_visit_money_thanks: "Thank you..."
+- @k_visit_no_money: "I don't need it."
+
+@k_visit_money_thanks
+on-arrival: money += 50
+
+"Thank you..."
+
+She keys the numbers on her mobile, and you have an additional $50.
+
+@k_visit_no_money
+
+"I don't need it."
+
+"Are you sure? Well, that's too bad."
+
+
 
 @smells_like_a
-view-if: a_encounter = 1 and k_knows_a_affair = 0
+title: "You smell like A-," K- says.
+view-if: a_encounter >= 1 and k_knows_a_affair = 0
+on-arrival: k_knows_a_affair = 1
 
-"Hey. You smell like A-."
+"Hey. You smell like A-. You've been doing stuff with him, right?"
 
-TODO: if you've had an encounter with A-, she makes a comment on it.
+"It's her," you say.
+
+K- shrugs. "Whatever. I'm not jealous, but just, you know she's kind of fucked up, right? Are you sure you trust her?"
+
+- @trust_a: Of course you trust her.
+- @no_trust_a: You don't exactly trust her, but she's paying your rent.
+
+@trust_a
+
+Of course you trust her, and you tell K- as much.
+
+"Well, that's your pregorative, I guess. I don't know."
+
+@no_trust_a
+
+You don't exactly trust A-, but she is paying your rent. You tell K- as much.
+
+"Ha. 
+
+In the end, K- leaves after a while.

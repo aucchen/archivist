@@ -44,34 +44,50 @@ You play a now-banned, formerly controversial game developed during the Uprising
 [? if games_played = 1 : You wonder if you could encode this game in DNA. ?]
 
 @tv_1
+tags: tv
+view-if: tv_1_seen = 0
 on-arrival: tv_1_seen += 1
 
 Now playing is a film about a woman who disguises herself as a man to join the Guards during the Uprising. The villain is a neowoman (they would most likely not use that term) with a cartoonishly masculine body and a constantly visible bulge in the crotch, who is grooming young girls into a self-mutilation suicide cult by convincing them that they could become men. The hero rescues the poor innocent young girls from the villain (*who looks like you* you try to stop yourself from thinking).
 
+The visual effects are spectacular.
+You can't help rooting for the fascist protagonist.
+The antagonist is the real hero.
+
 @tv_2
+tags: tv
 on-arrival: tv_2_seen += 1
 
 There is a speech by a Ruling Party politician. "We are the true heirs of the American Empire... We will not repeat the decadence and so-called toleration that led to the transhumanist order, nor any absolutionist apologia for the atrocities committed in the name of transforming humanity..." You tune out.
 
 @tv_3
+tags: tv
 on-arrival: starlight_defenders_seen = 1
 
 *Starlight Defenders* is on - this is a show about a group of nanite-powered school-aged superheroes who save the city from entity attacks and terrorists. It claims to be based on a true story, set approximately ten years ago. You wonder if and how the Cataclysm will be covered here, but not enough to keep watching the program.
 
 @tv_4
+tags: tv
 view-if: starlight_defenders_seen >= 1
 
 *Starlight Defenders* is playing.
 
-@tv_4
-
-There is a program about the history of the American Empire, and its heroism in resisting the posthuman plagues. Negationist propaganda.
-
 @tv_5
+tags: tv
+title: A program about the history of the American Empire.
+
+There is a program about the history of the American Empire, and its heroism in resisting the posthuman plagues. They were on the front lines against the posthuman clone armies. This is all neo-negationist propaganda, of course.
+
+@tv_6
 
 There is a game tournament playing.
 
 @book_1
+choose-if: 1 = 0
+title: Read a book.
+unavailable-subtitle: You do not have the patience for literature anymore.
+
+You do not have the patience for literature anymore.
 
 @reminisce
 

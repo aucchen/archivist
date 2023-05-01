@@ -15,6 +15,13 @@ A- has given you another $100, which she says has no relation to whether or not 
 - @of_course: "Of course I know."
 - @before_meet: "You should have thought about this before."
 - @kiss_1: Kiss her.
+- @desist
+
+@desist
+choose-if: 1 = 0
+view-if: @data.c123 >= 1
+title: Ask about A-'s desistance.
+unavailable-subtitle: You're not ready for that conversation yet.
 
 
 @i_know
@@ -70,7 +77,7 @@ You shrug. "The resources come first. The emotions can develop later. So... yes.
 
 "Yes, it did."
 
-A- laughs. "God, if only it were so easy."
+A- laughs. "Ancestors, if only it were so easy."
 
 - @why
 
@@ -130,6 +137,8 @@ For some reason, there is a part of you that wants to laugh, because this scenar
 @dont_love
 title: "There is no such thing as love."
 view-if: dream_k_1_viewed >= 1
+
+"There is no such thing as love," you say.
 
 TODO
 
@@ -341,6 +350,12 @@ on-arrival: a_friends = 1
 
 A- rests her chin in her hands. "I don't know. Maybe I've said too much already. It's just... Okay. Forget it. Forget anything I've said today. Let's go back to before."
 
+The next few minutes are long and tense, until A- finally rises.
+
+"Sorry, I have to go home," she says.
+
+You are alone, again.
+
 # TODO: how else does this go?
 
 
@@ -434,7 +449,7 @@ The events unfold as if both of you were following scripts long unread. You kiss
 @a_encounter_2
 new-page: true
 title: ...
-set-bg: black
+set-bg: rgb(0,0,0)
 
 ...
 
@@ -499,4 +514,5 @@ on-arrival: food += 1
 
 You talk, of nothing in particular. A- has brought ingredients for a lentil curry, which she helps make with you. You had never remembered the recipe, but now you know, and it tastes good, so much better than anything you can make yourself. All the while, A- is touching you. You are touching so much.
 
+- @a_encounter: The events happen like a script.
 - @main: She leaves, with a kiss.

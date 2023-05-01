@@ -1,6 +1,7 @@
 title: Breakdown
 subtitle: It is not good.
 view-if: stress >= stress_threshold or day >= last_day
+on-arrival: ending_anxiety = 1
 frequency: 1000
 priority: 10
 tags: major, minor
