@@ -13,8 +13,10 @@ tags: minor
 view-if: (day_major = 0 or day_minor = 0) and day_entertainment = 0 and stress < stress_threshold and day < last_day and notes_seen = 0
 frequency: 200
 on-arrival: notes_seen += 1
+new-page: True
 go-to: notes_main
 
+Here is a collection of disconnected facts that comprise your knowledge of this world.
 
 
 @notes_main
@@ -143,9 +145,9 @@ It does not matter anymore. The past cannot be changed.
 
 
 @persisterhood
-title: THe Neogenic Persisterhood
+title: The Neogenic Persisterhood
 go-to: history
 
-That is, you and your people. A subtype of nonbinary humans (see also: elliotians). Women and vaguely woman-affiliated people who were put into the male box at birth (a pun, in your case). Formerly A-. Not K-. Your lot are considered by the state to be degenerates, terrorists, sexual deviants, rioters, violent criminals, perverts, etc., and have mostly been removed from visible public life.
+That is, you and your people. A subtype of nonbinary humans (see also: Elliotians). Women and vaguely woman-affiliated people who were put into the male box at birth (a pun, in your case). Formerly A-. Not K-. Your lot are considered by the state to be degenerates, terrorists, sexual deviants, rioters, violent criminals, perverts, etc., and have mostly been removed from visible public life.
 
 Other terms, all with indescribably subtle gradations of connotation: neos (considered slightly derogatory), neogens, neogenics, persisters, neowomen, neofemales/neofems, neosis, neosisters, sisters (considered awkward but affectionate), Laverneans (after a well-known pre-war figure whom historians deny as a precursor to your movement), Jennerites (after another pre-war figure, considered derogatory), transvestites (usually considered derogatory), MIW (short for "male impersonating women", considered extremely derogatory), biomale (considered very derogatory, never applied to actual GNT males).

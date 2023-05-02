@@ -120,7 +120,7 @@ It doesn't matter, either way.
 
 @dream_uprising
 title: Dream of the uprising.
-subtitle: [? if enable_cw : CW: violence, transphobia ?]
+subtitle: [? if cw_enabled = 1 : CW: violence, transphobia ?]
 view-if: dream_rev_viewed = 0 and (r_seen > 0 or mutual_aid_seen > 0) and has_medicine > 0
 on-arrival: dream_rev_viewed += 1
 tags: dream
@@ -344,7 +344,7 @@ Won't implement
 
 @dream_a_1
 title: Dream of meeting A- for the first time.
-subtitle: [? if enable_cw : CW: self-harm, transphobia, sexual content ?]
+subtitle: [? if cw_enabled = 1 : CW: self-harm, transphobia, sexual content ?]
 view-if: a_path >= 0 and dream_a_viewed = 0 and has_medicine > 0
 on-arrival: dream_a_viewed += 1
 tags: dream

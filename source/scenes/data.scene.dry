@@ -1780,7 +1780,7 @@ go-to: rev_1 if r_seen = 1; todo if r_seen > 1
 
 @r3027
 title: `R3027.fastq.gz`
-subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [if enable_cw = 1 : (CW: violence) ?]
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [? if cw_enabled = 1 : (CW: violence) ?]
 tags: data, science, wild, b_subtilis
 choose-if: key1001 = 1
 view-if: @data.r1001 > 0
@@ -1811,7 +1811,7 @@ Cygne is trying to comfort me right now. They say that writing it down will make
 
 @r4000
 title: `R4000.fastq.gz`
-subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [if enable_cw = 1 : (CW: violence) ?]
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [? if cw_enabled = 1 : (CW: violence) ?]
 tags: data, science, wild, b_subtilis
 choose-if: key1001 = 1
 view-if: @data.r1001 > 0 and esme_seen > 0
@@ -2055,7 +2055,7 @@ go-to: todo
 
 @c126
 title: `C126.fastq.gz` 
-subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [if cw_enabled = 1 : CW: slurs ?]
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [? if cw_enabled = 1 : CW: slurs ?]
 view-if: c_seen >= 1
 tags: data, wild, b_subtilis, citynet
 choose-if: key1013 = 1
