@@ -8,16 +8,16 @@ You lie in the bed, unsure if you are asleep or awake.
 
 - #dream
 
-# TODO: have a variety of dreams that are unlocked in various special circumstances.
 
-############################# dream no medicine.
+################################################ dream of nothing
 
-@dream_no_med
-title: You have no dreams.
-frequency: 1000
+@dream_nothing
+title: Dream of nothing at all.
+frequency: 500
 tags: dream
 
-Your sleep is devoid of dreams. [? if has_medicine = 0 : Vivid dreams are a side effect of one of your medications; without it, you dream of nothing. ?]
+You dream of nothing at all. [? if has_medicine = 0 : Vivid dreams are a side effect of one of your medications; without it, you rarely remember your dreams. ?][? if has_medicine > 0 : ?]
+
 
 
 ############################# dream k
@@ -528,16 +528,6 @@ It doesn't matter either way.
 @dream_a_end
 
 The Psychologist is alive. Based on actuarial statistics, he has outlived or will outlive every single neowoman who went through his program. He will outlive you.
-
-
-################################################ dream of nothing
-
-@dream_nothing
-title: Dream of nothing at all.
-frequency: 500
-tags: dream
-
-You dream of nothing at all.
 
 
 

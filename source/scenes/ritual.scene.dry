@@ -2,11 +2,12 @@ title: The Ritual
 subtitle: An excursion...
 view-if: ritual_done = 0 and day >= 3 and (day_major = 0 or day_minor = 0) and day < last_day and stress < stress_threshold
 on-arrival: ritual_done = 1; day_minor += 1; stress -= 1
+set-bg: images/city_dithered.png
 frequency: 300
 tags: major
 new-page: true
 
-You read about this ritual in one of the pre-war DNA datasets, the practice of a culture so far removed from you as to be virtually alien. It was a grieving ritual, or a funerary rite, or a celebration of the ancestors. Something like that.
+You read about this ritual in one of the pre-war DNA datasets, the practice of a culture so far removed from you as to be virtually alien. It was a grieving ritual, or a funerary rite, or a celebration of the Ancestors. Something like that.
 
 The ingredients are hard to come by, so instead of joss paper you use scraps of cellulosic newsprint, and instead of incense sticks you use long matches. The joss paper is supposed to represent money to accompany the deceased into the afterlife, to pay their rent in heaven or something like that.
 

@@ -45,6 +45,7 @@ C-.`
 @view
 title: DNA data recovery
 subtitle: Your paid job. [? if prev_data_type != 0 : You have a message from the Archives about your last assignment. ?]
+unavailable-subtitle: You're too tired.
 new-page: true
 on-arrival: {! 
     Q.data_seen += 1;
@@ -52,9 +53,10 @@ on-arrival: {!
     Q.day_data_seen = 0;
     Q.data_day = Q.day;
     // max datas that can be seen per day
-    Q.max_data_day = window.randomSelectProbs([1,2,3,4], [0.2, 0.4, 0.25, 0.15]);
+    Q.max_data_day = window.randomSelectProbs([1,2,3,4,5], [0.1, 0.3, 0.3, 0.2, 0.1]);
 !}
-view-if: day_major = 0 and stress < stress_threshold and data_seen >= 1 and has_contract = 1 and day < last_day
+view-if: stress < stress_threshold and data_seen >= 1 and has_contract = 1 and day < last_day
+choose-if: day_major = 0
 go-to: archivist_check
 set-jump: view_display
 tags: major
@@ -71,8 +73,10 @@ max-choices: 6
 # choice of which dataset groups you view
 
 @view_display_2
+title: View all dataset groups.
 frequency: 1000000
 view-if: total_data_seen >= 10
+tags: archives, in_vitro, e_coli, b_subtilis, lactobacillus, wild
 
 As a valued contractor, you have the choice of which dataset groups you want to decode.
 
@@ -203,7 +207,7 @@ on-arrival: {!
 if (Q.day_data_seen == 1 && Math.random() > 0.5) {
     Q.stress += 1;
 }
-if (Q.day_data_seen >= 2 && Math.random() > 0.25) {
+if (Q.day_data_seen >= 2 && Math.random() > 0.3) {
     Q.stress += 1;
 }
 !}
