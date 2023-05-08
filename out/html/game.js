@@ -27,7 +27,6 @@
   window.saveSlot = function(slot) {
       var saveString = JSON.stringify(window.dendryUI.dendryEngine.getExportableState());
       localStorage[TITLE+'_save_' + slot] = saveString;
-      // TODO: date should include the node id.
       var scene = window.dendryUI.dendryEngine.state.sceneId;
       var date = new Date(Date.now());
       date = scene + '\n(' + date.toLocaleString(undefined, DateOptions) + ')';
@@ -282,6 +281,7 @@
   console.log("Modifying stats: see dendryUI.dendryEngine.state.qualities");
 
   window.onload = function() {
+    // set default animation settings
     window.dendryUI.loadSettings();
     if (localStorage[window.dendryUI.game.title + '_animate']) {
           window.dendryUI.animate = localStorage[window.dendryUI.game.title + '_animate'] != 'false' || false;

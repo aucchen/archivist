@@ -1,9 +1,9 @@
-title: A-
+title: A meeting with A-
 subtitle: An invitation to a meal
 tags: major
 max-visits: 1
 view-if: (day_major = 0 or day_minor = 0) and daily_a = 0 and a_path = 3 and a_loved = 1 and day >= a_day + 2 and stress < stress_threshold and day < last_day
-on-arrival: a_path = 4; daily_a = 0; day_major += 1; a_day = day; food += 2
+on-arrival: a_path = 4; daily_a = 0; day_major += 1; a_day = day; food += 3
 
 
 # TODO: A- takes you out for dinner
@@ -35,9 +35,13 @@ She stands up to sit at your side of the booth. She places one of her hands on e
 
 @practice
 
-You let her play with your hands. You are not listening, not really. You are letting your body go limp, letting A- take control. She is very close. She plays with your hands, guiding them along the food, using your hands cut a piece of steak and place it in your mouth. "Now, chew," she says.
+You let her play with your hands. You are not listening, not really. You are letting your body go limp, letting A- take control. She is very close. She plays with your hands, guiding them along the food, using the knife in your hand to cut a piece of steak and place it in your mouth.
+
+"Now, chew," she says.
 
 This is your moment of daily physical contact. It allows the release of beneficial neurotransmitters, or something like that. Theoretically, it is supposed to reduce your level of anxiety, possibly. But your heart is beating faster.
+
+If anyone is watching, they are liable to have *misconceptions* (or the correct conceptions, rather) about your relationship. But no one is watching. No one seems to care.
 
 - @beautiful
 - @help_rent
@@ -46,9 +50,11 @@ This is your moment of daily physical contact. It allows the release of benefici
 
 @all_notice
 
-All you notice is how closely she leans against you.
+All you notice is how closely she leans against you, how closely she holds you.
 
-This is your moment of daily physical contact. It allows the release of beneficial neurotransmitters, or something like that. If anyone is watching, they are liable to have *misconceptions* (or the correct conceptions, rather) about your relationship. But no one is watching. No one seems to care.
+This is your moment of daily physical contact. It allows the release of beneficial neurotransmitters, or something like that. Theoretically, it is supposed to reduce your level of anxiety, possibly. But your heart is beating faster.
+
+If anyone is watching, they are liable to have *misconceptions* (or the correct conceptions, rather) about your relationship. But no one is watching. No one seems to care.
 
 - @beautiful
 - @help_rent
@@ -59,6 +65,13 @@ This is your moment of daily physical contact. It allows the release of benefici
 
 "How did you learn all this?" you ask.
 
+A- shrugs. "Back when CityNet was still useful, they had etiquette lessons. Besides, I just watched people and learned from them. That's easy enough, isn't it? Now, chew."
+
+She has cut a piece of steak with the knife in your hand and placed it in your mouth.
+
+- @beautiful
+- @help_rent
+- @desist
 - @what_next: "What are we doing next?"
 
 @why_like
@@ -121,7 +134,7 @@ The two of you walk to A-'s apartment, located in the same district as the resta
 - @your_place_separate: Eventually, the two of you separate.
 
 @your_place_encounter
-on-arrival: day_minor += 1; a_encounter += 1
+on-arrival: day_minor += 1; a_encounter += 1; a_your_place = 1
 set-bg: rgb(0,0,0)
 
 She wraps her arms around you, kisses you, takes you into her bedroom...
@@ -182,7 +195,7 @@ As in the last encounter, the two of you end up at your apartment.
 
 
 @my_place_encounter
-on-arrival: day_minor += 1; a_encounter += 1
+on-arrival: day_minor += 1; a_encounter += 1; a_my_place = 1
 set-bg: rgb(0,0,0)
 
 She kisses you, and pulls you down onto the bed, on top of her...
@@ -229,6 +242,13 @@ You don't do much of anything. A- makes trifling complaints about her work and f
 Eventually, A- leaves. She has work to do, a family to take care of.
 
 "This was fun. We should do this more often," she says.
+
+@nutrients
+title: Think of the nutritional content of A-'s bodily fluids.
+
+"How many calories was that?" you mumble.
+
+#####
 
 
 @separate

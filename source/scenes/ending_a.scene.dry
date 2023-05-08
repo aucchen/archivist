@@ -142,10 +142,13 @@ This does not sound like such a bad life.
 - @end_r_2: End
 
 @cant_do_this
-choose-if: evicted = 0
+choose-if: evicted = 0 and stress < stress_threshold
 unavailable-subtitle: You do not have any other options.
+on-arrival: a_rejected = 1
 
 "Sorry, but, I can't do this."
+
+A pause. "Fine," she says. "If you change your mind..."
 
 
 ######################################

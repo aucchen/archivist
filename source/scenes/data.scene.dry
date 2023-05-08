@@ -1138,7 +1138,7 @@ title: `X1029.fastq.gz`
 subtitle: `Source: Wild. Medium: *in vivo - Lactobacillus colony*`
 tags: data, diaries, wild, lactobacillus
 choose-if: key1001 = 1
-view-if: @data.x1019 > 0
+view-if: @data.x1021 > 0
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
@@ -1150,6 +1150,7 @@ set-jump: x1029_
 
 # Liana 6
 @x1029_
+go-to: x1029_c
 
 `You might be more familiar with intra-baseline politics of the war, but the posthumans were hardly unified either. The Analysts were our largest faction. Naturally, they believed that any future society must be rationally organized, and that the posthumans had the computational apparatus necessary to implement the best possible society for the baselines. All who disagreed with them, me included, were part of the very loosely defined Coalition. You see, there was no place for something as messy as transsexuality in the Analysts' rationally organized society, and I had some fading irrational attachment to my mortal ideals.
 
