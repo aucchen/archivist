@@ -3,7 +3,7 @@ subtitle: A scientist. Your ex-partner.
 tags: minor
 new-page: true
 view-if: k_path = 0 and (day_minor = 0 or day_major = 0) and stress < stress_threshold and day < last_day
-choose-if: numb = 1 or rent_due = 1
+choose-if: numb = 1 or rent_due = 1 or money <= 10 or days_starved >= 1
 on-arrival: day_major += 1; daily_k = 1; stress += 1
 unavailable-subtitle: You are too self-aware to make the phone call. You must numb yourself first. 
 

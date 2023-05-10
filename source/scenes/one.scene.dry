@@ -113,6 +113,7 @@ on-arrival: {!
         "You awake feeling more tired than you felt last night.",
         "The city is a body and it is breaking down.",
         "The cold tremors wake you from your sleep.",
+        "There is a vague burning odor wafting through the air.",
     ];
     // High anxiety is more than 20
     Q.high_stress_day_dialogues = [
@@ -124,7 +125,7 @@ on-arrival: {!
     ];
     Q.day_dialogue = Q.low_anxiety_day_dialogues[0];
     Q.afternoon_dialogues = [
-        "The lights outside are dimming, their colors shifting from white to yellow and orange. The shadows darken. You are so, so tired.",
+        "The lights outside are dimming, their colours shifting from white to yellow and orange. The shadows darken. You are so, so tired.",
         "You are so, so tired.",
         "You are too tired to do anything else today.",
         "Your only desire is to lie down, but you still cannot fall asleep.",
@@ -169,7 +170,7 @@ max-visits: 1
 @listen
 max-visits: 1
 
-*The apartment was poorly soundproofed. The highway rumbled in the distance like a never-ending roll of thunder, while the trolley clanged nearby. Nearer still, there was the sound of ventilation infrastructure. Angry human voices. Pounding on the walls. Not heard were nonhuman animals; there was no need for those anymore.*
+*The apartment was poorly soundproofed. The highway rumbled in the distance like a never-ending roll of thunder, while the trolley clanged nearby. Nearer still, there were the intermittent sounds of ventilation infrastructure. Angry human voices. Pounding on the walls. Not heard were nonhuman animals; there was no need for those anymore.*
 
 - @watch: Watch.
 - @remember: Remember.

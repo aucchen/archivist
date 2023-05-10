@@ -1,9 +1,10 @@
 title: A call from A-.
-view-if: missed_rent > 0 and day_minor = 0 and a_path = 0 and day >= 6
+view-if: missed_rent > 0 and day_minor = 0 and a_path = 0 and day >= 6 and stress < stress_threshold
 on-arrival: day_minor += 1; stress -= 1
 max-visits: 1
 frequency: 1000
 priority: 10
+new-page: true
 tags: minor
 
 You receive a call from A-.

@@ -21,7 +21,7 @@ set-bg: images/monitor_3_dithered.png
 
 In the middle of the 21st century, when many believed (accurately) that civilization's collapse was imminent, a group of scientists undertook a mission to preserve human knowledge. They transcribed what they considered as the most important pieces of human knowledge into DNA, and transfected the DNA into specially engineered strains of E. coli and other bacteria. These strains were designed to outcompete existing bacterial populations, and to replicate and preserve the data-storage DNA plasmids with minimal mutations. The scientists then released their creations into the wild, via probiotic supplements among other means.
 
-Today, it is estimated that 10% of E. coli populations in still-populated areas are used for DNA storage, as the technology was used repeatedly over the years, discovered and lost and discovered again.
+Today, it is estimated that a substantial proportion of E. coli populations in still-populated areas contain plasmids or genomic sequences originally built for DNA storage, as the technology was used repeatedly over the years, discovered and lost and discovered again.
 
 Your job as DNA Data Archivist is to take the sequenced DNA datasets, the strings of A, T, G, and C, and turn them into human-readable information. You're pretty good at this, although it didn't stop the casualization of your employment.
 
@@ -60,7 +60,7 @@ choose-if: day_major = 0
 go-to: archivist_check
 set-jump: view_display
 tags: major
-frequency: 500
+frequency: 600
 set-bg: images/monitor_3_dithered.png
 
 You open your e-mail. There are new data recovery and archival requests.
@@ -75,7 +75,7 @@ max-choices: 6
 @view_display_2
 title: View all dataset groups.
 frequency: 1000000
-view-if: total_data_seen >= 10
+view-if: total_data_seen >= 9
 tags: archives, in_vitro, e_coli, b_subtilis, lactobacillus, wild
 
 As a valued contractor, you have the choice of which dataset groups you want to decode.
@@ -306,7 +306,7 @@ if (Q.key1001 == 0 && !Q.check_101_prompt && Q.day >= 3) {
 if (Q.c_has_message == 0 && Q.total_data_seen > 10 && Q.closure_warned == 0) {
     Q.closure_warned = 1;
     Q.closure_just_warned = 1;
-    Q.check_data_text += '<p>A message from C-:</p><p>Hi Em,</p><p>Unfortunately, there is some rather unpleasant news for us. The DNA archival unit will be disbanded once our current backlog of datasets is done. They aren\'t making new DNA sequencers anymore (and they\'re certainly not making any more synthesizers). Ours is too precious to waste on reading all of these banal diaries of dead people, so it\'s being requisitioned for more practical purposes, like medial research and diagnosis. </p> <p>Sorry. I wish I could say it\'ll be okay. I know how hard it was for you to keep this job. We\'ll both be looking for new work, so let\'s keep in touch. </p><p>- C.</p>';
+    Q.check_data_text += '<p>A message from C-:</p><p>Hi Em,</p><p>Unfortunately, there is some rather unpleasant news for us. The DNA archival unit will be disbanded once our current backlog of datasets is done. They aren\'t making new DNA sequencers anymore (and they\'re certainly not making any more synthesizers). Ours is too precious to waste on reading all of these banal diaries of dead people, so it\'s being requisitioned for more practical purposes, like medical research and diagnosis. </p> <p>Sorry. I wish I could say it\'ll be okay. I know how hard it was for you to keep this job. We\'ll both be looking for new work, so let\'s keep in touch. </p><p>- C.</p>';
 }
 Q.money += Q.payment;
 !}
@@ -450,6 +450,7 @@ go-to: todo
 # outcome: suppressed
 
 @d19_c
+go-to: todo
 
 You knew that the past was a more enlightened time, of course.
 
@@ -499,11 +500,11 @@ go-to: d1001_c
 
 `Yingmei has lived most of her life as a woman, and I am close, but there are still worries and doubts I have, connecting me like a tether to the years before.
 
-For a substantial period of time, I wondered if I was correct to feel this way. When we look to the past, will we find exemplars of or justifications for our existence? Our detractors and some of our allies say that we, as trans lesbians, are creatures unmoored from time and tradition, people without precedent, an ahistorical anomaly at best, a mentally ill predatory abomination at worst. We are a people without a history, they say, except some revisionist vestiges, a postmodern invention of a few doctors, a meme gone wrong.
+For a substantial period of time, I wondered if I was correct to feel this way. When we look to the past, will we find exemplars of or justifications for our existence? Our detractors and some of our allies say that we, as transsexual women, are creatures unmoored from time and tradition, people without precedent, an ahistorical anomaly at best, a cluster of mentally ill predatory abominations at worst. We are a people without a history, they say, except some revisionist vestiges, a postmodern invention of a few doctors, a meme gone wrong.
 
 But I don't care about any of this.
 
-I am a posthuman because I want to cut away all of the tethers chaining us to the arbitrary circumstances of our birth, to give us true freedom down to the molecular scale. Everything Yingmei and I have built is for this goal. We will almost certainly fail, but there is no other path.
+I am a posthuman because I wish to cut away all of the tethers chaining us to the arbitrary circumstances of our birth, to give us true morphological freedom down to the molecular scale. Everything Yingmei and I have built is for this goal. We will almost certainly fail, but there is no other viable path.
 
 My name is \[WARNING: UNKNOWN CHARACTER ENCODING\] and I existed.`
 
@@ -1045,7 +1046,7 @@ The next chapter of my story is moving to America for university, and then gradu
 
 I was privileged in that I had parents who would pay for me to take my tests, but the only way we could afford an American university was through scholarships. I hope this is not too self-aggrandizing, but I was a good student. I studied science, especially biology. When I was younger I thought that if I developed the technology to change every chromosome in my body, I could become a "real woman". Of course, I soon learned that such a technology would be less effective at altering my anatomy than the standard hormone therapy.
 
-What I learned was that the biochemistry of hormonal transition indelibly etches itself into every cell of your body. It sculpts the Waddington landscape of cellular development, carving out new valleys and paths like a fast-moving stream. Your body reconfigures itself. You become new. My physiology was crossing an unmarked boundary, just as it was crossing an ocean and a very marked boundary into a new country.
+What I learned was that the biochemistry of hormonal transition epigenetically etches itself into every cell of your body. It sculpts the Waddington landscape of cellular development, carving out new valleys and paths like a fast-moving stream. Your body reconfigures itself. You become new. My physiology was crossing an unmarked boundary, just as it was crossing an ocean and a very marked boundary into a new country.
 
 University in America was not the revelation I thought it would be. I heard that it was a haven for *people like us*, but in truth those like us were still few and isolated. Eventually, Jiaren came to America too, and we reunited one day. We fell in love again. She (because by that time she was also beginning to transition) and I eventually married and, well, the rest of the story will come later.
 
@@ -1302,6 +1303,7 @@ go-to: s505_c
 
 
 @s505_c
+go-to: todo
 
 This paper describes how long DNA storage methods might last. This sequence was likely first synthesized at least 470 years ago (unless the False Century school is true), so its preservation was a success.
 
@@ -1840,9 +1842,9 @@ go-to: rev_1 if r_seen = 1; r4000_c if r_seen > 1
 
  We have allies on the inside, and they have opened the door. A few incendiary devices is all it takes to stop an even greater massacre.
 
- The Guards were already here. Let it all burn.
+ The Guards are already here. Let it all burn.
 
- - Esme Franklin, for the final time. Long live the neogenic persisterhood. I was told that this bacterial strain was heat resistant.`
+ - Esme Franklin, for the final time. Long live the neogenic persisterhood. I was told that this bacterial strain is heat resistant.`
 
 @r4000_c
 go-to: todo
@@ -1994,6 +1996,7 @@ unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('c123'); Q.correct_data_types.push('personal'); Q.c_seen += 1;  !}
+frequency: 200
 go-to: decode
 set-jump: c123_
 

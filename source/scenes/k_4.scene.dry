@@ -71,11 +71,11 @@ Finally she turns off the monitor, and faces you.
 
 "We were doing an experiment in the lab," she begins. "Do you know what really happened in the Cataclysm?"
 
-"You probably know more than me..."
+"You probably know more than me," you reply.
 
 "The entity attacks and nanoplagues and infiltrations were just the start of it. It wasn't a natural occurrence. The Guards, and the security forces, and..."
 
-"Oh."
+"Oh..."
 
 "There's all sorts of shit going on here. If I don't do the experiments I'll be fired and blacklisted and starve. And if I do the experiments, I'll be complicit in murder and the perpetuation of the current fucked-up-ness. Am I willing to quit my job and get blacklisted from every future job? No, because the next person will do the same thing and he isn't even gonna have a second thought!"
 
@@ -201,11 +201,11 @@ go-to: are_you_okay
 
 "Are you going to be okay?"
 
-"Probably. I'm feeling better now. Just needed a good cry." She smiles. "It's fine. I'm just gonna look for another job."
+"Probably. I'm feeling better now. Just needed a good cry." She smiles. "It's fine. I'm just gonna quit this job. Look for another one."
 
 "What about the blacklist?"
 
-"What about it? So I get a pay cut and can't be called a scientist anymore. Big deal. I hear the Archives are looking for DNA technologists."
+"What about it? So I get a pay cut and can't be called a scientist anymore. Big deal. I hear lots of groups are looking for DNA technologists."
 
 - @good_for_you: "Good for you..."
 - @your_support: This means you won't be supported...

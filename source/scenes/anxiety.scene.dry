@@ -111,8 +111,8 @@ new-page: true
 You eat. You drink. You're feeling, if not *good* exactly, less terrible.
 
 @c_helps
-view-if: data_seen >= 5 and has_contract = 1
-title: Call C-.
+view-if: data_seen >= 8 and has_contract = 1
+title: Call C-, your supervisor at work.
 
 In an act of desperation, you manage to crawl out of bed and to the computer in order to send an e-mail to C-. You do not wait for a reply before collapsing.
 

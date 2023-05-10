@@ -4,6 +4,7 @@ on-arrival: day_minor += 1; stress -= 2
 max-visits: 1
 frequency: 500
 priority: 10
+new-page: true
 tags: minor
 
 You receive a call from K-.

@@ -16,6 +16,7 @@ for filename in os.listdir('random_test_outputs'):
                 break
 
 print(ending_counts.most_common())
+print('day: ', Counter([x['qualities']['day'] for x in all_data]))
 print('a_path: ', Counter([x['qualities']['a_path'] for x in all_data]))
 print('k_path: ', Counter([x['qualities']['k_path'] for x in all_data]))
 

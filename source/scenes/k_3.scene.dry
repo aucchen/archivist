@@ -10,7 +10,11 @@ set-bg: images/room1_filtered_dithered.png
 
 # You take care of S- for a second time.
 
-K- has arrived at your apartment. The $100 has been transferred to your account.
+It is morning, and K- has arrived at your apartment. The $100 has been transferred to your account.
+
+- @k_3_2: "Wow. This is my first time being here," says K-.
+
+@k_3_2
 
 "Wow. This is my first time being here," says K-.
 
@@ -728,9 +732,20 @@ K- shrugs. "Well, that's not helpful."
 
 It is cramped. The water is cool. K- is warm. You are back-to-back, her pressed against the door, you pressed against the wall. Surprisingly, the two of you had never showered together before in all your years of dating and marriage.
 
-"Hey, I haven't seen your vagina before," she says, turning around and leaning down. "It looks nice."
+"Hey, I haven't seen your vagina before," she says, turning around and leaning down. "It looks nice. Congratulations on getting the surgery."
 
+- @thanks_surgery: "Thanks..."
 - @surgery: Your surgery was in the weeks prior to the uprising.
+
+@thanks_surgery
+
+"Thanks," you say, because what else are you supposed to say to that?
+
+"Hey, I was just wondering," says K- over the sound of water. "Do you wash inside your vagina? You're not supposed to but I'm not sure if in your case it's..."
+
+- @its_complicated: "It's complicated..." (give the full answer)
+- @not_really: "Eh. Not really." (avoid the question)
+
 
 @surgery
 
@@ -739,8 +754,6 @@ Your surgery was in the weeks prior to the uprising; it is quite likely that you
 Fortunately, you did not need revisions.
 
 "Hey, I was just wondering," says K- over the sound of water. "Do you wash inside your vagina? You're not supposed to but I'm not sure if in your case it's..."
-
-
 
 # does em clean her vagina? Or is it better for the microbiotic environment if she doesn't?
 # hmm... (goes on wild research tangent about neovagina cleaning and whether some are self-cleaning and it turns out the evidence and anecdata are mixed (bc in trans studies anecdata is basically as good as the average scientific study due to small n and samples of convenience not to mention often researcher bias))

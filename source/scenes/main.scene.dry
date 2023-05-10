@@ -9,7 +9,7 @@ if (Q.next_day_scene_queue.length > 0) {
     Q.has_next_day = 0;
 }
 // make sure that mutual aid clears the thing...
-if ((Q.day_major >= 1 && Q.day_minor >= 1) || Q.daily_mutual_aid == 1) {
+if ((Q.day_major >= 1 && Q.day_minor >= 1) || Q.daily_mutual_aid == 1 || Q.data_day == Q.day) {
     Q.main_notes = " ";
     if ((Q.day == 3 || Q.day == 10 || Q.day == 17) && !Q.mutual_aid_seen && Q.day_minor == 0) {
         Q.main_notes += '<p>You see a flyer that has been slid under your door. "Mutual Aid Alliance hosting free community meals weekly at Moses Park." Below is a black-and-white picture of figures serving soup, and a time and an address. It is not too late. You can still go.</p>';
@@ -17,7 +17,7 @@ if ((Q.day_major >= 1 && Q.day_minor >= 1) || Q.daily_mutual_aid == 1) {
 }
 !}
 on-display: {!
-if (window.dendryUI.dendryEngine.state.qualities.has_next_day == 0) {
+if (window && window.dendryUI.dendryEngine.state.qualities.has_next_day == 0) {
     window.dendryUI.setBg('images/room1_filtered_dithered.png');
     $('#main_notes').append($(window.dendryUI.dendryEngine.state.qualities.main_notes));
 }
@@ -77,13 +77,13 @@ if ((Q.day == 3 || Q.day == 10 || Q.day == 17) && !Q.mutual_aid_seen) {
 }
 // if you haven't viewed DNA in a few days, C- sends you a message.
 if (Q.day == Q.data_day + 3) {
-    Q.main_notes += "<p>You receive a message from C-, your supervisor at the Archives: <code>Hey Em, I hope you realize that you still need to do your job. I understand you're suffering from chronic fatigue, but so are many of us, and we're still working. Just one DNA dataset every few days. That's all you need. Worst case, we'll have no choice but to decertify you. But it probably won't come to that, would it?</code></p>";
+    Q.main_notes += "<p>You have received a message from C-, your supervisor at the Archives: <code>Hey Em, I hope you realize that you still need to do your job. I understand you're suffering from chronic fatigue, but so are many of us, and we're still working. Just one DNA dataset every few days. That's all you need. Worst case, we'll have no choice but to decertify you. But it probably won't come to that, would it?</code></p>";
 }
 if (Q.day == Q.data_day + 5) {
-    Q.main_notes += "<p>You receive a message from C-, your supervisor: <code>Hey Em, there are some things you should know. I pulled a lot of stops to let you just keep this job as a contractor. Everyone else in your position isn't with us anymore. When your output is this low, your profile gets more scrutiny. When your profile gets scrutiny, it becomes harder to justify your continued employment, especially given our recent budget cuts. I sincerely hope it doesn't come to that.</code></p>";
+    Q.main_notes += "<p>You have received a message from C-, your supervisor: <code>Hey Em, there are some things you should know. I pulled a lot of stops to let you just keep this job as a contractor. Everyone else in your position isn't with us anymore. When your output is this low, your profile gets more scrutiny. When your profile gets scrutiny, it becomes harder to justify your continued employment, especially given our recent budget cuts. I sincerely hope it doesn't come to that.</code></p>";
 }
-if (Q.day == Q.data_day + 8) {
-    Q.main_notes += "<p>You receive a message from C-, your supervisor: <code>Hey Em, they've started checking your personal files. I'm really sorry to say this, but your contract has been terminated. I've tried to stop them from looking too deeply, and I don't know if it worked. Be careful, Em. There's not much I can do, but I wish you all the best.</code></p> <p>Well then. You no longer have any sort of employment, not even as a contractor. And you are likely unemployable for obvious reasons. Life is great.</p>";
+if (Q.day == Q.data_day + 8 && Q.has_contract > 0) {
+    Q.main_notes += "<p>You have received a message from C-, your supervisor: <code>Hey Em, they've started checking your personal files. I'm really sorry to say this, but your contract has been terminated. I've tried to stop them from looking too deeply, and I don't know if it worked. Be careful, Em. There's not much I can do, but I wish you all the best.</code></p> <p>Well then. You no longer have any sort of employment, not even as a contractor. And you are likely unemployable for obvious reasons. Life is great.</p>";
     Q.has_contract = 0;
 }
 // set daily dialogue here.

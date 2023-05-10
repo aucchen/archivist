@@ -161,7 +161,7 @@ achievement: ending_3
 
 It turns out that both of you are cowards. A- is too afraid to live publicly as a persister (who isn't these days), so she maintains a facade of masculinity to the outside world, while living a secret neofemale lifestyle within the confines of her domicile. She and her ex-wife have divorced, and now she lives with you in the most luxurious place you have ever lived, oweing to her continued career as a doctor for the city's elite. She loves you, and you love her[? if a_financial_support = 1 :, or something like that. What is love but a mutually beneficial exchange of goods and services? ?][? if a_financial_support = 0 :. ?]
 
-**Ending 3a/9**
+**Ending 3a/9 - A-: Another world**
 
 @end_r_2
 go-to: endings
@@ -171,6 +171,6 @@ achievement: ending_3
 
 You are alive, with A- providing support. You have a new job as a data archaeologist at a medical device company. Most of the devices are at least decades old, in a constant state of refurbishment, their code locked up in various incompatible data formats, and it is your job to recover them. It is not quite as interesting as the DNA archival work, but it pays better, enough for you to afford rent and food and medicine. Your illness persists, but for now, you are alive and surviving.
 
-**Ending 3b/9**
+**Ending 3b/9 - A-: Another world**
 
 
