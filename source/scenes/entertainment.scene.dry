@@ -19,68 +19,126 @@ set-bg: images/monitor_dithered.png
 @tv
 subtitle: [? if tv_seen >= 2 : A form of self-harm. ?]
 on-arrival: day_minor += 1; tv_seen += 1; numb = 1
-go-to: tv_1; tv_2; tv_3
+max-choices: 3
+
+- #tv
 
 @game
 on-departure: games_played += 1; day_minor += 1; numb = 1
-go-to: game_1 if games_played >= 1; game_2 if games_played >= 1; game_3 if games_played >= 1; game_4; game_4 if games_played = 0
+max-choices: 3
+
+- #games
 
 @game_1
+title: A game from before the Cataclysm.
+tags: games
 
-You play a relatively recent game (from the current century). It is a text-based management game about surviving the Wilderness as a small Wanderer group, dealing with food, nanoplagues, and the like.
+You play a relatively recent game (from the current century, but before the Cataclysm). It is a text-based management game about surviving the Wilderness as a small Wanderer group, dealing with food, nanoplagues, and the like.
 
 @game_2
+title: A pre-war game recovered from the archives.
+tags: games
 
 You play a game recovered from the archives, from the pre-war era. It is a text-based game about high school dating and the drama involved therein.
 
 @game_3
+title: A game recovered from the archives.
+tags: games
 
 You play a game recovered from the archives, from the 3rd century. It is a political simulator that features loose stand-ins of the factions of that era, with virtually incomprehensible politics.
 
 @game_4
+title: A game from the Uprising.
+tags: games
 
 You play a now-banned, formerly controversial game developed during the Uprising. It is a role playing game about a militarized polycule that does battle against the Guards and security forces, gaining experience as they kill more enemies. It was praised for having excellent nonbinary representation, not a surprise given its development team, who are now mostly known to have died in the Uprising.
 
-[? if games_played = 1 : You wonder if you could encode this game in DNA. ?]
+[? if games_played = 1 : You wonder if you could encode this game in DNA. Would there be a point? ?]
 
 @tv_1
+title: A film about a woman who disguises herself as a man to join the Guards.
+subtitle: [? if cw_enabled: CW: transphobia ?]
 tags: tv
 view-if: tv_1_seen = 0
 on-arrival: tv_1_seen += 1
+frequency: 300
 
-Now playing is a film about a woman who disguises herself as a man to join the Guards during the Uprising. The villain is a neowoman (they would most likely not use that term) with a cartoonishly masculine body and a constantly visible bulge in the crotch, who is grooming young girls into a self-mutilation suicide cult by convincing them that they could become men. The hero rescues the poor innocent young girls from the villain (*who looks like you* you try to stop yourself from thinking).
+Now playing is a film about a woman who disguises herself as a man to join the Guards during the Uprising. The villain is a neowoman (they would most likely not use that term) with a cartoonishly masculine body and a constantly visible bulge in the crotch, who is grooming young girls into a self-mutilation suicide cult by convincing them that they could become men. The hero rescues the poor innocent young girls from the villain (*who looks like you*, you try to stop yourself from thinking).
 
-The visual effects are spectacular.
-You can't help rooting for the fascist protagonist.
-The antagonist is the real hero.
+- @tv_1_1: The visual effects are spectacular.
+- @tv_1_2: You can't help rooting for the fascist protagonist.
+- @tv_1_3: The antagonist is the real hero.
+
+@tv_1_1
+
+The visual effects are spectacular. Nothing else about this is meaningful.
+
+@tv_1_2
+
+You cannot help but root for the fascist protagonist. Her story is propaganda, of course, but it is well-made propaganda.
+
+@tv_1_3
+
+The antagonist is the real hero, of course. If CityNet were still good, and the neogens still mostly alive, they would be making all sorts of discourses about this.
+
 
 @tv_2
+title: A speech by a Ruling Party politician.
+max-visits: 1
 tags: tv
 on-arrival: tv_2_seen += 1
 
-There is a speech by a Ruling Party politician. "We are the true heirs of the American Empire... We will not repeat the decadence and so-called toleration that led to the transhumanist order, nor any absolutionist apologia for the atrocities committed in the name of transforming humanity..." You tune out.
+There is a speech by a Ruling Party politician. "We are the true heirs of the American Empire... We will not repeat the decadence and so-called toleration that led to the transhumanist order, nor any absolutionist apologia for the atrocities committed in the name of transforming humanity..."
+
+You tune out.
+
 
 @tv_3
+title: *Starlight Defenders*, a serialized program.
 tags: tv
+max-visits: 1
 on-arrival: starlight_defenders_seen = 1
 
 *Starlight Defenders* is on - this is a show about a group of nanite-powered school-aged superheroes who save the city from entity attacks and terrorists. It claims to be based on a true story, set approximately ten years ago. You wonder if and how the Cataclysm will be covered here, but not enough to keep watching the program.
 
 @tv_4
+title: *Starlight Defenders*
 tags: tv
+max-visits: 1
 view-if: starlight_defenders_seen >= 1
 
-*Starlight Defenders* is playing.
+*Starlight Defenders* is playing again. This arc is about superheroes fighting a group of terrorists. It is not particularly interesting, but you watch anyway.
 
 @tv_5
-tags: tv
 title: A program about the history of the American Empire.
+tags: tv
+max-visits: 1
 
 There is a program about the history of the American Empire, and its heroism in resisting the posthuman plagues. They were on the front lines against the posthuman clone armies. This is all neo-negationist propaganda, of course.
 
 @tv_6
+title: A political debate.
+subtitle: [? if cw_enabled: CW: transphobia ?]
+max-visits: 1
+tags: tv
 
-There is a game tournament playing.
+There is a televised debate between a Ruling Party agent (RPA) and an Opposition Party agent (OPA). The Opposition Party has been neutered since the Uprising, and they have no influence in politics, but it is useful to have a semblance of democracy.
+
+`RPA: Our birth rate is dropping like a lead balloon. The youth of today, with their profligate, irresponsible, so-called alternative lifestyles-
+
+OPA: Why are so many young people not having children? Because we live in a society without hope. We live in a society where everyone is shackled by debt-
+
+RPA: Debt? Is that your answer to everything? What happens when there's a young woman, who cuts off her breasts and says that she's not a woman? And its husband is a man who cut his own dick off and puts on a dress and yells about being a woman? And your party calls these people "acceptable", people who mutilate their own bodies and murder those of us who don't agree to their fantasy. These people are nihlists without family values. They disrespect science and biology and the fundamental nature and order of the universe! They are mentally ill psychopaths who want to shove their ideology down our throats and murder any of us who dare oppose their tyranny! (the crowd applauds and cheers.)
+
+OPA: People are just trying to live their lives! Besides, your way doesn't have to be the only way! There are valid alternative lifestyles- (crowd boos. a rotten fungal sac hits him in the face.)`
+
+You turn off the TV.
+
+@tv_7
+title: There is nothing interesting on.
+tags: tv
+
+There is nothing interesting on, so you flip through the channels, absorbing the lights and sounds and filling your brain with static.
 
 @book_1
 choose-if: 1 = 0

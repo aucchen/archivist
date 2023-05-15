@@ -223,9 +223,13 @@ blockquote + blockquote.attribution {
  * TODO: only transition on fade-in
  * */
 #bg2 {
+    transition: background-color 0.5s linear;
+    transition: background-image 0.5s linear;
     z-index: -100;
 }
 #bg1 {
+    transition: background-color 0.5s linear;
+    transition: background-image 0.5s linear;
     z-index: -99;
 }
 .b {

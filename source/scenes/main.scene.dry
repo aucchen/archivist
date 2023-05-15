@@ -17,9 +17,9 @@ if ((Q.day_major >= 1 && Q.day_minor >= 1) || Q.daily_mutual_aid == 1 || Q.data_
 }
 !}
 on-display: {!
-if (window && window.dendryUI.dendryEngine.state.qualities.has_next_day == 0) {
+if (window && Q.has_next_day == 0) {
     window.dendryUI.setBg('images/room1_filtered_dithered.png');
-    $('#main_notes').append($(window.dendryUI.dendryEngine.state.qualities.main_notes));
+    $('#main_notes').append($(Q.main_notes));
 }
 !}
 go-to-ref: next_day_scene if has_next_day > 0
@@ -149,7 +149,7 @@ if (Q.next_day_scene_queue.length > 0) {
 
 console.log('eod_check_end');
 !}
-set-bg: black
+set-bg: rgb(0,0,0)
 go-to-ref: next_day_scene
 
 

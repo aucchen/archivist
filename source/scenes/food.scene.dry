@@ -11,6 +11,8 @@ You have no more edible food left in your apartment. What are you going to do?
 - @cook: Buy ingredients for cooking and make your own meals.
 - @scrounge: Scrounge for snacks, leftovers, and so on.
 - @cook_new: Cook with the ingredients you have.
+- @take_1
+- @take_2
 - @starve: Starve.
 
 @takeout
@@ -158,6 +160,47 @@ It costs $25 for two days of food.
 
 - @main: You are tired.
 
+
+#############################################
+
+@take_1
+title: Take what you need.
+subtitle: Free, but risky.
+view-if: food_take = 0
+on-arrival: food_take += 1; food += 3; stress += 1; days_starved = 0
+
+There are waste disposal containers near a store containing old but still-edible food. For now, no one is watching, so you take what you can find, quickly, before anyone notices.
+
+You have 3 more days of food.
+
+
+@take_2
+title: Take what you need.
+subtitle: Free, but risky.
+view-if: food_take >= 1 and caught = 0
+on-arrival: food_take += 1
+
+Unfortunately, the waste disposal containers are locked, and the leftovers you see on the streets are inedible. You could attempt to lift items from the grocery store.
+
+- @take_store: Take some items from the store.
+- @food_options: Too risky.
+
+@take_store
+go-to: take_store_win; take_store_lose
+
+@take_store_win
+on-arrival: food += 2; stress += 1; days_starved = 0
+
+You find some small-volume and calorie-dense items - oils, sugary products, and so on, and put them in your jacket pockets. No one is watching, and no one sees you leave.
+
+You have 2 more days of food.
+
+@take_store_lose
+on-arrival: food += 1; stress += 3; days_starved += 1; caught = 1
+
+A security guard watches you put an item in your pocket. You are barely cognizant of what happens next, but loud and harsh words are spoken, a picture is taken, and hands grab your body, dragging you out.
+
+You are banned from this store, thus foreclosing one possibility of acquiring food.
 
 
 ##############################################################

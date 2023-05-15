@@ -66,11 +66,9 @@ count-visits-max: 1
 frequency: 300
 tags: montage
 
-`@NNN: Stealth transvestite teacher found indoctrinating students in gender ideology. Video: (link)`
+`@NNN: Stealth biomale transvestite teacher found indoctrinating students in gender ideology. Video: (link)`
 
 > `@[+ name_1 +]: pedophile`
-
-> `@[+ name_4 +]: none of these people should be allowed near children.`
 
 > `@[+ name_5 +]: this is why our educational system is failing`
 
@@ -92,15 +90,19 @@ tags: montage
 
 >> `@[+ name_0 +]: i have sympathey for the fact that he was lead astray from the sacred path of humanity into the demonic embrase of TransHumanism`
 
+> `@[+ name_4 +]: THE NEO-ABSOLUTIONIST REGIME SEEKS TO REGIMENT YOUR LIFE AND STEAL YOUR CHILDREN TO BE TRANSHUMANIZED INTO MONSTROSITIES BEYOND YOUR CONMPREHENSINO`
+
 - @cn2_watch_video: Watch the video.
 - @main: No. Don't.
 
 @cn2_watch_video
 on-arrival: stress += 1
 
-You watch the video. It is an elementary school classroom, shot from what seems to be a hidden security camera. The teacher is a well-dressed woman most likely in her late thirties or forties, similar to you. "I am a girl now, but when I was born, they thought I was a boy," she says. The students are staring at her. The video cuts off right there.
+You watch the video. It is an elementary school classroom, shot from what seems to be a hidden security camera. The teacher is a well-dressed woman most likely in her late thirties or forties, similar to you. "I am a girl now, but when I was born, they thought I was a boy," she says.
 
-You knew many of the sisterhood, but you did not know her; she must have been stealth in the days before the Uprising.
+"Sometimes people are different," she continues. "Not everyone is who their parents thought they were when they were born." The students are staring at her. The video cuts off right there.
+
+You knew many persisters, but you did not know her; she must have been stealth in the days before the Uprising.
 
 - @cn2_2: You are pleased to see her.
 - @cn2_1: This is your future.
@@ -125,7 +127,7 @@ tags: montage
 
 `@NNN: Male prostitute attacks Guards after found to have been impersonating a woman. Video: (link)`
 
-> `@[+ name_0 +]: glad that fag got what was coming to him.`
+> `@[+ name_0 +]: glad that degenerate got what was coming to him.`
 
 > `@[+ name_1 +]: lmao idiots can't tell apart real women`
 
@@ -217,6 +219,7 @@ tags: montage
 > `@[+ name_2 +]: university professors want to control your life and poison your children.`
 
 
+
 @cn6
 title: `Shortage of rare earth minerals continues.`
 max-visits: 1
@@ -234,7 +237,6 @@ tags: montage
 
 > `@[+ name_3 +]: you can pry my X101 from my cold, dead hands.`
 
-> `@[+ name_4 +]: THE NEO-ABSOLUTIONIST REGIME SEEKS TO REGIMENT YOUR LIFE AND STEAL YOUR CHILDREN TO BE TRANSHUMANIZED INTO MONSTROSITIES BEYOND YOUR CONMPREHENSINO`
 
 @cn7
 title: `Seven homeless encampments removed from public square by police and Guards.`
@@ -378,11 +380,15 @@ tags: montage
 title: `Heartwarming: students stand up to female-impersonator teacher promoting gender ideology.`
 max-visits: 1
 count-visits-max: 1
+view-if: @online_montage.cn2 > 0
 tags: montage
 
 `@NNN: Heartwarming: students stand up to female-impersonator teacher promoting gender ideology.`
 
 > `@[+ name_0 +]: good`
+
+This is the same video that you saw earlier, another re-release of the same news item.
+
 
 @cn18
 title: `Quarterly profits in ag-tech sector up despite greenhouse failures.`
@@ -459,3 +465,20 @@ tags: montage
 > `@[+ name_3 +]: fake news`
 
 You were there. You could have been one of the four. It does not seem as if visiting the Mutual Aid Alliance is still a possibility, unless you are truly committed to the life of the underground revolutionary.
+
+@cn24
+title: `Opposition: "Investigate conditions in Re-Entry Centers.`
+max-visits: 1
+frequency: 300
+count-visits-max: 1
+tags: montage
+
+`@NNN: Opposition Party asks for investigation of "deplorable" conditions in Re-Entry Centers for former terrorists and rioters.`
+
+> `@[+ name_10 +]: why haven't we killed them already`
+
+> `@[+ name_11 +]: put the opposiition in the centers too`
+
+> `@[+ name_12 +]: degerates deserve it`
+
+> `@[+ name_4 +]: NEO-ABSOLUTIONIST TERRORISM MUST BE STOPPED BY ANY MEANS NECESSARY`

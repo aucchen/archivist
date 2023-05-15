@@ -95,7 +95,7 @@ go-to: ending_a
 
 "Sorry. I guess here is as good as anywhere right now..."
 
-# TODO: a better transition?
+# TODO: better transition to A-'s ending scene?
 
 @find_k
 view-if: k_path >= 3

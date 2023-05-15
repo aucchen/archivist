@@ -1,6 +1,6 @@
 title: Call K-.
 subtitle: Ask her if there is anything you could do...
-view-if: k_path >= 4 and daily_k = 0 and day >= k_day + 2 and (day_major = 0 or day_minor = 0)
+view-if: k_path >= 4 and daily_k = 0 and day >= k_day + 2 and (day_major = 0 or day_minor = 0) and stress < stress_threshold and day < last_day
 on-arrival: daily_k = 1; k_day = day; day_minor += 1; k_path += 1; stress += 1
 max-choices: 1
 max-visits: 3
@@ -77,15 +77,19 @@ tags: k_generic
 
 K- wants to visit you at your apartment again. S- is at school, and you are alone, as always. She stares at you, and touches you more than usual. You kiss, and hold each other for far too long.
 
+"Would you like to engage in mutually beneficial physical activities for the purpose of releasing hormones to lower stress?" she asks.
+
 - @k_visit_encounter
 - @k_visit_no_encounter
 - @smells_like_a
+- @too_tired
 
 
 @k_visit_encounter
 title: The implications are clear...
 subtitle: [? if cw_enabled: (CW: potential sexual content) ?] 
-choose-if: a_encounter = 0
+choose-if: a_encounter = 0 and stress < stress_threshold - 4
+on-arrival: stress -= 1
 set-bg: rgba(0,0,0,0)
 
 As K- pulls you on top of her on the narrow bed, she asks, "you haven't dilated recently, have you?"
@@ -120,7 +124,7 @@ K- sighs. "Well, I hope your physiology becomes less frightening."
 
 You clothe yourselves, and talk for a while about nothing in particular.
 
-"Do you need any more money?" she asks. "Whatever. Here's $50."
+"Do you need any more money?" she asks. "Whatever. Here's $50. Sorry, this feels kind of weird, doing that kind of thing and then giving you money..."
 
 - @k_visit_money_thanks: "Thank you..."
 - @k_visit_no_money: "I don't need it."
@@ -179,3 +183,7 @@ You don't exactly trust A-, but she is paying your rent. You tell K- as much.
 "Ha. 
 
 In the end, K- leaves after a while.
+
+@too_tired
+title: You're too tired for such activities.
+view-if: stress >= stress_threshold - 4

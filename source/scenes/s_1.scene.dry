@@ -5,7 +5,7 @@ set-bg: images/room1_filtered_dithered.png
 
 # herein you take care of S-.
 
-# TODO: is this really the first time
+# TODO: check whether this is the first time someone's visited
 
 You are home again[? if a_loved < 1 :, and it is the first time someone besides yourself has visited in over a year. That time was a property inspection ?].
 

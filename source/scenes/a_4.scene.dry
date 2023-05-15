@@ -6,8 +6,6 @@ view-if: (day_major = 0 or day_minor = 0) and daily_a = 0 and a_path = 3 and a_l
 on-arrival: a_path = 4; daily_a = 0; day_major += 1; a_day = day; food += 3
 
 
-# TODO: A- takes you out for dinner
-
 The surroundings are far more upscale than any place you have been since... likely before the Cataclysm. You did not know that such palaces of luxury existed (or had ever been built) in the undercity. Crystalline decorations. Faux-wood tables. Artificial photosynthetic organisms. The meat is *organic cloned tissue*, unlike the typical algal or fungal or legume-based products. None of this feels real.
 
 A- had picked out a fancy metallic-sheen dress for you to wear for this occasion, to match hers and to fit in, which you are currently sullying with bio-steak juices. She has a bemused look as you ravenously devour the steak and mushrooms.

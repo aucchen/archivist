@@ -59,7 +59,7 @@ A- looks wounded. "Oh. Is this why you're talking to me? And I thought you still
 
 
 @transactional
-on-arrival: money += 100
+on-arrival: money += 100; a_transactional = 1
 
 "All relationships are transactional. Love is a product of the mutually beneficial exchange of resources."
 
@@ -129,24 +129,44 @@ For some reason, there is a part of you that wants to laugh, because this scenar
 - @married: "You're married..."
 - @i_love_you_too: "I love you too..."
 - @still_love_money
-#- @dont_love
+- @dont_love
 - @love_k
 - @mistake
 
 
 @dont_love
 title: "There is no such thing as love."
-view-if: dream_k_1_viewed >= 1
+view-if: dream_k_a_viewed >= 1
 
-"There is no such thing as love," you say.
+"There is no such thing as love," you [? if a_transactional = 1 : reiterate ?][? if a_transactional = 0 : say ?]. "Only the mutually beneficial exchange of resources."
 
-TODO
+A- chuckles. "You would say that, wouldn't you? I already know what it means for you. But for me... you don't have to love me. Maybe we can continue this arrangement. Just stay with me. Talk to me. It's a mutually beneficial exchange, isn't it?"
+
+"Oh..."
+
+- @dont_love_fine: "This is fine."
+- @mistake: "This was a mistake."
+
+
+@dont_love_fine
+on-arrival: a_dont_love = 1
+
+"This is fine," you say.
+
+"Oh, are you sure?"
+
+- @sure_of_anything: "Am I sure of anything?"
+- @not_sure: "I'm not sure, but..."
+- @mistake: "This was a mistake."
+
+
 
 
 @love_k
 title: "I wonder what K- would think..."
 view-if: k_path >= 3 and k_romance >= 2
 on-arrival: a_knows_k = 1
+max-visits: 1
 
 "I wonder what K- would think..."
 
@@ -232,7 +252,7 @@ For some reason, there is a part of you that wants to laugh, because this scenar
 # Besides,...
 
 # TODO: implement the non-romantic route
-# TODO: for now, maybe we'll have to shunt it out to the romance route.
+# for now, maybe we'll have to shunt it out to the romance route.
 # or maybe no non-romantic route? Maybe A- is using you. Maybe if she weren't in love with you, she wouldn't be even talking to you.
 
 "We're in a state of mutually assured destruction, Em," she continues. "The Ruling Party is posting bounties for stealth neowomen, and anyone who's interacted with children while wearing opposite-sex clothing. You sell me out, you don't have to worry about rent anymore. I sell you out,... We have the power to destroy each other, Em."
@@ -272,6 +292,7 @@ For some reason, there is a part of you that wants to laugh, because this scenar
 
 
 @laugh
+max-visits: 1
 
 For whatever reason, the chemical pathways in your brain have decided that this moment would lead to laughter.
 
@@ -292,6 +313,7 @@ For whatever reason, the chemical pathways in your brain have decided that this 
 
 
 @married
+max-visits: 1
 
 "You're married..."
 
@@ -304,6 +326,7 @@ For whatever reason, the chemical pathways in your brain have decided that this 
 
 @mistake
 title: "This was a mistake."
+max-visits: 1
 
 "This was a mistake."
 
@@ -355,8 +378,6 @@ The next few minutes are long and tense, until A- finally rises.
 "Sorry, I have to go home," she says.
 
 You are alone, again.
-
-# TODO: how else does this go?
 
 
 @can_leave
