@@ -1,4 +1,5 @@
 title: CityNet
+audio: none
 subtitle: An update on the present situation. [? if cw_enabled = 1 : CW: slurs ?]
 max-choices: 3
 view-if: montage_progress = 0 and day_minor = 0 and stress < stress_threshold and day < last_day

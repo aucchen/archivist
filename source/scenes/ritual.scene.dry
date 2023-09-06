@@ -1,5 +1,6 @@
 title: The Ritual
-subtitle: An excursion...
+audio: music/PacingPad.mp3
+subtitle: A regular excursion...
 view-if: ritual_done = 0 and day >= 3 and (day_major = 0 or day_minor = 0) and day < last_day and stress < stress_threshold
 on-arrival: ritual_done = 1; day_minor += 1; stress -= 1
 set-bg: images/city_dithered.png

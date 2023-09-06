@@ -23,7 +23,7 @@ You do not recognize her at first. She does not look like the statues or the por
 
 "Yeah. I'm Xu Yingmei, or Liana if you'd like." She pronounces her last name strangely, like no one else you had ever heard except in the data recording. "I'm almost surprised you recognized me. The statues don't look anything like this, right?" She laughs. Her voice sounds like a more practiced version of yours.
 
-She looks about your age, a thin and taller than average woman wearing pre-war clothing (blue trousers, a pastel-toned striped sweater), with messy long black hair and glasses. She is not wearing a respirator. Her face looks... like the one you see in the mirror. Less gaunt, more fleshy, better toned, but still, almost the same face.
+She looks about your age, a thin and taller-than-average woman wearing pre-war clothing (blue trousers, a pastel-toned striped sweater), with messy long black hair and glasses. She is not wearing a respirator. Her face looks... like the one you see in the mirror. Less gaunt, better toned, but still, almost the same face.
 
 "You're my clone, with all the same genetic material. I was curious how I would have turned out under different circumstances. Would I have transitioned in a different world? And well, you helped to provide some evidence on a few of my hypotheses. It makes sense, doesn't it?"
 
@@ -74,7 +74,7 @@ max-visits: 1
 
 "Is this the first time you've done this? Make a clone of yourself, I mean?"
 
-"No. It's not. There are many versions of me, versions of you, running around throughout the arcologies, all living their own separate lives. Compared to them, you're... not the worst off."
+"No. It's not. There are many versions of me, versions of you, living throughout the arcologies, all living their own separate lives. Compared to them, you're... not the worst off."
 
 She does not elaborate any further.
 
@@ -126,6 +126,7 @@ go-to: go_questions
 - @make_better: "Why don't you help us here?"
 - @ready_to_go: You're ready to go.
 - @stay: You don't want to go.
+- @fuck_you: "Fuck you."
 
 @why_go
 title: "Why?"
@@ -150,7 +151,7 @@ go-to: go_questions
 
 "I don't deserve this."
 
-"You do deserve this, though. You deserve to be loved. You deserve to be free. You deserve everything in the world. You don't deserve to be slowly dying in this hovel. And anyway, who's to say what anyone deserves?"
+"You do deserve this, though. You deserve to be loved. You deserve to be free. You deserve everything in the world. You don't deserve to die slowly in this hovel. And anyway, who's to say what anyone deserves?"
 
 @what_about
 title: "What about my loved ones?"
@@ -185,7 +186,7 @@ Liana grins. "There's a loophole, if you read it carefully. Actually, I was hopi
 
 "Sorry I failed you, then."
 
-"No worries. I didn't expect much."
+"No worries. All I had was a hope, not an expectation."
 
 @ready_to_go
 title: You're ready to go.
@@ -252,6 +253,87 @@ With that, she leaves your apartment. You are alone once more.
 go-to: go_2
 
 "Actually, I'd rather go."
+
+@fuck_you
+title: "Fuck you."
+max-visits: 1
+go-to: fu_qs
+
+# TODO: Em says fuck you to Liana.
+
+"Fuck you."
+
+Liana simply smiles. "Why?"
+
+@fu_qs
+
+- @abandoned: "You abandoned us here to die."
+- @irb: "I never asked to be made like this."
+- @dont_know_me: "You don't know me as well as you think."
+- @care_k: "You don't care about K- or S- or..."
+- @fu_end: It no longer matters.
+
+@abandoned
+on-arrival: fu_qs += 1
+max-visits: 1
+go-to: fu_qs
+
+"You abandoned us here to die."
+
+She smiles. "Remember the terms of the Treaty? We aren't allowed to interfere. Even doing *this* is taking advantage of a loophole. I couldn't help if I wanted."
+
+"But there has to be more you could do... why do you even still respect the Treaty?"
+
+"We respect the Treaty not for the sake of the baselines, but because of the other posthuman factions. There is a delicate truce up there that would be broken by involvement in Earth affairs." A pause. "It's complicated. I don't expect you to understand."
+
+
+@irb
+on-arrival: fu_qs += 1
+max-visits: 1
+go-to: fu_qs
+
+"I never asked to be made like this..."
+
+"But it *is* better that you're alive today, isn't it? Well, I am glad that you are alive."
+
+You do not know what to say to that.
+
+
+@dont_know_me
+on-arrival: fu_qs += 1
+max-visits: 1
+go-to: fu_qs
+
+"You don't know me as well as you think."
+
+She shrugs. "What more there to know? I know your inputs, and from such I can predict your likely outputs. I knew that you would react with recalcitrance, and not just because I would do the same."
+
+"Besides," she continues, "I've been watching you ever since you were young. There is little you've seen that I have not."
+
+
+@care_k
+view-if: k_path >= 2
+on-arrival: fu_qs += 1
+max-visits: 1
+go-to: fu_qs
+
+"You don't care about K- or S- or..."
+
+"They are *your* relations, not mine, so why would I care? After all, you consider yourself a distinct person from me, don't you?"
+
+
+
+@fu_end
+view-if: fu_qs >= 2
+
+It no longer matters. Nothing you do, nothing you are, has any broader implications. You are merely alive, for better or for worse.
+
+"I'll leave soon," Liana says. "I'll leave some supplies behind. You're a resourceful person. You'll do well with them. And if you ever want to leave with me, just think of me enough and I'll probably get the signal."
+
+With that, Liana leaves, and you are alone once more.
+
+- @stay_end: End.
+
 
 
 @stay_end

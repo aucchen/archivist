@@ -1,8 +1,9 @@
 title: Dreams
+audio: music/PacingPad.mp3 loop
 new-page: true
 set-bg: rgba(0,0,0,0)
 on-arrival: dream_timer = 2
-max-choices: 5
+max-choices: 3
 
 You lie in the bed, unsure if you are asleep or awake.
 
@@ -36,14 +37,14 @@ You were in the centre of the couch, with A- and K- on either side. Your arms an
 
 "That's an asinine question," K- said in her monotone voice. "Love is an illusion. The only purpose of love is the mutually beneficial exchange of resources."
 
-- @dream_k_neoliberal: "That's awfully neoliberal of you."
+- @dream_k_bourgeois: "That's awfully bourgeois of you."
 - @dream_k_agree: "I agree. There is no such thing as love."
 - @dream_k_silent: You remained silent.
 
-@dream_k_neoliberal
+@dream_k_bourgeois
 go-to: dream_k_kropotkin
 
-"That's awfully neoliberal of you," you said, with what you hoped was a degree of levity.
+"That's awfully bourgeois of you," you said, with what you hoped was a degree of levity.
 
 "It's not. A polycule is really just a form of mutual aid, like what Kropotkin said. We support each other. We pool together our resources to help us survive." She continued to twirl your hair around her finger.
 
@@ -119,9 +120,9 @@ It doesn't matter, either way.
 # view if you know about the uprising
 
 @dream_uprising
-title: Dream of the uprising.
+title: Dream of the uprising, and K-.
 subtitle: [? if cw_enabled = 1 : CW: violence, transphobia ?]
-view-if: dream_rev_viewed = 0 and (r_seen > 0 or mutual_aid_seen > 0) and has_medicine > 0
+view-if: dream_rev_viewed = 0 and (r_seen > 0 or mutual_aid_seen > 0 or k_path > 0) and has_medicine > 0
 on-arrival: dream_rev_viewed += 1
 tags: dream
 go-to: dream_rev

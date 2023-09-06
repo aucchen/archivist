@@ -2,6 +2,7 @@ title: Scene One
 new-page: true
 view-if: started = 0
 set-bg: images/windows_filtered_dithered.png
+audio: music/PacingPad.mp3
 on-arrival: {!
     Q.started = 1;
     // basic stats
@@ -91,7 +92,7 @@ on-arrival: {!
     Q.closure_just_warned = 0;
     // low-anxiety, high-anxiety
     Q.low_anxiety_day_dialogues = [
-        "It is a constant 15 degrees in the undercity. Your apartment is 15 square metres. It is 15:00 right now. It has been 10 years since the Cataclysm, and five since the Uprising. 15. You rotate the number in your mind.",
+        "It is a constant 15 degrees in the undercity. Your apartment is 15 square metres. It is 15:00 right now. It has been 10 years since the Cataclysm, and five since the Uprising. 15. The number reverberates in your mind.",
         "Trolleys and people trudge along the street beneath your window. The city's circulatory system. Looking closer, you see cracks in the third-century concrete, exposing pre-war cobblestone. Patches of missing surface. After the Cataclysm, sourcing raw materials for routine maintenance has become difficult if not impossible.",
         "The light outside is burning bright. The thin walls are far from soundproof, so you hear the clanging of the trolley and the voices of people inside and outside your building. You cannot fall back asleep.",
         "It is a luxury that you are allowed this private space. It is a luxury that you have the space to carry out your degenerate activities such as \"using the washroom\".",
@@ -133,7 +134,7 @@ on-arrival: {!
         "The lights outside are dimming. You should sleep, perhaps.",
         "Loud music and voices filters through the walls. There must be a \"party\" going on. You have never enjoyed parties.",
         "Someone is watching television in the apartment complex, with the volume far too high.",
-        "Someone is playing music far too loudly. The bass beats shake the walls.",
+        "Someone is playing music far too loudly. The low beats shake the walls.",
         "You are feeling cold, somewhat more so than usual.",
         "You feel a growing pressure within your head, as if  your brain is being constricted by a vise.",
     ];
@@ -170,14 +171,14 @@ max-visits: 1
 @listen
 max-visits: 1
 
-*The apartment was poorly soundproofed. The highway rumbled in the distance like a never-ending roll of thunder, while the trolley clanged nearby. Nearer still, there were the intermittent sounds of ventilation infrastructure. Angry human voices. Pounding on the walls. Not heard were nonhuman animals; there was no need for those anymore.*
+*The apartment was poorly soundproofed. The highway rumbled in the distance like a never-ending roll of thunder, while the trolley clanged nearby. Nearer still, there were the intermittent sounds of ventilation and infrastructure. Angry human voices. Pounding on the walls. Not heard were nonhuman animals; there was no need for those anymore.*
 
 - @watch: Watch.
 - @remember: Remember.
 
 @remember
 
-*The Archivist remembered. Memories, real and imagined, flowed forth like a wellspring.*
+*The Archivist remembered. Memories, real and imagined, flowed forth.*
 
 - @5_years_ago: 5 years ago.
 - @10_years_ago: 10 years ago.

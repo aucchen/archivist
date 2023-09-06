@@ -11,6 +11,13 @@ You are out of medicine. What are you going to do?
 - @ask_k: Ask K-.
 - @ask_a: Ask A-.
 - @none: Go without.
+- @illegal: Acquiring some of your medications would be a crime.
+
+
+@illegal
+choose-if: 1 = 0
+unavailable-subtitle: It's best not to dwell on such things.
+
 
 @buy
 subtitle: $50, lasts 7 days

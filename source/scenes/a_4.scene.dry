@@ -4,6 +4,8 @@ tags: major
 max-visits: 1
 view-if: (day_major = 0 or day_minor = 0) and daily_a = 0 and a_path = 3 and a_loved = 1 and day >= a_day + 2 and stress < stress_threshold and day < last_day
 on-arrival: a_path = 4; daily_a = 0; day_major += 1; a_day = day; food += 3
+set-bg: images/city_dithered.png
+new-page: true
 
 
 The surroundings are far more upscale than any place you have been since... likely before the Cataclysm. You did not know that such palaces of luxury existed (or had ever been built) in the undercity. Crystalline decorations. Faux-wood tables. Artificial photosynthetic organisms. The meat is *organic cloned tissue*, unlike the typical algal or fungal or legume-based products. None of this feels real.
@@ -167,7 +169,7 @@ A- strokes your hair and hugs you.
 
 @y_end
 
-"This was nice. We should do this more often," she says.
+"This was nice. We should do this more often," she says. "Love you, Em."
 
 Soon enough, despite being barely having the energy to walk, you have to leave; her family is returning soon. You could have lain in her soft bed forever.
 
@@ -178,7 +180,7 @@ It is a quiet hour, the two of you merely existing in the same space. A- complai
 
 Eventually, A- asks you to leave; her family is arriving soon.
 
-"This was fun. We should do this more often," she says.
+"This was fun. We should do this more often," she says. "Love you, Em."
 
 
 @my_place
@@ -228,7 +230,7 @@ A- hugs you, and ruffles your hair.
 
 @m_end
 
-"This was nice. We should do this more often," she says.
+"This was nice. We should do this more often," she says. "Love you, Em."
 
 Soon enough, A- dresses and leaves. You are tired.
 
@@ -239,7 +241,7 @@ You don't do much of anything. A- makes trifling complaints about her work and f
 
 Eventually, A- leaves. She has work to do, a family to take care of.
 
-"This was fun. We should do this more often," she says.
+"This was fun. We should do this more often," she says. "Love you, Em."
 
 @nutrients
 title: Think of the nutritional content of A-'s bodily fluids.

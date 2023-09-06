@@ -3,6 +3,7 @@ subtitle: You need money, maybe [? if a_loved > 0 : (or maybe you just want to t
 view-if: a_path >= 4 and daily_a = 0 and day >= a_day + 2 and (day_major = 0 or day_minor = 0) and stress < stress_threshold and a_rejected = 0
 on-arrival: daily_a = 1; a_day = day; day_minor += 1
 go-to: a_good if a_loved >= 1 and a_path = 4; a_bad if a_loved <= 0; a_goto_end if a_path >= 5
+new-page: true
 tags: minor
 
 You call A-...

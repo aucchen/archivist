@@ -1,4 +1,5 @@
 title: Food
+audio: music/A1_Pacing.mp3
 go-to: food_options
 on-arrival: got_food_today = 1;
 new-page: true

@@ -1,5 +1,6 @@
 title: Meeting K-
-subtitle: 5PM, Founders Square
+audio: music/A6_Solitude.mp3
+subtitle: A promise. 5PM, Founders Square
 view-if: k_path = 1 and (day_major = 0 or day_minor = 0) and daily_k <= 0 and day = k_day + 2 and stress < stress_threshold and day < last_day
 on-arrival: day_major += 1; k_path += 1; daily_k = 1
 tags: major
@@ -70,7 +71,7 @@ Idly, you touch your respirator with your gloved fingers. Your glasses are not f
 max-visits: 1
 on-arrival: k2_checks += 1
 
-You are wearing your standard leaving-your-apartment outfit: a long gray tweed skirt, a thick blue jacket that is too warm for the perpetual 16-degree climate but adequately conceals your body shape, and a respirator, with glasses and your unruly long hair hiding the rest of your face. Very little of your skin is visible, as is intended.
+You are wearing your standard leaving-your-apartment outfit: a long gray tweed skirt, a thick blue jacket that is too warm for the perpetual 15-degree climate but adequately conceals your body shape, and a respirator, with glasses and your unruly long hair hiding the rest of your face. Very little of your skin is visible, as is intended.
 
 - @check_respirator: Check your respirator.
 - @check_surroundings: Check your surroundings.
@@ -99,6 +100,11 @@ K- appears with S- in tow, hand-in-hand. She has a downcast look about her as sh
 - @you_too: "I've been fine."
 - @stare_k: Stare at K-.
 - @stare_s: Stare at S-.
+- @illegal: You are currently committing a crime by existing in their presence.
+
+@illegal
+choose-if: 1 = 0
+unavailable-subtitle: It's best not to dwell on such things.
 
 @stare_k
 max-visits: 1

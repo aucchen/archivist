@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta prefix="ifiction: http://babel.ifarchive.org/protocol/iFiction/"
+        property="ifiction:ifid" content="1A977483-0671-4DB2-A79C-C6D957847430">
     <title>The Archivist and the Revolution - Autumn Chen</title>
     <link rel="stylesheet" type="text/css" href="game.css">
     <script src="jquery-1.11.1.min.js"></script>
@@ -81,6 +83,25 @@
                     </td>
                     <td>
                         <input type="radio" id="animate_bg_no" name="animate_bg" value="0" onclick="window.disableAnimateBg();">
+                    </td>
+                </tr>
+                <tr>
+                    <td> <hr> </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="audio_yes">Music on</label>
+                    </td>
+                    <td>
+                        <input type="radio" id="audio_yes" name="audio" value="1" onclick="window.enableAudio();">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="audio_no">Music off</label>
+                    </td>
+                    <td>
+                        <input type="radio" id="audio_no" name="audio" value="0" onclick="window.disableAudio();">
                     </td>
                 </tr>
                 <tr>

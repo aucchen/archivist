@@ -205,11 +205,22 @@
       window.dendryUI.saveSettings();
   };
 
+  window.disableAudio = function() {
+      window.dendryUI.toggle_audio(false);
+      window.dendryUI.saveSettings();
+  };
+
+  window.enableAudio = function() {
+      window.dendryUI.toggle_audio(true);
+      window.dendryUI.saveSettings();
+  };
+
   // populates the checkboxes in the options view
   window.populateOptions = function() {
     var disable_bg = window.dendryUI.disable_bg;
     var animate = window.dendryUI.animate;
     var animate_bg = window.dendryUI.animate_bg;
+    var disable_audio = window.dendryUI.disable_audio;
     if (disable_bg) {
         $('#backgrounds_no')[0].checked = true;
     } else {
@@ -224,6 +235,11 @@
         $('#animate_bg_yes')[0].checked = true;
     } else {
         $('#animate_bg_no')[0].checked = true;
+    }
+    if (disable_audio) {
+        $('#audio_no')[0].checked = true;
+    } else {
+        $('#audio_yes')[0].checked = true;
     }
   };
   

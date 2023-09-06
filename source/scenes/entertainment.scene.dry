@@ -1,4 +1,5 @@
 title: Entertain yourself
+audio: none
 subtitle: A psychological necessity.
 tags: minor
 view-if: (day_major = 0 or day_minor = 0) and day_entertainment = 0 and stress < stress_threshold and day < last_day

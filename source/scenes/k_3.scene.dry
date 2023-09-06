@@ -910,6 +910,7 @@ She smiles. "It's all good. This can count as practice."
 - @k_s_scene: ...
 
 @k_s_scene
+audio: none
 on-arrival: k_encounter = 1
 new-page: true
 set-bg: black

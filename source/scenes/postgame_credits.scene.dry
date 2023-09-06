@@ -6,7 +6,7 @@ go-to: endgame_options
 
 **Completed Endings:**
 
-[? if achievement_ending_1 = 1 : 1: Liana: Escape ?]
+[? if achievement_ending_1 = 1 : 1 - Liana: Escape ?]
 
 [? if achievement_ending_2 = 1 : 2 - K-: A New Family ?]
 
@@ -111,7 +111,10 @@ Games:
 > *Bee* by Emily Short
 # because all of my storylet-based IF are inspired by Bee.
 
-> *Solarium* by Anya Johanna DeNiro
+> *Analogue: A Hate Story* and *Hate Plus* by Christine Love
+# past history through documents, dystopia
+
+> *Solarium* and *We Are the Firewall* by Anya Johanna DeNiro
 # for the history.
 
 > *Get Your Gun, Dragonfly* by Palimrya

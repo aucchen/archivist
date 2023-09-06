@@ -5,6 +5,7 @@ title: Data
 title: DNA data recovery
 subtitle: Your paid job.
 new-page: true
+audio: music/A2_Memories.mp3 loop
 on-arrival: {!
     Q.data_seen += 1;
     Q.stress += 1;
@@ -23,7 +24,7 @@ In the middle of the 21st century, when many believed (accurately) that civiliza
 
 Today, it is estimated that a substantial proportion of E. coli populations in still-populated areas contain plasmids or genomic sequences originally built for DNA storage, as the technology was used repeatedly over the years, discovered and lost and discovered again.
 
-Your job as DNA Data Archivist is to take the sequenced DNA datasets, the strings of A, T, G, and C, and turn them into human-readable information. You're pretty good at this, although it didn't stop the casualization of your employment.
+Your job as DNA Data Archivist is to take the sequenced DNA datasets, the strings of A, T, G, and C, and turn them into human-readable information. You are rather adept at this, although it did not stop the casualization of your employment.
 
 The computer turns on, and the CRT monitor flickers to life. You open your e-mail. There are new data recovery and archival requests.
 
@@ -45,6 +46,7 @@ C-.`
 @view
 title: DNA data recovery
 subtitle: Your paid job. [? if prev_data_type != 0 : You have a message from the Archives about your last assignment. ?]
+audio: music/A2_Memories.mp3 loop
 unavailable-subtitle: You're too tired.
 new-page: true
 on-arrival: {! 
@@ -775,7 +777,7 @@ go-to: todo if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Sint-Truiden`
 
-`Sint-Truiden (Dutch pronunciation: [sɪnˈtrœydə(n)]; French: Saint-Trond [sɛ̃ tʁɔ̃]; Limburgish: Sintruin [sɪnˈtʀœyn]) is a city and municipality located in the province of Limburg, Flemish Region, Belgium, near the towns of Hasselt and Tongeren. The municipality includes the former communes (now deelgemeenten) of Aalst, Brustem, Duras, Engelmanshoven, Gelinden, Gorsem, Groot-Gelmen, Halmaal, Kerkom-bij-Sint-Truiden, Melveren, Metsteren, Ordingen, Runkelen, Velm, Wilderen, and Zepperen.`
+`Sint-Truiden (Dutch pronunciation: []; French: Saint-Trond [UNKNOWN]; Limburgish: Sintruin [CORRUPTED]) is a city and municipality located in the province of Limburg, Flemish Region, Belgium, near the towns of Hasselt and Tongeren. The municipality includes the former communes (now deelgemeenten) of Aalst, Brustem, Duras, Engelmanshoven, Gelinden, Gorsem, Groot-Gelmen, Halmaal, Kerkom-bij-Sint-Truiden, Melveren, Metsteren, Ordingen, Runkelen, Velm, Wilderen, and Zepperen.`
 
 
 
@@ -796,7 +798,7 @@ go-to: todo if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Joss_paper`
 
-`Joss paper, also known as incense papers, are papercrafts or sheets of paper made into burnt offerings common in Chinese ancestral worship (such as the veneration of the deceased family members and relatives on holidays and special occasions). Worship of deities in Chinese folk religion also uses a similar type of joss paper. Joss paper, as well as other papier-mâché items, are also burned or buried in various Asian funerals, "to ensure that the spirit of the deceased has sufficient needs in the afterlife."`
+`Joss paper, also known as incense papers, are papercrafts or sheets of paper made into burnt offerings common in Chinese ancestral worship (such as the veneration of the deceased family members and relatives on holidays and special occasions). Worship of deities in Chinese folk religion also uses a similar type of joss paper. Joss paper, as well as other papier-mch items, are also burned or buried in various Asian funerals, "to ensure that the spirit of the deceased has sufficient needs in the afterlife."`
 
 
 @w17_c
@@ -898,12 +900,12 @@ go-to: w59_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/15_Sagittarii`
 
-`15 Sagittarii is a blue-hued binary star system in the southern zodiac constellation of Sagittarius. The estimated distance based upon photometry is around 4,200 ly (1,300 pc). It is faintly visible to the naked eye with an apparent visual magnitude of 5.37. The system is moving closer to the Sun with a heliocentric radial velocity of around −6 km/s.` 
+`15 Sagittarii is a blue-hued binary star system in the southern zodiac constellation of Sagittarius. The estimated distance based upon photometry is around 4,200 ly (1,300 pc). It is faintly visible to the naked eye with an apparent visual magnitude of 5.37. The system is moving closer to the Sun with a heliocentric radial velocity of around -6 km/s.` 
 
 @w59_c
 go-to: todo
 
-Stars, like atoms, are things that you know scientifically exist, but cannot be seen with the naked eye. The pre-war humans could see stars, which inspired so many of their scientific discoveries, which are now impossible to replicate if enough technology is lost.
+Stars, like atoms, are things that you know scientifically exist, but cannot be seen with the naked eye. The pre-war humans could see stars, which inspired so many of their scientific discoveries, which are now impossible to replicate.
 
 @w67
 title: `W67.fastq.gz`
@@ -1168,6 +1170,8 @@ The trouble was that my son was a supporter of the Analysts. He rose to their le
 go-to: todo
 
 You have no idea if what this supposed "Liana Xu" is saying has any basis in truth. It is not in any of the histories or the legends or the novels. For all you know, this could be total fiction.
+
+# Liana: The analysts did really not care about the neogens, of course. They never do. To them, we are merely symbols, of bourgeois decadency, of cultural degeneration, of sin or irrationality or the evils of modernity or what have you.
 
 
 ################################# Technical

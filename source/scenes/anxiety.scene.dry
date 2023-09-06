@@ -1,5 +1,6 @@
 title: Breakdown
 subtitle: It is not good.
+audio: music/A6_Solitude.mp3
 view-if: stress >= stress_threshold or day >= last_day
 on-arrival: ending_anxiety = 1
 frequency: 1000

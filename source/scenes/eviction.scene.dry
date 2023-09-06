@@ -1,6 +1,7 @@
 title: Evicted!
 set-bg: images/city_dithered.png
 new-page: true
+audio: music/A6_Solitude.mp3
 on-arrival: evicted = 1
 
 [? if paid_full = 0 : The rent due was $[+ old_rent +] and the fees were $[+ fees +]. Unfortunately, you did not have enough to cover the total amount due. ?]

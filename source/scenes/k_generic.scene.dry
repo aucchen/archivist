@@ -4,6 +4,7 @@ view-if: k_path >= 4 and daily_k = 0 and day >= k_day + 2 and (day_major = 0 or 
 on-arrival: daily_k = 1; k_day = day; day_minor += 1; k_path += 1; stress += 1
 max-choices: 1
 max-visits: 3
+new-page: true
 tags: minor
 
 You call K-, and ask if there is anything you could do to help her (and perhaps for money), such as perhaps taking care of S-. She says yes; you can visit her apartment.

@@ -88,9 +88,8 @@ if (Q.day == Q.data_day + 8 && Q.has_contract > 0) {
 }
 // set daily dialogue here.
 if (Q.stress <= Q.stress_threshold/2) {
-    // nonrandom lol
     Q.day_random += 1;
-    if (Q.day >= Q.low_anxiety_day_dialogues.length) {
+    if (Q.day >= 1) {
         Q.day_random = Math.floor(Math.random()*Q.low_anxiety_day_dialogues.length);
     }
     Q.day_dialogue = Q.low_anxiety_day_dialogues[Q.day_random];
