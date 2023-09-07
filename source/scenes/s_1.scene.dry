@@ -1,6 +1,7 @@
 title: S-
 new-page: true
 on-arrival: with_s = 1
+audio: music/A6_Solitude.mp3
 set-bg: images/room1_filtered_dithered.png
 
 # herein you take care of S-.

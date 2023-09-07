@@ -9,6 +9,7 @@ A collection of disconnected facts that comprise your knowledge of this world.
 
 @notes_top
 title: Notes
+audio: music/A2_Memories.mp3
 subtitle: A recollection of facts.
 tags: minor
 view-if: (day_major = 0 or day_minor = 0) and day_entertainment = 0 and stress < stress_threshold and day < last_day and notes_seen = 0

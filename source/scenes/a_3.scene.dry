@@ -1,5 +1,6 @@
 title: A-
 audio: music/A6_Solitude.mp3
+new-page: true
 subtitle: She wanted to "hang out."
 view-if: (day_major = 0 or day_minor = 0) and daily_a = 0 and a_path = 2 and day >= a_day + 2 and stress < stress_threshold and day < last_day
 on-arrival: a_path = 3; day_major += 1; daily_a = 1; money += 100; a_day = day

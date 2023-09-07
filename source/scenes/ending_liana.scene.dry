@@ -178,7 +178,7 @@ go-to: go_questions
 
 "I'm not going to be breaking the terms of the Treaty. Did you forget about that already?"
 
-Yes; the Treaty that ended the Posthuman War prevented either side from directly interfering with the other. But...
+Yes, the Treaty that ended the Posthuman War prevented either side from directly interfering with the other. But...
 
 "Doesn't my existence already break the Treaty?"
 
@@ -196,11 +196,15 @@ view-if: liana_qs_2 >= 2
 "I'm ready. Let's go."
 
 @go_2
-go-to: liana_end
 
 "Great! You don't need any of your things. Everything you have here, we can easily replicate. I have an easy route out of the city. Just follow me."
 
-You follow her. For the first time in your life, you are free.
+- @go_2_follow: You follow her...
+
+@go_2_follow
+go-to: liana_end
+
+You follow her, passing through the streets as if the two of you are invisible. She hands you a mask, and you make your way through an unmarked passageway, through the bowels of the city, through a dripping maze of centuries-old corridors that Liana turns into a history lecture, and finally *outside*. For the first time in your life, you are free.
 
 @liana_end
 go-to: endings
@@ -271,6 +275,7 @@ Liana simply smiles. "Why?"
 - @irb: "I never asked to be made like this."
 - @dont_know_me: "You don't know me as well as you think."
 - @care_k: "You don't care about K- or S- or..."
+- @get_out: "Get out of my house."
 - @fu_end: It no longer matters.
 
 @abandoned
@@ -286,6 +291,7 @@ She smiles. "Remember the terms of the Treaty? We aren't allowed to interfere. E
 
 "We respect the Treaty not for the sake of the baselines, but because of the other posthuman factions. There is a delicate truce up there that would be broken by involvement in Earth affairs." A pause. "It's complicated. I don't expect you to understand."
 
+You don't.
 
 @irb
 on-arrival: fu_qs += 1
@@ -294,9 +300,9 @@ go-to: fu_qs
 
 "I never asked to be made like this..."
 
-"But it *is* better that you're alive today, isn't it? Well, I am glad that you are alive."
+"But it *is* better that you're alive today, isn't it? Well, I am glad that you are alive. Existence is always preferable to nonexistence, is it not? I always believed that, and I think you do too."
 
-You do not know what to say to that.
+You do not know what to say.
 
 
 @dont_know_me
@@ -319,8 +325,17 @@ go-to: fu_qs
 
 "You don't care about K- or S- or..."
 
-"They are *your* relations, not mine, so why would I care? After all, you consider yourself a distinct person from me, don't you?"
+"They are *your* relations, not mine, so why would I care? After all, you consider yourself a distinct person from me, don't you? I doubt that you care for all my relations, or even for me."
 
+
+@get_out
+view-if: fu_qs >= 2
+
+"Get out of my house."
+
+"That's too bad. I thought we could get along, but I'll leave soon," Liana says. "I'll leave some supplies behind. You're a resourceful person. You'll do well with them. And if you ever want to leave with me, just think of me enough and I'll probably get the signal."
+
+- @fu_end_2: With that, she leaves.
 
 
 @fu_end
@@ -330,10 +345,20 @@ It no longer matters. Nothing you do, nothing you are, has any broader implicati
 
 "I'll leave soon," Liana says. "I'll leave some supplies behind. You're a resourceful person. You'll do well with them. And if you ever want to leave with me, just think of me enough and I'll probably get the signal."
 
+- @wait_leave_with_you: "Wait. I want to go with you."
+- @fu_end_2: Let her leave.
+
+@fu_end_2
+
 With that, Liana leaves, and you are alone once more.
 
 - @stay_end: End.
 
+
+@wait_leave_with_you
+go-to: go_2
+
+"Wait. I want to go with you."
 
 
 @stay_end
