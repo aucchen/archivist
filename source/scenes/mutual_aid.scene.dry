@@ -91,7 +91,7 @@ go-to: wondering
 
 "I thought you were dead, too."
 
-"It's the neogenic greeting these days," says R-. "So many of us are dead now. Bella, Lilian, Esme... From what I knew of you on CityNet, I thought it would be a fitting end to your story too. But it turns out, us traitors have a way of persevering. The cowards build their houses over the heroes' graves. Or something like that." She chuckles.
+"It's the neogenic greeting these days," says R-. "From what I knew of you on CityNet, I thought it would be a fitting end to your story too. But it turns out, us traitors have a way of persevering. The cowards build their houses over the heroes' graves. Or something like that." She chuckles.
 
 "So, what is your opinion of the Mutual Aid Alliance so far?" asks R-.
 
@@ -200,9 +200,11 @@ on-arrival: support_mutual_aid = 1
 
 "Oh, really? Are you physically capable of labour?"
 
-"There are more ways to help than the purely physical," says L-. "You can talk to our suppliers... but you might not want to do that either." He laughs. "Or there's always data entry, keeping the books, any number of tasks."
+"Hey, what happened to 'From each according to their ability'?" says L-, laughing. "There are more ways to help than the purely physical. There's always data entry, keeping the computers running, any number of tasks."
 
-"Fine. We'll think of something for you to do, but maybe next time," says R-. "We'll be having another distribution session here in a week. Come back if you still want to work with us."
+R- rolls her eyes. "Fine, from each according to their ability, to each according to their need, whatever. We'll think of something for you to do."
+
+"We'll be having another distribution session here in a week," R- continues. "Come back if you still want to work with us."
 
 - @main: You are free to leave.
 

@@ -25,7 +25,6 @@ view-if: @data.c123 >= 1
 title: Ask about A-'s desistance.
 unavailable-subtitle: You're not ready for that conversation yet.
 
-
 @i_know
 go-to: i_know_2
 
@@ -114,21 +113,26 @@ A- smiles. "Well, you're certainly easy to deal with."
 
 @why
 title: "Why are you doing this?"
-go-to: love_choices
+go-to: need
 
 "Why are you doing this?"
 
-"If it isn't abundantly clear already, I'm still in love with you."
 
-For some reason, there is a part of you that wants to laugh, because this scenario feels straight out of a drama, were it not for the fact of your identities.
+@need
+go-to: love_choices
 
+She looks pensive, you presume, staring off into open space.
+
+"I... I think I need you more than you need me. The times with you, and K-, those were the happiest times of my life, even after the Cataclysm."
+
+Now, she turns to you and smiles. "Sorry. Pathetic, right? And if it isn't abundantly clear already, I'm still in love with you."
+
+It feels surreal. There is a part of you that wants to laugh.
 
 @love_choices
 
-# kla;dfj;ldj;jadfs this is some episodes shit
-
 - @laugh: Laugh.
-- @married: "You're married..."
+- @married: "Your wife..."
 - @i_love_you_too: "I love you too..."
 - @still_love_money
 - @dont_love
@@ -142,7 +146,7 @@ view-if: dream_k_a_viewed >= 1
 
 "There is no such thing as love," you [? if a_transactional = 1 : reiterate ?][? if a_transactional = 0 : say ?]. "Only the mutually beneficial exchange of resources."
 
-A- chuckles. "You would say that, wouldn't you? I already know what it means for you. But for me... you don't have to love me. Maybe we can continue this arrangement. Just stay with me. Talk to me. It's a mutually beneficial exchange, isn't it?"
+A- chuckles. "That's what you and K- always talked about, right? I already know what it means for you. But for me... you don't have to love me. Maybe we can continue this arrangement. Just stay with me. Talk to me. If you say it's a mutually beneficial exchange, why don't we really make it so?"
 
 "Oh..."
 
@@ -200,7 +204,7 @@ go-to: love_k_2
 
 She is silent for a moment. "This... well, I haven't changed my mind. I still love you. If you want to get back together with K- at the same time, I don't mind; I won't get jealous. And if she's jealous, well, that's on her."
 
-- @married: "You're married..."
+- @married: "Your wife..."
 - @i_love_you_too: "I love you too..."
 - @still_love_money
 - @mistake
@@ -231,7 +235,7 @@ go-to: really_about
 
 "You are at greater danger than me."
 
-A- sighs, and puts an arm around your shoulder. "I guess you're right. You have your documents all corrected, name change, bottom surgery, everything. Meanwhile I'm still just out here doing... well, illegally crossdressing I guess."
+A- sighs, and puts an arm around your shoulder. "I suppose you're right. You have your documents all corrected, name change, bottom surgery, everything. Meanwhile I'm still just out here doing... well, illegally crossdressing."
 
 @my_life
 go-to: love_choices
@@ -284,14 +288,9 @@ For some reason, there is a part of you that wants to laugh, because this scenar
 
 @why_you_r
 view-if: kissed_a = 1
-go-to: love_choices
+go-to: need
 
 "Why are *you* doing this?"
-
-"Because I... fuck it, I still love you, okay?"
-
-For some reason, there is a part of you that wants to laugh, because this scenario feels straight out of a drama, were it not for the fact of your identities.
-
 
 @laugh
 max-visits: 1
@@ -315,16 +314,20 @@ For whatever reason, the chemical pathways in your brain have decided that this 
 
 
 @married
+title: "Your wife..."
 max-visits: 1
 
-"You're married..."
+"Your wife..."
 
-"Yeah. Shit happens. Ha." She smirks. "I do care about her. I care about our children. It's just that there's this secret side of me that I can never show around them. It's like I'm only living half a life around them."
+"Oh, that was only ever a marriage of convenience. Besides, we're getting divorced." She smirks. "They had the same ideas as me about safety, but they're more committed to the act than I am."
+
+A sigh. "I do care about them. I care about our children. It's just that we have different... tolerances. Different needs."
 
 - @mistake: "This was a mistake."
 - @mistress: "I'm not going to be a mistress for you."
 - @still_love: "I know it's a mistake, but I still love you too..."
 - @still_love_money: "I know it's a mistake, but I still love you too..." (but in truth you need her financial support)
+
 
 @mistake
 title: "This was a mistake."
@@ -439,7 +442,7 @@ on-arrival: a_loved = 1
 
 @why_you
 view-if: kissed_a = 0
-go-to: why_you_r
+go-to: why
 
 # "Why are *you* doing this?"
 
@@ -489,7 +492,7 @@ Oh. You did not notice.
 
 - @am_i: "Oh, am I?"
 - @normal_reaction: "It's a normal physiological reaction."
-- @stay_silent: Stay silent.
+- @stay_silent: Stay silent. Just hold her.
 
 @am_i
 go-to: a_i_love_you
@@ -498,7 +501,7 @@ go-to: a_i_love_you
 
 "Yes. You are."
 
-"Oh." You wipe the tears with the back of your hand.
+"Oh." She wipes the tears with the back of her hand. You close your eyes.
 
 @normal_reaction
 go-to: a_i_love_you
@@ -507,12 +510,14 @@ go-to: a_i_love_you
 
 "Is it? You didn't use to cry so much..."
 
-"Oh." You wipe the tears with the back of your hand.
+"Oh." She wipes the tears with the back of her hand. You close your eyes.
 
 @stay_silent
 go-to: a_i_love_you
 
-You stay silent.
+You stay silent, holding on to her as much as you can, maximizing the shared surface between your body and hers.
+
+She wipes the tears from your face with the back of her hand. You close your eyes.
 
 @a_i_love_you
 
@@ -530,7 +535,14 @@ When you wake up, A- has already left the bed, and is sitting dressed in her "ma
 
 "Sorry. I have to leave. There's... things I have to do."
 
-- @main: She leaves, with a kiss.
+- @leave_kiss: She leaves, with a kiss.
+- @leave_stay_longer: You wish she would stay for longer.
+
+@leave_kiss
+go-to: main
+
+@leave_stay_longer
+go-to: main
 
 
 @non_stuff

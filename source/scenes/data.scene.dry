@@ -323,7 +323,7 @@ Some of your decoded datasets have been received and processed. Here are the res
 
 @check_data
 on-display: {!
-$('#check_data_text').append($(window.dendryUI.dendryEngine.state.qualities.check_data_text));
+$('#check_data_text').append($(Q.check_data_text));
 !}
 
 {!<code id="check_data_text"></code>!}
@@ -544,7 +544,7 @@ go-to: w606_c if w_seen > 1; w_intro if w_seen <= 1
 
 `URL: https://en.wikipedia.org/wiki/Disterna`
 
-`Disterna is a genus of longhorn beetles of the subfamily Lamiinae,[1] containing the following species: ...`
+`Disterna is a genus of longhorn beetles of the subfamily Lamiinae, containing the following species: ...`
 
 @w606_c
 go-to: todo
@@ -1264,7 +1264,7 @@ tags: data, science, archives, e_coli
 choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
-frequency: 100
+frequency: 300
 on-arrival: {! Q.prev_data.push('s404'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key_404 = 1; !}
 go-to: decode
 set-jump: s404_
@@ -1592,6 +1592,7 @@ go-to: todo
 `- Priestess Stella Smith, 97 AT`
 
 
+
 ###################################### Historical - 2nd/3rd Century
 
 # TODO: more 1st century notes: a few years later, an administrator writes about the equivalent of a cataclysm. Thinks the eunuchs cursed them.
@@ -1599,6 +1600,142 @@ go-to: todo
 # Well, if accurate, this document has put a nail in the claims of the False Century Hypothesis. The FHC claims that the period between 147 and 255 AT did not exist, and that the year change was imposed by the Imperial Era to create an auspicious numerological pattern.
 
 # the mid-imperial era...
+
+@f901
+title: `F901.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+unavailable-subtitle: You don't know how to decode this file.
+tags: data, history, archives, in_vitro
+choose-if: key404 = 1
+view-if: key101 = 1 or key404 = 1
+max-visits: 1
+count-visits-max: 1
+frequency: 100
+on-arrival: {! Q.prev_data.push('f901'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f901_
+
+@f901_
+go-to: f901_c
+
+`Regent,
+
+Sorry for sending this message in plaintext - my computer memory was destroyed in a radiation incident so I lost our previous key. I know of your security concerns, but I believe we are the currently living humans who use this means of communication. No one except you and I will read this in our lifetimes.
+
+Here is the update from the front. The bridge is likely beyond repair due to the terrorists' bomb attack. Rail traffic to the occupation sites is likely impossible. Re-route via river ships and tracked overland vehicles. New routes through the forest.
+
+Here is the key for the next DNA message:
+
+\[BINARY SEQUENCE\]
+
+ -Julia`
+
+@f901_c
+go-to: todo
+
+This document likely originates from the middle Imperial era, during the period of expansion, when the armies of the arcology-empire set out to conquer its neighbors. Data from this period is sparse due to the heavy use of private-key encryption, a separate problem from that of the DNA data encoding schemes. Thus, this keyed document is invaluable, and would likely open up others.
+
+
+@f902
+title: `F902.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+unavailable-subtitle: You don't know how to decode this file.
+tags: data, history, archives, in_vitro
+choose-if: key404 = 1
+view-if: @data.f901 > 0
+max-visits: 1
+count-visits-max: 1
+frequency: 100
+on-arrival: {! Q.prev_data.push('f902'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f902_
+
+
+@f902_
+go-to: f902_c
+
+`Regent,
+
+Do not listen to the news reports or the Department of War, those obsequious cowards. Here are the actual equipment losses on the Halifax front:
+
+ - armored vehicles: \[WARNING: UNKNOWN CHARACTER ENCODING\]
+ - transporters: \[WARNING: UNKNOWN CHARACTER ENCODING\]
+ - humans: \[WARNING: UNKNOWN CHARACTER ENCODING\]
+ - small weapons: \[WARNING: UNKNOWN CHARACTER ENCODING\]
+
+Felix should never have cancelled the cloning programme. The biosciences are our future, as evinced by this DNA message. The wisdom of the \[WARNING: UNKNOWN CHARACTER ENCODING\] class - that is, you, my love - will allow us to avert the mistakes of the Ancestors.
+
+Here is the key for the next DNA message:
+
+\[BINARY SEQUENCE\]
+
+ -Julia`
+
+@f902_c
+go-to: todo
+
+You are not sure what to make of this. After the democratic revolution, the Imperial era was demonized - unfairly, some revanchists would say. Perhaps new evidence would solidify the mainstream hostile view of the Imperial era, if it is ever uncovered.
+
+
+@f903
+title: `F903.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+unavailable-subtitle: You don't know how to decode this file.
+tags: data, history, archives, in_vitro
+choose-if: key404 = 1
+view-if: @data.f902 > 0
+max-visits: 1
+count-visits-max: 1
+frequency: 100
+on-arrival: {! Q.prev_data.push('f903'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f903_
+
+
+@f903_
+go-to: f903_c
+
+`It has been one week since Julia disappeared. I have been inconsolable ever since.
+
+She was the greatest servant of the empire, and no one else knows of her. No one else can know of her. We loved each other, as pure as the love between any man and woman, despite her proclivities and personal history. It pains me so much that she could only have been kept a secret. And now, the world will never know.
+
+ - Ariel Dumas`
+
+@f903_c
+go-to: todo
+
+
+@f904
+title: `F904.fastq.gz`
+subtitle: `Source: Archives. Medium: *in vitro*`
+unavailable-subtitle: You don't know how to decode this file.
+tags: data, history, archives, in_vitro
+choose-if: key404 = 1
+view-if: @data.f902 > 0
+max-visits: 1
+count-visits-max: 1
+frequency: 100
+on-arrival: {! Q.prev_data.push('f904'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
+go-to: decode
+set-jump: f904_
+
+
+@f904_
+go-to: f904_c
+
+`(Letter template)
+
+Dear Mr./Mrs. <Insert name here>,
+
+We regret to inform you that your son, <Rank> <First name> <Last name>, has given his life in the service of the Empire. May he find peace with the Ancestors.
+
+ - Regent Ariel Dumas
+
+(This feels too brief. Too impersonal. Is the mention of the ancestors discriminatory towards non-absolutionist faiths? I wish Julia were here.)`
+
+@f904_c
+go-to: todo
+
 
 ###################################### Uprising/revolution
 

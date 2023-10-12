@@ -97,7 +97,7 @@ go-to: em_2
 
 "Em? Is that you? Fuck, why did you decide to call now of all times?"
 
-Of course, you can't talk freely on the phone. Who knows who is listening.
+Of course, you are unable to speak freely on the phone. Who else is listening?
 
 - @job: "I lost my job..."
 - @homeless: "I might be homeless soon..."
@@ -119,7 +119,7 @@ go-to: need_money
 
 "I just wanted to see how you and S- were doing..."
 
-"Really? Is that it? I don't recall you having a history of curiosity about our personal status." Her sigh is audible. "Fuck, what is the real reason?"
+"Really? Is that it? You haven't been this curious in the past five years." Her sigh is audible. "Fuck, what is the real reason?"
 
 - @job: "I lost my job..."
 
@@ -175,7 +175,7 @@ You see the transaction on your account.
 
 "Anyway," K- continues, "What I was going to say was that I need someone to take care of S- on the days when I'm working late in the lab. Which lately is every day. I know your schedule is flexible. Is that something you can do?"
 
-You aren't exactly in a position to refuse.
+You are not exactly in a position to refuse.
 
 - @yes_meet: "Sure..."
 

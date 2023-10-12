@@ -135,45 +135,14 @@ The two of you walk to A-'s apartment, located in the same district as the resta
 - @your_place_separate: Eventually, the two of you separate.
 
 @your_place_encounter
-on-arrival: day_minor += 1; a_encounter += 1; a_your_place = 1
+on-arrival: day_minor += 1; a_encounter += 1; at_as_place = 1
 set-bg: rgb(0,0,0)
 
 She wraps her arms around you, kisses you, takes you into her bedroom...
 
 ...
 
-- @your_place_encounter_2: ...
-
-@your_place_encounter_2
-new-page: true
-
-It's over. Finally the two of you disentangle. Your body aches. You feel tears dripping down your face, mixing with various bodily fluids.
-
-"How are you doing?" A- asks.
-
-- @y_feeling_nothing: You are feeling nothing at all.
-- @y_feeling_alright: "I'm feeling alright."
-
-@y_feeling_nothing
-go-to: y_end
-
-You are feeling nothing at all, which is altogether not an unpleasant feeling. For a moment it was as if all of your crises could be forgotten.
-
-You tell as much to A-, and she strokes your hair.
-
-@y_feeling_alright
-go-to: y_end
-
-"I'm feeling alright," you say, and it is true. For a moment it was as if all of your crises could be forgotten.
-
-A- strokes your hair and hugs you.
-
-@y_end
-
-"This was nice. We should do this more often," she says. "Love you, Em."
-
-Soon enough, despite being barely having the energy to walk, you have to leave; her family is returning soon. You could have lain in her soft bed forever.
-
+- @encounter_2: ...
 
 @your_place_separate
 
@@ -185,7 +154,7 @@ Eventually, A- asks you to leave; her family is arriving soon.
 
 
 @my_place
-on-arrival: a_loved += 1
+on-arrival: a_loved += 1; at_as_place = 0
 
 As in the last encounter, the two of you end up at your apartment.
 
@@ -196,16 +165,16 @@ As in the last encounter, the two of you end up at your apartment.
 
 
 @my_place_encounter
-on-arrival: day_minor += 1; a_encounter += 1; a_my_place = 1
+on-arrival: day_minor += 1; a_encounter += 1; at_as_place = 0
 set-bg: rgb(0,0,0)
 
 She kisses you, and pulls you down onto the bed, on top of her...
 
 ...
 
-- @my_place_encounter_2: ...
+- @encounter_2: ...
 
-@my_place_encounter_2
+@encounter_2
 new-page: true
 
 Finally the two of you disentangle. Your body aches. You feel tears dripping down your face, mixing with various bodily fluids.
@@ -214,6 +183,7 @@ Finally the two of you disentangle. Your body aches. You feel tears dripping dow
 
 - @m_nothing_at_all: You are feeling nothing at all.
 - @m_better: "I'm feeling better."
+- @hold_on_to_her: Just hold on to her, for as long as you can.
 
 @m_nothing_at_all
 go-to: m_end
@@ -229,11 +199,25 @@ go-to: m_end
 
 A- hugs you, and ruffles your hair.
 
+@hold_on_to_her
+
+You hold on to her for as long as you can. She is warm, and you are cold. She is soft, and you are brittle. She is solid, and you are sublimating into nothingness.
+
+"Hey, Em? [? if at_as_place = 0 : I really have to go soon. ?][? if at_as_place = 1 : I hate to say this, but, you should probably go soon. ?] Love you, Em."
+
+- @leave_hold: You must let go.
+
+@leave_hold
+
+[? if at_as_place = 0 : Soon enough, A- dresses and leaves. You are tired. ?]
+[? if at_as_place = 1 : Soon enough, despite being barely having the energy to walk, you have to leave; her family is returning soon. You could have lain in her soft bed forever. ?]
+
 @m_end
 
 "This was nice. We should do this more often," she says. "Love you, Em."
 
-Soon enough, A- dresses and leaves. You are tired.
+[? if at_as_place = 0 : Soon enough, A- dresses and leaves. You are tired. ?]
+[? if at_as_place = 1 : Soon enough, despite being barely having the energy to walk, you have to leave; her family is returning soon. You could have lain in her soft bed forever. ?]
 
 
 @my_place_separate
@@ -283,7 +267,7 @@ max-visits: 1
 
 "You're really beautiful tonight..."
 
-She was always so *good* at being a neogen. Her face was so much less readable than yours. Her sing-song voice. Her ability to make herself presentable. Even now, she looks like a human woman, whereas you must appear as some sort of feral creature, a monstrosity unfit for bourgeois eyes.
+She was always so *good* at being a neogen. Her face was so much less readable than yours; she always made herself presentable. And there was her sing-song voice, with the *correct* resonance and pitch and intonation Even now, she looks like a human woman, whereas you must appear as some sort of feral creature, a monstrosity unfit for bourgeois eyes.
 
 She shrugs. "Hey, it takes practice."
 
@@ -316,7 +300,9 @@ max-visits: 1
 
 "Living like this. Keeping everything a secret. While everyone else is..."
 
-A- grimaces. "There are more of us secret neogens than you think. Under different circumstances, you could've been here too. Remember when we talked about how we would outwardly desist when the crackdown came?"
+A- grimaces. "I can't stand it. You're the only one keeping me sane."
+
+Quickly, she contorts her face back to a safe neutral. "There are more of us secret neogens than you think. Under different circumstances, you could've been here too. Remember when we talked about how we would outwardly desist when the crackdown came?"
 
 - @bad_pretending
 
@@ -326,13 +312,34 @@ title: "I'm not good at pretending.
 
 "I'm not good at pretending."
 
-"Well, in that case, I'm sorry. I can help you get better at pretending, if you'd like. It's a skill like any other. It takes some mental discipline. Compartmentalization in particular."
+"Well, in that case, I'm sorry. I can help you get better at pretending, if you'd like. It's a skill like any other. It takes some mental discipline. You learn to be numb. To control your thoughts and feelings, to ignore the hurt. Either that, or you learn to be invisible. To be quiet so no one suspects a thing. Eventually, you can forget yourself, forget what you once was. It doesn't feel *good*, but it works. Do you want to try?"
+
+- @shake_head: You shake your head.
+- @not_so_different: "That's not so different from my life now."
+
+@shake_head
 
 You shake your head.
 
 "Well, that's too bad. I suppose if you desisted, it would come across as something worse, given your current identification status." She chuckles. "I'm guessing you are not interested in fake identity documents?"
 
 You shake your head again.
+
+- @what_next
+
+@not_so_different
+
+"That's not so different from my life now."
+
+She makes a slight chuckle. "I suppose we all have our struggles. I sometimes wonder if I could have gone on a different path. Maybe only if I got bottom surgery." A wistful glance aside. "By the way, you never thanked me for writing all those letters. Pretending to be three different psychiatrists was hard. Making up all the stationary designs too."
+
+- @thank_you: "Thank you."
+
+@thank_you
+
+"Thank you."
+
+She laughs. "The misguided things we do for love. Whatever. It's not like he would've even read the letters. The Neogenic Medical Society was already gone. No more sanctions, except the final sanction." She grins, but doesn't quite laugh at her joke (was it a joke?).
 
 - @what_next
 

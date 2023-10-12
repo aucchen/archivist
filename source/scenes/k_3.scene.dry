@@ -251,7 +251,7 @@ go-to: end_a_talk_doc
 
 "There were some historical documents from the first century..."
 
-"Oh. That's nice, I suppose..."
+"Oh. That's nice, I guess..."
 
 @talk_r
 title: "Documents from the uprising..."
@@ -265,7 +265,7 @@ go-to: end_a_talk_doc
 
 "They did..."
 
-"Oh. That's nice, I suppose..."
+"Oh. That's nice, I guess..."
 
 
 @end_a_talk_doc
@@ -930,6 +930,7 @@ It is over. Your body is sore. The sheets are wet from the just-showered hair, n
 - @am_i: "Oh, am I?"
 - @normal_reaction: "It's a normal physiological reaction."
 - @stay_silent: Stay silent.
+- @kiss: Kiss her again.
 
 @am_i
 
@@ -951,10 +952,22 @@ It is over. Your body is sore. The sheets are wet from the just-showered hair, n
 
 - @stay_silent
 
+@kiss
+
+In lieu of words, you kiss her on the neck. She wipes the tears from your cheek.
+
+"It's okay," she whispers, before falling asleep, her body still squeezed against yours, her hand still holding yours. She is so, so warm.
+
+You are falling asleep as well.
+
+- @end_date: ...
+
 @stay_silent
 title: Stay silent.
 
-You just stay silent. K- has fallen asleep. You are falling asleep.
+You stay silent. "It's okay," she whispers, before falling asleep, her body still squeezed against yours, her hand still holding yours. She is so, so warm.
+
+You are falling asleep as well.
 
 - @end_date: ...
 

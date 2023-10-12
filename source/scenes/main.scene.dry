@@ -61,8 +61,10 @@ if (Q.day_major > 1 || Q.day_minor > 1) {
 Q.day_major = 0;
 Q.day_minor = 0;
 Q.numb = 0;
-for (var i = 0; i < 21; i++) {
-    Q['name_' + i] = window.randomName();
+if (window) {
+    for (var i = 0; i < 21; i++) {
+        Q['name_' + i] = window.randomName();
+    }
 }
 console.log('eod_check_2');
 Q.main_notes = ' ';

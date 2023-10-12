@@ -100,7 +100,7 @@ K- appears with S- in tow, hand-in-hand. She has a downcast look about her as sh
 - @you_too: "I've been fine."
 - @stare_k: Stare at K-.
 - @stare_s: Stare at S-.
-- @illegal: You are currently committing a crime by existing in their presence.
+#- @illegal: You are currently committing a crime by existing in their presence.
 
 @illegal
 choose-if: 1 = 0
