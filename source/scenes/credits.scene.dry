@@ -43,10 +43,6 @@ There are a number of real-world papers referenced in the story from the field o
 
 This is a work of fiction; the technologies described in the game are not used in a scientifically accurate fashion.
 
-= Music
-
-The game does not include music yet, but if you wish to listen to an unofficial soundtrack, there is one {!<a href="https://open.spotify.com/playlist/4X9RQqkMnikpfSzG4Cxq3i">here</a>!}.
-
 - @one: Start game
 - @postgame_credits: Endings
 - @game_over: End game.
