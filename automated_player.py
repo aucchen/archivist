@@ -20,6 +20,9 @@ def test(output_path='output.txt', dump_stats=1, script_path='transcript.txt', d
     #driver = webdriver.PhantomJS()
     driver.get('file://' + file_path)
     link_divs = driver.find_elements(By.XPATH, '//ul[@class="choices"]//li')
+    # disable music
+    driver.execute_script('window.dendryUI.toggle_audio(false);');
+    driver.execute_script('window.dendryUI.animate = false;');
     data = driver.execute_script('return JSON.stringify(window.dendryUI.dendryEngine.getExportableState(), null, 2);');
     print(data)
     while len(link_divs) > 0:
@@ -86,6 +89,8 @@ def test_with_script(script_path, output_path='script_output.txt', dump_stats=0,
     driver = webdriver.PhantomJS()
     driver.get('file://' + file_path)
     link_divs = driver.find_elements(By.XPATH, '//ul[@class="choices"]//li')
+    driver.execute_script('window.dendryUI.toggle_audio(false);');
+    driver.execute_script('window.dendryUI.animate = false;');
     data = driver.execute_script('return JSON.stringify(window.dendryUI.dendryEngine.getExportableState(), null, 2);');
     print(data)
     script_location = 0

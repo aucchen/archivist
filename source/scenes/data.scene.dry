@@ -55,7 +55,7 @@ on-arrival: {!
     Q.day_data_seen = 0;
     Q.data_day = Q.day;
     // max datas that can be seen per day
-    Q.max_data_day = window.randomSelectProbs([1,2,3,4,5], [0.1, 0.3, 0.3, 0.2, 0.1]);
+    Q.max_data_day = window.randomSelectProbs([1,2,3,4,5], [0.1, 0.2, 0.2, 0.3, 0.2]);
 !}
 view-if: stress < stress_threshold and data_seen >= 1 and has_contract = 1 and day < last_day
 choose-if: day_major = 0
@@ -659,6 +659,7 @@ tags: data, wiki, e_coli, archives
 choose-if: key13 = 1
 unavailable-subtitle: You don't know how to decode this file.
 max-visits: 1
+frequency: 200
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('w169'); Q.correct_data_types.push('misc'); Q.w_seen += 1; !}
 go-to: decode
@@ -1424,20 +1425,33 @@ set-jump: f202_
 @f202_
 go-to: f_background if f_seen <= 1; f202_c if f_seen > 1
 
-`Thesis: The regime of the eunuchs represents a remnant of the Absolutionist degeneracy must be abolished, and to do so their remaining numbers must be culled.
+`Dear Emilia,
 
-Antithesis: Eunuchs are citizens of the arcology like any other. They do not constitute a regime, and insofar that they have undue influence in government, it has been on the net beneficial.
+My love, I am sorry that it has come to this. The Administrators believed that the regime of the eunuchs represents a remnant of the Absolutionist degeneracy must be abolished, and to do so their remaining numbers must be culled.
 
-Synthesis: All eunuchs must be removed from government, but they are to be permitted to live. However, they must be re-educated in order to remove the traces of their ideology.`
+But when I say "eunuch" I am never referring to you, of course. Of course I do not wish to harm you or anyone you love. I have been making the case to the rest of the Administrators that the eunuchs are citizens of the arcology like any other. They do not constitute a regime, and insofar that they have undue influence in government, it has been on the net beneficial.
 
-`- Administrator R. Beauchamp, 99 AT`
+In the end, the decision was made that all eunuchs must be removed from government, but they are to be permitted to live. I know you care for your people, but you must also see the Administrators' perspective as well. The conflicts must end, and this is the best possible outcome.
+
+Love,
+R.`
+
+`---
+
+Dear R.,
+
+My love, one day, you and everything you stand for will die.
+
+Love,
+Emilia
+
+Unsent. 99 AT.`
+
 
 @f202_c
 go-to: todo
 
 This is a first-century document, indicating the social irrationality of this era (not unlike your own). The Absolutionists and Negationists were two factions present in the early post-war era; the Absolutionists believed that baseline humans were the cause of the War, and that cruelty on the part of the baselines pushed the posthumans to the edge. The Negationists believed that posthumans were the cause of the War, and that they inflicted violent cruelties upon the baselines. The Negationists appear to have won out in this conflict.
-
-You do not know what a eunuch is. The term does not appear in the dictionaries.
 
 
 @f303
@@ -1487,7 +1501,7 @@ choose-if: key3 = 1
 view-if: @data.f202 > 0 or f_seen > 1
 max-visits: 1
 count-visits-max: 1
-frequency: 300
+frequency: 200
 on-arrival: {! Q.prev_data.push('f404'); Q.correct_data_types.push('document'); Q.f_seen += 1; !}
 go-to: decode
 set-jump: f404_
@@ -1529,7 +1543,7 @@ go-to: f_background if f_seen <= 1; f505_c if f_seen > 1
 
 The goal of ushering in an Age of Rationality cannot be stopped by primitive delusions.
 
- - Administrator Beauchamp, 102 AT`
+ - Administrator R. Beauchamp, 102 AT`
 
 @f505_c
 go-to: todo
@@ -1581,21 +1595,23 @@ go-to: decode
 set-jump: f707_
 
 @f707_
-go-to: todo
+go-to: f707_c
 
 `We have many rituals with which we celebrate our ancestors. The most sacred is the Sacrifice, representing how our Ancestor sacrificed Her son to save baseline humans from the tyranny of the Analysts. First, a willing participant enters the temple, and is cleansed and anesthesized.`
 
 `[WARNING: IMAGE UNABLE TO BE RECOVERED]`
 
-`Man becomes woman, and flesh becomes one with the Ancestors.`
+`Thus, man becomes woman, and flesh becomes one with the Ancestors.`
 
 `- Priestess Stella Smith, 97 AT`
 
+@f707_c
+go-to: todo
+
+This must be one of the lurid sexualized fantasies of the Age of Myth.
 
 
 ###################################### Historical - 2nd/3rd Century
-
-# TODO: more 1st century notes: a few years later, an administrator writes about the equivalent of a cataclysm. Thinks the eunuchs cursed them.
 
 # Well, if accurate, this document has put a nail in the claims of the False Century Hypothesis. The FHC claims that the period between 147 and 255 AT did not exist, and that the year change was imposed by the Imperial Era to create an auspicious numerological pattern.
 
@@ -1979,7 +1995,7 @@ go-to: rev_1 if r_seen = 1; r4000_c if r_seen > 1
 
  The historicide, they call it. A cruel joke. By destroying all records that we ever existed, it is hoped that some of us will survive the upcoming conflagration. Sacrificing the future to preserve some vestige of our present.
 
- The Archives store the records of every name change and sex change, every birth and death and marriage certificate in the city, all on flimsy sheets of cellulose and magnetic tape. They used these records to find us and murder us. Burning them is self-defense. Destroying the CityNet servers is self-defense.
+ The Archives store the records of every name change and sex change, every birth and death and marriage certificate in the city, all on flimsy sheets of cellulose and magnetic tape. They used these records to find us and murder us. Burning them is self-defence. Destroying the CityNet servers is self-defence.
 
  We have allies on the inside, and they have opened the door. A few incendiary devices is all it takes to stop an even greater massacre.
 
@@ -2105,6 +2121,7 @@ view-if: r_seen >= 2
 tags: data, science, wild, b_subtilis
 choose-if: key1013 = 1
 unavailable-subtitle: You don't know how to decode this file.
+frequency: 50
 max-visits: 1
 count-visits-max: 1
 on-arrival: {! Q.prev_data.push('r2026'); Q.correct_data_types.push('special'); Q.r_seen += 1;  !}
@@ -2123,6 +2140,37 @@ go-to: todo
 `- Altair Leblanc, Popular Front Army (for now)`
 
 # Cassie had given the rebels DNA storage technology, and many of them are obsessed with it. They love writing their diaries in DNA, so no one could read it except for perhaps some far-future historian. To be fair, so do I. Lyra does not, however.
+
+@r3272
+title: `R3272.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*` [? if cw_enabled = 1 : (CW: violence) ?]
+tags: data, science, wild, b_subtilis
+choose-if: key1001 = 1
+view-if: r_seen > 0
+frequency: 100
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('r3272'); Q.correct_data_types.push('special_esme'); Q.r_seen += 1;  !}
+go-to: decode
+set-jump: r3272_
+
+@r3272_
+on-arrival: esme_seen += 1
+go-to: rev_1 if r_seen = 1; r3272_c if r_seen > 1
+
+`Comrade Rosa is a traitor. As we fight and die, she's talking about how she's going to disappear, how we should all just pretend we're GTs and live like normal people.
+
+Whatever. I'm used to betrayal. But does that bitch really think she can go stealth, with a fucking bricked-up body like that? At least Em was small enough to hide, even if her face was readable from a mile away.
+
+Whatever happened to "death before desistance"?
+
+ - Eve Santos`
+
+@r3272_c
+go-to: todo
+
+She wrote about *you*. For a moment you imagine that she is still alive to argue with you.
 
 
 ######################## cxxx - CityNet archives
@@ -2154,7 +2202,7 @@ go-to: c123_c
  
  @scientistcat: that's not what A- fucking said. stop reading the headlines.
  
- @bellaxo: Fuck off, K-. This isn't your lane.
+ @bellaxo: Fuck off, K-. What are you even doing on neonet???
  
  @neobb: we are all gonna die.`
  
@@ -2162,7 +2210,7 @@ go-to: c123_c
 @c123_c
 go-to: todo
 
-Before the bombings of the servers, there had been talk of archiving parts of CityNet, so that the existence of the neogens wouldn't be lost forever. Apparently, some of your comrades had archived CityNet in DNA.
+Before the bombings of the servers, there had been talk of archiving parts of CityNet (or its private subset, NeoNet), so that the existence of the neogens wouldn't be lost forever. Apparently, some of your comrades had archived NeoNet in DNA.
 
 A- told you that her prostrations were not genuine, that she was only telling them what they wanted to hear.
 
@@ -2185,8 +2233,7 @@ set-jump: c124_
 @c124_
 go-to: todo
 
-`
- @luxemburgist: If the revolution fails, it would be because it did not have a purely proletarian character. It's just like Marx discussed in the 12th Brumaire.
+`@luxemburgist: If the revolution fails, it would be because it did not have a purely proletarian character. It's just like Marx discussed in the 12th Brumaire.
 
  @zhouenlai: Of course, it's like how the Opposition Party collapsed because of its embrace of free-market ideology. Everything is ruined by the presence bourgeoisie.
 
@@ -2199,6 +2246,39 @@ go-to: todo
  @bellaxo: True, although there are allusions to some unrecovered works by the philosophers that discuss non-economic and reproductive/sexual labour.
 
  @juneinmay: none of us know what we're talking about what are we even doing here
+`
+
+@c125
+title: `C125.fastq.gz`
+subtitle: `Source: Wild. Medium: *in vivo - B. subtilis colony*`
+view-if: c_seen >= 1
+tags: data, wild, b_subtilis, citynet
+choose-if: key1013 = 1
+unavailable-subtitle: You don't know how to decode this file.
+max-visits: 1
+count-visits-max: 1
+on-arrival: {! Q.prev_data.push('c125'); Q.correct_data_types.push('personal'); Q.c_seen += 1;  !}
+go-to: decode
+set-jump: c125_
+
+@c125_
+go-to: todo
+
+`@eve-reborn: If they try to ban us, we will take down the system along with us. What if we turn into the monsters they accuse us of? No one in this city is innocent; they are either working towards our elimination or directly complicit in it. So if they try to kill us, we will bring the whole arcology down on top of them.
+
+ @archivistem: I don't think this is a good idea...
+
+ @luxemburgist: I urge you to cope with your suicidal ideation in a more productive manner.
+
+ @e936631: Okay, enough for the alarmism. We are nowhere near the place where we're all getting slaughtered. The numbers aren't all that big. Yeah banning our healthcare is bad, but at worst that just brings us back to before the neogenic era.
+
+ @lilyflowers: Yeah, E's right. And for once I agree with Rosa.
+
+ @eve-reborn: Fine. Then I will be alone.
+
+ @eve-reborn: The world is ending. And what are we doing here?
+
+ @luxemburgist: It is the fucking third time the world has ended in my fucking lifetime.
 `
 
 
@@ -2270,7 +2350,7 @@ go-to: todo
 
  @LilianO: I'm 40 and I'm the third oldest technician here. I have, what, 10 years of functional health remaining, with the nanoplague and all. And now they're fucking telling me to desist or get fired.
  
-  @LilianO: Now my boss is telling me women are uncomfortable with me in their washrooms, even though I've been using the women's room for 10 years. Coworkers and cousins I used to be friends with are telling me to stay away from their children. What the fuck is even happening here?
+ @LilianO: Now my boss is telling me women are uncomfortable with me in their washrooms, even though I've been using the women's room for 10 years. Coworkers and cousins I used to be friends with are telling me to stay away from their children. What the fuck is even happening here?
   
  @LilianO: Needless to say, this will not fix our infrastructure.
 
@@ -2328,20 +2408,23 @@ set-jump: c131_
 
 
 @c131_
+go-to: c131_c
+
+`@eve-reborn: \[MEDIA UNAVAILABLE\] \[MEDIA UNAVAILABLE\] \[MEDIA UNAVAILABLE\] See? Do any of you fucking see what's happening? Do you see that they're trying to murder us, and rewrite history so that we never existed? And what are we going to do about it? Maybe the Ruling Party really are too powerful. Maybe the evil can't be stopped. But let it at least be said that the neogens tried to fight back.
+
+ @eve-reborn: Death before desistance.
+
+ @es-em-ef: Death before desistance.
+
+ @luxemburgist: I suppose there's no choice. Death before desistance.
+
+ @archivistem: I don't want to die...
+
+ @eve-reborn: Do you think that's your fucking choice right now, Em?`
+
+@c131_c
 go-to: todo
 
- 
-`@xxxneogenxxx: The neogen is a creature unmoored from all history and tradition. They are an anomalous existence never foreseen by the Ancestors.
+Even as dwindling demonstrations still crowded the plazas, the post-coup unity government's second series of legislation were, in effect, banning public neogenic existence. Banning the medicines used in crossing over, declaring public appearance as a neogen to be an obscenity, banning promotion of neogen "ideology" in any medium, and finally deputizing every citizen to collect bounties for enforcing these policies. You could not legally go outside, or talk to others like you, or use the medicine you had been using for 15 years. 
 
- @xxxneogenxxx: The idea that you can change your sex on your own volition is unprecedented. There is no historical precedent for this.
-
- @es-em-ef: are you saying it's a good thing or bad thing?
-
- @luxemburgist: I don't know. It's not that complicated. Please, no more obscurantist ideologies.
-
- @luxemburgist: I don't think it would make much of a difference if we had a history. We are creatures of flesh and blood. We still need to work and pay rent, like anyone else, except the powers that be have made it harder for us.
-
- @luxemburgist: If there is any hope for the neogens, it lies in the unity of the working class.`
-
-
-
+But you would be fine. You would survive.

@@ -1,13 +1,15 @@
 title: Call K-.
 subtitle: Ask her if there is anything you could do...
-view-if: k_path >= 4 and daily_k = 0 and day >= k_day + 2 and (day_major = 0 or day_minor = 0) and stress < stress_threshold and day < last_day
+view-if: k_path >= 4 and daily_k = 0 and day >= k_day + k_path/2 and (day_major = 0 or day_minor = 0) and stress < stress_threshold and day < last_day
 on-arrival: daily_k = 1; k_day = day; day_minor += 1; k_path += 1; stress += 1
 max-choices: 1
-max-visits: 3
+max-visits: 5
 new-page: true
 tags: minor
 
-You call K-, and ask if there is anything you could do to help her (and perhaps for money), such as perhaps taking care of S-. She says yes; you can visit her apartment.
+# TODO: what if you do this three times? Missing ending
+
+You call K-, and ask if there is anything you could do to help her (and perhaps for money), such as perhaps taking care of S-. She says yes.
 
 - #k_generic
 
@@ -181,10 +183,60 @@ Of course you trust her, and you tell K- as much.
 
 You don't exactly trust A-, but she is paying your rent. You tell K- as much.
 
-"Ha. 
+"Ha. That seems like the correct decision."
 
 In the end, K- leaves after a while.
 
 @too_tired
 title: You're too tired for such activities.
 view-if: stress >= stress_threshold - 4
+
+
+@k_cook
+title: K- is tired, and asks if you can cook for her.
+max-visits: 1
+tags: k_generic
+on-arrival: food += 1
+
+K- is tired, and asks if you can cook for her. You say yes, and visit her apartment. She has the usual ingredients, and you make the usual porridge, switching up some of the beans and rice varieties. The cooking procedes without incident. The three of you share a meal; she and S- are thankful.
+
+- @ask_for_money: Ask for money?
+- @dont_ask_for_money: Just leave.
+
+@ask_for_money
+on-arrival: stress += 1; money += 40
+
+It feels more painful than usual, but you ask for money.
+
+"Sorry I don't have a lot. Here's $40."
+
+@dont_ask_for_money
+
+You do not ask for money, or anything else, and say your goodbyes.
+
+
+# k shopping
+@k_shop
+title: K- is tired, and asks if you can shop for her.
+max-visits: 1
+tags: k_generic
+on-arrival: money += 150
+
+K- is tired, and asks if you can shop for groceries for her. She sends you $100, and a list of items she wants you to purchase. Mostly it is staple foods, with a few luxury vegetables and fruits.
+
+- @k_shop_buy: Buy all of the items on her list.
+- @k_shop_abandon: What if you can't find all of the items...
+
+@k_shop_abandon
+on-arrival: money -= 50
+
+You could likely find the items if you searched hard enough, but you do not.
+
+"It's fine. Keep the change," she says.
+
+@k_shop_buy
+on-arrival: money -= 100
+
+You find all of the items on the list eventually, diligently searching through multiple stores.
+
+"Keep the change," she says.

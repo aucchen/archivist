@@ -78,7 +78,7 @@ on-arrival: food += 2; stress -= 1
 
 You take a bowl of rice porridge. They did not add beans in it as you do, so the nutritional value is reduced. Nevertheless, it tastes better than the variety you make - smoother, more watery.
 
-As you finish eating, R- and L- approach, walking together. R- is a tall and broad woman with a head of curly black hair and a commanding presence, surveying the other volunteers. When she notices you, her facial expression shifts, passing through a whole incomprehensible gamut of emotions.
+As you finish eating, R- and L- approach, walking together. R- is a tall and broad woman with a head of curly black hair and a commanding presence, surveying the other volunteers. When she notices you, her facial expression shifts, even noticeable beneath her respirator, passing through a whole incomprehensible gamut of emotions.
 
 "Hello, Emmeline Hsu," R- says. "I thought you were dead."
 
@@ -93,7 +93,7 @@ go-to: wondering
 
 "It's the neogenic greeting these days," says R-. "From what I knew of you on CityNet, I thought it would be a fitting end to your story too. But it turns out, us traitors have a way of persevering. The cowards build their houses over the heroes' graves. Or something like that." She chuckles.
 
-"So, what is your opinion of the Mutual Aid Alliance so far?" asks R-.
+"So, what is your opinion of the Mutual Aid Alliance so far?" she asks.
 
 
 @hi_r
@@ -138,12 +138,54 @@ You nod.
 
 "More of us survived the Uprising than you might think," R- continues. "There are plenty of us here, hiding until it's safe to reemerge. We're building a new world atop the ruins of the old, a world where all can finally be free. Whether it takes ten years or a hundred." A practiced laugh. L- sits next to her, listening and watching you.
 
+- @how_survive: "How have you been able to survive?"
 - @can_join: "Is there a way I can help?"
 - @join_why: "Do you really think it will work?"
 - @join_nice: "That's nice..."
 
+@how_survive
+view-if: join_nice = 0
+on-arrival: join_nice = 1
+
+"How have you been able to survive?"
+
+R- shrugs. "We hide. Half the undercity is uninhabited, but not all of i is uninhabitable. There are plenty of hiding places if you don't mind slightly more radiation than usual."
+
+You stop eating the soup. 
+
+- @what_about_food: "What about the food?"
+- @but_nanoplagues: "But the nanoplagues..."
+
+
+@what_about_food
+go-to: snitching
+
+"What about the food?"
+
+"We have a variety of suppliers. I guarantee it's safe. Look, I probably shouldn't even be talking about this with you." She turns to L-.
+
+@but_nanoplagues
+go-to: snitching
+
+"But the nanoplagues..."
+
+"We're careful, but we're accepting a shorter life expectancy. Anyway, I probably shouldn't even be talking about this with you." She turns to L-.
+
+@snitching
+
+"I don't think we have to worry about Em snitching on us," says L-. "She doesn't seem the type."
+
+"Is there really a 'type'? Or is this some bizarre intuition?" asks R-.
+
+"Just an educated guess. Anyway, it's not like we revealed any nefarious plans." He turns to you. "Em, we'll be having another distribution session in a week. See you then? And if you want to volunteer with us, I'm sure we'll find something."
+
+- @can_join: "Is there a way I can help?"
+- @join_why: "Do you really think it will work?"
+- @leave: You are free to leave.
+
+
 @join_nice
-max-visits: 1
+view-if: join_nice = 0
 on-arrival: join_nice = 1
 
 "Oh, that's nice..."
@@ -154,7 +196,7 @@ on-arrival: join_nice = 1
 
 "Is there really a 'type'? Or is this some bizarre intuition?" asks R-.
 
-"Just an educated guess. Anyway, it's not like we revealed any nefarious plans that the security services couldn't guess." He turns to you. "Em, we'll be having another distribution session in a week. See you then? And if you want to volunteer with us, I'm sure we'll find something."
+"Just an educated guess. Anyway, it's not like we revealed any nefarious plans." He turns to you. "Em, we'll be having another distribution session in a week. See you then? And if you want to volunteer with us, I'm sure we'll find something."
 
 - @can_join: "Is there a way I can help?"
 - @join_why: "Do you really think it will work?"

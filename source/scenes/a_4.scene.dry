@@ -210,14 +210,14 @@ You hold on to her for as long as you can. She is warm, and you are cold. She is
 @leave_hold
 
 [? if at_as_place = 0 : Soon enough, A- dresses and leaves. You are tired. ?]
-[? if at_as_place = 1 : Soon enough, despite being barely having the energy to walk, you have to leave; her family is returning soon. You could have lain in her soft bed forever. ?]
+[? if at_as_place = 1 : Soon enough, despite barely having the energy to walk, you have to leave; her family is returning soon. You could have lain in her soft bed forever. ?]
 
 @m_end
 
 "This was nice. We should do this more often," she says. "Love you, Em."
 
 [? if at_as_place = 0 : Soon enough, A- dresses and leaves. You are tired. ?]
-[? if at_as_place = 1 : Soon enough, despite being barely having the energy to walk, you have to leave; her family is returning soon. You could have lain in her soft bed forever. ?]
+[? if at_as_place = 1 : Soon enough, despite barely having the energy to walk, you have to leave; her family is returning soon. You could have lain in her soft bed forever. ?]
 
 
 @my_place_separate
@@ -267,7 +267,7 @@ max-visits: 1
 
 "You're really beautiful tonight..."
 
-She was always so *good* at being a neogen. Her face was so much less readable than yours; she always made herself presentable. And there was her sing-song voice, with the *correct* resonance and pitch and intonation Even now, she looks like a human woman, whereas you must appear as some sort of feral creature, a monstrosity unfit for bourgeois eyes.
+She was always so *good* at being a neogen. Her face was so much less readable than yours; she always made herself presentable. And there was her sing-song voice, with the *correct* resonance and pitch and intonation. Even now, she looks like a human woman, whereas you must appear as some sort of feral creature, a monstrosity unfit for bourgeois eyes.
 
 She shrugs. "Hey, it takes practice."
 

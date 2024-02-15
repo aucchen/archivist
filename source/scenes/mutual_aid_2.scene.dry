@@ -17,6 +17,7 @@ You lower your face and quicken your pace, averting the gazes of the Guards as m
 
 - @ask_help: Ask if you can help the Alliance.
 - @ask_help_2: Ask if you can help the Alliance.
+- @ask_k: Tell them about K-'s situation.
 - @change_mind: Ask if you can help the Alliance.
 - @just_eat: Just consume your food in silence.
 - @talk_else: Talk to R- and L- about anything else.
@@ -116,12 +117,29 @@ You shake your head. "Sorry, but..."
 - @commotion
 
 
+
 @just_eat
 on-arrival: food += 1
 
 You eat the rice porridge in silence. There are various spices and protein components added this time, altering the flavor profile somewhat. It tastes good. It provides you with the nutrients necessary to survive.
 
 - @commotion
+
+@ask_k
+view-if: k_rebel = 1 or k_keep_job = 1
+on-arrival: r_knows_k = 1
+
+You tell R- and L- about the situation with K-, and what she discovered at her job.
+
+"Huh, I didn't think K- had the self-awareness to think about this," says R-. "But she does, and she has guilt, which is always useful. Tell her to stay at the job, but tell us everything. Give us as much data as she can safely get."
+
+"Will the information be useful?"
+
+"Most likely not. Knowledge is powerless on its own. But, there's a nonzero chance we might come up with a plan to save a nonzero number of lives."
+
+- @just_eat: Consume your food in silence.
+- @talk_else: Talk to R- and L- about anything else.
+
 
 @talk_else
 go-to: ask

@@ -144,7 +144,7 @@ on-arrival: money -= grocery_cost; supply += 2; food += 5; day_major += 1
 
 When you arrive at the store, the shelves are devoid of fresh fruits and produce. There must have been technical incidents at the farms or the transportation system or the refrigeration or maybe there has been sabotage (your comrades or the reactionaries?) or perhaps delivery strikes or anti-plant nanoplagues or...
 
-However, there is enough rice to last for a while yet, as well as an adequate supply of legumes.
+However, there is enough rice to last for a while yet, as well as an adequate supply of beans.
 
 It costs $50 for enough food to last five days.
 
@@ -155,7 +155,7 @@ It costs $50 for enough food to last five days.
 title: The trip is uneventful.
 on-arrival: money -= grocery_cost; food += 2; day_major += 1
 
-When you arrive at the store, the only food item available is algae paste, better known as "gray mush". It is unappetizing, but you have no other option.
+When you arrive at the store, the only food item available is algal paste, better known as "gray mush". Of course gray mush has the same biological origin as rice and a number of other staples, but it has not been processed for any kind of flavor or texture. Of course there are recipes for "homemade rice" directly from gray mush, but you have neither the equipment nor energy for such projects.
 
 It costs $25 for two days of food.
 
@@ -201,7 +201,7 @@ on-arrival: food += 1; stress += 3; days_starved += 1; caught = 1
 
 A security guard watches you put an item in your pocket. You are barely cognizant of what happens next, but loud and harsh words are spoken, a picture is taken, and hands grab your body, dragging you out.
 
-You are banned from this store, thus foreclosing one possibility of acquiring food.
+Thankfully, you are released with only a warning, but you are banned from this store, thus foreclosing one possibility of acquiring food.
 
 
 ##############################################################

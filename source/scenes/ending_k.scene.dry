@@ -46,6 +46,8 @@ view-if: k_knows_a_affair > 0
 - @easy_for_you: "Easy for you to say."
 - @what_about_job: "What about quitting your job?"
 
+# TODO: job
+
 
 @do_you_love
 
@@ -57,11 +59,11 @@ view-if: k_knows_a_affair > 0
 
 
 @what_about_job
-view-if: k_path >= 4
+view-if: k_path >= 4 and k_quits_job = 1
 
 "What about quitting your job? Will you still have enough money?"
 
-"As it turns out, I could just make a horizontal transfer to a normal division with only a 10% pay cut. It's bad, but not *that* bad. And if this one turns out to be horrible too, well, we'll see once we get there. So it'll be fine. Take a chance."
+"It's fine. I've found a new job at a clinical lab. I'm surprised they let me go so easily, but it's not like they have the resources to monitor every technician. So it'll be fine. Take a chance."
 
 - @move_in: "Fine. I'll move in with you."
 - @move_in_evicted: "I'll move in with you."
@@ -140,6 +142,8 @@ achievement: ending_2
 = End
 
 You move in with K-. [? if evicted = 1 : You did not have much in the way of possessions, so the move was rather easy. ?][? if has_contract = 1 : You continue with your work as a contractor for the Archives. Since your work is more flexible than K-'s, you have become S-'s primary caretaker. ?][? if has_contract = 0 : You are unemployed, perhaps permanently, so you have become S-'s primary caretaker. ?] Being a primary caretaker is not such a negative experience. You have gotten to a comfortable rapport with him; he trusts you and listens to you, perhaps more than you deserve. Because of him, you have been learning to cook meals besides rice porridge and simple stir-fries. You even know how to make burgers from scratch now. S- was so happy.
+
+[? if k_quits_job = 1 : K-'s new job pays less than before, and has worse hours. Nevertheless, you make do. Sometimes food or medicine can be scarce, but overall, it is still more comfortable than your time living alone. ?][? if k_keep_job = 1 and k_rebel = 1 : Eventually, you bring K- into contact with R- and the Mutual Aid Alliance, so that K- can share the information she discovered at work. Neither tells you what they discussed. But they continue to meet, and K- continues to keep detailed notes of her discoveries and hypotheses. ?][? if k_keep_job = 1 and k_rebel = 0 : K- continues in her job, which she still finds morally abhorrent. She comes home crying, and you comfort her and tell her that it's all okay, that she's not a bad person. She takes detailed notes in the hope that one day they would be helpful for someone. ?]
 
 Life goes on, for better or for worse. Your illness remains, although somewhat ameliorated. You still fear for your life, and for S-'s life, every time you leave the apartment, but finally it feels survivable. Love, as they say, is the most powerful weapon in the revolutionist's arsenal.
 

@@ -120,7 +120,7 @@ It doesn't matter, either way.
 # view if you know about the uprising
 
 @dream_uprising
-title: Dream of the uprising, and K-.
+title: Dream of the uprising.
 subtitle: [? if cw_enabled = 1 : CW: violence, transphobia ?]
 view-if: dream_rev_viewed = 0 and (r_seen > 0 or mutual_aid_seen > 0 or k_path > 0) and has_medicine > 0
 on-arrival: dream_rev_viewed += 1
@@ -531,6 +531,53 @@ It doesn't matter either way.
 @dream_a_end
 
 The Psychologist is alive. Based on actuarial statistics, he has outlived or will outlive every single neowoman who went through his program. He will outlive you.
+
+
+############################ dream of mother
+
+@dream_mother
+title: Dream of your mother.
+view-if: dream_mother_viewed = 0 and has_medicine > 0
+on-arrival: dream_mother_viewed += 1
+tags: dream
+
+The dream begins with the Administrator at the university, in one of the mandatory sessions of haranguing brought about by your crisis.
+
+"Your parents brought you into this city so that you may have a better life," said the Administrator. "Think of what they would have wanted for you."
+
+- @dream_mother_2: Yes, you thought of your parent.
+
+@dream_mother_2
+
+There was no reason you should have this memory. Perhaps it was only your imagination and an amalgamation of stereotypes. But you remembered her. A woman wrapped in wanderers' robes, wearing a respirator and hood, carrying a similarly swaddled child, walking under the bare sky.
+
+You only had a single glimpse of her face as she deposited you in this city. But that was enough to imbue you with a single irrational conviction.
+
+- @dream_mother_3: When you grew up, you would have your mother's face.
+
+@dream_mother_3
+
+When you look in the mirror, even on the days when you despise your body and appearance, you would see *her* there, and then you would feel content.
+
+Despite everything, you have your mother's face.
+
+*Is this what happened?*
+
+- @dream_m_yes: Yes, it happened like this.
+- @dream_m_no: No; it wasn't like this.
+- @dream_m_no_matter: It doesn't matter.
+
+@dream_m_yes
+
+It happened like this, you think. You remember her face.
+
+@dream_m_no
+
+Of course this was unrealistic. You could not possibly have memories from such a young age.
+
+@dream_m_no_matter
+
+It doesn't matter either way.
 
 
 
