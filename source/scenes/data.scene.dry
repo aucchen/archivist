@@ -256,7 +256,7 @@ while (Q.chosen_data_types.length > 0) {
             Q.check_data_text += 'The dataset has been deemed obscene and contrary to public interests, and thus will not be archived. Nevertheless, you have been paid $20 as a token fee.</p>';
             Q.payment += 20;
         } else if (correct_t == 'hoax') {
-            Q.check_data_text += 'Based on our evidence, this dataset has been deemed as a HOAX, and will not be archived.';
+            Q.check_data_text += 'Based on our evidence, this dataset has been deemed a HOAX, and will not be archived.';
             Q.check_data_test += ' Nevertheless, you have been paid $10 as a token fee.</p>';
             has_hoax = true;
         } else if (correct_t == 'hoax2') {
@@ -474,7 +474,7 @@ go-to: todo
 
 `BSRI DNA Diaries Project - #2`
 
-`My name is Gonzalo W (he/him) and I founded the DNA Diaries project here at the Basic Sciences Research Institue, or BSRI. The purpose of the project is multifold. First, it is to test our DNA synthesis methods, and to test our different encoding schemes, as well as both in vivo and in vitro storage methodologies and media. Second, it is a precursor to a much more substantial project, the DNA Time Capsule project, wherein we will store the entireties of several major sources of human knowledge in DNA.`
+`My name is Gonzalo W (he/him) and I founded the DNA Diaries project here at the Basic Sciences Research Institute, or BSRI. The purpose of the project is multifold. First, it is to test our DNA synthesis methods, and to test our different encoding schemes, as well as both in vivo and in vitro storage methodologies and media. Second, it is a precursor to a much more substantial project, the DNA Time Capsule project, wherein we will store the entireties of several major sources of human knowledge in DNA.`
 
 `If you are reading this in the future, my hope is that the project would have been completed. While our data storage plans have not been finalized, the storage methods are not likely to significantly differ from this one.`
 
@@ -525,7 +525,7 @@ However, the likelihood of this discovery being believed is approximately zero.
 @w_intro
 go-to: todo
 
-Unfortunately, the importance of a document does not necessarily correlate with its likelihood of preservation. This is especially true in this document class; in all their wisdom the pre-war scientists never cared to duplicate copies of the most central articles in this encyclopedia, instead simply shotgun-encoding the entire encyclopedia into a bacterial colony. Due to various biological factors, shorter sequences and thus shorter articles were more likely to successfully replicate, thus leading to the proliferation of small and seemingly insignificant articles
+Unfortunately, the importance of a document does not necessarily correlate with its likelihood of preservation. This is especially true in this document class; in all their wisdom the pre-war scientists never cared to duplicate copies of the most central articles in this encyclopedia, instead simply shotgun-encoding the entire encyclopedia into a bacterial colony. Due to various biological factors, shorter sequences and thus shorter articles were more likely to successfully replicate, thus leading to the proliferation of small and seemingly insignificant articles.
 
 @w606
 title: `W606.fastq.gz`
@@ -1019,7 +1019,7 @@ Here is a picture of me. A poor picture. And here is a sample of my voice.
 @x1009_c
 go-to: todo
 
-If this diary were at all true, then this is an indication that Liana and her partner were both neowomen (or the historical equivalent of neowomen, not that historians would ever agree such a thing existed). This is a potentially monumentous discovery. Your movement had already adopted Liana Xu as a symbol, but they were never aware that she was *actually* like them.
+If this diary were at all true, then this is an indication that Liana and her partner were both neowomen (or the historical equivalent of neowomen, not that historians would ever agree such a thing existed). This is a potentially momentous discovery. Your movement had already adopted Liana Xu as a symbol, but they were never aware that she was *actually* like them.
  
 As to her questions about her old country and posthumans, they are rarely thought of at all.
 
@@ -1095,7 +1095,7 @@ go-to: todo
 
 You want to die right now because what even is the point of living if you can't get a fucking uterus transplant?
 
-Oh right, the blueprints. Surprisingly enough, they are readable even through the data compression and five hundred years of mutations. You are not an expert, but they seem legitimate. They might be crucial for saving the city, or something like that, as the recycling system is yet another critical subsystem that has been failing recently. [? if hoax_warned = 1 : Even though the Archivies think the Liana diaries are a hoax, perhaps this document would convince them otherwise. ?]
+Oh right, the blueprints. Surprisingly enough, they are readable even through the data compression and five hundred years of mutations. You are not an expert, but they seem legitimate. They might be crucial for saving the city, or something like that, as the recycling system is yet another critical subsystem that has been failing recently. [? if hoax_warned = 1 : Even though the Archives think the Liana diaries are a hoax, perhaps this document would convince them otherwise. ?]
 
 But none of that seems to matter at this moment. The city is far away. You are floating, lost in the haze of engineered anatomies you will never embody.
 
@@ -1266,7 +1266,7 @@ choose-if: key101 = 1
 max-visits: 1
 count-visits-max: 1
 frequency: 300
-on-arrival: {! Q.prev_data.push('s404'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key_404 = 1; !}
+on-arrival: {! Q.prev_data.push('s404'); Q.correct_data_types.push('science'); Q.s_seen += 1; Q.key404 = 1; !}
 go-to: decode
 set-jump: s404_
 
@@ -1513,7 +1513,7 @@ go-to: f_background if f_seen <= 1; f404_c if f_seen > 1
 
  Tonight our order convened a circle of prayer. We devoted our Great Prayer in memories of all those killed on the Night of Restoration. May they be with the Ancestors. Our Lesser Prayer was dedicated to our lost Sister, Emilia Chu, who had taken great care in documenting the atrocities committed against our comrades before she disappeared. We hope she is with the Ancestors in the Temple of Heaven.
 
- We asked the Ancestors in the Sky to absolve us of our mistakes, so that we may join them once more in the Temple of Heaven. We asked the Ancestors forgiveness for our enemies even as they persecute and torture us. Even as the fires burn all around us and the skies are brown with the ashes of our Sisters and friends, we beg the Ancestors for absolution for our Administrators.
+ We asked the Ancestors to absolve us of our mistakes, so that we may join them once more in the Temple of Heaven. We asked the Ancestors forgiveness for our enemies even as they persecute and torture us. Even as the fires burn all around us and the skies are brown with the ashes of our Sisters and friends, we beg the Ancestors for absolution for our Administrators.
 
  Tonight we consumed the blood of the Ancestors, and we dreamed.
 
@@ -1849,7 +1849,7 @@ go-to: todo
 
 `It is increasingly clear that we are sacrificial pawns in a proxy war. When we seized arms, there was a tacit understanding with some of the security forces that they would not stop us; they virtually handed their weapons to us. The Guards have many enemies, and there are anti-coup factions in the Defense Forces and even the gendarmerie. However, they are not willing to risk their own position in a civil war.`
 
-`It is also clear that the some in the security forces see our uprising as a way to simultaneously weaken two enemies, both the radical Opposition and the reactionaries as represented by the Guards. And as the general populace becomes exhausted of our fighting, the central authorities take over, order is restored, and we are all sent outside the dome.`
+`It is also clear that some in the security forces see our uprising as a way to simultaneously weaken two enemies, both the radical Opposition and the reactionaries as represented by the Guards. And as the general populace becomes exhausted from our fighting, the central authorities take over, order is restored, and we are all sent outside the dome.`
 
 `But what choice do we have? We either accept the aid of all who offer it, or we perish. Regardless, we have been doing quite a bit of that lately.`
 
@@ -2233,7 +2233,7 @@ set-jump: c124_
 @c124_
 go-to: todo
 
-`@luxemburgist: If the revolution fails, it would be because it did not have a purely proletarian character. It's just like Marx discussed in the 12th Brumaire.
+`@luxemburgist: If the revolution fails, it would be because it did not have a purely proletarian character. It's just like Marx discussed in the 18th Brumaire.
 
  @zhouenlai: Of course, it's like how the Opposition Party collapsed because of its embrace of free-market ideology. Everything is ruined by the presence bourgeoisie.
 
